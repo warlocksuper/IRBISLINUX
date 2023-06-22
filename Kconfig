@@ -15,12 +15,15 @@ config OS_ARCH_x86_64
 	bool "x86_64"
 config OS_ARCH_i386
 	bool "i386"
-
+	
+config OS_ARCH_AMD64
+	bool "amd64"
 endchoice
 
 config OS_ARCH
 	string
 	default "i386" if OS_ARCH_i386
+	default "amd64" if OS_ARCH_AMD64
 	default "x86_64"
 	
 	

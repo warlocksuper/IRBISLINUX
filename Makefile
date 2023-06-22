@@ -9,15 +9,18 @@ ifeq (,$(wildcard $(OS_CONFIG)))
 	include ${OS_CONFIG}
 endif
 
-all: ${OS_CONFIG}
+all: ${OS_CONFIG} tools
 
 
-${OS_CONFIG}: menuconfig packages
+${OS_CONFIG}: menuconfig
+
+tools:
+	${MAKE} -C tools
 
 packages:
 	${MAKE} -C packages
 
 menuconfig:
-	IConfig/mconf Kconfig	
+	conf/mconf Kconfig	
 
 
