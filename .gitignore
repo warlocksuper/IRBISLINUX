@@ -34,3 +34,4 @@
 .config
 .config.old
 build/*
+source/*

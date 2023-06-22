@@ -2,8 +2,8 @@ OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
 BINUTILS_TAR = ${ROOT_DIR}/source/binutils-2.40.tar.xz
-BINUTILS_STAGE1_CONFIGURE = ${ROOT_DIR}/binutils/Makefile
-BINUTILS_STAGE1_COMPILE = ${ROOT_DIR}/tools/usr/bin/ar
+BINUTILS_STAGE1_CONFIGURE = ${ROOT_DIR}/build/binutils/Makefile
+BINUTILS_STAGE1_COMPILE = ${ROOT_DIR}/tools/lib/libctf.a
 
 all:
 
