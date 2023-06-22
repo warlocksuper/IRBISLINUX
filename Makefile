@@ -4,23 +4,26 @@ OS_PATHLEVELVERSION = 0
 
 ROOT_DIR = ${PWD}
 
-OS_CONFIG = .config
+OS_CONFIG = ./.config
 ifeq (,$(wildcard $(OS_CONFIG)))
 	include ${OS_CONFIG}
 endif
 
-all: ${OS_CONFIG} tools
+export
+
+all: tools_dir
 
 
 ${OS_CONFIG}: menuconfig
 
-tools:
+tools_dir:
 	${MAKE} -C tools
 
 packages:
 	${MAKE} -C packages
 
 menuconfig:
+	echo ${ROOT_DIR}
 	conf/mconf Kconfig	
 
 

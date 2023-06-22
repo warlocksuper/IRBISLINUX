@@ -4,6 +4,6 @@ include ${OS_CONFIG}
 
 all: complite
 
-complite:
-	echo "finalize"
+complite: 
+	${MAKE} -C ${ROOT_DIR}/packages stage1
 

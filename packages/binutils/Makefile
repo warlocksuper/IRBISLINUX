@@ -9,6 +9,7 @@ stage1_tools: ${BINUTILS_TAR}
 
 ${BINUTILS_TAR}:
 	@mkdir -p ${ROOT_DIR}/source
-	wget -p ${ROOT_DIR}/source https://sourceware.org/pub/binutils/releases/binutils-2.40.tar.xz
+	wget https://sourceware.org/pub/binutils/releases/binutils-2.40.tar.xz -P ${ROOT_DIR}/source/
+	@cd ${ROOT_DIR}/source && tar -xf binutils-2.40.tar.xz
 
 
