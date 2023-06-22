@@ -3,8 +3,8 @@ include ${OS_CONFIG}
 
 GCC_TAR = ${ROOT_DIR}/source/gcc-12.2.0.tar.xz
 
-GCC_STAGE1_CONFIGURE = ${ROOT_DIR}/gcc/Makefile
-GCC_STAGE1_COMPILE = ${ROOT_DIR}/tools/lib/libctf23.a
+GCC_STAGE1_CONFIGURE = ${ROOT_DIR}/build/gcc/Makefile
+GCC_STAGE1_COMPILE = ${ROOT_DIR}/tools/share/info/gcc.info
 
 all:
 

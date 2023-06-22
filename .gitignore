@@ -35,3 +35,4 @@
 .config.old
 build/*
 source/*
+rootfs/*
