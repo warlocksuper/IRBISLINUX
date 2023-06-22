@@ -3,7 +3,7 @@ OS_SUBVERSION = 0
 OS_PATHLEVELVERSION = 0
 
 ROOT_DIR = ${PWD}
-
+ROOT_FS = ${PWD}/rootfs
 OS_CONFIG = ./.config
 ifeq (,$(wildcard $(OS_CONFIG)))
 	include ${OS_CONFIG}
