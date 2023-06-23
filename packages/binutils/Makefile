@@ -21,4 +21,5 @@ ${BINUTILS_STAGE1_CONFIGURE}:
 	
 ${BINUTILS_STAGE1_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/binutils
-	${MAKE} -C ${ROOT_DIR}/build/binutils install	
+	${MAKE} -C ${ROOT_DIR}/build/binutils install
+	@cd ${ROOT_DIR}	&& ln -sv usr/lib lib64	
