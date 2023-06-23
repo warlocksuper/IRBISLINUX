@@ -17,3 +17,4 @@ temporary_tools:
 	${MAKE} -C diffutils temporary_tools
 	${MAKE} -C file temporary_tools
 	${MAKE} -C findutils  temporary_tools
+	${MAKE} -C dh_make  temporary_tools

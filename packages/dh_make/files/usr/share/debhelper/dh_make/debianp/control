@@ -1,0 +1,35 @@
+Source: #PACKAGE#
+Section: unknown
+Priority: optional
+Maintainer: #USERNAME# <#EMAIL#>
+Rules-Requires-Root: no
+Build-Depends:
+ #BUILD_DEPS#
+#Testsuite: autopkgtest-pkg-python
+Standards-Version: #POLICY#
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Browser: https://salsa.debian.org/debian/#PACKAGE#
+#Vcs-Git: https://salsa.debian.org/debian/#PACKAGE#.git
+
+Package: python3-#PACKAGE#
+Architecture: all
+Depends:
+ ${python3:Depends},
+ ${misc:Depends},
+Suggests:
+ python-#PACKAGE#-doc,
+Description: <insert up to 60 chars description> (Python 3)
+ <Insert long description, indented with spaces.>
+ .
+ This package installs the library for Python 3.
+
+Package: python-#PACKAGE#-doc
+Section: doc
+Architecture: all
+Depends:
+ ${sphinxdoc:Depends},
+ ${misc:Depends},
+Description: <insert up to 60 chars description> (common documentation)
+ <Insert long description, indented with spaces.>
+ .
+ This is the common documentation package.

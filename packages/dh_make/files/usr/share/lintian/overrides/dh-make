@@ -1,0 +1,2 @@
+dh-make: extra-license-file [usr/share/debhelper/dh_make/licenses/*]
+dh-make: package-contains-documentation-outside-usr-share-doc [usr/share/debhelper/dh_make/*/README*]
