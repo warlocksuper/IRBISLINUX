@@ -20,5 +20,6 @@ ${LINUX_STAGE1_CONFIGURE}:
 	${MAKE} -C ${ROOT_DIR}/source/linux-6.1.11 headers
 	
 ${LINUX_STAGE1_COPY}:
+	@mkdir -p ${ROOT_FS}/usr
 	@cd ${ROOT_DIR}/source/linux-6.1.11 && find usr/include -type f ! -name '*.h' -delete
-	@cp -rv ${ROOT_DIR}/source/linux-6.1.11/usr/include ${ROOT_DIR}/rootfs/usr/include/
+	@cp -rv ${ROOT_DIR}/source/linux-6.1.11/usr/include ${ROOT_DIR}/rootfs/usr/

@@ -31,6 +31,6 @@ ${GCC_STAGE1_CONFIGURE}:
 
 ${GCC_STAGE1_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/gcc all-gcc all-target-libgcc
-	${MAKE} -C ${ROOT_DIR}/build/binutils install-gcc install-target-libgcc	
+	${MAKE} -C ${ROOT_DIR}/build/gcc install-gcc install-target-libgcc	
 	
 	
