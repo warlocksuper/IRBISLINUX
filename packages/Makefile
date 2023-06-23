@@ -10,4 +10,5 @@ stage1:
 	${MAKE} -C libstdc++ stage1_tools
 	
 temporary_tools:
-	${MAKE} -C m4 temporary_tools	
+	${MAKE} -C m4 temporary_tools
+	${MAKE} -C ncurses temporary_tools
