@@ -3,7 +3,7 @@ include ${OS_CONFIG}
 
 GLIBC_TAR = ${ROOT_DIR}/source/glibc-2.37.tar.xz
 GLIBC_STAGE1_CONFIGURE = ${ROOT_DIR}/build/glibc/Makefile
-GLIBC_STAGE1_COMPILE = ${ROOT_DIR}/tools/lib/libctf123.a
+GLIBC_STAGE1_COMPILE = ${ROOT_DIR}/rootfs/usr/lib/libc.a
 
 all:
 
