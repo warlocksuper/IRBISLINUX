@@ -13,8 +13,8 @@ choice
 	
 config OS_ARCH_x86_64
 	bool "x86_64"
-config OS_ARCH_i386
-	bool "i386"
+config OS_ARCH_i686
+	bool "i686"
 	
 config OS_ARCH_AMD64
 	bool "amd64"
@@ -22,7 +22,7 @@ endchoice
 
 config OS_ARCH
 	string
-	default "i386" if OS_ARCH_i386
+	default "i686" if OS_ARCH_i686
 	default "amd64" if OS_ARCH_AMD64
 	default "x86_64"
 	

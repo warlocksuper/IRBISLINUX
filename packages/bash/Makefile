@@ -3,11 +3,12 @@ include ${OS_CONFIG}
 
 BASH_TAR = ${ROOT_DIR}/source/bash-5.2.15.tar.gz
 BASH_CONFIGURE = ${ROOT_DIR}/build/bash/Makefile
-BASH_COMPILE = ${ROOT_DIR}/rootfs/usr/bin/bash
+BASH_COMPILE = ${ROOT_DIR}/build/bash/bash
+BASH_INSTALL = ${ROOT_DIR}/rootfs/usr/bin/bash
 
 all:
 
-temporary_tools: ${BASH_TAR}  ${BASH_CONFIGURE} ${BASH_COMPILE}
+temporary_tools: ${BASH_TAR}  ${BASH_CONFIGURE} ${BASH_COMPILE} ${BASH_INSTALL}
 
 ${BASH_TAR}:
 	@mkdir -p ${ROOT_FS}
@@ -21,6 +22,10 @@ ${BASH_CONFIGURE}:
 	
 ${BASH_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/bash
+	
+	
+${BASH_INSTALL}:
+	@mkdir -p ${ROOT_FS}/bin
 	${MAKE} -C ${ROOT_DIR}/build/bash DESTDIR=${ROOT_DIR}/rootfs install
 	@cd ${ROOT_FS}/bin && ln -sv ../usr/bin/bash sh
 	@cd ${ROOT_FS}/bin && ln -sv ../usr/bin/bash bash	
