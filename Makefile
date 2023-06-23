@@ -11,13 +11,16 @@ endif
 
 export
 
-all: tools_dir
+all: tools_dir temporary_tools
 
 
 ${OS_CONFIG}: menuconfig
 
 tools_dir:
 	${MAKE} -C tools
+
+temporary_tools:
+	${MAKE} -C packages temporary_tools
 
 packages:
 	${MAKE} -C packages
