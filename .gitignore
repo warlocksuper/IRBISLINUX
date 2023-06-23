@@ -36,3 +36,9 @@
 build/*
 source/*
 rootfs/*
+tools/amd64-pc-linux-gnu/*
+tools/bin/*
+tools/include/*
+tools/lib/*
+tools/libexec/*
+tools/share/*
