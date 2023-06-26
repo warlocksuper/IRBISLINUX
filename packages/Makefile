@@ -14,3 +14,4 @@ temporary_tools:
 	${MAKE} -C ncurses temporary_tools
 	${MAKE} -C bash temporary_tools
 	${MAKE} -C coreutils temporary_tools
+	${MAKE} -C diffutils temporary_tools
