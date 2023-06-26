@@ -27,7 +27,7 @@ ${GCC_TAR}:
 
 ${GCC_STAGE1_CONFIGURE}:
 	@mkdir -p ${ROOT_DIR}/build/gcc
-	@cd ${ROOT_DIR}/build/gcc && ${ROOT_DIR}/source/gcc-12.2.0/configure --target=${CONFIG_OS_ARCH}-pc-linux-gnu --prefix=${ROOT_DIR}/tools --with-glibc-version=2.37 --with-sysroot=${ROOT_DIR}/rootfs --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx --enable-languages=c,c++
+	@cd ${ROOT_DIR}/build/gcc && ${ROOT_DIR}/source/gcc-12.2.0/configure --target=${CONFIG_OS_ARCH}-pc-linux-gnu --prefix=${ROOT_DIR}/tools --with-glibc-version=2.37 --with-sysroot=${ROOT_FS}/rootfs --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx --enable-languages=c,c++
 
 ${GCC_STAGE1_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/gcc all-gcc all-target-libgcc

@@ -3,11 +3,12 @@ include ${OS_CONFIG}
 
 GLIBC_TAR = ${ROOT_DIR}/source/glibc-2.37.tar.xz
 GLIBC_STAGE1_CONFIGURE = ${ROOT_DIR}/build/glibc/Makefile
-GLIBC_STAGE1_COMPILE = ${ROOT_DIR}/rootfs/usr/lib/libc.a
-
+GLIBC_STAGE1_COMPILE = ${ROOT_FS}/usr/lib/crt1.o
+GLIBC_STAGE1_INSTALL = ${ROOT_FS}/usr/lib/ld-linux-x86-64.so.2
+export ARG_MAX=20480
 all:
 
-stage1_tools: ${GLIBC_TAR}  ${GLIBC_STAGE1_CONFIGURE} ${GLIBC_STAGE1_COMPILE}
+stage1_tools: ${GLIBC_TAR}  ${GLIBC_STAGE1_CONFIGURE} ${GLIBC_STAGE1_COMPILE} ${GLIBC_STAGE1_INSTALL}
 
 ${GLIBC_TAR}:
 	@mkdir -p ${ROOT_FS}
@@ -24,4 +25,6 @@ ${GLIBC_STAGE1_CONFIGURE}:
 	
 ${GLIBC_STAGE1_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/glibc
-	${MAKE} -C ${ROOT_DIR}/build/glibc DESTDIR=../../rootfs install	
+	
+${GLIBC_STAGE1_INSTALL}:
+		${MAKE} -C ${ROOT_DIR}/build/glibc DESTDIR=${ROOT_FS} install	

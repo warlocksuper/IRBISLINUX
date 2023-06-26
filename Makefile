@@ -29,4 +29,6 @@ menuconfig:
 	echo ${ROOT_DIR}
 	conf/mconf Kconfig	
 
+clean:
+	rm -rf build rootfs/* tools/${CONFIG_OS_ARCH}-pc-linux-gnu tools/bin/* tools/include/* tools/lib/* tools/libexec/* tools/share 
 
