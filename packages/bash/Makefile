@@ -22,4 +22,5 @@ ${BASH_CONFIGURE}:
 ${BASH_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/bash
 	${MAKE} -C ${ROOT_DIR}/build/bash DESTDIR=${ROOT_DIR}/rootfs install
-	@cd ${ROOT_FS}/usr/bin && ln -sv ${ROOT_FS}/usr/bin/bash ${ROOT_FS}/bin/sh	
+	@cd ${ROOT_FS}/bin && ln -sv ../usr/bin/bash sh
+	@cd ${ROOT_FS}/bin && ln -sv ../usr/bin/bash bash	
