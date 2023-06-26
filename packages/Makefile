@@ -12,3 +12,4 @@ stage1:
 temporary_tools:
 	${MAKE} -C m4 temporary_tools
 	${MAKE} -C ncurses temporary_tools
+	${MAKE} -C bash temporary_tools
