@@ -28,3 +28,4 @@ ${GLIBC_STAGE1_COMPILE}:
 	
 ${GLIBC_STAGE1_INSTALL}:
 		${MAKE} -C ${ROOT_DIR}/build/glibc DESTDIR=${ROOT_FS} install	
+		@cd ${ROOT_FS} && ln -sv usr/lib lib64
