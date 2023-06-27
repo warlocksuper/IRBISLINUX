@@ -4,6 +4,9 @@ OS_PATHLEVELVERSION = 0
 
 ROOT_DIR = ${PWD}
 ROOT_FS = ${PWD}/rootfs
+ROOT_BUILD = ${PWD}/build
+ROOT_SOURCE = ${PWD}/source
+
 OS_CONFIG = ./.config
 ifeq (,$(wildcard $(OS_CONFIG)))
 	include ${OS_CONFIG}

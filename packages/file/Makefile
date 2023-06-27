@@ -25,7 +25,7 @@ ${FILE_PRE_CONFIGURE}:
 
 ${FILE_CONFIGURE}:
 	@mkdir -p ${ROOT_DIR}/build/file
-	@cd ${ROOT_DIR}/build/file && ${ROOT_DIR}/source/file-5.44/configure --prefix=/usr --host=${CONFIG_OS_ARCH}-pc-linux-gnu --build=$((./config.guess)
+	@cd ${ROOT_DIR}/build/file && ${ROOT_DIR}/source/file-5.44/configure --prefix=/usr --host=${CONFIG_OS_ARCH}-pc-linux-gnu --build=$(./config.guess)
 	
 ${FILE_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/file
