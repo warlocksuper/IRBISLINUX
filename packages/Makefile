@@ -19,5 +19,11 @@ temporary_tools:
 	${MAKE} -C findutils  temporary_tools
 	${MAKE} -C gawk  temporary_tools
 	${MAKE} -C grep  temporary_tools
-	${MAKE} -C gzip  temporary_tools		
+	${MAKE} -C gzip  temporary_tools
+	${MAKE} -C make  temporary_tools
+	${MAKE} -C patch  temporary_tools
+	${MAKE} -C sed  temporary_tools
+	${MAKE} -C tar  temporary_tools
+	${MAKE} -C xz  temporary_tools
+	${MAKE} -C binutils  temporary_tools			
 	${MAKE} -C dh_make  temporary_tools
