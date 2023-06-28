@@ -3,8 +3,17 @@ include ${OS_CONFIG}
 
 GCC_TAR = ${ROOT_DIR}/source/gcc-12.2.0.tar.xz
 
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/gcc-12.2.0
+
+
 GCC_STAGE1_CONFIGURE = ${ROOT_DIR}/build/gcc/Makefile
 GCC_STAGE1_COMPILE = ${ROOT_DIR}/tools/share/info/gcc.info
+
+
+GCC_STAGE2_BUILD_DIR = ${ROOT_BUILD}/gcc_stage2
+GCC_STAGE2_CONFIGURE = ${GCC_STAGE2_BUILD_DIR}/Makefile
+GCC_STAGE2_COMPILE = ${GCC_STAGE2_BUILD_DIR}/gcc/cc1
+GCC_STAGE2_INSTALL = ${ROOT_FS}/usr/bin/gcc
 
 all:
 
@@ -33,4 +42,16 @@ ${GCC_STAGE1_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/gcc all-gcc all-target-libgcc
 	${MAKE} -C ${ROOT_DIR}/build/gcc install-gcc install-target-libgcc	
 	
+temporary_tools: ${GCC_STAGE2_CONFIGURE} ${GCC_STAGE2_COMPILE} ${GCC_STAGE2_INSTALL}
+
+${GCC_STAGE2_CONFIGURE}:
+	@mkdir -p ${GCC_STAGE2_BUILD_DIR}
+	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --build=$(../config.guess) --host=${CONFIG_OS_ARCH}-pc-linux-gnu --target=${CONFIG_OS_ARCH}-pc-linux-gnu LDFLAGS_FOR_TARGET=-L${ROOT_DIR}/tools/lib/gcc/${CONFIG_OS_ARCH}-pc-linux-gnu/12.2.0 --prefix=/usr --with-build-sysroot=${ROOT_FS} --enable-default-pie --enable-default-ssp --disable-nls --disable-multilib --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp  --disable-libvtv --enable-languages=c,c++ CPPFLAGS=-I${ROOT_DIR}/tools/${CONFIG_OS_ARCH}-pc-linux-gnu/include/c++/12.2.0/
+	
+${GCC_STAGE2_COMPILE}:
+	${MAKE} -C ${GCC_STAGE2_BUILD_DIR}
+	
+	
+${GCC_STAGE2_INSTALL}:
+	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} DESTDIR=${ROOT_FS} install
 	

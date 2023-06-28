@@ -5,7 +5,7 @@ PKG_NAME = xz-5.4.1
 PKG_URL = https://tukaani.org/xz/xz-5.4.1.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}.tar.xz
 PGK_BUILD_DIR = ${ROOT_BUILD}/xz
-PKG_COMPILE = ${GREP_BUILD_DIR}/src/xz/xz-args.o
+PKG_COMPILE = ${PGK_BUILD_DIR}/src/xz/xz-args.o
 PGK_INSTALL = ${ROOT_FS}/usr/bin/xz
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}

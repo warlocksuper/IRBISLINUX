@@ -5,7 +5,7 @@ PKG_NAME = sed-4.9
 PKG_URL = https://ftp.gnu.org/gnu/sed/sed-4.9.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}.tar.xz
 PGK_BUILD_DIR = ${ROOT_BUILD}/sed
-PKG_COMPILE = ${GREP_BUILD_DIR}/sed/sed
+PKG_COMPILE = ${PGK_BUILD_DIR}/sed/sed
 PGK_INSTALL = ${ROOT_FS}/usr/bin/sed
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}

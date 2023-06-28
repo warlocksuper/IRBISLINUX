@@ -14,7 +14,7 @@ PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
 
-PKG_COMPILE = ${GREP_BUILD_DIR}/src/patch
+PKG_COMPILE = ${PGK_BUILD_DIR}/src/patch
 PGK_INSTALL = ${ROOT_FS}/usr/bin/patch
 
 

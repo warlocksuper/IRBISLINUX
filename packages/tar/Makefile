@@ -5,7 +5,7 @@ PKG_NAME = tar-1.34
 PKG_URL = https://ftp.gnu.org/gnu/tar/tar-1.34.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}.tar.xz
 PGK_BUILD_DIR = ${ROOT_BUILD}/tar
-PKG_COMPILE = ${GREP_BUILD_DIR}/src/tar
+PKG_COMPILE = ${PGK_BUILD_DIR}/src/tar
 PGK_INSTALL = ${ROOT_FS}/usr/bin/tar
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
