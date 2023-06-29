@@ -46,12 +46,16 @@ temporary_tools: ${GCC_STAGE2_CONFIGURE} ${GCC_STAGE2_COMPILE} ${GCC_STAGE2_INST
 
 ${GCC_STAGE2_CONFIGURE}:
 	@mkdir -p ${GCC_STAGE2_BUILD_DIR}
-	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --build=$(../config.guess) --host=${CONFIG_OS_ARCH}-pc-linux-gnu --target=${CONFIG_OS_ARCH}-pc-linux-gnu LDFLAGS_FOR_TARGET=-L${ROOT_DIR}/tools/lib/gcc/${CONFIG_OS_ARCH}-pc-linux-gnu/12.2.0 --prefix=/usr --with-build-sysroot=${ROOT_FS} --enable-default-pie --enable-default-ssp --disable-nls --disable-multilib --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp  --disable-libvtv --enable-languages=c,c++ CPPFLAGS=-I${ROOT_DIR}/tools/${CONFIG_OS_ARCH}-pc-linux-gnu/include/c++/12.2.0/
+	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --target=${CONFIG_OS_ARCH}-pc-linux-gnu --prefix=/usr --with-glibc-version=2.37 --with-build-sysroot=${ROOT_FS} --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx --enable-languages=c,c++	
+
+##	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --host=${CONFIG_OS_ARCH}-pc-linux-gnu --target=${CONFIG_OS_ARCH}-pc-linux-gnu --prefix=/usr --with-build-sysroot=${ROOT_FS} --enable-languages=c,c++ --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx
+
+##	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --build=$(../config.guess) --host=${CONFIG_OS_ARCH}-pc-linux-gnu --target=${CONFIG_OS_ARCH}-pc-linux-gnu LDFLAGS_FOR_TARGET=-L${ROOT_DIR}/tools/lib/gcc/${CONFIG_OS_ARCH}-pc-linux-gnu/12.2.0 --prefix=/usr --with-build-sysroot=${ROOT_FS} --enable-default-pie --enable-default-ssp --disable-nls --disable-multilib --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp  --disable-libvtv --enable-languages=c,c++ CPPFLAGS=-I${ROOT_DIR}/tools/${CONFIG_OS_ARCH}-pc-linux-gnu/include/c++/12.2.0/
 	
 ${GCC_STAGE2_COMPILE}:
-	${MAKE} -C ${GCC_STAGE2_BUILD_DIR}
+	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} all-gcc all-target-libgcc
 	
 	
 ${GCC_STAGE2_INSTALL}:
-	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} DESTDIR=${ROOT_FS} install
+	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} DESTDIR=${ROOT_FS} install-gcc install-target-libgcc
 	
