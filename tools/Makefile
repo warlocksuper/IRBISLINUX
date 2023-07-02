@@ -8,7 +8,7 @@ stage1: compile_toolchain finale_toolchain
 	
 
 finale_toolchain:
-	sh libexec/gcc/${OS_ARCH_TARGET}/12.2.0/install-tools/mkheaders
+	sh ${ROOT_DIR}/tools/libexec/gcc/${CONFIG_OS_ARCH_TARGET}/12.2.0/install-tools/mkheaders
 	@echo " " > ./stage1
 	
 compile_toolchain:

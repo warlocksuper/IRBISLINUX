@@ -1,7 +1,7 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-
+PKG_NAME = ncurses-6.4
 NCURSES_TAR = ${ROOT_DIR}/source/ncurses-6.4.tar.gz
 NCURSES_CONFIGURE = ${ROOT_DIR}/build/ncurses/Makefile
 NCURSES_COMPILE = ${ROOT_DIR}/rootfs/usr/bin/m4

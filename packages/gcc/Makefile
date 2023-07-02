@@ -14,10 +14,11 @@ GCC_STAGE2_BUILD_DIR = ${ROOT_BUILD}/gcc_stage2
 GCC_STAGE2_CONFIGURE = ${GCC_STAGE2_BUILD_DIR}/Makefile
 GCC_STAGE2_COMPILE = ${GCC_STAGE2_BUILD_DIR}/gcc/cc1
 GCC_STAGE2_INSTALL = ${ROOT_FS}/usr/bin/gcc
+GCC_STAGE1_POST_CONFIG = ${ROOT_DIR}/tools/lib/gcc/${CONFIG_OS_ARCH_TARGET}/12.2.0/install-tools/include/limits.h
 
 all:
 
-stage1_tools: ${GCC_TAR}  ${GCC_STAGE1_CONFIGURE} ${GCC_STAGE1_COMPILE}
+stage1_tools: ${GCC_TAR}  ${GCC_STAGE1_CONFIGURE} ${GCC_STAGE1_COMPILE} ${GCC_STAGE1_POST_CONFIG}
 
 ${GCC_TAR}:
 	@mkdir -p ${ROOT_FS}
@@ -41,6 +42,9 @@ ${GCC_STAGE1_CONFIGURE}:
 ${GCC_STAGE1_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/gcc all-gcc all-target-libgcc
 	${MAKE} -C ${ROOT_DIR}/build/gcc install-gcc install-target-libgcc	
+
+${GCC_STAGE1_POST_CONFIG}:
+	@cd ${PGK_SOURCE_DIR} && cat gcc/limitx.h gcc/glimits.h gcc/limity.h > ${GCC_STAGE1_POST_CONFIG}
 	
 temporary_tools: ${GCC_STAGE2_CONFIGURE} ${GCC_STAGE2_COMPILE} ${GCC_STAGE2_INSTALL}
 
