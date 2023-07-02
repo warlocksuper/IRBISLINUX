@@ -8,7 +8,7 @@ PGK_BUILD_DIR = ${ROOT_BUILD}/glibc
 
 
 GLIBC_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
-
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}
 
 GLIBC_STAGE1_CONFIGURE = ${ROOT_BUILD}/glibc/Makefile
 GLIBC_STAGE1_COMPILE = ${ROOT_BUILD}/glibc/libc.so
@@ -18,13 +18,16 @@ export ARG_MAX=20480
 
 all:
 
-stage1_tools: ${GLIBC_TAR}  ${GLIBC_STAGE1_CONFIGURE} ${GLIBC_STAGE1_COMPILE} ${GLIBC_STAGE1_INSTALL}
+stage1_tools: ${GLIBC_TAR} ${PGK_SOURCE_DIR}  ${GLIBC_STAGE1_CONFIGURE} ${GLIBC_STAGE1_COMPILE} ${GLIBC_STAGE1_INSTALL}
 
 ${GLIBC_TAR}:
 	@mkdir -p ${ROOT_FS}
 	@mkdir -p ${ROOT_SOURCE}
 	wget https://ftp.gnu.org/gnu/glibc/glibc-2.37.tar.xz -P ${ROOT_SOURCE}
-	@cd ${ROOT_SOURCE} && tar -xf glibc-2.37.tar.xz
+
+
+${PGK_SOURCE_DIR}:
+	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 	@cp ${ROOT_DIR}/packages/glibc/glibc-2.37-fhs-1.patch  ${ROOT_SOURCE}/${PKG_NAME}/
 	@cd ${ROOT_SOURCE}/${PKG_NAME} && patch -Np1 -i glibc-2.37-fhs-1.patch
 

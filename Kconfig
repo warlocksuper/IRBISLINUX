@@ -33,5 +33,6 @@ config OS_VENDOR
 config OS_ARCH_TARGET
 	string
 	default x86_64-irbis-linux-gnu	if OS_ARCH_x86_64
+	default amd64-irbis-linux-gnu	if OS_ARCH_AMD64
 		
 source "packages/Kconfig"	
