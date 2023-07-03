@@ -8,3 +8,13 @@ config OS_PYTHON
 	bool "Python"
 	default y
 
+config OS_ZLIB
+	bool "Zlib zlib.h"
+	depends on OS_PERL
+	default y
+
+config OS_OPENSSL
+	bool "OpenSSL"
+	depends on OS_PERL
+	depends on OS_ZLIB	
+	default y
