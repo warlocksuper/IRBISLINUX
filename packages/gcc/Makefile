@@ -6,7 +6,7 @@ GCC_TAR = ${ROOT_DIR}/source/gcc-12.2.0.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/gcc-12.2.0
 
 
-GCC_STAGE1_CONFIGURE = ${ROOT_DIR}/build/gcc/Makefile
+GCC_STAGE1_CONFIGURE = ${ROOT_BUILD}/gcc/Makefile
 GCC_STAGE1_COMPILE = ${ROOT_DIR}/tools/share/info/gcc.info
 
 

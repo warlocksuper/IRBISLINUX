@@ -1,0 +1,2 @@
+--cfg=CONFIG_OS_PERL
+--cfg=CONFIG_OS_PERL="y"

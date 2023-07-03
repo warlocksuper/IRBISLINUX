@@ -1,0 +1,10 @@
+
+
+config OS_PERL
+	bool "Perl"
+	default y
+
+config OS_PYTHON
+	bool "Python"
+	default y
+

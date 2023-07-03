@@ -1,0 +1,4 @@
+
+mainmenu "IRBIS OS Linux 0.0.1 Packages"
+
+source "packages/Kconfig"	
