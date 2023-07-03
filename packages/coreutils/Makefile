@@ -17,7 +17,7 @@ ${COREUTILS_TAR}:
 
 ${COREUTILS__CONFIGURE}:
 	@mkdir -p ${ROOT_DIR}/build/coreutils
-	@cd ${ROOT_DIR}/build/coreutils && ${ROOT_DIR}/source/coreutils-9.1/configure --prefix=/usr --host=${CONFIG_OS_ARCH}-pc-linux-gnu --build=$(build-aux/config.guess) --enable-install-program=hostname --enable-no-install-program=kill,uptime
+	@cd ${ROOT_DIR}/build/coreutils && ${ROOT_DIR}/source/coreutils-9.1/configure --prefix=/usr --host=${CONFIG_OS_ARCH_TARGET} --build=$(build-aux/config.guess) --enable-install-program=hostname --enable-no-install-program=kill,uptime
 	
 ${COREUTILS__COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/coreutils

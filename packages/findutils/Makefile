@@ -20,7 +20,7 @@ ${FINDUTILS_TAR}:
 
 ${FINDUTILS_CONFIGURE}:
 	@mkdir -p ${ROOT_DIR}/build/findutils
-	@cd ${ROOT_DIR}/build/findutils && ${ROOT_DIR}/source/findutils-4.9.0/configure --prefix=/usr --host=${CONFIG_OS_ARCH}-pc-linux-gnu --build=$(build-aux/config.guess) --localstatedir=/var/lib/locate
+	@cd ${ROOT_DIR}/build/findutils && ${ROOT_DIR}/source/findutils-4.9.0/configure --prefix=/usr --host=${CONFIG_OS_ARCH_TARGET} --build=$(build-aux/config.guess) --localstatedir=/var/lib/locate
 	
 ${FINDUTILS_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/findutils

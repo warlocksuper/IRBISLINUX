@@ -20,7 +20,7 @@ ${GREP_TAR}:
 
 ${GREP_CONFIGURE}:
 	@mkdir -p ${GREP_BUILD_DIR}
-	@cd ${GREP_BUILD_DIR} && ${ROOT_SOURCE}/grep-3.8/configure --prefix=/usr --host=${CONFIG_OS_ARCH}-pc-linux-gnu
+	@cd ${GREP_BUILD_DIR} && ${ROOT_SOURCE}/grep-3.8/configure --prefix=/usr --host=${CONFIG_OS_ARCH_TARGET}
 	
 ${GREP_COMPILE}:
 	${MAKE} -C ${GREP_BUILD_DIR}

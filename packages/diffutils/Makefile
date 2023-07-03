@@ -17,7 +17,7 @@ ${DIFF_TAR}:
 
 ${DIFF_CONFIGURE}:
 	@mkdir -p ${ROOT_DIR}/build/diffutils
-	@cd ${ROOT_DIR}/build/diffutils && ${ROOT_DIR}/source/diffutils-3.9/configure --prefix=/usr --host=${CONFIG_OS_ARCH}-pc-linux-gnu
+	@cd ${ROOT_DIR}/build/diffutils && ${ROOT_DIR}/source/diffutils-3.9/configure --prefix=/usr --host=${CONFIG_OS_ARCH_TARGET}
 	
 ${DIFF_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/diffutils

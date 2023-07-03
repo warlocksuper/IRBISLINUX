@@ -30,7 +30,7 @@ ${PKG_TAR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PGK_BUILD_DIR}
-	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --host=${CONFIG_OS_ARCH}-pc-linux-gnu
+	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --host=${CONFIG_OS_ARCH_TARGET}
 	
 ${PKG_COMPILE}:
 	${MAKE} -C ${PGK_BUILD_DIR}

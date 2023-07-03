@@ -20,7 +20,7 @@ ${GAWK_TAR}:
 
 ${GAWK_CONFIGURE}:
 	@mkdir -p ${ROOT_BUILD}/gawk
-	@cd ${ROOT_BUILD}/gawk && ${ROOT_SOURCE}/gawk-5.2.1/configure --prefix=/usr --host=${CONFIG_OS_ARCH}-pc-linux-gnu --build=$(build-aux/config.guess)
+	@cd ${ROOT_BUILD}/gawk && ${ROOT_SOURCE}/gawk-5.2.1/configure --prefix=/usr --host=${CONFIG_OS_ARCH_TARGET} --build=$(build-aux/config.guess)
 	
 ${GAWK_COMPILE}:
 	${MAKE} -C ${ROOT_BUILD}/gawk

@@ -34,3 +34,4 @@ ${NCURSES_CONFIGURE}:
 ${NCURSES_COMPILE}:
 	${MAKE} -C ${ROOT_DIR}/build/ncurses
 	${MAKE} -C ${ROOT_DIR}/build/ncurses DESTDIR=${ROOT_FS} TIC_PATH=progs/tic install 
+	echo "INPUT(-lncursesw)" > ${ROOT_FS}/usr/lib/libncurses.so
