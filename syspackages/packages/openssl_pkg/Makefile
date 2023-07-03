@@ -4,7 +4,7 @@ PKG_TAR = openssl-3.0.8.tar.gz
 PGK_UNTAG = ${PKG_NAME}/configure
 PKG_URL = https://www.openssl.org/source/openssl-3.0.8.tar.gz
 PKG_CONFIGURE = ${PKG_NAME}/Makefile
-PKG_COMPILE = ${PKG_NAME}/openssl
+PKG_COMPILE = ${PKG_NAME}/libssl.a
 PKG_INSTALL = /usr/bin/openssl
 
 all: ${PKG_TAR}  ${PGK_UNTAG} ${PKG_CONFIGURE} ${PKG_COMPILE} ${PKG_INSTALL}
