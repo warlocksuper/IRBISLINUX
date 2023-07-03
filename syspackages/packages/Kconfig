@@ -13,6 +13,10 @@ config OS_ZLIB
 	depends on OS_PERL
 	default y
 
+config OS_LIBMD
+	bool "md5.h"
+	default y
+
 config OS_OPENSSL
 	bool "OpenSSL"
 	depends on OS_PERL
