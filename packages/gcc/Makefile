@@ -14,6 +14,7 @@ GCC_STAGE2_BUILD_DIR = ${ROOT_BUILD}/gcc_stage2
 GCC_STAGE2_CONFIGURE = ${GCC_STAGE2_BUILD_DIR}/Makefile
 GCC_STAGE2_COMPILE = ${GCC_STAGE2_BUILD_DIR}/gcc/cc1
 GCC_STAGE2_INSTALL = ${ROOT_FS}/usr/bin/gcc
+
 GCC_STAGE1_POST_CONFIG = ${ROOT_DIR}/tools/lib/gcc/${CONFIG_OS_ARCH_TARGET}/12.2.0/install-tools/include/limits.h
 
 all:
@@ -50,8 +51,24 @@ temporary_tools: ${GCC_STAGE2_CONFIGURE} ${GCC_STAGE2_COMPILE} ${GCC_STAGE2_INST
 
 ${GCC_STAGE2_CONFIGURE}:
 	@mkdir -p ${GCC_STAGE2_BUILD_DIR}
-	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --host=${CONFIG_OS_ARCH_TARGET} --target=${CONFIG_OS_ARCH_TARGET} --prefix=/usr --with-glibc-version=2.37 --with-build-sysroot=${ROOT_FS} --with-newlib --without-headers --disable-nls --enable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --enable-languages=c,c++	--enable-libstdcxx=yes --with-build-sysroot=${ROOT_FS}
-
+	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure ../configure                                       \
+    --build=$(../config.guess)                     \
+    --host=${CONFIG_OS_ARCH_TARGET}                \
+    --target=${CONFIG_OS_ARCH_TARGET}              \
+    --with-sysroot=${ROOT_FS}			   \
+    LDFLAGS_FOR_TARGET=${ROOT_FS}/usr/include 	   \
+    --prefix=/usr                                  \
+    --with-build-sysroot=${CONFIG_OS_ARCH_TARGET}  \
+    --enable-default-pie                           \
+    --enable-default-ssp                           \
+    --disable-nls                                  \
+    --disable-multilib                             \
+    --disable-libatomic                            \
+    --disable-libgomp                              \
+    --disable-libquadmath                          \
+    --disable-libssp                               \
+    --disable-libvtv                               \
+    --enable-languages=c,c++
 
 ## enable	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --host=${CONFIG_OS_ARCH_TARGET} --target=${CONFIG_OS_ARCH_TARGET} --prefix=/usr --with-glibc-version=2.37 --with-build-sysroot=${ROOT_FS} --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --enable-languages=c,c++	--enable-libstdcxx=yes
 
@@ -60,9 +77,9 @@ ${GCC_STAGE2_CONFIGURE}:
 ##	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --build=$(../config.guess) --host=${CONFIG_OS_ARCH}-pc-linux-gnu --target=${CONFIG_OS_ARCH}-pc-linux-gnu LDFLAGS_FOR_TARGET=-L${ROOT_DIR}/tools/lib/gcc/${CONFIG_OS_ARCH}-pc-linux-gnu/12.2.0 --prefix=/usr --with-build-sysroot=${ROOT_FS} --enable-default-pie --enable-default-ssp --disable-nls --disable-multilib --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp  --disable-libvtv --enable-languages=c,c++ CPPFLAGS=-I${ROOT_DIR}/tools/${CONFIG_OS_ARCH}-pc-linux-gnu/include/c++/12.2.0/
 	
 ${GCC_STAGE2_COMPILE}:
-	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} all-gcc all-target-libgcc
+	${MAKE} -C ${GCC_STAGE2_BUILD_DIR}
 	
 	
 ${GCC_STAGE2_INSTALL}:
-	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} DESTDIR=${ROOT_FS} install-gcc install-target-libgcc
+	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} DESTDIR=${ROOT_FS} install
 	

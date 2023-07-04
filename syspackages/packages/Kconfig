@@ -17,6 +17,37 @@ config OS_LIBMD
 	bool "md5.h"
 	default y
 
+config OS_LIBXML2
+	boot libxml2
+	default y
+
+config OS_NETTLE
+	bool "nettle"
+	default y
+
+config OS_BISON
+	bool "bison"
+	default y
+
+
+config OS_AUTOMAKE
+	bool "automake"
+	default y
+
+config OS_AUTOCONF
+	bool "autoconf"
+	default y
+
+config OS_PCG_CONFIG
+	bool "pkg-config"
+	default y
+
+
+config OS_GNUTLS
+	bool "gnutls"
+	default y
+
+
 config OS_WGET
 	bool "wget"
 	default y
