@@ -4,7 +4,7 @@ PKG_TAR = libmd-1.1.0.tar.xz
 PGK_UNTAG = ${PKG_NAME}/configure
 PKG_URL = https://libbsd.freedesktop.org/releases/libmd-1.1.0.tar.xz
 PKG_CONFIGURE = ${PKG_NAME}/Makefile
-PKG_COMPILE = ${PKG_NAME}/libmd.a
+PKG_COMPILE = ${PKG_NAME}/src/.libs/libmd.a
 PKG_INSTALL = /usr/lib/libmd.a
 
 all: ${PKG_TAR}  ${PGK_UNTAG} ${PKG_CONFIGURE} ${PKG_COMPILE} ${PKG_INSTALL}

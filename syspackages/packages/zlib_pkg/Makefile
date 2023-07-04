@@ -3,7 +3,7 @@ PKG_NAME = zlib-1.2.13
 PKG_TAR = zlib-1.2.13.tar.xz
 PGK_UNTAG = ${PKG_NAME}/configure
 PKG_URL = https://zlib.net/zlib-1.2.13.tar.xz
-PKG_CONFIGURE = ${PKG_NAME}/.config
+PKG_CONFIGURE = ${PKG_NAME}/Makefile
 PKG_COMPILE = ${PKG_NAME}/libz.a
 PKG_INSTALL = /usr/lib/libz.a
 

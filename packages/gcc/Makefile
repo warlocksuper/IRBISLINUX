@@ -50,7 +50,10 @@ temporary_tools: ${GCC_STAGE2_CONFIGURE} ${GCC_STAGE2_COMPILE} ${GCC_STAGE2_INST
 
 ${GCC_STAGE2_CONFIGURE}:
 	@mkdir -p ${GCC_STAGE2_BUILD_DIR}
-	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --target=${CONFIG_OS_ARCH_TARGET} --prefix=/usr --with-glibc-version=2.37 --with-build-sysroot=${ROOT_FS} --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --enable-languages=c,c++	--enable-libstdcxx=yes
+	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --host=${CONFIG_OS_ARCH_TARGET} --target=${CONFIG_OS_ARCH_TARGET} --prefix=/usr --with-glibc-version=2.37 --with-build-sysroot=${ROOT_FS} --with-newlib --without-headers --disable-nls --enable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --enable-languages=c,c++	--enable-libstdcxx=yes --with-build-sysroot=${ROOT_FS}
+
+
+## enable	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --host=${CONFIG_OS_ARCH_TARGET} --target=${CONFIG_OS_ARCH_TARGET} --prefix=/usr --with-glibc-version=2.37 --with-build-sysroot=${ROOT_FS} --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --enable-languages=c,c++	--enable-libstdcxx=yes
 
 ##	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --host=${CONFIG_OS_ARCH}-pc-linux-gnu --target=${CONFIG_OS_ARCH}-pc-linux-gnu --prefix=/usr --with-build-sysroot=${ROOT_FS} --enable-languages=c,c++ --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx
 
