@@ -1,5 +1,6 @@
 #!/bin/sh
 
+##GLIB_CFLAGS=/usr/lib GLIB_LIBS=/usr/lib
 
 ROOT_DIR=`pwd`/rootfs
 sudo mkdir -p $ROOT_DIR/dev
@@ -12,3 +13,11 @@ sudo mkdir -p $ROOT_DIR/sys
 sudo mount -vt sysfs sysfs $ROOT_DIR/sys
 sudo mkdir -p $ROOT_DIR/tmp
 sudo mount -vt tmpfs tmpfs $ROOT_DIR/tmp
+sudo busybox chroot rootfs /usr/bin/env -i   \
+    HOME=/root                  \
+    GLIB_CFLAGS=/usr/include	\
+    GLIB_LIBS=/usr/lib		\
+    TERM="$TERM"                \
+    PS1='(lfs chroot) \u:\w\$ ' \
+    PATH=/usr/bin:/usr/sbin     \
+    /bin/bash --login
