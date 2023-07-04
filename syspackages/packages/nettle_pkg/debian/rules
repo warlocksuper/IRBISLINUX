@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+GLIB_CFLAGS = /usr/include
+GLIB_LIBS = /usr/lib	
+
+export
+
+build: configure_pkg build_pkg
+
+configure_pkg:
+	mkdir -p build
+	cd build && ../nettle-3.9.1/configure --prefix=/usr
+
+build_pkg:
+	cd build && $(MAKE)	
+
+clean:
+	rm -rf build	

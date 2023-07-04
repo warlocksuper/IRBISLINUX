@@ -1,0 +1,13 @@
+GLIB_CFLAGS = /usr/include
+GLIB_LIBS = /usr/lib	
+
+export
+
+build: configure_pkg build_pkg
+
+configure_pkg:
+	mkdir -p build
+	cd build && ../gnutls-3.1.5/configure --prefix=/usr
+
+build_pkg:
+	cd build && $(MAKE)	
