@@ -54,5 +54,5 @@ if [ -x dummy ]
   then echo "g++ compilation OK";
   else echo "g++ compilation failed"; fi
 rm -f dummy.c dummy
-
-sudo apt-get install wget gawk
+sudo apt-get install autogen
+sudo apt-get install wget gawk 

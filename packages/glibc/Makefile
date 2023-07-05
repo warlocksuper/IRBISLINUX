@@ -3,6 +3,7 @@ include ${OS_CONFIG}
 
 
 PKG_NAME = glibc-2.37
+PKG_URL = https://ftp.gnu.org/gnu/glibc/glibc-2.37.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}.tar.xz
 PGK_BUILD_DIR = ${ROOT_BUILD}/glibc
 
@@ -30,7 +31,7 @@ stage1_tools: ${GLIBC_TAR} ${PGK_SOURCE_DIR}  ${GLIBC_STAGE1_CONFIGURE} ${GLIBC_
 ${GLIBC_TAR}:
 	@mkdir -p ${ROOT_FS}
 	@mkdir -p ${ROOT_SOURCE}
-	wget https://ftp.gnu.org/gnu/glibc/glibc-2.37.tar.xz -P ${ROOT_SOURCE}
+	wget ${PKG_URL} -P ${ROOT_SOURCE}
 
 
 ${PGK_SOURCE_DIR}:

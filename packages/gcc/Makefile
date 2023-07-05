@@ -1,13 +1,13 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-GCC_TAR = ${ROOT_DIR}/source/gcc-12.2.0.tar.xz
+GCC_TAR = ${ROOT_SOURCE}/gcc-12.2.0.tar.xz
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/gcc-12.2.0
 
 
 GCC_STAGE1_CONFIGURE = ${ROOT_BUILD}/gcc/Makefile
-GCC_STAGE1_COMPILE = ${ROOT_DIR}/tools/share/info/gcc.info
+GCC_STAGE1_COMPILE = ${ROOT_TOOLS}/share/info/gcc.info
 
 
 GCC_STAGE2_BUILD_DIR = ${ROOT_BUILD}/gcc_stage2
@@ -15,34 +15,38 @@ GCC_STAGE2_CONFIGURE = ${GCC_STAGE2_BUILD_DIR}/Makefile
 GCC_STAGE2_COMPILE = ${GCC_STAGE2_BUILD_DIR}/gcc/cc1
 GCC_STAGE2_INSTALL = ${ROOT_FS}/usr/bin/gcc
 
-GCC_STAGE1_POST_CONFIG = ${ROOT_DIR}/tools/lib/gcc/${CONFIG_OS_ARCH_TARGET}/12.2.0/install-tools/include/limits.h
+GCC_STAGE1_POST_CONFIG = ${ROOT_TOOLS}/lib/gcc/${CONFIG_OS_ARCH_TARGET}/12.2.0/install-tools/include/limits.h
 
 all:
 
-stage1_tools: ${GCC_TAR}  ${GCC_STAGE1_CONFIGURE} ${GCC_STAGE1_COMPILE} ${GCC_STAGE1_POST_CONFIG}
+stage1_tools: ${GCC_TAR}  ${PGK_SOURCE_DIR}  ${GCC_STAGE1_CONFIGURE} ${GCC_STAGE1_COMPILE} ${GCC_STAGE1_POST_CONFIG}
 
 ${GCC_TAR}:
 	@mkdir -p ${ROOT_FS}
 	@mkdir -p ${ROOT_SOURCE}
 	wget https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz -P ${ROOT_SOURCE}
-	@cd ${ROOT_DIR}/source && tar -xf gcc-12.2.0.tar.xz
 	wget https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.0.tar.xz -P ${ROOT_SOURCE}
-	@cd ${ROOT_DIR}/source && tar -xf mpfr-4.2.0.tar.xz
-	@cd ${ROOT_DIR}/source && mv -v mpfr-4.2.0 gcc-12.2.0/mpfr
 	wget https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz -P ${ROOT_SOURCE}
-	@cd ${ROOT_DIR}/source && tar -xf gmp-6.2.1.tar.xz
-	@cd ${ROOT_DIR}/source && mv -v gmp-6.2.1 gcc-12.2.0/gmp
-	wget https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz -P${ROOT_SOURCE}
-	@cd ${ROOT_DIR}/source && tar -xf mpc-1.3.1.tar.gz
-	@cd ${ROOT_DIR}/source && mv -v mpc-1.3.1 gcc-12.2.0/mpc		
+	wget https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz -P${ROOT_SOURCE}		
+
+
+${PGK_SOURCE_DIR}:
+	@cd ${ROOT_SOURCE} && tar -xf gcc-12.2.0.tar.xz
+	@cd ${ROOT_SOURCE} && tar -xf mpfr-4.2.0.tar.xz
+	@cd ${ROOT_SOURCE} && mv -v mpfr-4.2.0 gcc-12.2.0/mpfr
+	@cd ${ROOT_SOURCE} && tar -xf gmp-6.2.1.tar.xz
+	@cd ${ROOT_SOURCE} && mv -v gmp-6.2.1 gcc-12.2.0/gmp
+	@cd ${ROOT_SOURCE} && tar -xf mpc-1.3.1.tar.gz
+	@cd ${ROOT_SOURCE} && mv -v mpc-1.3.1 gcc-12.2.0/mpc
+
 
 ${GCC_STAGE1_CONFIGURE}:
 	@mkdir -p ${ROOT_DIR}/build/gcc
-	@cd ${ROOT_DIR}/build/gcc && ${PGK_SOURCE_DIR}/configure --target=${CONFIG_OS_ARCH_TARGET} --prefix=${ROOT_DIR}/tools --with-glibc-version=2.37 --with-sysroot=${ROOT_FS} --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx --enable-languages=c,c++
+	@cd ${ROOT_BUILD}/gcc && ${PGK_SOURCE_DIR}/configure --target=${CONFIG_OS_ARCH_TARGET} --prefix=${ROOT_TOOLS} --with-glibc-version=2.37 --with-sysroot=${ROOT_FS} --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx --enable-languages=c,c++
 
 ${GCC_STAGE1_COMPILE}:
-	${MAKE} -C ${ROOT_DIR}/build/gcc all-gcc all-target-libgcc
-	${MAKE} -C ${ROOT_DIR}/build/gcc install-gcc install-target-libgcc	
+	${MAKE} -C ${ROOT_BUILD}/gcc ##all-gcc all-target-libgcc
+	${MAKE} -C ${ROOT_BUILD}/gcc install ##install-gcc install-target-libgcc	
 
 ${GCC_STAGE1_POST_CONFIG}:
 	@cd ${PGK_SOURCE_DIR} && cat gcc/limitx.h gcc/glimits.h gcc/limity.h > ${GCC_STAGE1_POST_CONFIG}

@@ -37,14 +37,14 @@ ${PKG_TAR}:
 
 ${BINUTILS_STAGE1_CONFIGURE}:
 	@mkdir -p ${PGK_BUILD_DIR}
-	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=${ROOT_DIR}/tools --with-sysroot=${ROOT_FS} --target=${CONFIG_OS_ARCH_TARGET} --disable-nls --enable-gprofng=no --disable-werror
+	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=${ROOT_TOOLS} --with-sysroot=${ROOT_FS} --target=${CONFIG_OS_ARCH_TARGET} --disable-nls --enable-gprofng=no --disable-werror
 	
 ${BINUTILS_STAGE1_COMPILE}:
 	${MAKE} -C ${PGK_BUILD_DIR}
 
 ${BINUTILS_STAGE1_INSTALL}:
 	${MAKE} -C ${PGK_BUILD_DIR} install
-##	@cd ${ROOT_FS}	&& ln -sv usr/lib lib64		
+	@cd ${ROOT_FS}	&& ln -sf usr/lib lib64		
 
 	
 temporary_tools: ${BINUTILS_TAR} ${BINUTILS_STAGE2_CONFIGURE} ${BINUTILS_STAGE2_COMPILE} ${BINUTILS_STAGE2_INSTALL}

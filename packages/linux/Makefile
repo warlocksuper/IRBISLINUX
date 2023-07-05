@@ -12,12 +12,15 @@ LINUX_STAGE1_COPY = ${ROOT_FS}/usr/include/linux/version.h
 
 all:
 
-stage1_tools: ${LINUX_TAR}  ${LINUX_STAGE1_CONFIGURE} ${LINUX_STAGE1_COPY}
+stage1_tools: ${LINUX_TAR} ${PGK_SOURCE_DIR}  ${LINUX_STAGE1_CONFIGURE} ${LINUX_STAGE1_COPY}
 
 ${LINUX_TAR}:
 	@mkdir -p ${ROOT_FS}
 	@mkdir -p ${ROOT_SOURCE}
 	wget ${PKG_URL} -P ${ROOT_SOURCE}/
+	@cd ${ROOT_SOURCE} && tar -xf ${LINUX_TAR}
+
+${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${LINUX_TAR}
 
 ${LINUX_STAGE1_CONFIGURE}:

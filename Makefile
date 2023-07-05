@@ -7,7 +7,8 @@ ROOT_DIR = ${PWD}
 ROOT_FS = ${PWD}/rootfs
 ROOT_BUILD = ${PWD}/build
 ROOT_SOURCE = ${PWD}/source
-PATH = $(shell printenv PATH):${PWD}/tools/bin:${PWD}/rootfs/usr/bin
+ROOT_TOOLS = ${ROOT_FS}/tools
+PATH = $(shell printenv PATH):${ROOT_TOOLS}/bin:${ROOT_FS}/usr/bin
 OS_CONFIG = ./.config
 ifeq (,$(wildcard $(OS_CONFIG)))
 	include ${OS_CONFIG}
