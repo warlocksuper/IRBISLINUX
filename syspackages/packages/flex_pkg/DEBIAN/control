@@ -1,0 +1,8 @@
+Package: flex
+Architecture: amd64
+Version: 2.6.4
+Provides: flex
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 1864
+Description: flex

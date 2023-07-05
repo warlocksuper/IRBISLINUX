@@ -1,0 +1,35 @@
+build-essential (12.9) unstable; urgency=medium
+
+  * Bump dependencies on gcc and g++ to 10.2.
+  * Bump standards and debhelper versions.
+  * Regenerate lists of essential packages.
+  * Support building a build-essential-mipsen package (YunQiang Su).
+    Closes: #950548.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 03 Jan 2021 11:23:06 +0100
+
+build-essential (12.8) unstable; urgency=high
+
+  * Stop building crossbuild-essential-mips{,64}el.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 14 Sep 2019 12:52:43 +0200
+
+build-essential (12.7) unstable; urgency=medium
+
+  * Bump dependencies on gcc and g++ to 9.2.
+  * Bump standards version.
+  * Stop build crossbuild-essential-mips.
+  * Regenerate lists of essential packages.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 26 Aug 2019 11:34:51 +0200
+
+build-essential (12.6) unstable; urgency=medium
+
+  * Bump dependencies on gcc and g++ to 8.3.
+  * Regenerate lists of essential packages.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 01 Mar 2019 13:05:10 +0100
+
+# Older entries have been removed from this changelog.
+# To read the complete changelog use `apt changelog build-essential`.

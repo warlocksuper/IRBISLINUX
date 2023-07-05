@@ -14,6 +14,13 @@ GLIBC_STAGE1_CONFIGURE = ${ROOT_BUILD}/glibc/Makefile
 GLIBC_STAGE1_COMPILE = ${ROOT_BUILD}/glibc/libc.so
 GLIBC_STAGE1_INSTALL = ${ROOT_FS}/usr/lib/ld-linux-x86-64.so.2
 
+GLIBC_STAGE2_BUILD_DIR = ${ROOT_BUILD}/glibc_stage2
+GLIBC_STAGE2_CONFIGURE = ${GLIBC_STAGE2_BUILD_DIR}/Makefile
+GLIBC_STAGE2_COMPILE = ${GLIBC_STAGE2_BUILD_DIR}/libc.so
+GLIBC_STAGE2_INSTALL = ${ROOT_FS}/usr/lib/ld-linux-x86-64.so.2_12 
+
+
+
 export ARG_MAX=20480
 
 all:
@@ -42,3 +49,22 @@ ${GLIBC_STAGE1_COMPILE}:
 ${GLIBC_STAGE1_INSTALL}:
 		${MAKE} -C ${PGK_BUILD_DIR} DESTDIR=${ROOT_FS} install	
 		@cd ${ROOT_FS} && ln -sv usr/lib lib64
+		
+		
+temporary_tools: ${GLIBC_STAGE2_CONFIGURE} ${GLIBC_STAGE1_COMPILE} ${GLIBC_STAGE2_INSTALL}
+
+${GLIBC_STAGE2_CONFIGURE}:
+	@mkdir -p ${GLIBC_STAGE2_BUILD_DIR}
+	@cd ${GLIBC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr                            \
+             --disable-werror                         \
+             --enable-kernel=3.2                      \
+             --enable-stack-protector=strong          \
+             --with-headers=/usr/include              \
+             libc_cv_slibdir=/usr/lib
+	
+${GCC_STAGE2_COMPILE}:
+	${MAKE} -C ${GLIBC_STAGE2_BUILD_DIR}
+	
+	
+${GCC_STAGE2_INSTALL}:
+	${MAKE} -C ${GLIBC_STAGE2_BUILD_DIR} DESTDIR=${ROOT_FS} install			

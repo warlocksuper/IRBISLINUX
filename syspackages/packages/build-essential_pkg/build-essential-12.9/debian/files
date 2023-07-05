@@ -1,0 +1,10 @@
+build-essential_12.9_amd64.buildinfo devel optional
+build-essential_12.9_amd64.deb devel optional
+crossbuild-essential-amd64_12.9_all.deb devel optional
+crossbuild-essential-arm64_12.9_all.deb devel optional
+crossbuild-essential-armel_12.9_all.deb devel optional
+crossbuild-essential-armhf_12.9_all.deb devel optional
+crossbuild-essential-i386_12.9_all.deb devel optional
+crossbuild-essential-powerpc_12.9_all.deb devel optional
+crossbuild-essential-ppc64el_12.9_all.deb devel optional
+crossbuild-essential-s390x_12.9_all.deb devel optional

@@ -1,0 +1,23 @@
+Source: pkg-config
+Section: devel
+Priority: optional
+Maintainer: D.Lebedev <D.Lebedev@irbis.su>
+Build-Depends: 
+Homepage: http://pkgconf.org/
+Standards-Version: 1.21.3
+
+
+Package: pkg-config
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: manage compile and link flags for libraries (binaries)
+ pkgconf is an implementation of the pkg-config system, which helps to configure
+ compiler and linker flags for development frameworks.
+ .
+ pkgconf is a replacement for pkg-config, providing additional functionality
+ while also maintaining compatibility.
+ .
+ This package contains the pkgconf binary and related files.
