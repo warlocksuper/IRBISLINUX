@@ -56,3 +56,4 @@ if [ -x dummy ]
 rm -f dummy.c dummy
 sudo apt-get install autogen
 sudo apt-get install wget gawk 
+sudo apt-get install git

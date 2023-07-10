@@ -15,9 +15,10 @@ sudo mkdir -p $ROOT_DIR/tmp
 sudo mount -vt tmpfs tmpfs $ROOT_DIR/tmp
 sudo busybox chroot rootfs /usr/bin/env -i   \
     HOME=/root                  \
-    GLIB_CFLAGS=/usr/include	\
-    GLIB_LIBS=/usr/lib		\
+    LANG=en_US.UTF-8		\
+    GLIB_CFLAGS=-I/usr/include	\
+    GLIB_LIBS=-I/usr/lib	\
     TERM="$TERM"                \
-    PS1='(lfs chroot) \u:\w\$ ' \
+    PS1='(IRBIS) \u:\w\$ ' \
     PATH=/usr/bin:/usr/sbin     \
     /bin/bash --login

@@ -26,5 +26,7 @@ temporary_tools:
 	${MAKE} -C tar  temporary_tools
 	${MAKE} -C xz  temporary_tools
 	${MAKE} -C binutils  temporary_tools
-	${MAKE} -C gcc  temporary_tools				
+	${MAKE} -C gcc  temporary_tools
+	${MAKE} -C bison  temporary_tools	
+	${MAKE} -C flex  temporary_tools					
 	${MAKE} -C dh_make  temporary_tools

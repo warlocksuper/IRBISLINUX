@@ -12,10 +12,14 @@ GCC_STAGE1_COMPILE = ${ROOT_TOOLS}/share/info/gcc.info
 
 GCC_STAGE2_BUILD_DIR = ${ROOT_BUILD}/gcc_stage2
 GCC_STAGE2_CONFIGURE = ${GCC_STAGE2_BUILD_DIR}/Makefile
-GCC_STAGE2_COMPILE = ${GCC_STAGE2_BUILD_DIR}/gcc/cc1
-GCC_STAGE2_INSTALL = ${ROOT_FS}/usr/bin/gcc
+GCC_STAGE2_COMPILE = ${GCC_STAGE2_BUILD_DIR}/gcc/cc8
+GCC_STAGE2_INSTALL = ${ROOT_FS}/usr/bin/gcc33
 
 GCC_STAGE1_POST_CONFIG = ${ROOT_TOOLS}/lib/gcc/${CONFIG_OS_ARCH_TARGET}/12.2.0/install-tools/include/limits.h
+
+CXXFLAGS=-fpermissive
+
+export
 
 all:
 
@@ -53,16 +57,18 @@ ${GCC_STAGE1_POST_CONFIG}:
 	
 temporary_tools: ${GCC_STAGE2_CONFIGURE} ${GCC_STAGE2_COMPILE} ${GCC_STAGE2_INSTALL}
 
+BUILD_BUILD = `echo ${PGK_SOURCE_DIR}/config.guess`
+
 ${GCC_STAGE2_CONFIGURE}:
 	@mkdir -p ${GCC_STAGE2_BUILD_DIR}
-	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure ../configure                                       \
-    --build=$(../config.guess)                     \
+	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure \
+    --build=x86_64-pc-linux-gnu                    \
     --host=${CONFIG_OS_ARCH_TARGET}                \
     --target=${CONFIG_OS_ARCH_TARGET}              \
     --with-sysroot=${ROOT_FS}			   \
-    LDFLAGS_FOR_TARGET=${ROOT_FS}/usr/include 	   \
     --prefix=/usr                                  \
-    --with-build-sysroot=${CONFIG_OS_ARCH_TARGET}  \
+    --with-build-sysroot=${ROOT_FS}  \
+    --enable-shared				   \
     --enable-default-pie                           \
     --enable-default-ssp                           \
     --disable-nls                                  \
@@ -81,7 +87,7 @@ ${GCC_STAGE2_CONFIGURE}:
 ##	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --build=$(../config.guess) --host=${CONFIG_OS_ARCH}-pc-linux-gnu --target=${CONFIG_OS_ARCH}-pc-linux-gnu LDFLAGS_FOR_TARGET=-L${ROOT_DIR}/tools/lib/gcc/${CONFIG_OS_ARCH}-pc-linux-gnu/12.2.0 --prefix=/usr --with-build-sysroot=${ROOT_FS} --enable-default-pie --enable-default-ssp --disable-nls --disable-multilib --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp  --disable-libvtv --enable-languages=c,c++ CPPFLAGS=-I${ROOT_DIR}/tools/${CONFIG_OS_ARCH}-pc-linux-gnu/include/c++/12.2.0/
 	
 ${GCC_STAGE2_COMPILE}:
-	${MAKE} -C ${GCC_STAGE2_BUILD_DIR}
+	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} -i
 	
 	
 ${GCC_STAGE2_INSTALL}:
