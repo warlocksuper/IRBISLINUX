@@ -19,8 +19,6 @@ obj-${CONFIG_OS_PCG_CONFIG} += pkg-config
 obj-${CONFIG_OS_GNUTLS} += gnutls
 obj-${CONFIG_OS_WGET} += wget
 obj-${CONFIG_OS_OPENSSL} += openssl
-obj-${CONFIG_OS_WGET} += wget
-
 
 
 

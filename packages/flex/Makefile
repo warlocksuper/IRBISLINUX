@@ -3,7 +3,7 @@ include ${OS_CONFIG}
 
 PKG_NAME = flex-2.6.4
 PKG_URL = https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz
-PKG_TAR_FILE = ${PKG_NAME}.tar.xz
+PKG_TAR_FILE = ${PKG_NAME}.tar.gz
 PGK_BUILD_DIR = ${ROOT_BUILD}/flex
 PKG_COMPILE = ${PGK_BUILD_DIR}/flex
 PGK_INSTALL = ${ROOT_FS}/usr/bin/flex
