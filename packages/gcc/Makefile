@@ -62,29 +62,28 @@ BUILD_BUILD = `echo ${PGK_SOURCE_DIR}/config.guess`
 ${GCC_STAGE2_CONFIGURE}:
 	@mkdir -p ${GCC_STAGE2_BUILD_DIR}
 	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure \
-    --build=x86_64-pc-linux-gnu                    \
-    --host=${CONFIG_OS_ARCH_TARGET}                \
-    --target=${CONFIG_OS_ARCH_TARGET}              \
-    --with-sysroot=${ROOT_FS}			   \
-    --prefix=/usr                                  \
-    --with-build-sysroot=${ROOT_FS}  \
-    --enable-shared				   \
-    --enable-default-pie                           \
-    --enable-default-ssp                           \
-    --disable-nls                                  \
-    --disable-multilib                             \
-    --disable-libatomic                            \
-    --disable-libgomp                              \
-    --disable-libquadmath                          \
-    --disable-libssp                               \
-    --disable-libvtv                               \
-    --enable-languages=c,c++
+	--target=${CONFIG_OS_ARCH_TARGET} --host=${CONFIG_OS_ARCH_TARGET} --build=x86_64-pc-linux-gnu --prefix=/usr --exec-prefix=/usr --sysconfdir=/etc --localstatedir=/var --program-prefix= --disable-gtk-doc --disable-gtk-doc-html --disable-doc --disable-docs --disable-documentation --with-xmlto=no --with-fop=no --disable-dependency-tracking --enable-ipv6 --disable-nls --disable-static --enable-shared --target=${CONFIG_OS_ARCH_TARGET} --with-sysroot=${ROOT_FS} --enable-__cxa_atexit --with-gnu-ld --disable-libssp --disable-multilib --disable-decimal-float --enable-plugins --enable-lto --with-gmp=${ROOT_FS} --with-mpc=${ROOT_FS} --with-mpfr=${ROOT_FS} --with-pkgversion='IRBIS 2023.07' --with-bugurl=http://support.irbis.su --without-zstd --enable-libquadmath --enable-libquadmath-support --enable-tls --enable-threads --without-isl --without-cloog --with-arch=x86-64 --with-sysroot=/ --with-build-sysroot=${ROOT_FS} --disable-__cxa_atexit --with-gmp=${ROOT_FS} --with-mpc=${ROOT_FS} --with-mpfr=${ROOT_FS} --disable-libquadmath --disable-libsanitizer --disable-plugin --disable-lto --enable-languages=c,c++ --disable-boostrap --disable-libgomp --disable-nls --disable-libmpx --disable-gcov
 
-## enable	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --host=${CONFIG_OS_ARCH_TARGET} --target=${CONFIG_OS_ARCH_TARGET} --prefix=/usr --with-glibc-version=2.37 --with-build-sysroot=${ROOT_FS} --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --enable-languages=c,c++	--enable-libstdcxx=yes
 
-##	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --host=${CONFIG_OS_ARCH}-pc-linux-gnu --target=${CONFIG_OS_ARCH}-pc-linux-gnu --prefix=/usr --with-build-sysroot=${ROOT_FS} --enable-languages=c,c++ --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx
 
-##	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --build=$(../config.guess) --host=${CONFIG_OS_ARCH}-pc-linux-gnu --target=${CONFIG_OS_ARCH}-pc-linux-gnu LDFLAGS_FOR_TARGET=-L${ROOT_DIR}/tools/lib/gcc/${CONFIG_OS_ARCH}-pc-linux-gnu/12.2.0 --prefix=/usr --with-build-sysroot=${ROOT_FS} --enable-default-pie --enable-default-ssp --disable-nls --disable-multilib --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp  --disable-libvtv --enable-languages=c,c++ CPPFLAGS=-I${ROOT_DIR}/tools/${CONFIG_OS_ARCH}-pc-linux-gnu/include/c++/12.2.0/
+##    --build=x86_64-pc-linux-gnu                    \
+##    --host=${CONFIG_OS_ARCH_TARGET}                \
+##    --target=${CONFIG_OS_ARCH_TARGET}              \
+##    --with-sysroot=${ROOT_FS}			   \
+##    --prefix=/usr                                  \
+##    --with-build-sysroot=${ROOT_FS}  \
+##    --enable-shared				   \
+##    --enable-default-pie                           \
+##    --enable-default-ssp                           \
+##    --disable-nls                                  \
+##    --disable-multilib                             \
+##    --disable-libatomic                            \
+##    --disable-libgomp                              \
+##    --disable-libquadmath                          \
+##    --disable-libssp                               \
+##    --disable-libvtv                               \
+##    --enable-languages=c,c++
+
 	
 ${GCC_STAGE2_COMPILE}:
 	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} -i

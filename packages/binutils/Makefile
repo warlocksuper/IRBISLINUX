@@ -52,7 +52,10 @@ temporary_tools: ${BINUTILS_TAR} ${BINUTILS_STAGE2_CONFIGURE} ${BINUTILS_STAGE2_
 
 ${BINUTILS_STAGE2_CONFIGURE}:
 	@mkdir -p ${ROOT_BUILD}/binutils_stage2
-	@cd ${ROOT_BUILD}/binutils_stage2 && ${PGK_SOURCE_DIR}/configure --prefix=/usr --build=x86_64-pc-linux-gnu --host=${CONFIG_OS_ARCH_TARGET} --disable-nls --enable-shared --enable-gprofng=no --disable-werror --enable-64-bit-bfd
+	@cd ${ROOT_BUILD}/binutils_stage2 && ${PGK_SOURCE_DIR}/configure --target=${CONFIG_OS_ARCH_TARGET} --host=${CONFIG_OS_ARCH_TARGET} --build=x86_64-pc-linux-gnu --prefix=/usr --exec-prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-gtk-doc --disable-gtk-doc-html --disable-doc --disable-docs --disable-documentation --with-xmlto=no --with-fop=no --disable-dependency-tracking --enable-ipv6 --disable-nls --disable-static --enable-shared --disable-multilib --disable-werror --enable-install-libiberty --enable-build-warnings=no --with-system-zlib --disable-gprofng --disable-sim --disable-gdb
+	
+	
+###	--prefix=/usr --build=x86_64-pc-linux-gnu --host=${CONFIG_OS_ARCH_TARGET} --disable-nls --enable-shared --enable-gprofng=no --disable-werror --enable-64-bit-bfd
 	
 	
 ${BINUTILS_STAGE2_COMPILE}:
