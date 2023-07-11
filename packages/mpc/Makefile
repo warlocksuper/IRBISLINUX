@@ -19,6 +19,11 @@ PGK_INSTALL = ${ROOT_FS}/usr/lib/libmpc.a
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}
 
+LD_LIBRARY_PATH = ${ROOT_FS}/usr/lib
+
+export
+
+
 all:
 
 temporary_tools: ${PKG_TAR} ${PGK_SOURCE_DIR} ${PKG_CONFIGURE} ${PKG_COMPILE} ${PGK_INSTALL}
