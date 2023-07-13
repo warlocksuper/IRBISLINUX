@@ -1,0 +1,8 @@
+Package: libgmp
+Architecture: amd64
+Version: 6.2.1
+Provides: libgmp
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 2588
+Description: libgmp

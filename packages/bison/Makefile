@@ -5,7 +5,7 @@ PKG_NAME = bison-3.8.2
 PKG_URL = https://ftp.gnu.org/gnu/bison/bison-3.8.2.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}.tar.xz
 PGK_BUILD_DIR = ${ROOT_BUILD}/bison
-PKG_COMPILE = ${PGK_BUILD_DIR}bison
+PKG_COMPILE = ${PGK_BUILD_DIR}/src/bison
 PGK_INSTALL = ${ROOT_FS}/usr/bin/bison
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}

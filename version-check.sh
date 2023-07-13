@@ -1,6 +1,11 @@
 #!/bin/bash
 # Simple script to list version numbers of critical development tools
 export LC_ALL=C
+CONFIG_OS_ARCH_TARGET=x86_64-irbis-linux-gnu
+PATH=$PATH:/media/user/IRBISLINUX/usr/bin
+
+export PATH CONFIG_OS_ARCH_TARGET 
+
 bash --version | head -n1 | cut -d" " -f2-4
 MYSH=$(readlink -f /bin/sh)
 echo "/bin/sh -> $MYSH"

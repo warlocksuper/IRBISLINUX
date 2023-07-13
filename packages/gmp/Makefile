@@ -15,7 +15,7 @@ PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/.libs/libgmp.a
-PGK_INSTALL = ${ROOT_FS}/usr/lib/libgmp.a
+PGK_INSTALL = ${ROOT_FS}/usr/lib/libgmp.so.10.4.1
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}
 
@@ -40,5 +40,5 @@ ${PKG_COMPILE}:
 	${MAKE} -C ${PGK_BUILD_DIR}
 
 ${PGK_INSTALL}:
-	${MAKE} -C ${PGK_BUILD_DIR} DESTDIR=${ROOT_FS} install
+	${MAKE} -C ${PGK_BUILD_DIR} DESTDIR=${ROOT_FS}/usr install
 				

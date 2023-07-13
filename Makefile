@@ -4,7 +4,7 @@ OS_PATHLEVELVERSION = 0
 
 
 ROOT_DIR = ${PWD}
-ROOT_FS = ${PWD}/rootfs
+ROOT_FS = /media/user/IRBISLINUX
 ROOT_BUILD = ${PWD}/build
 ROOT_SOURCE = ${PWD}/source
 ROOT_TOOLS = ${ROOT_FS}/tools

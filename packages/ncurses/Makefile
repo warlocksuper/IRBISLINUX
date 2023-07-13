@@ -5,7 +5,7 @@ PKG_NAME = ncurses-6.4
 NCURSES_TAR = ${ROOT_SOURCE}/ncurses-6.4.tar.gz
 PKG_URL = https://invisible-mirror.net/archives/ncurses/ncurses-6.4.tar.gz
 NCURSES_CONFIGURE = ${ROOT_BUILD}/ncurses/Makefile
-NCURSES_COMPILE = ${ROOT_DIR}/rootfs/usr/bin/m4
+NCURSES_COMPILE = ${ROOT_DIR}/rootfs/usr/lib/libncurses.a
 TIC_COMPILE = ${ROOT_BUILD}/ncurses/progs/tic
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}
 
@@ -35,4 +35,4 @@ ${NCURSES_CONFIGURE}:
 ${NCURSES_COMPILE}:
 	${MAKE} -C ${ROOT_BUILD}/ncurses
 	${MAKE} -C ${ROOT_BUILD}/ncurses DESTDIR=${ROOT_FS} TIC_PATH=progs/tic install 
-	echo "INPUT(-lncursesw)" > ${ROOT_FS}/usr/lib/libncurses.so
+##	echo "INPUT(-lncursesw)" > ${ROOT_FS}/usr/lib/libncurses.so

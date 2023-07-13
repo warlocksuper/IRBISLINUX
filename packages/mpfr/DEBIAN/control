@@ -1,0 +1,9 @@
+Package: libmpfr
+Architecture: amd64
+Version: 4.2.0
+Provides: libmpfr
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libgmp(>=6.2.1)
+Installed-Size: 2784
+Description: libmpfr

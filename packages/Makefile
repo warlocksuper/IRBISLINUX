@@ -1,8 +1,9 @@
 
 all: 
-	${MAKE} -C binutils
+
 
 stage1:
+	${MAKE} -C rootfs stage1_tools
 	${MAKE} -C binutils stage1_tools
 	${MAKE} -C gcc stage1_tools
 	${MAKE} -C linux stage1_tools
@@ -32,5 +33,6 @@ temporary_tools:
 	${MAKE} -C mpc  temporary_tools
 	${MAKE} -C gcc  temporary_tools
 	${MAKE} -C bison  temporary_tools	
-	${MAKE} -C flex  temporary_tools					
+	${MAKE} -C flex  temporary_tools
+	${MAKE} -C cmake  temporary_tools					
 	${MAKE} -C dh_make  temporary_tools
