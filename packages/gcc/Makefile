@@ -16,7 +16,7 @@ GCC_STAGE2_CONFIGURE = ${GCC_STAGE2_BUILD_DIR}/Makefile
 GCC_STAGE2_COMPILE = ${GCC_STAGE2_BUILD_DIR}/gcc/cc1
 GCC_STAGE2_INSTALL = ${ROOT_FS}/usr/bin/gcc
 
-GCC_STAGE1_POST_CONFIG = ${ROOT_TOOLS}/lib/gcc/${CONFIG_OS_ARCH_TARGET}/12.2.0/install-tools/include/limits.h
+GCC_STAGE1_POST_CONFIG = ${ROOT_TOOLS}/lib/gcc/${CONFIG_OS_ARCH_TARGET}/12.3.0/install-tools/include/limits.h
 
 CXXFLAGS=-fpermissive
 
@@ -40,11 +40,11 @@ ${GCC_TAR_DIR}:
 ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${GCC_TAR}
 	@cd ${ROOT_SOURCE} && tar -xf mpfr-4.2.0.tar.xz
-	@cd ${ROOT_SOURCE} && mv -v mpfr-4.2.0 gcc-12.2.0/mpfr
+	@cd ${ROOT_SOURCE} && mv -v mpfr-4.2.0 gcc-12.3.0/mpfr
 	@cd ${ROOT_SOURCE} && tar -xf gmp-6.2.1.tar.xz
-	@cd ${ROOT_SOURCE} && mv -v gmp-6.2.1 gcc-12.2.0/gmp
+	@cd ${ROOT_SOURCE} && mv -v gmp-6.2.1 gcc-12.3.0/gmp
 	@cd ${ROOT_SOURCE} && tar -xf mpc-1.3.1.tar.gz
-	@cd ${ROOT_SOURCE} && mv -v mpc-1.3.1 gcc-12.2.0/mpc
+	@cd ${ROOT_SOURCE} && mv -v mpc-1.3.1 gcc-12.3.0/mpc
 
 
 ${GCC_STAGE1_CONFIGURE}:

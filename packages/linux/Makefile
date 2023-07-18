@@ -29,5 +29,6 @@ ${LINUX_STAGE1_CONFIGURE}:
 	
 ${LINUX_STAGE1_COPY}:
 	@mkdir -p ${ROOT_FS}/usr
+	@mkdir -p ${ROOT_FS}/usr/include
 	@cd ${PGK_SOURCE_DIR} && find usr/include -type f ! -name '*.h' -delete
 	@cp -rv ${PGK_SOURCE_DIR}/usr/include/* ${ROOT_FS}/usr/include/
