@@ -16,9 +16,11 @@ sudo mount -vt tmpfs tmpfs $ROOT_DIR/tmp
 sudo busybox chroot rootfs /usr/bin/env -i   \
     HOME=/root                  \
     LANG=en_US.UTF-8		\
+    LC_ALL=C			\
+    LANGUAGE=en_US		\
     GLIB_CFLAGS=-I/usr/include	\
     GLIB_LIBS=-I/usr/lib	\
     TERM="$TERM"                \
     PS1='(IRBIS) \u:\w\$ ' \
-    PATH=/usr/bin:/usr/sbin     \
+    PATH=/bin:/usr/bin:/usr/sbin     \
     /bin/bash --login
