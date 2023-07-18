@@ -37,5 +37,7 @@ ${PKG_COMPILE}:
 	${MAKE} -C ${PGK_BUILD_DIR}
 
 ${PGK_INSTALL}:
-	${MAKE} -C ${PGK_BUILD_DIR} DESTDIR=${ROOT_FS} install
-				
+	${MAKE} -C ${PGK_BUILD_DIR}/libelf DESTDIR=${ROOT_FS} install
+	@cd ${PGK_BUILD_DIR} && install -vm644 config/libelf.pc ${ROOT_FS}/usr/lib/pkgconfig
+	@rm -rf ${ROOT_FS}/usr/lib/libelf.a	
+

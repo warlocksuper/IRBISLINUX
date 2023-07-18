@@ -35,10 +35,10 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PGK_BUILD_DIR}
-	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr
+	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr 
 	
 ${PKG_COMPILE}:
-	${MAKE} -C ${PGK_BUILD_DIR}
+	${MAKE} -C ${PGK_BUILD_DIR} -DCMAKE_USE_OPENSSL=OFF
 
 ${PGK_INSTALL}:
 	${MAKE} -C ${PGK_BUILD_DIR} DESTDIR=${ROOT_FS} install

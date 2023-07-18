@@ -1,0 +1,22 @@
+#! /usr/bin/make -f
+
+GLIB_CFLAGS = /usr/include
+GLIB_LIBS = /usr/lib	
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DPKG_EXPORT_BUILDFLAGS = 1
+
+export
+
+
+%:
+	dh $@
+
+build: configure_pkg build_pkg
+
+configure_pkg:
+	mkdir -p build
+	cd build && ../wget-1.21.3/configure --prefix=/usr --without-libpsl
+
+build_pkg:
+	cd build && $(MAKE)	
