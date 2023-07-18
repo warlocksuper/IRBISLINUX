@@ -64,34 +64,12 @@ BUILD_BUILD = `echo ${PGK_SOURCE_DIR}/config.guess`
 
 ${GCC_STAGE2_CONFIGURE}:
 	@mkdir -p ${GCC_STAGE2_BUILD_DIR}
-	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure \
-	--target=${CONFIG_OS_ARCH_TARGET} --host=${CONFIG_OS_ARCH_TARGET} --build=${CONFIG_OS_ARCH_TARGET} --prefix=/usr --exec-prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-gtk-doc --disable-gtk-doc-html --disable-doc --disable-docs --disable-documentation --with-xmlto=no --with-fop=no --disable-dependency-tracking --enable-ipv6 --disable-static --enable-shared --target=${CONFIG_OS_ARCH_TARGET} --with-sysroot=${ROOT_FS} --enable-__cxa_atexit --with-gnu-ld --disable-libssp --disable-multilib  --enable-plugins --enable-lto --with-gmp=${ROOT_FS} --with-mpc=${ROOT_FS} --with-mpfr=${ROOT_FS} --with-pkgversion='IRBIS 2023.07' --with-bugurl=http://support.irbis.su --without-zstd --enable-libquadmath --enable-libquadmath-support --enable-tls --enable-threads --without-isl --without-cloog --with-arch=x86-64 --with-sysroot=/ --with-build-sysroot=${ROOT_FS} --disable-__cxa_atexit --with-gmp=${ROOT_FS} --with-mpc=${ROOT_FS} --with-mpfr=${ROOT_FS} --disable-libsanitizer --disable-plugin --disable-lto --enable-languages=c,c++ --disable-boostrap --disable-libgomp --disable-nls --disable-libmpx --disable-gcov --enable-decimal-float=no
+	@cd ${GCC_STAGE2_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --target=${CONFIG_OS_ARCH_TARGET} --host=${CONFIG_OS_ARCH_TARGET} --build=x86_64-pc-linux-gnu --disable-dependency-tracking --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --libexecdir=/usr/lib --sysconfdir=/etc --datadir=/usr/share --localstatedir=/var --mandir=/usr/man --infodir=/usr/info --disable-nls CXXFLAGS_FOR_TARGET="-g -D_GLIBCXX_INCLUDE_NEXT_C_HEADERS" --enable-languages=c,c++ --with-bugurl=https://support.irbis.su/ --with-pkgversion=IRBIS GCC 12.3.0 --enable-shared --disable-__cxa_atexit --with-default-libstdcxx-abi=gcc4-compatible --enable-target-optspace --with-gnu-ld --disable-nls --disable-libsanitizer --disable-libvtv --disable-libcilkrts --disable-libmudflap --disable-libmpx --disable-multilib --disable-libgomp --disable-libquadmath --disable-libssp --disable-decimal-float --disable-libstdcxx-pch --with-host-libstdcxx=-lstdc++ --prefix=/usr --libexecdir=/usr/lib --with-local-prefix=/usr --with-stage1-ldflags=-lstdc++
 
 
-###   --disable-decimal-float
-##    --build=x86_64-pc-linux-gnu                    \
-##    --host=${CONFIG_OS_ARCH_TARGET}                \
-##    --target=${CONFIG_OS_ARCH_TARGET}              \
-##    --with-sysroot=${ROOT_FS}			   \
-##    --prefix=/usr                                  \
-##    --with-build-sysroot=${ROOT_FS}  \
-##    --enable-shared				   \
-##    --enable-default-pie                           \
-##    --enable-default-ssp                           \
-##    --disable-nls                                  \
-##    --disable-multilib                             \
-##    --disable-libatomic                            \
-##    --disable-libgomp                              \
-##    --disable-libquadmath                          \
-##    --disable-libssp                               \
-##    --disable-libvtv                               \
-##    --enable-languages=c,c++
-
-	
 ${GCC_STAGE2_COMPILE}:
 	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} -i
 	
 	
 ${GCC_STAGE2_INSTALL}:
 	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} DESTDIR=${ROOT_FS} install
-	

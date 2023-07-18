@@ -42,3 +42,8 @@ ${PKG_COMPILE}:
 ${PGK_INSTALL}:
 	${MAKE} -C ${PGK_BUILD_DIR} DESTDIR=${ROOT_FS} install
 				
+				
+				
+				
+## CFLAGS=-I/media/user/IRBISLINUX/test/usr/include ./configure --with-sysroot=/media/user/IRBISLINUX/test --enable-shared --prefix=/usr --with-gmp-include=/media/user/IRBISLINUX/test/usr/include/ --with-gmp-lib=/media/user/IRBISLINUX/test/usr/lib 				
+				

@@ -42,3 +42,10 @@ ${PKG_COMPILE}:
 ${PGK_INSTALL}:
 	${MAKE} -C ${PGK_BUILD_DIR} DESTDIR=${ROOT_FS}/usr install
 				
+				
+				
+				
+				
+				
+#./configure --with-sysroot=/media/user/IRBISLINUX/test --enable-shared --prefix=/usr
+				
