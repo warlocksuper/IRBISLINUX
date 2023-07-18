@@ -34,5 +34,7 @@ temporary_tools:
 	${MAKE} -C gcc  temporary_tools
 	${MAKE} -C bison  temporary_tools	
 	${MAKE} -C flex  temporary_tools
+	${MAKE} -C perl temporary_tools
+	${MAKE} -C autoconf temporary_tools
 	${MAKE} -C cmake  temporary_tools					
 	${MAKE} -C dh_make  temporary_tools
