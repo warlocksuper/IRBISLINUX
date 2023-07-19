@@ -39,5 +39,6 @@ temporary_tools:
 	${MAKE} -C autoconf temporary_tools
 	${MAKE} -C cmake  temporary_tools
 	${MAKE} -C bc  temporary_tools
-	${MAKE} -C elfutils  temporary_tools						
+	${MAKE} -C elfutils  temporary_tools
+	${MAKE} -C openssl temporary_tools						
 	${MAKE} -C dh_make  temporary_tools
