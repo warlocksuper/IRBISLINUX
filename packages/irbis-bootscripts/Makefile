@@ -30,44 +30,44 @@ create-dirs:
 	ln -sfn       rc.d/init.d ${ETCDIR}/init.d
 
 files: create-dirs
-	install -m ${MODE} lfs/init.d/checkfs       ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/cleanfs       ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/halt          ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/console       ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/localnet      ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/modules       ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/mountfs       ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/mountvirtfs   ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/network       ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/rc            ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/reboot        ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/sendsignals   ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/setclock      ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/swap          ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/sysctl        ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/sysklogd      ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/template      ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/udev          ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/init.d/udev_retry    ${ETCDIR}/rc.d/init.d/
-	install -m ${MODE} lfs/sbin/ifup            ${SBIN}
-	install -m ${MODE} lfs/sbin/ifdown          ${SBIN}
+	install -m ${MODE} bootscript/init.d/checkfs       ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/cleanfs       ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/halt          ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/console       ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/localnet      ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/modules       ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/mountfs       ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/mountvirtfs   ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/network       ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/rc            ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/reboot        ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/sendsignals   ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/setclock      ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/swap          ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/sysctl        ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/sysklogd      ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/template      ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/udev          ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/init.d/udev_retry    ${ETCDIR}/rc.d/init.d/
+	install -m ${MODE} bootscript/sbin/ifup            ${SBIN}
+	install -m ${MODE} bootscript/sbin/ifdown          ${SBIN}
 	install -m ${CONFMODE} lfs/sbin/ifup.8      ${MAN8}
 	ln -sf  ifup.8                              ${MAN8}/ifdown.8
-	install -m ${MODE}     lfs/lib/services/ipv4-static-route  ${SERVICEDIR}
-	install -m ${MODE}     lfs/lib/services/ipv4-static        ${SERVICEDIR}
-	install -m ${CONFMODE} lfs/lib/services/init-functions     ${SERVICEDIR}
+	install -m ${MODE}     bootscript/lib/services/ipv4-static-route  ${SERVICEDIR}
+	install -m ${MODE}     bootscript/lib/services/ipv4-static        ${SERVICEDIR}
+	install -m ${CONFMODE} bootscript/lib/services/init-functions     ${SERVICEDIR}
 
 	if [ ! -f ${ETCDIR}/sysconfig/createfiles ]; then \
-          install -m ${CONFMODE} lfs/sysconfig/createfiles ${ETCDIR}/sysconfig/ ;\
+          install -m ${CONFMODE} bootscript/sysconfig/createfiles ${ETCDIR}/sysconfig/ ;\
         fi
 	if [ ! -f ${ETCDIR}/sysconfig/modules     ]; then \
-          install -m ${CONFMODE} lfs/sysconfig/modules     ${ETCDIR}/sysconfig/ ;\
+          install -m ${CONFMODE} bootscript/sysconfig/modules     ${ETCDIR}/sysconfig/ ;\
         fi
 	if [ ! -f ${ETCDIR}/sysconfig/udev_retry  ]; then \
-          install -m ${CONFMODE} lfs/sysconfig/udev_retry  ${ETCDIR}/sysconfig/ ;\
+          install -m ${CONFMODE} bootscript/sysconfig/udev_retry  ${ETCDIR}/sysconfig/ ;\
         fi
 	if [ ! -f ${ETCDIR}/sysconfig/rc.site     ]; then \
-          install -m ${CONFMODE} lfs/sysconfig/rc.site     ${ETCDIR}/sysconfig/ ;\
+          install -m ${CONFMODE} bootscript/sysconfig/rc.site     ${ETCDIR}/sysconfig/ ;\
         fi
 
 links: rcS rc0 rc1 rc2 rc3 rc4 rc5 rc6
