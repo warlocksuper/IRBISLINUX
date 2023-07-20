@@ -1,0 +1,12 @@
+#!/bin/busybox sh
+
+mount -t proc none /proc
+mount -t sysfs none /sys
+
+mount -o ro /dev/sdb1 /mnt/root
+
+umount /proc
+umount /sys
+
+exec switch_root /mnt/root  /sbin/init
+

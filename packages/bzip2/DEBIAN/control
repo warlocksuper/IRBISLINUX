@@ -1,0 +1,8 @@
+Package: bzip2
+Architecture: amd64
+Version: 1.0.8
+Provides: bzip2
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: libs
+Installed-Size: 1180
+Description: bzip2
