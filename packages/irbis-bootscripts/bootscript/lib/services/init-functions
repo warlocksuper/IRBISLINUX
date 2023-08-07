@@ -1,28 +1,11 @@
 #!/bin/sh
-########################################################################
-#
-# Begin /lib/lsb/init-funtions
-#
-# Description : Run Level Control Functions
-#
-# Authors     : Gerard Beekmans - gerard@linuxfromscratch.org
-#             : DJ Lucas - dj@linuxfromscratch.org
-# Update      : Bruce Dubbs - bdubbs@linuxfromscratch.org
-#
-# Version     : LFS 7.0
-#
-# Notes       : With code based on Matthias Benkmann's simpleinit-msb
-#               http://winterdrache.de/linux/newboot/index.html
-#
-#               The file should be located in /lib/lsb
-#
-########################################################################
 
 ## Environmental setup
 # Setup default values for environment
 umask 022
 export PATH="/bin:/usr/bin:/sbin:/usr/sbin"
-
+export XORG_PREFIX="/usr"
+export XORG_CONFIG="--prefix=$XORG_PREFIX --sysconfdir=/etc --localstatedir=/var --disable-static"
 ## Set color commands, used via echo
 # Please consult `man console_codes for more information
 # under the "ECMA-48 Set Graphics Rendition" section
