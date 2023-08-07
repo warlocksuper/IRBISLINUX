@@ -1,0 +1,9 @@
+Package: gperf
+Architecture: amd64
+Version: 3.1
+Provides: gperf
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Priority: required
+Installed-Size: 652
+Description: gperf

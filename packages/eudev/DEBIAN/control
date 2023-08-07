@@ -1,0 +1,10 @@
+Package: eudev
+Architecture: amd64
+Version: 3.2.11
+Provides: eudev
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: gperf
+Priority: required
+Installed-Size: 12564
+Description: eudev include udevd udevadm libudev 

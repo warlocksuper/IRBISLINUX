@@ -1,0 +1,9 @@
+Package: e2fsprogs
+Architecture: amd64
+Version: 1.47.0
+Provides: e2fsprogs
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Priority: required
+Installed-Size: 29416
+Description: e2fsprogs
