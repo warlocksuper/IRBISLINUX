@@ -1,0 +1,8 @@
+Package: automake
+Architecture: amd64
+Version: 1.16.5
+Provides: automake
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 2456
+Description: automake
