@@ -47,4 +47,5 @@ temporary_tools:
 	${MAKE} -C dh_make  temporary_tools
 	
 dpkg:
-		
+	${MAKE} -C ninja dpkg
+	${MAKE} -C XORG dpkg
