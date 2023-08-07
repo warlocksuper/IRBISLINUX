@@ -47,3 +47,15 @@ clean:
 
 basefile:
 	${MAKE} -C packages/basefile stage1_tools
+	
+binutils_stage1_tools: basefile
+	 ${MAKE} -C packages/binutils stage1_tools
+	 
+gcc_stage1_tools:	 
+	${MAKE} -C packages/gcc stage1_tools	 
+
+linux_stage1_tools:	 
+	${MAKE} -C packages/linux stage1_tools	 
+	
+glibc_stage1_tools:	
+	${MAKE} -C packages/glibc stage1_tools
