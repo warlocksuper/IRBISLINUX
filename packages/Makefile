@@ -3,7 +3,7 @@ all:
 
 
 stage1:
-	${MAKE} -C rootfs stage1_tools
+	${MAKE} -C basefile stage1_tools
 	${MAKE} -C binutils stage1_tools
 	${MAKE} -C gcc stage1_tools
 	${MAKE} -C linux stage1_tools
