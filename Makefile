@@ -59,3 +59,7 @@ linux_stage1_tools:
 	
 glibc_stage1_tools:	
 	${MAKE} -C packages/glibc stage1_tools
+	
+libstdc++_stage1_tools:
+	${MAKE} -C packages/libstdc++ stage1_tools	
+	
