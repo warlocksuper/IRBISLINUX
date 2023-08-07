@@ -75,6 +75,7 @@ links: rcS rc0 rc1 rc2 rc3 rc4 rc5 rc6
 rcS: files
 	ln -sf ../init.d/mountvirtfs ${ETCDIR}/rc.d/rcS.d/S00mountvirtfs
 	ln -sf ../init.d/modules     ${ETCDIR}/rc.d/rcS.d/S05modules
+	ln -sf ../init.d/sysklogd    ${ETCDIR}/rc.d/rc0.d/K90sysklogd
 	ln -sf ../init.d/localnet    ${ETCDIR}/rc.d/rcS.d/S08localnet
 	ln -sf ../init.d/udev        ${ETCDIR}/rc.d/rcS.d/S10udev
 	ln -sf ../init.d/swap        ${ETCDIR}/rc.d/rcS.d/S20swap
