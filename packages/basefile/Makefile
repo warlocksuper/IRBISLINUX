@@ -10,4 +10,4 @@ stage1_tools: ${COPY_ROOTFS}
 	
 ${COPY_ROOTFS}:
 	@mkdir -p ${ROOT_FS}
-	@cp -rf skeleton/* ${ROOT_FS}/*
+	cp -r skeleton/* ${ROOT_FS}/
