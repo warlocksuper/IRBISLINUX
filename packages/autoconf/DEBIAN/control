@@ -1,0 +1,8 @@
+Package: autoconf
+Architecture: amd64
+Version: 2.71
+Provides: autoconf
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 3564
+Description: autoconf
