@@ -1,0 +1,8 @@
+Package: slang
+Architecture: amd64
+Version: 2.3.4
+Provides: slang
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 7248
+Description: slang
