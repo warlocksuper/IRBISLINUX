@@ -1,0 +1,8 @@
+Package: perl
+Architecture: amd64
+Version: 5.36.0
+Provides: perl
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 64716
+Description: perl

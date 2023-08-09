@@ -1,0 +1,9 @@
+Package: textinfo
+Architecture: amd64
+Version: 7.0.3
+Provides: textinfo
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: perl
+Installed-Size: 13076
+Description: textinfo
