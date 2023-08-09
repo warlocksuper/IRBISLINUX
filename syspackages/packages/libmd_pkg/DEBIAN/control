@@ -1,0 +1,8 @@
+Package: libmd
+Architecture: amd64
+Version: 1.1.0
+Provides: libmd
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 520
+Description: libmd

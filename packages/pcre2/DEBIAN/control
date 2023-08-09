@@ -1,0 +1,8 @@
+Package: pcre2
+Architecture: amd64
+Version: 10.40
+Provides: pcre2
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 5484
+Description: pcre2

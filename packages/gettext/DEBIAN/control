@@ -1,0 +1,8 @@
+Package: gettext
+Architecture: amd64
+Version: 0.21.1
+Provides: gettext
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 41752
+Description: gettext

@@ -42,4 +42,9 @@ ${PGK_INSTALL}:
 	${MAKE} -C ${PGK_BUILD_DIR} DESTDIR=${ROOT_FS} install
               	
 clean:
-	rm -rf 	${PGK_BUILD_DIR}		
+	rm -rf 	${PGK_BUILD_DIR}
+	
+	
+	
+dpkg:
+	./configure --prefix=/usr --enable-shared --enable-optimizations --with-system-ffi			

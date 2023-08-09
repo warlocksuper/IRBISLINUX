@@ -1,0 +1,8 @@
+Package: tar
+Architecture: amd64
+Version: 1.34
+Provides: tar
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 5548
+Description: tar

@@ -1,0 +1,8 @@
+Package: libtool
+Architecture: amd64
+Version: 2.4.7
+Provides: libtool
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 2796
+Description: libtool

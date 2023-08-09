@@ -1,0 +1,9 @@
+Package: dpkg
+Architecture: amd64
+Version: 1.21.20-250-geb0e1
+Provides: dpkg
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libtool, patch, tar, libmd, ncurses 
+Installed-Size: 16680
+Description: dpkg

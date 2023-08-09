@@ -1,0 +1,9 @@
+Package: git
+Architecture: amd64
+Version: 2.39.2
+Provides: git
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: gettext
+Installed-Size: 89868
+Description: git

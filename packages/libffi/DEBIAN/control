@@ -1,0 +1,8 @@
+Package: libffi
+Architecture: amd64
+Version: 3.4.4
+Provides: libffi
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 292
+Description: libffi

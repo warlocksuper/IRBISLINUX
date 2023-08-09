@@ -1,8 +1,9 @@
 Package: python3
 Architecture: amd64
-Version: 3.11.2
+Version: 3.11.2.1
 Provides: python3
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
-Installed-Size: 294884
+Installed-Size: 270156
+Depends: libz, libffi
 Description: python3 2to3 idle3 pip3 pydoc3
