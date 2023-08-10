@@ -73,3 +73,7 @@ ${GCC_STAGE2_COMPILE}:
 	
 ${GCC_STAGE2_INSTALL}:
 	${MAKE} -C ${GCC_STAGE2_BUILD_DIR} DESTDIR=${ROOT_FS} install
+	
+	
+dpkg:
+	../configure --prefix=/usr --disable-multilib  --with-system-zlib	

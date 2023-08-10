@@ -1,0 +1,8 @@
+Package: expat
+Architecture: amd64
+Version: 2.5.0
+Provides: expat
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lib
+Installed-Size: 1408
+Description: expat

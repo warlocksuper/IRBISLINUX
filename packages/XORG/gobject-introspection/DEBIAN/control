@@ -1,0 +1,8 @@
+Package: gobject-introspection
+Architecture: amd64
+Version: 1.74.0
+Provides: gobject-introspection
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 14112
+Description: gobject-introspection

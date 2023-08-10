@@ -1,0 +1,8 @@
+Package: libxcvt
+Architecture: amd64
+Version: 0.1.2
+Provides: libxcvt
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 81162
+Description: libxcvt 

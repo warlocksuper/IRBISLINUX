@@ -1,0 +1,8 @@
+Package: libpng
+Architecture: amd64
+Version: 1.6.39
+Provides: libpng
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lib
+Installed-Size: 1536
+Description: libpng

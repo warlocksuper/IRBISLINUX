@@ -1,0 +1,8 @@
+Package: which
+Architecture: amd64
+Version: 2.21
+Provides: which
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 128
+Description: which

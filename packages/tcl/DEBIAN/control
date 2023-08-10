@@ -1,0 +1,9 @@
+Package: tcl
+Architecture: x86_64
+Version: 8.6.13
+Provides: tcl
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lib
+Depends: libz(>= 1.2.3)
+Installed-Size: 15264
+Description: tcl
