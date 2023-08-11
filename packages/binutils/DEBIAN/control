@@ -1,0 +1,8 @@
+Package: binutils
+Architecture: amd64
+Version: 2.40
+Provides: binutils
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 30128
+Description: binutils
