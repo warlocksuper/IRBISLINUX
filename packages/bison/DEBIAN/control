@@ -1,0 +1,8 @@
+Package: bison
+Architecture: amd64
+Version: 3.8.2
+Provides: bison
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 5952
+Description: bison

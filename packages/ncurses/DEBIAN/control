@@ -1,0 +1,8 @@
+Package: ncurses
+Architecture: amd64
+Version: 6.4
+Provides: ncurses
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lib
+Installed-Size: 17780
+Description: ncurses

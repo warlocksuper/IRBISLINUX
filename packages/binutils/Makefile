@@ -44,7 +44,7 @@ ${BINUTILS_STAGE1_COMPILE}:
 
 ${BINUTILS_STAGE1_INSTALL}:
 	${MAKE} -C ${PGK_BUILD_DIR} install
-	@cd ${ROOT_FS}	&& ln -sf usr/lib lib64		
+##	@cd ${ROOT_FS}	&& ln -sf usr/lib lib64		
 
 	
 temporary_tools: ${BINUTILS_TAR} ${BINUTILS_STAGE2_CONFIGURE} ${BINUTILS_STAGE2_COMPILE} ${BINUTILS_STAGE2_INSTALL}
