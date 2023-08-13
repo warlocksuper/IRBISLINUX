@@ -4,5 +4,5 @@ Version: 3.0.8
 Provides: openssl
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
-Installed-Size: 2784
+Installed-Size: 37000
 Description: openssl

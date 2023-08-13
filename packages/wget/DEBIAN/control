@@ -1,0 +1,9 @@
+Package: wget
+Architecture: amd64
+Version: 4.2.0
+Provides: wget
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: internet
+Depends: openssl
+Installed-Size: 5076
+Description: wget
