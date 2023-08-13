@@ -35,3 +35,6 @@ ${BASH_INSTALL}:
 	${MAKE} -C ${ROOT_BUILD}/bash DESTDIR=${ROOT_FS}/ install
 	@cd ${ROOT_FS}/bin && ln -sfv ../usr/bin/bash sh
 	@cd ${ROOT_FS}/bin && ln -sfv ../usr/bin/bash bash	
+	
+dpkg:
+	./configure --prefix=/usr --enable-readline --enable-history --sysconfdir=/etc	

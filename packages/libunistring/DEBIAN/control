@@ -1,0 +1,8 @@
+Package: libunistring
+Architecture: amd64
+Version: 1.1
+Provides: libunistring
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 4468
+Description: libunistring

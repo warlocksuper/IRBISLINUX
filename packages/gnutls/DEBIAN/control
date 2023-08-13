@@ -1,0 +1,8 @@
+Package: gnutls
+Architecture: amd64
+Version: 3.8.0
+Provides: gnutls
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 19976
+Description: gnutls

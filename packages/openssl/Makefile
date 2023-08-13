@@ -30,3 +30,6 @@ ${PKG_INSTALL}:
               	
 clean:
 	rm -rf 	${PKG_TAR} ${PKG_NAME}	
+	
+dpkg:
+	./config --prefix=/usr --openssldir=/etc/ssl --libdir=lib shared zlib-dynamic	

@@ -13,7 +13,7 @@ PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}
 
 PKG_CONFIGURE = ${PGK_SOURCE_DIR}/.config
 
-PKG_INSTALL = ${ROOT_FS}/usr/sbin/busybox
+PKG_INSTALL = ${ROOT_FS}/bin/busybox
 PKG_INSTALL_PATH = $(shell printenv ROOT_FS | sed 's_/_\\/_g')
 
 all:
@@ -35,7 +35,7 @@ ${PKG_CONFIGURE}:
 	
 
 ${PKG_COMPILE}:
-	CC=amd64-irbis-linux-gnu-gcc  CONFIG_CROSS_COMPILER_PREFIX=${CONFIG_OS_ARCH_TARGET}- ${MAKE} -C ${PGK_SOURCE_DIR}
+	${MAKE} -C ${PGK_SOURCE_DIR}
 	
 ${PKG_INSTALL}:
 	${MAKE} -C ${PGK_SOURCE_DIR} install		

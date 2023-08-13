@@ -1,0 +1,8 @@
+Package: p11-kit
+Architecture: amd64
+Version: 0.24.1
+Provides: p11-kit
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 4848
+Description: p11-kit
