@@ -1,0 +1,9 @@
+Package: libarchive
+Architecture: amd64
+Version: 3.6.2
+Provides: libarchive
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: nettle
+Installed-Size: 4160
+Description: libarchive

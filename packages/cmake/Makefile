@@ -35,7 +35,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PGK_BUILD_DIR}
-	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr 
+	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --system-libs --no-system-jsoncpp --no-system-librhash 
 	
 ${PKG_COMPILE}:
 	${MAKE} -C ${PGK_BUILD_DIR} -DCMAKE_USE_OPENSSL=OFF

@@ -8,7 +8,7 @@ dpkg: compile install
 
 compile:
 	python3 configure.py --bootstrap
-
+## or cmake -DCMAKE_INSTALL_PREFIX=/usr  CMakeLists.txt
 install:
 	mkdir DPKG
 	mkdir -p DPKG/usr/bin

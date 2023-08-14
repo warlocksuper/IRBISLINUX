@@ -1,8 +1,8 @@
 Package: gcc
 Architecture: amd64
-Version: 12.3.0
+Version: 12.3.0.1
 Provides: gcc
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
-Installed-Size: 338988
+Installed-Size: 1759528
 Description: gcc

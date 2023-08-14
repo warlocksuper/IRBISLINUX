@@ -1,0 +1,8 @@
+Package: graphite2
+Architecture: amd64
+Version: 1.3.14
+Provides: graphite2
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 320
+Description: graphite2

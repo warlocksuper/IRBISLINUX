@@ -1,0 +1,9 @@
+Package: harfbuzz
+Architecture: amd64
+Version: 7.0.0
+Provides: harfbuzz
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: glib, freetype
+Installed-Size: 64656
+Description: harfbuzz

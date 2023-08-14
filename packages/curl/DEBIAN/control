@@ -1,9 +1,9 @@
-Package: wget
+Package: curl
 Architecture: amd64
 Version: 4.2.0
-Provides: wget
+Provides: curl
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: internet
-Depends: openssl libunistring
-Installed-Size: 5076
-Description: wget
+Depends: openssl
+Installed-Size: 3800
+Description: curl
