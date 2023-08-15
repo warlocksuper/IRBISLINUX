@@ -1,0 +1,8 @@
+Package: db
+Architecture: amd64
+Version: 5.3.28
+Provides: db
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 4532
+Description: Berkeley DB

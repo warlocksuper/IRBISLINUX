@@ -1,0 +1,8 @@
+Package: apt
+Architecture: amd64
+Version: 2.7.3
+Provides: apt
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 14332
+Description: APT Package manager

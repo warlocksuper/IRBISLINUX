@@ -1,0 +1,8 @@
+Package: lz4
+Architecture: amd64
+Version: 1.9.4
+Provides: lz4
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 708
+Description: extremely fast lossless compression algorithm library

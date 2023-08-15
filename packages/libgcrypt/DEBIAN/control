@@ -1,0 +1,9 @@
+Package: libgcrypt
+Architecture: amd64
+Version: 1.10.1
+Provides: libgcrypt
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libgpg-error(>=1.46)
+Installed-Size: 5640
+Description: General purpose cryptographic library

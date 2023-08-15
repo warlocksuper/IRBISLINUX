@@ -1,0 +1,9 @@
+Package: gdk-pixbuf
+Architecture: amd64
+Version: 2.42.10
+Provides: gdk-pixbuf
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libpng, libjpeg-turbo, glib(>=2.56.0)
+Installed-Size: 25936
+Description: Image loading and scaling

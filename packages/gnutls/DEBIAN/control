@@ -4,5 +4,6 @@ Version: 3.8.0
 Provides: gnutls
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
+Depends: libtasn1(>=4.19.0)
 Installed-Size: 19976
 Description: gnutls

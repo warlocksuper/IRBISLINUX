@@ -1,0 +1,8 @@
+Package: libxxhash
+Architecture: amd64
+Version: 0.8.2
+Provides: libxxhash
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 456
+Description: extremely fast hash algorithm

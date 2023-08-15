@@ -1,0 +1,8 @@
+Package: libgpg-error
+Architecture: amd64
+Version: 1.46
+Provides: libgpg-error
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 1936
+Description: GPG Runtime

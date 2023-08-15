@@ -1,0 +1,8 @@
+Package: shared-mime-info
+Architecture: amd64
+Version: 2.2
+Provides: shared-mime-info
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 9272
+Description: shared-mime-info

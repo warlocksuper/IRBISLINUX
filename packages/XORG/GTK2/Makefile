@@ -7,4 +7,4 @@ No package 'cairo' found
 No package 'gdk-pixbuf-2.0' found
 
 
-./configure --prefix=/usr --sysconfdir=/etc 
+./configure --prefix=/usr --sysconfdir=/etc --disable-static

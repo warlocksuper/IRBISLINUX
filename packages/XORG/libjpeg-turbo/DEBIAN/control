@@ -1,0 +1,8 @@
+Package: libjpeg-turbo
+Architecture: amd64
+Version: 2.1.5.1
+Provides: libjpeg-turbo
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 2048
+Description: A SIMD-accelerated JPEG codec that provides the TurboJPEG API
