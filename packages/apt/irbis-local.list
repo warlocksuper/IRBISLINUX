@@ -1,0 +1,2 @@
+deb file:/root/bin ./
+deb file:/root/binnew ./

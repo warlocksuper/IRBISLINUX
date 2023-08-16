@@ -1,0 +1,9 @@
+Package: pixman
+Architecture: amd64
+Version: 0.42.2
+Provides: pixman
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: libpng(>=1.6.39)
+Installed-Size: 5692
+Description: The pixman library (version 1)

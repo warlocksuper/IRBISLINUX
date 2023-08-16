@@ -1,9 +1,9 @@
 Package: git
 Architecture: amd64
-Version: 2.39.2
+Version: 2.39.2.1
 Provides: git
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
 Depends: gettext, curl, expat, ncurses
-Installed-Size: 89868
+Installed-Size:  
 Description: git

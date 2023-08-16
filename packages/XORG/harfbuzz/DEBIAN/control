@@ -5,5 +5,5 @@ Provides: harfbuzz
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
 Depends: glib, freetype
-Installed-Size: 64656
+Installed-Size: 63492
 Description: harfbuzz

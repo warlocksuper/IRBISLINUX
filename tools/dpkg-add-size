@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export PKG_SIZE_INSTALL=`du -s DPKG | cut -f1`
+sed -i 's/^Installed-Size:/Installed-Size: '$PKG_SIZE_INSTALL'/' DPKG/DEBIAN/control

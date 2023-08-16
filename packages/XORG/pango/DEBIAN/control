@@ -1,0 +1,9 @@
+Package: pango
+Architecture: amd64
+Version: 1.50.12
+Provides: pango
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: fribidi(>=1.0.6), fontconfig(>=2.13.0), cairo(>=1.12.10)
+Installed-Size: 2568
+Description: pango

@@ -1,0 +1,9 @@
+Package: fontconfig
+Architecture: amd64
+Version: 2.14.2
+Provides: fontconfig
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: freetype(>=2.13.0)
+Installed-Size: 1868
+Description: Font configuration and customization library

@@ -1,0 +1,8 @@
+Package: fribidi
+Architecture: amd64
+Version: 1.0.12
+Provides: fribidi
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 420
+Description: Unicode Bidirectional Algorithm Library

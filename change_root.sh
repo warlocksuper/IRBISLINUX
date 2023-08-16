@@ -18,8 +18,10 @@ sudo busybox chroot rootfs /usr/bin/env -i   \
     LANG=en_US.UTF-8		\
     LC_ALL=C			\
     LANGUAGE=en_US		\
-    GLIB_CFLAGS=-I/usr/include	\
-    GLIB_LIBS=-I/usr/lib	\
+    C_INCLUDE_PATH="-I/usr/include -I/include"\
+    CPLUS_INCLUDE_PATH="-I/usr/include -I/include"\
+    GLIB_CFLAGS="-I/usr/include"	\
+    GLIB_LIBS="-I/usr/lib"	\
     TERM="$TERM"                \
     PS1='(IRBIS) \u:\w\$ ' \
     PATH=/bin:/usr/bin:/usr/sbin     \
