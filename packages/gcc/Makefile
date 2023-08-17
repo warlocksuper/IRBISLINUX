@@ -76,4 +76,4 @@ ${GCC_STAGE2_INSTALL}:
 	
 	
 dpkg:
-	../configure --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --libexecdir=/usr/lib --sysconfdir=/etc --datadir=/usr/share --localstatedir=/var --mandir=/usr/man --infodir=/usr/info --disable-multilib  --with-system-zlib --with-bugurl=https://support.irbis.su/ --with-pkgversion=IRBIS GCC 12.3.0 --enable-shared --disable-__cxa_atexit --enable-target-optspace --with-gnu-ld 	
+	../configure --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --libexecdir=/usr/lib --sysconfdir=/etc --datadir=/usr/share --localstatedir=/var --mandir=/usr/man --infodir=/usr/info --disable-multilib  --with-system-zlib --with-bugurl=https://support.irbis.su/ --with-pkgversion="IRBIS GCC 12.3.0" --enable-shared --disable-static --enable-target-optspace --enable-languages=c,c++,go --disable-decimal-float	

@@ -1,8 +1,8 @@
 Package: bash
 Architecture: amd64
-Version: 5.2.15
+Version: 5.2.15.1
 Provides: bash
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
-Section: devel
+Section: system
 Installed-Size: 14160
 Description: bash

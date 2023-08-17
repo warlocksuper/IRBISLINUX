@@ -1,8 +1,8 @@
 Package: libtasn1
 Architecture: amd64
-Version: 4.19.0
+Version: 4.19.0.1
 Provides: libtasn1
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
-Installed-Size: 744
-Description: libtasn1
+Installed-Size: 
+Description: Library for ASN.1 and DER manipulation

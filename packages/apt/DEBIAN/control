@@ -4,5 +4,6 @@ Version: 2.7.3
 Provides: apt
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
+Depends: libgcrypt(>=1.10.1)
 Installed-Size: 14332
 Description: APT Package manager

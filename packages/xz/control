@@ -1,0 +1,8 @@
+Package: liblzma
+Architecture: amd64
+Version: 5.4.1
+Provides: liblzma
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 3352
+Description: General purpose data compression library

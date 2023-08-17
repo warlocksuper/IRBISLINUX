@@ -1,8 +1,8 @@
 Package: nettle
 Architecture: amd64
-Version: 3.8.1
+Version: 3.8.1.1
 Provides: nettle
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
 Installed-Size: 3556
-Description: nettle
+Description: Nettle low-level cryptographic library (symmetric algorithms)

@@ -47,6 +47,10 @@ temporary_tools:
 	${MAKE} -C git temporary_tools							
 	${MAKE} -C dh_make  temporary_tools
 	
-dpkg:
+dpkg_build:
+	${MAKE} -C bash dpkg	
+	${MAKE} -C xz dpkg
 	${MAKE} -C ninja dpkg
 	${MAKE} -C XORG dpkg
+
+		

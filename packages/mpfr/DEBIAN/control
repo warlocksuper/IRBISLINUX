@@ -4,6 +4,6 @@ Version: 4.2.0
 Provides: libmpfr
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
-Depends: libgmp(>=6.2.1)
+Depends: libgmp(>=6.2.1), libxxhash(>=0.8.2) 
 Installed-Size: 2784
 Description: libmpfr

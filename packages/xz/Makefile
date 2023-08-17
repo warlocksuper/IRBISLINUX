@@ -14,8 +14,11 @@ PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
-
+PKG_CONFIGURE_DPKG = ${PGK_BUILD_DIR}/Makefile
+PKG_COMPILE_DPKG = ${PGK_BUILD_DIR}/src/xz/xz-args.o
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}
+PGK_INSTALL_DPKG = ${PGK_BUILD_DIR}/DPKG/usr/bin/xz
+
 
 all:
 
@@ -38,4 +41,17 @@ ${PKG_COMPILE}:
 
 ${PGK_INSTALL}:
 	${MAKE} -C ${PGK_BUILD_DIR} DESTDIR=${ROOT_FS} install
+	
+dpkg:	${PKG_TAR} ${PGK_SOURCE_DIR} ${PKG_CONFIGURE_DPKG} ${PKG_COMPILE} ${PGK_INSTALL_DPKG}
+
+		
 				
+${PKG_CONFIGURE_DPKG}:
+	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --sysconfdir=/etc --disable-static	
+	
+${PGK_INSTALL_DPKG}:
+	@mkdir -p ${PGK_BUILD_DIR}/DPKG
+	${MAKE} -C ${PGK_BUILD_DIR} DESTDIR=${PGK_BUILD_DIR}/DPKG install
+	TOTALSIZE=$(du -sb $PGK_BUILD_DIR/DPKG | cut -f1)
+	@mkdir -p ${PGK_BUILD_DIR}/DPKG/DEBIAN
+	echo "print total size "$(du -sb $PGK_BUILD_DIR/DPKG | cut -f1) >> ${PGK_BUILD_DIR}/DPKG/DEBIAN/control			
