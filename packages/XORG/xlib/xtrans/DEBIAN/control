@@ -1,0 +1,8 @@
+Package: xtrans
+Architecture: amd64
+Version: 1.4.0
+Provides: xtrans
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: Abstract network code for X

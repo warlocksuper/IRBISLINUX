@@ -1,0 +1,8 @@
+Package: xorgproto
+Architecture: amd64
+Version: 7.0.33
+Provides: xorgproto
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: Xproto

@@ -1,0 +1,8 @@
+Package: libdrm
+Architecture: amd64
+Version: 2.4.115
+Provides: libdrm
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: Userspace interface to kernel DRM services

@@ -1,0 +1,9 @@
+Package: gtk+
+Architecture: amd64
+Version: 4.2.0
+Provides: gtk+
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: gdk-pixbuf(>=2.42.10), atk(>=2.14.0), cairo(>=1.17.6.1), pango(>=1.50.12)
+Installed-Size: 
+Description: GTK+ Graphical UI Library (X11 target)

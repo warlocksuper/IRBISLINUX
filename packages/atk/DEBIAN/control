@@ -1,0 +1,9 @@
+Package: atk
+Architecture: amd64
+Version: 2.14.0
+Provides: atk
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: gobject-introspection(>=1.74.0)
+Installed-Size: 
+Description: Accessibility Toolkit

@@ -1,0 +1,8 @@
+Package: libxcb
+Architecture: amd64
+Version: 1.51
+Provides: libxcb
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: X-protocol C Binding

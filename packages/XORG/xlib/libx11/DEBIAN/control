@@ -1,0 +1,9 @@
+Package: libx11
+Architecture: amd64
+Version: 1.8.4
+Provides: libx11
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libxcb(>=1.11.1)
+Installed-Size: 
+Description: X Library

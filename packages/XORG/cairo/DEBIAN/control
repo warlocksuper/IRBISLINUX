@@ -1,9 +1,9 @@
 Package: cairo
 Architecture: amd64
-Version: 1.17.6
+Version: 1.17.6.1
 Provides: cairo
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: xorg
-Depends: libpng, pixman(>=0.42.2)
-Installed-Size: 8832
+Depends: libpng, pixman(>=0.42.2), libX11(>=1.8.4), libXext(>=1.3.5) 
+Installed-Size: 
 Description: Multi-platform 2D graphics library

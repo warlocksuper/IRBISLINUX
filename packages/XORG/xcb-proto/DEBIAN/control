@@ -1,0 +1,8 @@
+Package: xcb-proto
+Architecture: amd64
+Version: 1.15.2
+Provides: xcb-proto
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: X protocol descriptions for XCB

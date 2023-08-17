@@ -1,0 +1,8 @@
+Package: libxau
+Architecture: amd64
+Version: 1.0.11
+Provides: libxau
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: X authorization file management library

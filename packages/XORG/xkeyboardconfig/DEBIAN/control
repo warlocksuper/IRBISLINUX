@@ -1,0 +1,8 @@
+Package: xkeyboardconfig
+Architecture: amd64
+Version: 2.38
+Provides: xkeyboardconfig
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: X Keyboard configuration data

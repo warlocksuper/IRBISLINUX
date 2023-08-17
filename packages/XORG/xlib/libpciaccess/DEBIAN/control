@@ -1,0 +1,8 @@
+Package: libpciaccess
+Architecture: amd64
+Version: 0.17
+Provides: libpciaccess
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: Library providing generic access to the PCI bus and devices.
