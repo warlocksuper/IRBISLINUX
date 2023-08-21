@@ -30,3 +30,8 @@ ${DIFF_CONFIGURE}:
 ${DIFF_COMPILE}:
 	${MAKE} -C ${ROOT_BUILD}/diffutils
 	${MAKE} -C ${ROOT_BUILD}/diffutils DESTDIR=${ROOT_FS} install	
+	
+	
+dpkg:
+	./configure --prefix=/usr --sysconfdir=/etc	
+	

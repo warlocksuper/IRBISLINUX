@@ -41,3 +41,11 @@ ${PGK_INSTALL}:
 	@cd ${PGK_BUILD_DIR} && install -vm644 config/libelf.pc ${ROOT_FS}/usr/lib/pkgconfig
 	@rm -rf ${ROOT_FS}/usr/lib/libelf.a	
 
+
+dpkg:
+/*
+
+gzip.c:57:11: fatal error: bzlib.h: No such file or directory
+   57 | # include <bzlib.h>
+
+*/

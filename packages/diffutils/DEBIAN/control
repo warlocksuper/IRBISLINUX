@@ -1,0 +1,8 @@
+Package: diffutils
+Architecture: amd64
+Version: 3.9
+Provides: diffutils
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: diffutils
