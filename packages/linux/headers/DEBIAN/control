@@ -1,0 +1,8 @@
+Package: linux-headers
+Architecture: amd64
+Version: 6.1.37
+Provides: linux-headers
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: linux-headers
