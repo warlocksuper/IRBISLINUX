@@ -31,7 +31,7 @@ ${PGK_SOURCE_DIR}:
 		
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PGK_BUILD_DIR}
-	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --host=${CONFIG_OS_ARCH_TARGET} --disable-debuginfod --enable-libdebuginfod=dummy
+	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --host=${CONFIG_OS_ARCH_TARGET} --sysconfdir=/etc --disable-debuginfod --enable-libdebuginfod=dummy
 	
 ${PKG_COMPILE}:
 	${MAKE} -C ${PGK_BUILD_DIR}
@@ -43,6 +43,7 @@ ${PGK_INSTALL}:
 
 
 dpkg:
+	./configure --prefix=/usr --sysconfdir=/etc --disable-debuginfod --enable-libdebuginfod=dummy
 /*
 
 gzip.c:57:11: fatal error: bzlib.h: No such file or directory

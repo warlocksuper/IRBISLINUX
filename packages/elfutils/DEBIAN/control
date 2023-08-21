@@ -1,0 +1,9 @@
+Package: elfutils
+Architecture: amd64
+Version: 0.188
+Provides: elfutils
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libz(>=1.2.13)
+Installed-Size: 
+Description: elfutils libelf library to read and write ELF files
