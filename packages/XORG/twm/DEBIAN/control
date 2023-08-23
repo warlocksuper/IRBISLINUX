@@ -1,0 +1,9 @@
+Package: twm
+Architecture: amd64
+Version: 1.0.12
+Provides: twm
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: xt(>=1.2.1), xorg-server(>=21.1.7), libxmu(>=1.1.4), ice(>=1.1.1), sm(>=1.2.4)
+Installed-Size: 
+Description: twm

@@ -1,0 +1,9 @@
+Package: xt
+Architecture: amd64
+Version: 1.2.1
+Provides: xt
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: xorgproto(>=7.0.33), sm(>=1.2.4), ice(>=1.1.1), libx11(>=1.8.4)
+Installed-Size: 
+Description: X Toolkit Library

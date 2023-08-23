@@ -1,0 +1,8 @@
+Package: libxkbfile
+Architecture: amd64
+Version: 1.1.2
+Provides: libxkbfile
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: The xkbfile Library

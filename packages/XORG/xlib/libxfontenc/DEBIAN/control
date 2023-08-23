@@ -1,0 +1,8 @@
+Package: libfontenc
+Architecture: amd64
+Version: 1.1.7
+Provides: libfontenc
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: The fontenc Library

@@ -1,0 +1,8 @@
+Package: util-linux
+Architecture: amd64
+Version: 2.38.1
+Provides: util-linux
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: util-linux

@@ -1,0 +1,8 @@
+Package: libxxf86vm
+Architecture: amd64
+Version: 1.1.5
+Provides: libxxf86vm
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: XFree86 Video Mode Extension Library

@@ -1,0 +1,9 @@
+Package: ice
+Architecture: amd64
+Version: 1.1.1
+Provides: ice
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: xorgproto(>=7.0.33)
+Installed-Size: 
+Description: X Inter Client Exchange Library

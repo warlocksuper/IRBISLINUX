@@ -1,0 +1,9 @@
+Package: libxrandr
+Architecture: amd64
+Version: 1.5.3
+Provides: libxrandr
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: xorgproto(>=7.0.33)
+Installed-Size: 
+Description: X RandR Library

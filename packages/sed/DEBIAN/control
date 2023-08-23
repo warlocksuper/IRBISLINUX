@@ -1,0 +1,8 @@
+Package: sed
+Architecture: amd64
+Version: 4.9
+Provides: sed
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: sed

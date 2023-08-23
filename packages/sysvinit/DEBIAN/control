@@ -1,0 +1,8 @@
+Package: sysvinit
+Architecture: amd64
+Version: 3.06
+Provides: sysvinit
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: sysvinit

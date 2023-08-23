@@ -1,0 +1,8 @@
+Package: wayland
+Architecture: amd64
+Version: 1.21.0
+Provides: wayland
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: Wayland side library

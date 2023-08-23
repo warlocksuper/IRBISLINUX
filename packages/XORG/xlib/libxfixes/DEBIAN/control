@@ -1,0 +1,8 @@
+Package: libxfixes
+Architecture: amd64
+Version: 6.0.0
+Provides: libxfixes
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: X Fixes  Library

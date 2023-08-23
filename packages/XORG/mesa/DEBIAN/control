@@ -1,0 +1,9 @@
+Package: mesa
+Architecture: amd64
+Version: 22.3.6
+Provides: mesa
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: llvm(>=15.0.7), libxfixes(>=6.0.0), libxshmfence(>=1.3.2), libxrandr(>=1.5.3)
+Installed-Size: 
+Description: Mesa

@@ -1,0 +1,9 @@
+Package: libxfont2
+Architecture: amd64
+Version: 2.0.6
+Provides: libxshmfence
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: libfontenc(>=1.1.7), freetype(>=2.13.0), libz(>=1.2.13)
+Installed-Size: 
+Description: X font Library version 2

@@ -1,0 +1,9 @@
+Package: sm
+Architecture: amd64
+Version: 1.2.4
+Provides: sm
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: xorgproto(>=7.0.33), ice(>=1.1.1), util-linux(>=2.38.1) 
+Installed-Size: 
+Description: X Session Management Library

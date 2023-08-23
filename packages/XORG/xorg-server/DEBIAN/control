@@ -1,0 +1,9 @@
+Package: xorg-server
+Architecture: amd64
+Version: 21.1.7
+Provides: xorg-server
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: xorgproto(>=7.0.33), libxrender(>=0.9.11), pixman(>=0.42.2), libxcvt(>=0.1.2), libxxf86vm(>=1.1.5), libpciaccess(>=0.17) 
+Installed-Size: 
+Description: Modular X.Org X Server
