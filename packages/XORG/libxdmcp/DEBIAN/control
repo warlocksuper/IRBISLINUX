@@ -1,0 +1,9 @@
+Package: libxdmcp
+Architecture: amd64
+Version: 1.1.4
+Provides: libxdmcp
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: xorgproto(>=7.0.33)
+Installed-Size: 
+Description: X Display Manager Control Protocol library

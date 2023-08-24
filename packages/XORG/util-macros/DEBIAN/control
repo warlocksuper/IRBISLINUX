@@ -1,0 +1,8 @@
+Package: util-macros
+Architecture: amd64
+Version: 1.20.0
+Provides: util-macros
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: A set of autoconf project macros for X.Org modules

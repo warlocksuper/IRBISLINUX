@@ -1,0 +1,8 @@
+Package: font-util
+Architecture: amd64
+Version: 1.4.0
+Provides: font-util
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: Font utilities dirs

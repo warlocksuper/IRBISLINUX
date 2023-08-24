@@ -1,0 +1,9 @@
+Package: xcb-util
+Architecture: amd64
+Version: 0.4.1
+Provides: xcb-util
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libxcb(>=1.51)
+Installed-Size: 
+Description: XCB util core interface

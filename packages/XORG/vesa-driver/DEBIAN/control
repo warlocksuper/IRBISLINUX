@@ -1,0 +1,8 @@
+Package: xf86-video-vesa
+Architecture: amd64
+Version: 2.3.3
+Provides: xf86-video-vesa
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: Xorg VESA driver 

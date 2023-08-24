@@ -1,0 +1,8 @@
+#!/bin/sh
+
+
+alias dpkg-build="dpkg-deb --build DPKG "
+alias Configurep="./configure --prefix=/usr"
+alias Configures="./configure --prefix=/usr --sysconfdir=/etc"
+alias Configure.p="../configure --prefix=/usr"
+alias Configure.s="../configure --prefix=/usr --sysconfdir=/etc"

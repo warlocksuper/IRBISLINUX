@@ -1,0 +1,8 @@
+Package: font-alias
+Architecture: amd64
+Version: 1.0.4
+Provides: font-alias
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: font-alias
