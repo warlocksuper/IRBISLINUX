@@ -12,4 +12,5 @@ https://gitlab.freedesktop.org/wayland/wayland-protocols/-/release/1.31/download
 
 meson --prefix=/usr --buildtype=release ..
 
-../meson.build:86:1: ERROR: File unstable/keyboard-shortcuts-inhibit/keyboard-shortcuts-inhibit-unstable-v1.xml
+../meson.build:86:1: ERROR: File unstable/keyboard-shortcuts-inhibit/keyboard-shortcuts-inhibit-unstable-v1.xml     
+rename file keyboard-shortcuts-inhibit-unstable-v1.xm to keyboard-shortcuts-inhibit-unstable-v1.xml

@@ -37,4 +37,4 @@ ${BASH_INSTALL}:
 	@cd ${ROOT_FS}/bin && ln -sfv ../usr/bin/bash bash	
 	
 dpkg:
-	./configure --prefix=/usr --enable-readline --enable-history --sysconfdir=/etc	
+	./configure --prefix=/usr --enable-readline --enable-history --sysconfdir=/etc --enable-alias	

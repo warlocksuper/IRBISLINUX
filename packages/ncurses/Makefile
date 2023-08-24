@@ -36,5 +36,5 @@ ${NCURSES_COMPILE}:
 	${MAKE} -C ${ROOT_BUILD}/ncurses
 	${MAKE} -C ${ROOT_BUILD}/ncurses DESTDIR=${ROOT_FS} TIC_PATH=progs/tic install 
 ##	echo "INPUT(-lncursesw)" > ${ROOT_FS}/usr/lib/libncurses.so
-##./configure --prefix=/usr --with-shared --with-cxx-shared --enable-widec --with-libtool --without-static --disable-static --sysconfdir=/etc --enable-pc-files --without-normal
+##./configure --prefix=/usr --with-shared --with-cxx-shared --enable-widec --with-libtool --without-static --disable-static --sysconfdir=/etc --enable-pc-files --without-normal --without-debug
 

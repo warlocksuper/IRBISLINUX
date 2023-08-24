@@ -32,7 +32,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PGK_BUILD_DIR}
-	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --host=${CONFIG_OS_ARCH_TARGET}
+	@cd ${PGK_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure ./configure --prefix=/usr --sysconfdir=/etc --host=${CONFIG_OS_ARCH_TARGET}
 	
 ${PKG_COMPILE}:
 	${MAKE} -C ${PGK_BUILD_DIR}

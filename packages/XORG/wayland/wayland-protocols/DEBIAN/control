@@ -1,8 +1,8 @@
-Package: wayland
+Package: wayland-protocols
 Architecture: amd64
-Version: 1.21.0
-Provides: wayland
+Version: 1.31
+Provides: wayland-protocols
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
 Installed-Size: 
-Description: Wayland side library
+Description: Wayland protocol files
