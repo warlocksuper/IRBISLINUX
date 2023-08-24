@@ -1,0 +1,9 @@
+Package: libxkbcommon
+Architecture: amd64
+Version: 1.5.0
+Provides: libxkbcommon
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends:  libxcb(>=1.51), libxml2(>=2.10.3)
+Installed-Size: 
+Description: XKB API common to servers and clients. xkbcommon. xkbcommon-x11. xkbregistry XKB API common to servers and clients - X11 support XKB API to query available rules, models, layouts, variants and options

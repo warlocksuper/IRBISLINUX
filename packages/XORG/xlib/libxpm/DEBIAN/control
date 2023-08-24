@@ -1,0 +1,9 @@
+Package: libxpm
+Architecture: amd64
+Version: 3.5.15
+Provides: libxpm
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: xorgproto(>=7.0.33)
+Installed-Size: 
+Description: X Pixmap Library Xpm

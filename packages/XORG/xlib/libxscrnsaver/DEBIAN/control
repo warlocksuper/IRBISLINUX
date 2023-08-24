@@ -1,0 +1,9 @@
+Package: libxscrnsaver
+Architecture: amd64
+Version: 1.2.4
+Provides: libxscrnsaver
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: libx11(>=1.8.4), libxext(>=1.3.5)
+Installed-Size: 
+Description: The XScrnSaver Library

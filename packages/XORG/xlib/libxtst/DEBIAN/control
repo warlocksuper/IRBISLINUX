@@ -1,0 +1,9 @@
+Package: libxtst
+Architecture: amd64
+Version: 1.2.4
+Provides: libxtst
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: libx11(>=1.8.4), libxext(>=1.3.5), libxi(>=1.8)
+Installed-Size: 
+Description:  The Xtst Library

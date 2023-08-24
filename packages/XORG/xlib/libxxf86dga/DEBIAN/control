@@ -1,0 +1,9 @@
+Package: libxxf86dga
+Architecture: amd64
+Version: 1.1.6
+Provides: libxxf86dga
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: libx11(>=1.8.4), libxext(>=1.3.5) 
+Installed-Size: 
+Description:  XFree86 Direct Graphics Access Extension Library. Xxf86dga

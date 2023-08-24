@@ -1,0 +1,9 @@
+Package: libxdamage
+Architecture: amd64
+Version: 1.1.6
+Provides: libxdamage
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: xorgproto(>=7.0.33), libx11(>=1.8.4), libxfixes(>=6.0.0)
+Installed-Size: 
+Description: X Damage  Library

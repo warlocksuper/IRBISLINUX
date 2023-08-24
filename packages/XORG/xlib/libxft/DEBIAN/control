@@ -1,0 +1,9 @@
+Package: libxft
+Architecture: amd64
+Version: 2.3.7
+Provides: libxft
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: xorgproto(>=7.0.33), libxrender(>=0.9.11), fontconfig(>=2.14.2),  freetype(>=2.13.0)
+Installed-Size: 
+Description: X FreeType library. Xft

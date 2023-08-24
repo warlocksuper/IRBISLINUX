@@ -1,0 +1,9 @@
+Package: libfs
+Architecture: amd64
+Version: 1.0.9
+Provides: libfs
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: xorgproto(>=7.0.33)
+Installed-Size: 
+Description: Library Interface to the X Font Server libFS

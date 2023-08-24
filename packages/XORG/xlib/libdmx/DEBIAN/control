@@ -1,0 +1,9 @@
+Package: libdmx
+Architecture: amd64
+Version: 1.1.4
+Provides: libdmx
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: libx11(>=1.8.4), libxext(>=1.3.5)
+Installed-Size: 
+Description: The dmx Library. dmx. dmxproto

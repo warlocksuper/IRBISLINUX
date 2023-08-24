@@ -1,0 +1,9 @@
+Package: libxcomposite
+Architecture: amd64
+Version: 0.4.6
+Provides: libxcomposite
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: xorgproto(>=7.0.33), libx11(>=1.8.4), libxfixes(>=6.0.0)
+Installed-Size: 
+Description: X Composite Extension Library Xcomposite
