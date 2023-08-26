@@ -1,0 +1,8 @@
+Package: grub
+Architecture: amd64
+Version: 2.06
+Provides: grub
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: grub

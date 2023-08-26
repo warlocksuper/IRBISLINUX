@@ -1,0 +1,8 @@
+Package: glibc
+Architecture: amd64
+Version: 2.37
+Provides: glibc
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: Gnu libc. glibc. 

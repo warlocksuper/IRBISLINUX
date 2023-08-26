@@ -1,6 +1,6 @@
 Package: bash
 Architecture: amd64
-Version: 5.2.15.1
+Version: 5.2.15.2
 Provides: bash
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: system
