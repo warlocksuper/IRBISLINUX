@@ -1,0 +1,8 @@
+Package: efivar
+Architecture: amd64
+Version: 38
+Provides: efivar
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: UEFI Variable Management efivar.  UEFI Boot variable support efiboot. UEFI Variable Management efivar.

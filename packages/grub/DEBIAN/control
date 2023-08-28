@@ -1,8 +1,9 @@
 Package: grub
 Architecture: amd64
-Version: 2.06
+Version: 2.06.1
 Provides: grub
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: system
+Depends: efibootmgr(>=18), freetype(>=2.13.0) 
 Installed-Size: 
 Description: grub

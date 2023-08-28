@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+cd /usr/bin && ln -sf kmod depmod
+cd /usr/bin && ln -sf kmod insmod
+cd /usr/bin && ln -sf kmod modinfo
+cd /usr/bin && ln -sf kmod modprobe
+cd /usr/bin && ln -sf kmod rmmod
+cd /usr/bin && ln -sf kmod lsmod

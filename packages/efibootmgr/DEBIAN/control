@@ -1,0 +1,9 @@
+Package: efibootmgr
+Architecture: amd64
+Version: 18
+Provides: efibootmgr
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: efivar(>=38), popt(>=1.19) 
+Installed-Size: 
+Description: efibootmgr

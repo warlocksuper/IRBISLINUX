@@ -1,0 +1,8 @@
+Package: zstd
+Architecture: amd64
+Version: 1.5.4
+Provides: zstd
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: fast lossless compression algorithm library. zstd. libzstd 

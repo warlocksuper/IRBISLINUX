@@ -1,0 +1,9 @@
+Package: kmod
+Architecture: amd64
+Version: 30
+Provides: kmod
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: openssl(>=3.0.8) 
+Installed-Size: 
+Description: kmod depmod insmod modinfo modprobe rmmod lsmod
