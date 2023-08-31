@@ -1,0 +1,9 @@
+Package: xkbcomp
+Architecture: amd64
+Version: 1.4.6
+Provides: xkbcomp
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: libx11(>=1.8.4), libxkbfile(>=1.1.2), libxcb(>=1.51), libxau(>=1.0.11)  
+Installed-Size: 
+Description: XKB keymap compiler
