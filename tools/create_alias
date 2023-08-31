@@ -4,5 +4,6 @@
 alias dpkg-build="dpkg-deb --build DPKG "
 alias Configurep="./configure --prefix=/usr"
 alias Configures="./configure --prefix=/usr --sysconfdir=/etc"
+alias Configuresd="./configure --prefix=/usr --sysconfdir=/etc --disable-static"
 alias Configure.p="../configure --prefix=/usr"
 alias Configure.s="../configure --prefix=/usr --sysconfdir=/etc"

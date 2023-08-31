@@ -1,8 +1,8 @@
 Package: dbus
 Architecture: amd64
-Version: 1.14.6
+Version: 1.14.6.1
 Provides: dbus
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
-Installed-Size: 1640
-Description: dbus
+Installed-Size: 
+Description: Free desktop message bus .dbus
