@@ -1,0 +1,8 @@
+Package: make
+Architecture: amd64
+Version: 4.4
+Provides: make
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: make
