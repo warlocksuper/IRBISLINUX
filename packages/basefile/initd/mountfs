@@ -1,17 +1,4 @@
 #!/bin/sh
-########################################################################
-# Begin mountfs
-#
-# Description : File System Mount Script
-#
-# Authors     : Gerard Beekmans - gerard@linuxfromscratch.org
-#               DJ Lucas - dj@linuxfromscratch.org
-# Update      : Bruce Dubbs - bdubbs@linuxfromscratch.org
-#
-# Version     : LFS 7.0
-#
-########################################################################
-
 ### BEGIN INIT INFO
 # Provides:            $local_fs
 # Required-Start:      udev checkfs
@@ -25,10 +12,9 @@
 #                      remaining local filesystems defined in /etc/fstab on
 #                      start.  Remounts root filesystem read-only and unmounts
 #                      remaining filesystems on stop.
-# X-LFS-Provided-By:   LFS
 ### END INIT INFO
 
-. /lib/lsb/init-functions
+. /etc/init.d/function
 
 case "${1}" in
    start)
@@ -74,7 +60,8 @@ case "${1}" in
       fi
       ;;
    enable)
-   	ln -sf mountfs ../rc.d/rcS.d/S00mountfs
+        mkdir -p ../rc.d/rcS.d/
+   	cd ../rc.d/rcS.d/ && ln -sf ../../init.d/mountfs S00mountfs
    	log_info_msg "Service enable..."
       ;;
    disable)
