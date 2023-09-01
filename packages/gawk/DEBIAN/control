@@ -4,5 +4,6 @@ Version: 5.2.1
 Provides: gawk
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
+Depends: libmpfr(>=4.2.0), libgmp(>=6.2.1)
 Installed-Size: 
 Description: gawk. awk
