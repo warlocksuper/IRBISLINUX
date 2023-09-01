@@ -1,8 +1,8 @@
-Package: autoconf
+Package: gzip
 Architecture: amd64
-Version: 2.71.1
-Provides: pkg-config
+Version: 1.12
+Provides: gzip
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
 Installed-Size:
-Description: autoconf
+Description: gzip

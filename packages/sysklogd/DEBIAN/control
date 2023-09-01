@@ -1,8 +1,8 @@
-Package: autoconf
+Package: sysklogd
 Architecture: amd64
-Version: 2.71.1
+Version: 1.5.1
 Provides: pkg-config
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
 Installed-Size:
-Description: autoconf
+Description: sysklogd syslogd klogd
