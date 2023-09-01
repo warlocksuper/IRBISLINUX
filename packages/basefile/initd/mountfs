@@ -73,9 +73,16 @@ case "${1}" in
          evaluate_retval
       fi
       ;;
-
+   enable)
+   	ln -sf mountfs ../rc.d/rcS.d/S00mountfs
+   	log_info_msg "Service enable..."
+      ;;
+   disable)
+   	rm ../rc.d/rcS.d/S00mountfs
+   	log_info_msg "Service disable..."
+      ;;   
    *)
-      echo "Usage: ${0} {start|stop}"
+      echo "Usage: ${0} {start|stop|enable|disable}"
       exit 1
       ;;
 esac
