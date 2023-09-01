@@ -24,9 +24,8 @@ s1:1:respawn:/sbin/sulogin
 5:2345:respawn:/sbin/agetty tty5 9600
 6:2345:respawn:/sbin/agetty tty6 9600
 
-7:2345:restart:/sbin/init
-8:2345:ctrlaltdel:/sbin/reboot
-9:2345:shutdown:/bin/umount -a -r
-10:2345:shutdown:/sbin/swapoff -a
+#7:2345:restart:/sbin/init
+#9:2345:shutdown:/bin/umount -a -r
+#10:2345:shutdown:/sbin/swapoff -a
 
 # End /etc/inittab
