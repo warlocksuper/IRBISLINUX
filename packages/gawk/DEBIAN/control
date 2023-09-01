@@ -1,0 +1,8 @@
+Package: gawk
+Architecture: amd64
+Version: 5.2.1
+Provides: gawk
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: gawk. awk
