@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+
+mkdir -p /etc/default
+useradd -D --gid 999

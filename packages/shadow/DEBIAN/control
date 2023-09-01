@@ -1,0 +1,11 @@
+Package: shadow
+Architecture: amd64
+Version: 4.13
+Provides: shadow
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: openssl(>=3.0.8)
+Replaces: util-linux
+Installed-Size:
+Description: shadow, passwd
+
