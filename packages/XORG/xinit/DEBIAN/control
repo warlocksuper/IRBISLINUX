@@ -1,0 +1,9 @@
+Package: xinit
+Architecture: amd64
+Version: 1.4.2
+Provides: kmod
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: libx11(>=1.8.4), libxcb(>=1.51), libxau(>=1.0.11) 
+Installed-Size: 
+Description: xinit script to start x server 

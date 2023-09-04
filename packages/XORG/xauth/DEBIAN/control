@@ -1,0 +1,9 @@
+Package: xauth
+Architecture: amd64
+Version: 1.1
+Provides: xauth
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: libx11(>=1.8.4), libxcb(>=1.51), libxau(>=1.0.11), libxext(>=1.3.5), libxmu(>=1.1.4) 
+Installed-Size: 
+Description: xauth 
