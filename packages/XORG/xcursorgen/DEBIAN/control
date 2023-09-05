@@ -1,0 +1,9 @@
+Package: xcursorgen
+Architecture: amd64
+Version: 1.0.8
+Provides: xcursorgen
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: libxcursor(>=1.2.0)
+Installed-Size: 
+Description: xcursorgen

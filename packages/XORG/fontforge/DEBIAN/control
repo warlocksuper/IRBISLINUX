@@ -1,0 +1,10 @@
+Package: fontforge
+Architecture: amd64
+Version: 20230101
+Provides: fontforge
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: freetype(>=2.13.0),libffi(>=3.4.4), glib(>=2.74.5), libxml2(>=2.10.3), python3(>=3.11.2.1), gobject-introspection(>=1.74.0), harfbuzz(>=7.0.0), libpng(>=1.6.39),liblzma(>=5.4.1), pcre2(>=10.40), graphite2(>=1.3.14), libz(>=1.2.13), bzip2(>=1.0.8.1) 
+Installed-Size: 
+Description: Fontforge configuration and customization library
+

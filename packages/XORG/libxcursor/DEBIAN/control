@@ -1,0 +1,9 @@
+Package: libxcursor
+Architecture: amd64
+Version: 1.2.0
+Provides: libxcursor
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: libx11(>=1.8.4), xorgproto(>=7.0.33), libxrender(>=0.9.11), libxfixes(>=1.2.0) 
+Installed-Size: 
+Description: X Cursor Library. libxcursor Xcursor

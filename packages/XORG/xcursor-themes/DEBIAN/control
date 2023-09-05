@@ -1,0 +1,7 @@
+Package: xcursor-themes
+Architecture: amd64
+Version: 1.0.6
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: xcursor-themes

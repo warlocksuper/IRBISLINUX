@@ -1,0 +1,8 @@
+Package: valgrind
+Architecture: amd64
+Version: 3.20.0
+Provides: valgrind
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: A dynamic binary instrumentation framework

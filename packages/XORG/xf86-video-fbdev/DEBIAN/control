@@ -1,0 +1,8 @@
+Package: xf86-video-fbdev
+Architecture: amd64
+Version: 0.5.0
+Provides: xf86-video-fbdev
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: xf86-video-fbdev 
