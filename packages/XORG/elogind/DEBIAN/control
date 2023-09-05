@@ -1,0 +1,8 @@
+Package: elogind
+Architecture: amd64
+Version: 246.10
+Provides: elogind
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: elogind Library 

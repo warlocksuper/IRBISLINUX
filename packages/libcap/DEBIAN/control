@@ -1,0 +1,8 @@
+Package: libcap
+Architecture: amd64
+Version: 2.69
+Provides: libcap
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size:
+Description: libcap - linux capabilities library. libpsx - linux posix syscall API for pthreads

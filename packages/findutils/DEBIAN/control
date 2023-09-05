@@ -1,0 +1,8 @@
+Package: findutils
+Architecture: amd64
+Version: 4.9.0
+Provides: findutils
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: findutils
