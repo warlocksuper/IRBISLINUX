@@ -19,21 +19,21 @@ case "${1}" in
    start)
       log_info_msg "Starting system log daemon..."
       parms=${SYSKLOGD_PARMS-'-m 0'}
-      start_daemon /sbin/syslogd $parms
+      start_daemon /usr/sbin/syslogd $parms
       evaluate_retval
 
       log_info_msg "Starting kernel log daemon..."
-      start_daemon /sbin/klogd
+      start_daemon /usr/sbin/klogd
       evaluate_retval
       ;;
 
    stop)
       log_info_msg "Stopping kernel log daemon..."
-      killproc /sbin/klogd
+      killproc /usr/sbin/klogd
       evaluate_retval
 
       log_info_msg "Stopping system log daemon..."
-      killproc /sbin/syslogd
+      killproc /usr/sbin/syslogd
       evaluate_retval
       ;;
 
@@ -51,7 +51,7 @@ case "${1}" in
       ;;
 
    status)
-      statusproc /sbin/syslogd
+      statusproc /usr/sbin/syslogd
       statusproc klogd
       ;;
    enable)
