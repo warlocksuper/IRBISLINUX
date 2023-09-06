@@ -1,0 +1,8 @@
+Package: xf86-input-mouse
+Architecture: amd64
+Version: 1.9.5
+Provides: xf86-input-mouse
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: xf86-input-mouse 
