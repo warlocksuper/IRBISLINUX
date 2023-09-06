@@ -1,16 +1,4 @@
 #!/bin/sh
-########################################################################
-# Begin sysklogd
-#
-# Description : Sysklogd loader
-#
-# Authors     : Gerard Beekmans - gerard@linuxfromscratch.org
-#               DJ Lucas - dj@linuxfromscratch.org
-# Update      : Bruce Dubbs - bdubbs@linuxfromscratch.org
-#
-# Version     : LFS 7.0
-#
-########################################################################
 
 ### BEGIN INIT INFO
 # Provides:            $syslog
@@ -23,10 +11,9 @@
 # Short-Description:   Starts kernel and system log daemons.
 # Description:         Starts kernel and system log daemons.
 #                      /etc/fstab.
-# X-LFS-Provided-By:   LFS
 ### END INIT INFO
 
-. /lib/lsb/init-functions
+. /etc/init.d/function
 
 case "${1}" in
    start)
@@ -67,9 +54,18 @@ case "${1}" in
       statusproc /sbin/syslogd
       statusproc klogd
       ;;
+   enable)
+      mkdir -p /etc/rc.d/rcS.d
+      cd /etc/rc.d/rcS.d && ln -sf ../../init.d/sysklogd S03sysklogd
+      log_info_msg "Service sysklogd enable...\n\n"
+      ;;
 
+   disable)
+      rm /etc/rc.d/rcS.d/S03sysklogd
+      log_info_msg "Service sysklogd enable...\n\n"
+      ;;
    *)
-      echo "Usage: ${0} {start|stop|reload|restart|status}"
+      echo "Usage: ${0} {start|stop|reload|restart|status|enable|disable}"
       exit 1
       ;;
 esac
