@@ -1,17 +1,4 @@
 #!/bin/sh
-########################################################################
-# Begin udev
-#
-# Description : Udev cold-plugging script
-#
-# Authors     : Zack Winkles, Alexander E. Patrakov
-#               DJ Lucas - dj@linuxfromscratch.org
-# Update      : Bruce Dubbs - bdubbs@linuxfromscratch.org
-#
-# Version     : LFS 7.0
-#
-########################################################################
-
 ### BEGIN INIT INFO
 # Provides:            udev $time
 # Required-Start:      localnet
@@ -23,10 +10,9 @@
 # Short-Description:   Populates /dev with device nodes.
 # Description:         Mounts a tempfs on /dev and starts the udevd daemon.
 #                      Device nodes are created as defined by udev.
-# X-LFS-Provided-By:   LFS
 ### END INIT INFO
 
-. /lib/lsb/init-functions
+. /etc/init.d/function
 
 case "${1}" in
    start)
@@ -64,9 +50,15 @@ case "${1}" in
 
       log_success_msg2
       ;;
-
+enable)
+   mkdir -p ../rc.d/rcS.d
+   cp ../rc.d/rcS.d/ && ln -sf ../../init.d/udev S02udev
+   log_info_msg "Service udev enable..."
+disable)
+   rm /etc/init.d/rcS.d/S02udev
+   log_info_msg "Service udev disable..."
    *)
-      echo "Usage ${0} {start}"
+      echo "Usage ${0} {start|enable|disable}"
       exit 1
       ;;
 esac
