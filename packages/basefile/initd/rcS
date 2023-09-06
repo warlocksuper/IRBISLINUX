@@ -152,7 +152,7 @@ if [ "${previous}" != "N" ]; then
       run ${i} stop
       error_value=${?}
 
-      if [ "${error_value}" != "0" ]; then print_error_msg; fi
+      if [ "${error_value}" != "0" ]; then print_error_message; fi
    done
 fi
 
@@ -185,7 +185,7 @@ do
 
    error_value=${?}
 
-   if [ "${error_value}" != "0" ]; then print_error_msg; fi
+   if [ "${error_value}" != "0" ]; then print_error_message; fi
 done
 
 # Store interactive variable on switch from runlevel S and remove if not
