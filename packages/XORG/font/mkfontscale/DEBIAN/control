@@ -1,0 +1,9 @@
+Package: mkfontscale
+Architecture: amd64
+Version: 1.2.1
+Provides: mkfontscale
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Replaces: mkfontdir
+Installed-Size: 
+Description: mkfontscale . mkfontdir

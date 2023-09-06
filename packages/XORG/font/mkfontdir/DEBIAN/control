@@ -1,0 +1,8 @@
+Package: mkfontdir
+Architecture: amd64
+Version: 1.0.7
+Provides: mkfontdir
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: mkfontdir

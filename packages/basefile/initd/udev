@@ -50,13 +50,15 @@ case "${1}" in
 
       log_success_msg2
       ;;
-enable)
-   mkdir -p ../rc.d/rcS.d
-   cp ../rc.d/rcS.d/ && ln -sf ../../init.d/udev S02udev
-   log_info_msg "Service udev enable..."
-disable)
-   rm /etc/init.d/rcS.d/S02udev
-   log_info_msg "Service udev disable..."
+    enable)
+	mkdir -p ../rc.d/rcS.d
+	cp ../rc.d/rcS.d/ && ln -sf ../../init.d/udev S02udev
+	log_info_msg "Service udev enable..."
+     ;;
+    disable)
+	rm /etc/init.d/rcS.d/S02udev
+	log_info_msg "Service udev disable..."
+	;;
    *)
       echo "Usage ${0} {start|enable|disable}"
       exit 1

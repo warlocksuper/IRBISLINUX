@@ -1,0 +1,8 @@
+Package: font-bh-ttf
+Architecture: amd64
+Version: 1.0.3
+Provides: font-bh-ttf
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: font-bh-ttf
