@@ -1,0 +1,9 @@
+Package: tiff
+Architecture: amd64
+Version: 4.0.7
+Provides: tiff
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: liblzma(>=5.4.1), libjpeg-turbo(>=2.1.5.1), libz(>=1.2.13)  
+Installed-Size: 
+Description: TIFF library
