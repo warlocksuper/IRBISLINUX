@@ -1,0 +1,9 @@
+Package: file
+Architecture: amd64
+Version: 5.44
+Provides: file
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: zstd(>=1.5.4), liblzma(>=5.4.1), bzip2(>=1.0.8.1), libz(>=1.2.13) 
+Installed-Size: 
+Description: file. libmagic

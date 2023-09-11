@@ -1,0 +1,8 @@
+Package: dhcp
+Architecture: amd64
+Version: 4.4.3-P1
+Provides: dhcp
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: network
+Installed-Size:  
+Description: dhclient dhcpd  omshell
