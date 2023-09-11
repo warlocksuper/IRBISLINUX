@@ -1,0 +1,8 @@
+Package: feh
+Architecture: amd64
+Version: 3.9.1
+Provides: feh
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size:  
+Description: feh 
