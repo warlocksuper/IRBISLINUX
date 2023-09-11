@@ -1,0 +1,8 @@
+Package: xf86-input-keyboard
+Architecture: amd64
+Version: 1.9.0
+Provides: xf86-input-keyboard
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Installed-Size: 
+Description: xf86-input-keyboard 
