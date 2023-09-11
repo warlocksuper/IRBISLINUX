@@ -1,0 +1,9 @@
+Package: xkbcommon
+Architecture: amd64
+Version: 1.5.0
+Provides: xkbcommon
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: libxcb(>=1.51), libxml2(>=2.10.3)
+Installed-Size: 
+Description: XKB API common. xkbcommon. xkbcommon-x11. xkbregistry  
