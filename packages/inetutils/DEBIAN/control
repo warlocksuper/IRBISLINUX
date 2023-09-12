@@ -1,0 +1,8 @@
+Package: inetutils
+Architecture: amd64
+Version: 2.4
+Provides: inetutils
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: dnsdomainname ftp hostname ifconfig logger ping ping6 rcp rexec rlogin rsh telnet tftp traceroute whois ftpd inetd rexecd rshd syslogd talkd telnetd tftpd uucpd
