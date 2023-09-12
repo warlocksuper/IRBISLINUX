@@ -1,0 +1,10 @@
+Package: gst-plugins-base
+Architecture: amd64
+Version: 1.22.0
+Provides: gst-plugins-base
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: gstreamer(>=1.22.0), gobject-introspection(>=1.74.0), glib(>=2.74.5), libffi(>=3.4.4), pcre2(>=10.40)  
+Installed-Size: 
+Description: Streaming media framework, base plugins libraries. gstreamer-allocators-1.0
+gstreamer-app-1.0 gstreamer-audio-1.0 gstreamer-fft-1.0 gstreamer-gl-1.0  gstreamer-gl-egl-1.0 gstreamer-gl-prototypes-1.0 gstreamer-gl-wayland-1.0 gstreamer-gl-x11-1.0 gstreamer-pbutils-1.0 gstreamer-plugins-base-1.0 gstreamer-riff-1.0 gstreamer-rtp-1.0 gstreamer-rtsp-1.0 gstreamer-sdp-1.0 gstreamer-tag-1.0 gstreamer-video-1.0

@@ -1,0 +1,9 @@
+Package: gtk4
+Architecture: amd64
+Version: 4.8.3
+Provides: gtk4
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: gdk-pixbuf(>=2.42.10), atk(>=2.16.0), cairo(>=1.17.6.1), pango(>=1.50.12), wayland(>=1.21.0), wayland-protocols(>=1.31), libepoxy(>=1.5.10), fribidi(>=1.0.12)  
+Installed-Size: 
+Description: GTK4 Graphical UI Library.  graphene-1.0 graphene-gobject-1.0 gtk4-broadway gtk4-unix-print gtk4-wayland gtk4-x11 gtk4
