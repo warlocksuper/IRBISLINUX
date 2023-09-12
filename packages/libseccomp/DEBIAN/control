@@ -1,0 +1,8 @@
+Package: libseccomp
+Architecture: amd64
+Version: 2.5.4
+Provides: libseccomp
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: The enhanced  seccomp library

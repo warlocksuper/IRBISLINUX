@@ -1,0 +1,8 @@
+Package: itstool
+Architecture: amd64
+Version: 2.0.7
+Provides: itstool
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: itstool

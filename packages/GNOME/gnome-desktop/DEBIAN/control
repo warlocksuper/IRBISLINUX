@@ -1,0 +1,9 @@
+Package: gnome-desktop
+Architecture: amd64
+Version: 43.2
+Provides: gnome-desktop
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Depends: gdk-pixbuf(>=2.42.10), glib(>=2.74.5), xkeyboardconfig(>=2.38), gsettings-desktop-schemas(>=43.0), xkbcommon(>=1.5.0), iso-codes(>=4.15.0), eudev(>=3.2.11), libseccomp(>=2.5.4)  
+Installed-Size: 
+Description: Utility library for GNOME desktop. gnome-bg-4 gnome-desktop-3 gnome-desktop-4 gnome-rr
