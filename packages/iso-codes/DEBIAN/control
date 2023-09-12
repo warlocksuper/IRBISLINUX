@@ -1,0 +1,7 @@
+Package: iso-codes
+Architecture: amd64
+Version: 4.15.0
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: ISO country language codes
