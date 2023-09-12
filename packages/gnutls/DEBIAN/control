@@ -1,9 +1,9 @@
 Package: gnutls
 Architecture: amd64
-Version: 3.8.0
+Version: 3.8.0.1
 Provides: gnutls
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
-Depends: libgmp(>=6.2.1), libunistring(>=1.1) 
-Installed-Size: 19976
-Description: Transport Security Layer implementation for the GNU system
+Depends: libgmp(>=6.2.1), libunistring(>=1.1), nettle(>=3.8.1.1), libtasn1(>=4.19.0.1), p11-kit(>=0.24.1), libz(>=1.2.13), zstd(>=1.5.4) 
+Installed-Size: 
+Description: Transport Security Layer implementation for the GNU system. gnutls
