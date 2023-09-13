@@ -1,0 +1,8 @@
+Package: json-glib
+Architecture: amd64
+Version: 1.6.6
+Provides: json-glib
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size:  
+Description: JSON Parser for Glib

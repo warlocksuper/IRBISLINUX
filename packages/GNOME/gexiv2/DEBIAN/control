@@ -1,0 +1,9 @@
+Package: gexiv2
+Architecture: amd64
+Version: 0.14.0
+Provides: gexiv2
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Depends: gobject-introspection(>=1.74.0), glib(>=2.74.5)  
+Installed-Size:  
+Description: GObject binding for exiv2

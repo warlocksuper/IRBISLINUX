@@ -1,0 +1,9 @@
+Package: vala
+Architecture: amd64
+Version: 0.56.4
+Provides: vala
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: gobject-introspection(>=1.74.0), glib(>=2.74.5), libffi(>=3.4.4), pcre2(>=10.40)  
+Installed-Size: 
+Description: The Vala compiler library

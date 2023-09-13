@@ -1,0 +1,9 @@
+Package: libxslt
+Architecture: amd64
+Version: 1.1.37
+Provides: libxslt
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libxml2(>=2.10.3), libz(>=1.2.13), liblzma(>=5.4.1)  
+Installed-Size: 
+Description: XSLT library version 2. libexslt  libxslt

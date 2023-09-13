@@ -1,0 +1,9 @@
+Package: gnome-autoar
+Architecture: amd64
+Version: 0.4.3
+Provides: gnome-autoar
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Depends: libarchive(>=3.6.2), glib(>=2.74.5)  
+Installed-Size: 
+Description: Archives integration support for GNOME. gnome-autoar  gnome-autoar-gtk

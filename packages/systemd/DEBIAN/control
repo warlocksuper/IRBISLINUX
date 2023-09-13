@@ -1,0 +1,9 @@
+Package: systemd
+Architecture: amd64
+Version: 254
+Provides: systemd
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: sys
+Replaces: elogind, eudev, sysvinit
+Installed-Size: 
+Description: systemd udev
