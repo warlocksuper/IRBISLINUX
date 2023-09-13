@@ -1,0 +1,8 @@
+Package: graphviz
+Architecture: amd64
+Version: 7.1.0
+Provides: graphviz
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: Graph library (file i/o, dot language parsing, graph, subgraph, node, edge, attribute, data structure manipulation) libcdt.pc  libcgraph.pc  libgvc.pc  libgvpr.pc  liblab_gamut.pc  libpathplan.pc  libxdot.pc acyclic  circo     dot           edgepaint  gml2gv      gv2gxl   gvmap     gvpr     mm2gv  osage      sccmap  twopi bcomps   cluster   dot2gxl       fdp        graphml2gv  gvcolor  gvmap.sh  gxl2dot  neato  patchwork  sfdp    unflatten ccomps   dijkstra  dot_builtins  gc         gv2gml      gvgen    gvpack    gxl2gv   nop    prune      tred    vimdot
