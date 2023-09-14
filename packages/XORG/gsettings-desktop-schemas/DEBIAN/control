@@ -1,6 +1,6 @@
 Package: gsettings-desktop-schemas
 Architecture: amd64
-Version: 43.0
+Version: 43.0.1
 Provides: gsettings-desktop-schemas
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: xorg

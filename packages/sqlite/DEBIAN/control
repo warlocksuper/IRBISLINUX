@@ -1,0 +1,9 @@
+Package: sqlite
+Architecture: amd64
+Version: 3400100
+Provides: sqlite
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libz(>=1.2.13) 
+Installed-Size: 
+Description: SQLite 3
