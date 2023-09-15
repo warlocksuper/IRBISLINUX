@@ -1,0 +1,9 @@
+Package: libnotify
+Architecture: amd64
+Version: 0.8.1
+Provides: libnotify
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends:  gdk-pixbuf(>=2.42.10), glib(>=2.74.5) 
+Installed-Size:  
+Description: Event Sound API. libcanberra-gtk  libcanberra-gtk3  libcanberra

@@ -1,0 +1,8 @@
+Package: lcms2
+Architecture: amd64
+Version: 2.14
+Provides: lcms2
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: LCMS Color Management Library

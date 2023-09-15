@@ -1,0 +1,8 @@
+Package: gdbm
+Architecture: amd64
+Version: 1.23
+Provides: gdbm
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size:  
+Description: GDBM

@@ -1,0 +1,7 @@
+Package: duktape
+Architecture: amd64
+Version: 2.7.0
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size:  
+Description: Embeddable Javascript engine

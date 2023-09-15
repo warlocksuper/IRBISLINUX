@@ -1,0 +1,9 @@
+Package: gweather
+Architecture: amd64
+Version: 4.2.0
+Provides: gweather
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Installed-Size:  
+Depends: glib(>=2.74.5), libsoup(>=2.99.2), libxml2(>=2.6.0), geocode-glib(>=3.26.4), json-glib(>=1.6.6) 
+Description: Gather weather information from online services

@@ -1,0 +1,8 @@
+Package: libpsl
+Architecture: amd64
+Version: 0.21.2
+Provides: libpsl
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: network
+Installed-Size:  
+Description: Public Suffix List C library

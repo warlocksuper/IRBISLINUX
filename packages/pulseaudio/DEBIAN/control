@@ -1,0 +1,7 @@
+Package: pulseaudio
+Architecture: amd64
+Version: 16.1
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: PulseAudio Client Interface

@@ -1,0 +1,8 @@
+Package: check
+Architecture: amd64
+Version: 0.15.2
+Provides: check
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size:   
+Description: check

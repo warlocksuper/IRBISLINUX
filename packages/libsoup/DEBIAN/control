@@ -1,0 +1,9 @@
+Package: libsoup
+Architecture: amd64
+Version: 3.2.2
+Provides: libsoup
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: network
+Depends: glib(>=2.74.5), gobject-introspection(>=1.74.0), sqlite(>=3400100), libpsl(>=0.21.2), libz(>=1.2.13), nghttp2(>=1.52.0)  
+Installed-Size: 
+Description: libsoup

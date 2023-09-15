@@ -1,0 +1,7 @@
+Package: xml-parser
+Architecture: amd64
+Version: 2.46
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size:   
+Description: xmll-parser

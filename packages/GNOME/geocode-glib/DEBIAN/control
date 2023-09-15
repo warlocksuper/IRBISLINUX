@@ -1,0 +1,8 @@
+Package: geocode-glib
+Architecture: amd64
+Version: 3.26.4
+Provides: geocode-glib
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Installed-Size:  
+Description: Helper library for geocoding services

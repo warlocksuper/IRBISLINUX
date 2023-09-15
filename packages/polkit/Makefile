@@ -1,0 +1,3 @@
+https://gitlab.freedesktop.org/polkit/polkit/-/archive/122/polkit-122.tar.gz
+
+depands duktapeMeson -Dauthfw=shadow

@@ -1,0 +1,7 @@
+Package: polkit
+Architecture: amd64
+Version: 122
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size:   
+Description: PolicyKit

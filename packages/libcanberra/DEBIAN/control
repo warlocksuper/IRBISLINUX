@@ -1,0 +1,9 @@
+Package: libcanberra
+Architecture: amd64
+Version: 0.30
+Provides: libcanberra
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends:  libx11(>=1.8.4), libvorbis(>=1.3.5) 
+Installed-Size:  
+Description: Event Sound API. libcanberra-gtk  libcanberra-gtk3  libcanberra

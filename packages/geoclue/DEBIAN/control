@@ -1,0 +1,9 @@
+Package: geoclue
+Architecture: amd64
+Version: 2.7.0
+Provides: geoclue
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: network
+Depends:  json-glib(>=1.6.6), libsoup(>=3.2.2) 
+Installed-Size: 
+Description: The Geoinformation Service

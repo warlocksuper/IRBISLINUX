@@ -1,0 +1,8 @@
+Package: libsndfile
+Architecture: amd64
+Version: 1.2.0
+Provides: libsndfile
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: A library for reading and writing audio file
