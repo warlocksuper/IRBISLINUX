@@ -1,0 +1,8 @@
+Package: doxygen
+Architecture: amd64
+Version: 1.9.7
+Provides: doxygen
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: doc
+Installed-Size: 
+Description: doxygen
