@@ -1,0 +1,9 @@
+Package: libgudev
+Architecture: amd64
+Version: 238
+Provides: libgudev
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: glib(>=2.74.5), gobject-introspection(>=1.74.0)  
+Installed-Size: 
+Description: Lib udev. libgudev.

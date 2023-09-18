@@ -1,0 +1,8 @@
+Package: readline
+Architecture: amd64
+Version: 8.2
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends:  ncurses(>=6.4)  
+Installed-Size: 
+Description: readline. libreadline

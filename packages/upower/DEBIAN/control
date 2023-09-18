@@ -1,0 +1,9 @@
+Package: upower
+Architecture: amd64
+Version: 1.90.2
+Provides: upower
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: glib(>=2.74.5), gobject-introspection(>=1.74.0)  
+Installed-Size: 
+Description: UPower is a system daemon for managing power devices

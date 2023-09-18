@@ -1,0 +1,8 @@
+Package: libndp
+Architecture: amd64
+Version: 1.8
+Provides: libndp
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: IPv6 NDP

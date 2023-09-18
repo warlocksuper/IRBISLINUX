@@ -1,0 +1,8 @@
+Package: alsa
+Architecture: amd64
+Version: 1.2.8
+Provides: alsa
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: Advanced Linux Sound Architecture (ALSA) - Library

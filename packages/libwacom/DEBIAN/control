@@ -1,0 +1,9 @@
+Package: libwacom
+Architecture: amd64
+Version: 2.6.0
+Provides: libwacom
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: glib(>=2.74.5), libgudev(>=238)  
+Installed-Size: 
+Description: Wacom model feature query library
