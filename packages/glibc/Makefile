@@ -42,7 +42,7 @@ ${PGK_SOURCE_DIR}:
 ${GLIBC_STAGE1_CONFIGURE}:
 	@mkdir -p ${PGK_BUILD_DIR}
 	@cp ${ROOT_DIR}/packages/glibc/configparms ${PGK_BUILD_DIR}/
-	@cd ${PGK_BUILD_DIR} && ${ROOT_SOURCE}/${PKG_NAME}/configure --prefix=/usr --host=${CONFIG_OS_ARCH_TARGET} --build=$($ROOT_SOURCE/$PKG_NAME/scripts/config.guess) --enable-kernel=3.2 --with-headers=${ROOT_FS}/usr/include libc_cv_slibdir=/usr/lib
+	@cd ${PGK_BUILD_DIR} && ${ROOT_SOURCE}/${PKG_NAME}/configure --prefix=/usr --host=${CONFIG_OS_ARCH_TARGET} --build=$($ROOT_SOURCE/$PKG_NAME/scripts/config.guess) --enable-kernel=3.2 --with-headers=${ROOT_FS}/usr/include libc_cv_slibdir=/usr/lib --disable-static
 	
 ${GLIBC_STAGE1_COMPILE}:
 	${MAKE} -C ${PGK_BUILD_DIR}
@@ -61,7 +61,7 @@ ${GLIBC_STAGE2_CONFIGURE}:
              --enable-kernel=3.2                      \
              --enable-stack-protector=strong          \
              --with-headers=/usr/include              \
-             libc_cv_slibdir=/usr/lib
+             libc_cv_slibdir=/usr/lib   --with-pkgversion="IRBIS libc"  --with-bugurl="https://support.irbis.su" --disable-static --build=x86_64-irbis-linux-gnu --disable-static
 	
 ${GCC_STAGE2_COMPILE}:
 	${MAKE} -C ${GLIBC_STAGE2_BUILD_DIR}
