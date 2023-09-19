@@ -1,0 +1,8 @@
+Package: joe
+Architecture: amd64
+Version: 30
+Provides: joe
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: JOE (Joe's own editor) is a small text editor capable of emulating WordStar, Pico, and Emacs.  jmacs, joe, jpico, jstar, rjoe, stringify, termidx, and uniproc
