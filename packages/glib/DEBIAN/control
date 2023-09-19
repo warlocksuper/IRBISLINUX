@@ -1,0 +1,9 @@
+Package: glib
+Architecture: amd64
+Version: 2.74.5
+Provides: glib
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libz(>=1.2.13), pcre2(>=10.40), libffi(>=3.4.4)
+Installed-Size: 
+Description: C Utility Library. gio. gio-unix. glib. gmodule. gmodule-export. gmodule-no-export. gobject. gthread
