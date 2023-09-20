@@ -4,6 +4,6 @@ Version: 2.7.3
 Provides: apt
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
-Depends: libgcrypt(>=1.10.1), gcc(>=12.3.0.1), bzip2(>=1.0.8.1), lz4(>=1.9.4), eudev(>=3.2.11), libxxhash(>=0.8.2), gnutls(>=3.8.0.deb), p11-kit(>=0.24.1), libunistring(>=1.1), libtasn1(>=4.19.0.1), nettle(>=3.8.1.1), libgmp(>=6.2.1), libffi(>+3.4.4)
+Depends: libgcrypt(>=1.10.1), gcc(>=12.3.0.1), bzip2(>=1.0.8.1), lz4(>=1.9.4), eudev(>=3.2.11), libxxhash(>=0.8.2), gnutls(>=3.8.0.deb), p11-kit(>=0.24.1), libunistring(>=1.1), libtasn1(>=4.19.0.1), nettle(>=3.8.1.1), libgmp(>=6.2.1), libffi(>+3.4.4), libcap(>=2.69) 
 Installed-Size: 
 Description: APT Package manager
