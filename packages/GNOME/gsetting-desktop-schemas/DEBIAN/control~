@@ -1,0 +1,8 @@
+Package: gsettings-desktop-schemas
+Architecture: amd64
+Version: 3.24.36
+Provides: gsettings-desktop-schemas
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Installed-Size: 
+Description: Shared GSettings schemas for the desktop, including helper headers

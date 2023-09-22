@@ -1,0 +1,8 @@
+Package: nautilus
+Architecture: amd64
+Version: 43.2
+Provides: nautilus
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Installed-Size: 
+Description: Nautilus

@@ -1,0 +1,1 @@
+https://download.gnome.org/sources/libcloudproviders/0.3/libcloudproviders-0.3.1.tar.xz

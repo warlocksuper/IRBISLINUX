@@ -1,0 +1,9 @@
+Package: libadwaita
+Architecture: amd64
+Version: 1.2.2
+Provides: libadwaita
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: gtk4(>=4.8.3), glib(>=2.74.5) 
+Installed-Size: 
+Description: Adwaita Mobile widget
