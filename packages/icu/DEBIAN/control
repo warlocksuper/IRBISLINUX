@@ -1,0 +1,8 @@
+Package: icu
+Architecture: amd64
+Version: 72.1
+Provides: icu
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 43572 
+Description: ICU

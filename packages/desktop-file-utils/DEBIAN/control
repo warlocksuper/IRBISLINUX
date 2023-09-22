@@ -1,0 +1,8 @@
+Package: desktop-file-utils
+Architecture: amd64
+Version: 0.26
+Provides: desktop-file-utils
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: desktop-file-utils

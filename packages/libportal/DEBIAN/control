@@ -1,0 +1,9 @@
+Package: libportal
+Architecture: amd64
+Version: 0.6
+Provides: libportal
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: gtk4(>=4.8.3), glib(>=2.74.5)  
+Installed-Size: 
+Description: Portal API

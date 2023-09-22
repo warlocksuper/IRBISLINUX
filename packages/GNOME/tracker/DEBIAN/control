@@ -1,0 +1,9 @@
+Package: tracker
+Architecture: amd64
+Version: 3.4.2
+Provides: tracker
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Depends: glib(>=2.74.5), icu(>=72.1), json-glib(>=1.6.6), libxml2(>=2.10.3), sqlite(>=3400100)  
+Installed-Size: 4284  
+Description: Tracker : A SPARQL triple store library
