@@ -1,0 +1,9 @@
+Package: libsecret
+Architecture: amd64
+Version: 0.20.5
+Provides: libsecret
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: glib(>=2.74.5), libgcrypt(>=1.10.1)  
+Installed-Size: 
+Description: GObject bindings for Secret Service API
