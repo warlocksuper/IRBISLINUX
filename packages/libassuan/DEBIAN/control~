@@ -1,0 +1,9 @@
+Package: libassuan
+Architecture: amd64
+Version: 2.5.5
+Provides: libassuan
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: gdk-pixbuf(>=2.42.10), atk(>=2.16.0), cairo(>=1.17.6.1), pango(>=1.50.12), wayland(>=1.21.0), wayland-protocols(>=1.31), libepoxy(>=1.5.10), fribidi(>=1.0.12)  
+Installed-Size: 
+Description: IPC library for the GnuPG components

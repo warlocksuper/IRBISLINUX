@@ -1,0 +1,9 @@
+Package: libksba
+Architecture: amd64
+Version: 1.6.3
+Provides: libksba
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libgpg-error(>=1.46) 
+Installed-Size: 
+Description: X.509 and CMS support library

@@ -1,0 +1,9 @@
+Package: gnupg
+Architecture: amd64
+Version: 2.4.0
+Provides: pnupg
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libassuan(>=2.5.5), libgcrypt(>=1.10.1), libksba(>=1.6.3), npth(>=1.6)
+Installed-Size: 
+Description: GnuPG

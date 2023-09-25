@@ -1,0 +1,9 @@
+Package: libassuan
+Architecture: amd64
+Version: 2.5.5
+Provides: libassuan
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libgpg-error(>=1.46)
+Installed-Size: 
+Description: IPC library for the GnuPG components

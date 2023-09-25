@@ -1,0 +1,9 @@
+Package: libssh2
+Architecture: amd64
+Version: 1.10.0
+Provides: libssh2
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libz(>=1.2.13), libgcrypt(>=1.10.1)
+Installed-Size: 3120  
+Description: Library for SSH-based communication

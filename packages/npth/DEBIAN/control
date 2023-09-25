@@ -1,0 +1,8 @@
+Package: npth
+Architecture: amd64
+Version: 1.6
+Provides: npth
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: npth
