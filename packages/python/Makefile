@@ -1,3 +1,4 @@
+## https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
@@ -47,4 +48,4 @@ clean:
 	
 	
 dpkg:
-	./configure --prefix=/usr --enable-shared --enable-optimizations --with-system-ffi			
+	./configure --prefix=/usr --sysconfdir=/etc --runstatedir=/run --enable-shared --enable-optimizations --with-system-ffi	--enable-ipv6 ./configure --prefix=/usr --sysconfdir=/etc --runstatedir=/run --enable-shared --enable-optimizations --with-system-ffi	--enable-ipv6	--with-system-expat --with-ensurepip=upgrade	

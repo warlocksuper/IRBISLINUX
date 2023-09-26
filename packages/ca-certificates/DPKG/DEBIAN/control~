@@ -1,0 +1,8 @@
+Package: ca-certificates
+Architecture: amd64
+Version: 20200601
+Provides: ca-certificates
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: ca-certificates install certification

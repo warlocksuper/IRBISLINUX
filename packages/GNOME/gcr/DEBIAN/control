@@ -1,0 +1,9 @@
+Package: gcr
+Architecture: amd64
+Version: 4.0.0
+Provides: gcr
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Depends: glib(>=2.74.5), gtk3(>=3.24.36), gnupg(>=2.4.0), openssh(>=9.2p1)   
+Installed-Size:  
+Description: GObject and GUI library for high level crypto parsing and display. gcr. gck
