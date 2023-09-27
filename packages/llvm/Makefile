@@ -7,7 +7,7 @@ tar -xf llvm-15.0.7.src.tar.xz
 cd llvm-15.0.7.src
 tar -xf ../llvm-cmake-15.0.7.src.tar.xz 
 cp cmake-15.0.7.src/Modules/* cmake/modules/
-###sed '/LLVM_COMMON_UTILS/s@../cmake@cmake-15.0.7.src@' -i CMakeList.txt
+###sed '/LLVM_COMMON_UTILS/s@../cmake@cmake-15.0.7.src@' -i CMakeLists.txt
 
 tar -xf ../clang-15.0.7.src.tar.xz
 
