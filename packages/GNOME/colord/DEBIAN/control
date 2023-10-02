@@ -1,0 +1,9 @@
+Package: colord
+Architecture: amd64
+Version: 1.4.7
+Provides: colord
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: glib(>=2.74.5), libgusb(>=0.4.5)  
+Installed-Size:  
+Description: colord is a system daemon for managing color devices. colorhud

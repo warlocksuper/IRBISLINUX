@@ -1,0 +1,9 @@
+Package: xwayland
+Architecture: amd64
+Version: 22.1.8
+Provides: xwayland
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: libtirpc(>=1.2.6)
+Installed-Size:  
+Description: X Server for Wayland

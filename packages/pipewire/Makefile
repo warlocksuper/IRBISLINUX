@@ -1,0 +1,1 @@
+https://github.com/PipeWire/pipewire/archive/0.3.66/pipewire-0.3.66.tar.gz

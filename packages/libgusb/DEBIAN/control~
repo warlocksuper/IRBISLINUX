@@ -1,0 +1,10 @@
+Package: libgusb
+Architecture: amd64
+Version: 0.4.5
+Provides: libgusb
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: glib(>=2.74.5), libusb(>=1.0.26), cairo(>=1.17.6.1), pango(>=1.50.12), wayland(>=1.21.0), wayland-protocols(>=1.31), libepoxy(>=1.5.10), fribidi(>=1.0.12)  
+Replaces: gtk+, atk
+Installed-Size: 
+Description: GUsb is a GLib binding for libusb1

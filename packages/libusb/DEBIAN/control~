@@ -1,0 +1,9 @@
+Package: libusb
+Architecture: amd64
+Version: 3.24.36
+Provides: libusb
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: eudev(>=3.2.11)
+Installed-Size: 
+Description: C API for USB device access from Linux, Mac OS X, Windows, OpenBSD/NetBSD and Solaris userspace

@@ -1,0 +1,3 @@
+https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.24.0/libinput-1.24.0.tar.bz2
+
+depend mtdev libevdev

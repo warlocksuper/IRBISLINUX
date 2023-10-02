@@ -1,0 +1,9 @@
+Package: mutter
+Architecture: amd64
+Version: 43.3
+Provides: mutter
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Depends: libepoxy(>=1.5.10), libx11(>=1.8.4), libxi(>=1.8), libxfixes(>=6.0.0), gtk3(>=3.24.36), glib(>=2.74.5), gsettings-desktop-schemas(>=43.0), cairo(>=1.17.6.2), pango(>=1.50.12), wayland(>=1.21.0), wayland-protocols(>=1.31)  
+Installed-Size: 
+Description: Mutter compositor and window manager. libmutter-11. mutter-clutter. mutter-cogl. mutter-cogl-pango

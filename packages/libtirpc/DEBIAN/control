@@ -1,0 +1,8 @@
+Package: libtirpc
+Architecture: amd64
+Version: 1.2.6
+Provides: libtirpc
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: Transport Independent RPC Library

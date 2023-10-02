@@ -1,0 +1,8 @@
+Package: libevdev
+Architecture: amd64
+Version: 1.13.1
+Provides: libevdev
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: Handler library for evdev events

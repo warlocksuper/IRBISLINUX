@@ -1,0 +1,9 @@
+Package: libgusb
+Architecture: amd64
+Version: 0.4.5
+Provides: libgusb
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: glib(>=2.74.5), libusb(>=1.0.26), json-glib(>=1.6.6)
+Installed-Size: 
+Description: GUsb is a GLib binding for libusb1

@@ -1,0 +1,9 @@
+Package: libinput
+Architecture: amd64
+Version: 1.24.0
+Provides: libinput
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: mtdev(>=1.1.6), libevdev(>=1.13.1)
+Installed-Size: 
+Description: Input device library

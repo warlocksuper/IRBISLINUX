@@ -1,0 +1,9 @@
+Package: startup-notification
+Architecture: amd64
+Version: 0.12
+Provides: startup-notification
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: xcb-util(>=0.4.1)
+Installed-Size: 
+Description: Startup notification library

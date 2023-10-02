@@ -1,0 +1,8 @@
+Package: mtdev
+Architecture: amd64
+Version: 1.1.6
+Provides: mtdev
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: Multitouch Protocol Translation Library

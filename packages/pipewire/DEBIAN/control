@@ -1,0 +1,9 @@
+Package: pipewire
+Architecture: amd64
+Version: 0.3.66
+Provides: pipewire
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: glib(>= 2.74.5)
+Installed-Size: 
+Description: PipeWire Interface. libpipewire. libspa. libpipewire
