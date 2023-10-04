@@ -1,0 +1,5 @@
+#!/bin/bash
+
+groupadd -g 28 polkitd
+useradd -c "PolicyKit Daemon IRBIS" -d /etc/polkit-1  -u 28 -g polkitd -s /bin/false polkitd
+

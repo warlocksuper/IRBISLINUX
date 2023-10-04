@@ -1,0 +1,9 @@
+Package: pam
+Architecture: amd64
+Version: 1.5.2
+Provides: pam
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: gdk-pixbuf(>=2.42.10), atk(>=2.16.0), cairo(>=1.17.6.1), pango(>=1.50.12), wayland(>=1.21.0), wayland-protocols(>=1.31), libepoxy(>=1.5.10), fribidi(>=1.0.12)
+Installed-Size: 
+Description: The primary Linux-PAM library. It is used by PAM modules and PAM-aware applications.

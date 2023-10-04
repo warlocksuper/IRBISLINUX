@@ -1,0 +1,9 @@
+Package: gdm
+Architecture: amd64
+Version: 43.0
+Provides: gdm
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Depends: glib(>=2.74.5), systemd(>=254) 
+Installed-Size: 7940 
+Description: GDM daemon
