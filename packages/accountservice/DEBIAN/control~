@@ -1,0 +1,9 @@
+Package: accountsservice
+Architecture: amd64
+Version: 3.24.36
+Provides: accountsservice
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: glib(>=2.74.5)
+Installed-Size: 
+Description: Client for communicating with accounts service
