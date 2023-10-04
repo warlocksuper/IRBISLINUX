@@ -1,0 +1,8 @@
+Package: gnome-shell
+Architecture: amd64
+Version: 43.3
+Provides: gnome-shell
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Installed-Size: 
+Description: gnome-shell
