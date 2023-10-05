@@ -1,0 +1,8 @@
+Package: lxdm
+Architecture: amd64
+Version: 0.5.3
+Provides: lxdm
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lxde
+Installed-Size: 
+Description: lxdm

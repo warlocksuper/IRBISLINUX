@@ -1,0 +1,8 @@
+Package: lxsession
+Architecture: amd64
+Version: 0.5.5
+Provides: lxsession
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lxde
+Installed-Size: 
+Description: lxsession
