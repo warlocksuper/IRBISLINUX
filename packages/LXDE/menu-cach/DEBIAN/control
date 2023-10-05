@@ -1,0 +1,7 @@
+Package: menu-cache
+Architecture: amd64
+Version: 1.1.0
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lxde
+Installed-Size: 
+Description: lxde menu-cashe

@@ -1,0 +1,7 @@
+Package: lxmenu-data
+Architecture: amd64
+Version: 0.1.5
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lxde
+Installed-Size: 
+Description: lxmenu-data

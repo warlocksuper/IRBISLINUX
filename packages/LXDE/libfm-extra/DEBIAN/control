@@ -1,0 +1,7 @@
+Package: libfm-extra
+Architecture: amd64
+Version: 1.3.2
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lxde
+Installed-Size: 
+Description: A glib/gio-based lib used to develop file managers providing some file management utilities.

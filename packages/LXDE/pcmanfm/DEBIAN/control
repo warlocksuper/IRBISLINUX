@@ -1,0 +1,9 @@
+Package: pcmanfm
+Architecture: amd64
+Version: 1.3.2
+Provides: pcmanfm
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lxde
+Depends: libfm(>=1.3.2)
+Installed-Size: 
+Description: pcmanfm

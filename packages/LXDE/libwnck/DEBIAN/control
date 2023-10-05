@@ -1,0 +1,9 @@
+Package: libwnck
+Architecture: amd64
+Version: 2.30.7
+Provides: libwnck
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lxde
+Depends: glib(>=2.74.5), gtk+(>=4.2.0), cairo(>=1.17.6.1), pango(>=1.50.12), startup-notification(>=0.12), libxres(>=1.2.2)
+Installed-Size: 
+Description: Window Navigator Construction Kit library

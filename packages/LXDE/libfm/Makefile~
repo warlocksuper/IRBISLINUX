@@ -1,0 +1,5 @@
+https://downloads.sourceforge.net/pcmanfm/libfm-1.3.2.tar.xz
+
+
+
+Configure --disable-static
