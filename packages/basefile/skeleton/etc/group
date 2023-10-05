@@ -62,7 +62,6 @@ scanner:x:122:saned,user
 saned:x:123:
 geoclue:x:124:
 lightdm:x:125:
-polkitd:x:997:
 rtkit:x:126:
 colord:x:127:
 autologin:x:1000:user

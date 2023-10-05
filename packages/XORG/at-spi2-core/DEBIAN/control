@@ -1,9 +1,9 @@
 Package: at-spi2-core
 Architecture: amd64
-Version: 2.46.0
+Version: 2.46.0.1
 Provides: at-spi2-core
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: xorg
-Depends: glib-2.0(>=2.67.4), gobject-2.0(>=2.0.0), dbus(>=1.5), gmodule-2.0(>=2.0.0)    
-Installed-Size: 5424
+Depends: glib-2.0(>=2.67.4), gobject-2.0(>=2.0.0), dbus(>=1.5), gmodule-2.0(>=2.0.0), libx11(>=1.8.4), libxtst(>=1.2.4), libxi(>=1.8)    
+Installed-Size: 
 Description: Accessibility Toolkit

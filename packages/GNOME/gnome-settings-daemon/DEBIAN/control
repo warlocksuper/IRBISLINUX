@@ -1,6 +1,6 @@
 Package: gnome-setting-daemon
 Architecture: amd64
-Version: 43.0
+Version: 43.0.1
 Provides: gnome-setting-daemon
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Depends: geocode-glib(>=3.26.4), gobject-introspection(>=1.74.0), glib(>=2.74.5), gweather(>=4.2.0), geoclue(>=2.7.0), libnotify(>=0.8.1), polkit(>=122), json-glib(>=1.6.6), libsoup(>=3.2.2), libz(>=1.2.13), libffi(>=3.4.4), pcre2(>=10.40), libxml2(>=2.10.3), gdk-pixbuf(>=2.42.10), sqlite(>=3400100), libpsl(>=0.21.2), nghttp2(>=1.52.0), liblzma(>=5.4.1), libpng(>=1.6.39), libjpeg-turbo(>=2.1.5.1)  
