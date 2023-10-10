@@ -1,0 +1,7 @@
+Package: lxde-icon-theme
+Architecture: amd64
+Version: 0.5.1
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: lxde
+Installed-Size: 
+Description: lxde icon theme

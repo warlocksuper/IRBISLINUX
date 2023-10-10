@@ -1,6 +1,6 @@
 Package: upower
 Architecture: amd64
-Version: 1.90.2
+Version: 1.90.3
 Provides: upower
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: system

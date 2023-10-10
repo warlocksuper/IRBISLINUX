@@ -1,0 +1,9 @@
+Package: xfce4-dev-tools
+Architecture: amd64
+Version: 4.18.0
+Provides: xfce4-dev-tools
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: glib(>=2.74.5)
+Installed-Size: 
+Description: xfce4-dev-tools. xdt-autogen xdt-csource

@@ -1,0 +1,8 @@
+Package: cups
+Architecture: amd64
+Version: 2.4.2
+Provides: cups
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: Printing Manager service
