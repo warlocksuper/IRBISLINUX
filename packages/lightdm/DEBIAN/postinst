@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+groupadd -g 65 lightdm
+useradd -c "Light Daemon IRBIS" -d /var/lib/lightdm -u 65 -g lightdm -s /bin/false lightdm
+
+install -dm755 -o lightdm -g lightdm /var/lib/lightdm
+install -dm755 -o lightdm -g lightdm /var/lib/lightdm-data
+install -dm755 -o lightdm -g lightdm /var/cache/lightdm
+install -dm755 -o lightdm -g lightdm /var/log/lightdm

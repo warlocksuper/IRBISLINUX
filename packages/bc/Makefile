@@ -39,4 +39,5 @@ ${PKG_COMPILE}:
 ${PGK_INSTALL}:
 	${MAKE} -C ${PGK_BUILD_DIR} DESTDIR=${ROOT_FS} install
 
-
+dpkg:
+	LDFLAGS="-lncurses"  CC=gcc ./configure --prefix=/usr -r 

@@ -1,0 +1,9 @@
+Package: openbox
+Architecture: amd64
+Version: 3.6.1
+Provides: openbox
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: pango(>=1.50.12.1), sm(>=1.2.4), ice(>=1.1.1), libx11(>=1.8.4),  glib(>=2.74.5), libxml2(>=2.10.3)  
+Installed-Size: 
+Description: Openbox

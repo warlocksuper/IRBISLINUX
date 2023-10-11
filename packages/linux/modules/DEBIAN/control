@@ -1,0 +1,8 @@
+Package: linux-modules
+Architecture: amd64
+Version: 6.1.37.1
+Provides: linux-modules
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size: 
+Description: linux-modules

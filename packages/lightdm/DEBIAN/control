@@ -1,0 +1,10 @@
+Package: lightdm
+Architecture: amd64
+Version: 1.32.0
+Provides: lightdm
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: glib(>=2.74.5), libxklavier(>=5.4),  libx11(>=1.8.4)
+Replaces: gdm, lxdm
+Installed-Size: 
+Description: LightDM client

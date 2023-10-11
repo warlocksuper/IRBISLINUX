@@ -1,0 +1,9 @@
+Package: libxklavier
+Architecture: amd64
+Version: 5.4
+Provides: libxklavier
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: glib(>=2.74.5), libxml2(>=2.10.3)
+Installed-Size: 
+Description: libxklavier library

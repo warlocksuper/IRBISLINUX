@@ -1,0 +1,8 @@
+Package: polkit-gnome
+Architecture: amd64
+Version: 0.105
+Provides: polkit-gnome
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Installed-Size: 
+Description: The Polkit GNOME package provides an Authentication Agent for Polkit that integrates well with the GNOME Desktop environment.

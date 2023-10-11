@@ -1,0 +1,9 @@
+Package: lightdm-gtk-greeter
+Architecture: amd64
+Version: 2.0.8
+Provides: lightdm-gtk-greeter
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: xfce4-dev-tools(>=4.18.0)  
+Installed-Size: 
+Description: lightdm-gtk-greeter

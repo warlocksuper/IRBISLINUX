@@ -1,0 +1,9 @@
+Package: bc
+Architecture: amd64
+Version: 6.2.4
+Provides: bc
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: readline(>=8.2), ncurses(>=6.4.1)  
+Installed-Size: 
+Description: The Bc package contains an arbitrary precision numeric processing language.
