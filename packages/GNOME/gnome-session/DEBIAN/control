@@ -1,6 +1,6 @@
 Package: gnome-session
 Architecture: amd64
-Version: 43.0
+Version: 43.0.1
 Provides: gnome-session
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: gnome

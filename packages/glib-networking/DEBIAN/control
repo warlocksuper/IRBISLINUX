@@ -1,0 +1,9 @@
+Package: glib-networking
+Architecture: amd64
+Version: 2.74.0
+Provides: glib-networking
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: network
+Depends: glib(>=2.74.5), gnutls(>=3.8.0.1), openssl(>=3.0.8)  
+Installed-Size: 
+Description: The GLib Networking package contains Network related gio modules for GLib.

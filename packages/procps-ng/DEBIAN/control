@@ -1,0 +1,8 @@
+Package: procps-ng
+Architecture: amd64
+Version: 4.0.2
+Provides: procps-ng
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description: The Procps-ng package contains programs for monitoring processes.
