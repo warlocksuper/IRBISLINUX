@@ -1,0 +1,9 @@
+Package: unzip
+Architecture: amd64
+Version: 6.0
+Provides: unzip
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Depends: bzip2(>=1.0.8.1)  
+Installed-Size: 
+Description: The UnZip package contains ZIP extraction utilities. These are useful for extracting files from ZIP archives. ZIP archives are created with PKZIP or Info-ZIP utilities, primarily in a DOS environment.

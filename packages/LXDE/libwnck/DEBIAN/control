@@ -1,6 +1,6 @@
 Package: libwnck
 Architecture: amd64
-Version: 2.30.7
+Version: 43.0
 Provides: libwnck
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: lxde

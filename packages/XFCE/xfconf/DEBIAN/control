@@ -1,0 +1,9 @@
+Package: xfconf
+Architecture: amd64
+Version: 4.18.0
+Provides: xfconf
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xfce
+Depends: glib(>=2.74.5)  
+Installed-Size: 
+Description: Xfconf is the configuration storage system for Xfce.

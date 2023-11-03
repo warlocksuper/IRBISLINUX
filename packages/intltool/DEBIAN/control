@@ -1,6 +1,6 @@
 Package: intltool
 Architecture: amd64
-Version: 0.50.2
+Version: 0.51.0
 Provides: intltool
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: system

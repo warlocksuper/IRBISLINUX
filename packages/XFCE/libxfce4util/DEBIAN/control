@@ -1,0 +1,9 @@
+Package: libxfce4util
+Architecture: amd64
+Version: 4.18.1
+Provides: libxfce4util
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xfce
+Depends: glib(>=2.74.5)  
+Installed-Size: 
+Description: The libxfce4util package is a basic utility library for the Xfce desktop environment.

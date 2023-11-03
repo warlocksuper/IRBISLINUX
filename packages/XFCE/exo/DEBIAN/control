@@ -1,0 +1,9 @@
+Package: exo
+Architecture: amd64
+Version: 4.18.0
+Provides: exo
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xfce
+Depends: gtk3(>=3.24.36), libxfce4util(>=4.18.1)
+Installed-Size: 
+Description: Exo is a support library used in the Xfce desktop. It also has some helper applications that are used throughout Xfce.
