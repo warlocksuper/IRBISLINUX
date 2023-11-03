@@ -1,0 +1,9 @@
+Package: xfwm4
+Architecture: amd64
+Version: 4.18.0
+Provides: xfwm4
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xfce
+Depends: libxfce4ui(>=4.18.2), libwnck(>=43.0)
+Installed-Size: 
+Description: Xfwm4 is the window manager for Xfce.

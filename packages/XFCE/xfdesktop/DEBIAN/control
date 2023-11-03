@@ -1,0 +1,10 @@
+Package: xfdesktop
+Architecture: amd64
+Version: 4.18.1
+Provides: xfdesktop
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xfce
+Depends: exo(>=4.18.0), libwnck(>=43.0)
+Installed-Size: 
+Description: Xfdesktop is a desktop manager for the Xfce Desktop Environment. Xfdesktop sets the background image / color, creates the right click menu and window list and displays the file icons on the desktop using Thunar libraries.
+

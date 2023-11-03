@@ -1,0 +1,9 @@
+Package: tumbler
+Architecture: amd64
+Version: 4.18.0
+Provides: tumbler
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xfce
+Depends: glib(>=2.74.5)
+Installed-Size: 
+Description: The Tumbler package contains a D-Bus thumbnailing service based on the thumbnail management D-Bus specification. This is useful for generating thumbnail images of files.

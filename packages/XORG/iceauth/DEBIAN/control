@@ -1,0 +1,10 @@
+Package: iceauth
+Architecture: amd64
+Version: 1.0.9
+Provides: iceauth
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xorg
+Depends: ice(>=1.1.1)
+Installed-Size: 
+Description: iceauth
+

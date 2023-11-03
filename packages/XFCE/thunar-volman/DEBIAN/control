@@ -1,0 +1,8 @@
+Package: thunar-volman
+Architecture: amd64
+Version: 4.18.0
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: xfce
+Depends: exo(>=4.18.0), glib(>=2.74.5), gtk3(>=3.24.36), libxfce4util(>=4.18.1)
+Installed-Size: 
+Description: The Thunar Volume Manager is an extension for the Thunar file manager, which enables automatic management of removable drives and media.
