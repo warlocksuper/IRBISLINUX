@@ -1,0 +1,9 @@
+Package: vte
+Architecture: amd64
+Version: 0.70.3
+Provides: vte
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: gnome
+Depends: glib(>=2.74.5), pango(>=1.50.12.1), gtk3(>=3.24.36)
+Installed-Size:   
+Description: The VTE package contains a termcap file implementation for terminal emulators.
