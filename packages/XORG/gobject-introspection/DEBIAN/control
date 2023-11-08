@@ -1,8 +1,9 @@
 Package: gobject-introspection
 Architecture: amd64
-Version: 1.74.0
+Version: 1.74.1
 Provides: gobject-introspection
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: devel
-Installed-Size: 14112
-Description: gobject-introspection
+Depends: glib(>=2.74.5), libffi(>=3.4.4), pcre2(>=10.40), bzip2(>=1.0.8.1)
+Installed-Size: 
+Description: The GObject Introspection is used to describe the program APIs and collect them in a uniform, machine readable format.

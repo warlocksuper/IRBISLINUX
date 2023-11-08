@@ -1,0 +1,9 @@
+Package: newt
+Architecture: amd64
+Version: 0.52.23
+Provides: newt
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: slang(>=2.3.4)
+Installed-Size: 
+Description: Newt is a programming library for color text mode, widget based user interfaces. It can be used to add stacked windows, entry widgets, checkboxes, radio buttons, labels, plain text fields, scrollbars, etc., to text mode user interfaces. Newt is based on the S-Lang library.

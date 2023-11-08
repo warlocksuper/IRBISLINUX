@@ -1,0 +1,7 @@
+Package: rtl8821ce
+Architecture: amd64
+Version: 6.1.37
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: drivers
+Installed-Size: 4772 
+Description: Realteck drivers

@@ -1,0 +1,9 @@
+Package: libnma
+Architecture: amd64
+Version: 1.10.6
+Provides: libnma
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: network
+Depends: networkmanager(>=1.42.0), libx11(>=1.8.4), gtk3(>=3.24.36), gnutls(>=3.8.0.1)
+Installed-Size:  
+Description: The libnma package contains an implementation of the NetworkManager GUI functions.

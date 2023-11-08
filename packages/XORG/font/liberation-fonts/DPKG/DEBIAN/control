@@ -1,0 +1,8 @@
+Package: liberation-fonts
+Architecture: amd64
+Version: 2.1.5
+Provides: liberation-fonts
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: fonts
+Installed-Size: 4320 
+Description: The Liberation Fonts is font collection which aims to provide document layout compatibility as usage of Times New Roman, Arial, Courier New.

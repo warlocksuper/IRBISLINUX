@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+/usr/bin/depmod -a 6.1.37
