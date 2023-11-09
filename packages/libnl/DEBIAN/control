@@ -1,0 +1,8 @@
+Package: libnl
+Architecture: amd64
+Version: 3.7.0
+Provides: libnl
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: network
+Installed-Size:  
+Description: The libnl suite is a collection of libraries providing APIs to netlink protocol based Linux kernel interfaces.
