@@ -5,5 +5,5 @@ Provides: gdm
 Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
 Section: gnome
 Depends: glib(>=2.74.5), systemd(>=254) 
-Installed-Size: 7940 
-Description: GDM daemon
+Installed-Size:  
+Description: GDM is a system service that is responsible for providing graphical logins and managing local and remote displays.

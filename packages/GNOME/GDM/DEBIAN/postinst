@@ -1,5 +1,5 @@
 #!/bin/bash
 
 groupadd -g 23 gdm
-useradd -c "GDM Daemon IRBIS" -d /var/lib/gdm -u 23 -g gdm -s /bin/false gdm
+useradd -c "GDM Daemon IRBIS" -d /var/lib/gdm -u 23 -g gdm -s /usr/bin/false gdm
 passwd -ql gdm
