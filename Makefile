@@ -8,6 +8,7 @@ ROOT_FS = ${PWD}/rootfs
 ROOT_BUILD = ${PWD}/build
 ROOT_SOURCE = ${PWD}/source
 ROOT_TOOLS = ${ROOT_FS}/tools
+ROOT_DPKG_ARCH = ${ROOT_DIR}/DPKG
 PATH = $(shell printenv PATH):${ROOT_TOOLS}/bin:${ROOT_FS}/usr/bin
 OS_CONFIG = ./.config
 ifeq (,$(wildcard $(OS_CONFIG)))
@@ -24,8 +25,6 @@ export
 all: tools_dir temporary_tools
 
 
-${OS_CONFIG}: menuconfig
-
 tools_dir:
 	${MAKE} -C tools
 
@@ -35,15 +34,29 @@ temporary_tools:
 packages:
 	${MAKE} -C packages
 
-menuconfig:
+menuconfig: ${OS_CONFIG}
 	echo ${ROOT_DIR}
 	conf/mconf Kconfig	
+
+
+menudpkg: ${OS_CONFIG}
+		echo ${ROOT_DIR}
+		conf/mconf packages_dpkg/Kconfig
+
+${OS_CONFIG}:
+	echo "" > ${ROOT_DIR}/.config
+
+
 
 clean:
 	rm -rf build rootfs/* tools/${CONFIG_OS_ARCH}-pc-linux-gnu tools/bin/* tools/include/* tools/lib/* tools/libexec/* tools/share 
 
 
+packagesdpkg: ${ROOT_DPKG_ARCH} 
+	${MAKE} -C packages_dpkg
 
+${ROOT_DPKG_ARCH}:
+	@mkdir -p ${ROOT_DPKG_ARCH}
 
 basefile:
 	${MAKE} -C packages/basefile stage1_tools
