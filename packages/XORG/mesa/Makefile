@@ -6,7 +6,7 @@ mkdir build
 cd build
 
 pip3 install mako
-meson setup --prefix=/usr --buildtype=release -Dplatforms=x11,wayland -Dgallium-drivers=auto -Dvulkan-drivers="" -Dvalgrind=disabled -Dlibunwind=disabled -Ddefault_library=shared -Dplatforms=x11 -Degl-native-platform=x11
+meson setup --prefix=/usr --buildtype=release -Dplatforms=x11,wayland -Dgallium-drivers=auto -Dvulkan-drivers="" -Dvalgrind=disabled -Dlibunwind=disabled -Ddefault_library=shared -Degl-native-platform=x11
 
 
 Dependency "libdrm_intel" not found, tried pkgconfig and cmake

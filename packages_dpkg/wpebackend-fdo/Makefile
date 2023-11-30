@@ -1,21 +1,21 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-
+#depand 
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 22.3.5
-PKG_NAME = mesa
-PKG_URL = https://mesa.freedesktop.org/archive/mesa-22.3.5.tar.xz
+PKG_VERSION = 1.14.0
+PKG_NAME = wpebackend-fdo
+PKG_URL = https://wpewebkit.org/releases/wpebackend-fdo-1.14.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: xcb-util-renderutil(>=0.3.10), xcb-util-image(>=0.4.1) "
+PKG_DEBIAN_DEPANDS = "Depends: libepoxy(>=1.5.10), libwpe(>=1.14.1), wayland-protocols(>=1.31) "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: libraries"
 
-PKG_DEBIAN_DEST = "Description: Mesa is an OpenGL compatible 3D graphics library."
+PKG_DEBIAN_DEST = "Description: The wpebackend-fdo package contains the Freedesktop.org backend for WPE WebKit and the WPE renderer."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,7 +57,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:  
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dplatforms=x11,wayland -Dgallium-drivers=auto -Dvulkan-drivers="" -Dvalgrind=disabled -Dlibunwind=disabled -Ddefault_library=shared -Degl-native-platform="x11" -Dtools='glsl','intel','intel-ui' ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}: 
 	@cd ${PKG_BUILD_DIR} && ninja
@@ -83,5 +83,5 @@ ${PKG_BUILD_DIR_DEBIAN}:
 ${PKG_DPKG_FILE_PATH}:
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
-	@echo "" > ${ROOT_DIR}/packages_dpkg/mesa_dpkg
+	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
 	

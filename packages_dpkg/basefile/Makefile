@@ -58,7 +58,6 @@ ${PKG_MAKE_INTALL}:
 	ln -sr ${PKG_BUILD_DIR_DPKG}/usr ${PKG_BUILD_DIR_DPKG}/usr/local
 	ln -sr ${PKG_BUILD_DIR_DPKG}/usr/lib ${PKG_BUILD_DIR_DPKG}/usr/lib64
 	ln -sr ${PKG_BUILD_DIR_DPKG}/run ${PKG_BUILD_DIR_DPKG}/var/run	
-	
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
@@ -73,4 +72,5 @@ ${PKG_BUILD_DIR_DEBIAN}:
 	
 	
 ${PKG_DPKG_FILE_PATH}:
+	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}

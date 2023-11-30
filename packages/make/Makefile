@@ -27,7 +27,6 @@ ${PKG_TAR}:
 	@mkdir -p ${ROOT_FS}
 	@mkdir -p ${ROOT_SOURCE}
 	wget ${PKG_URL} -P ${ROOT_SOURCE}/
-	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
