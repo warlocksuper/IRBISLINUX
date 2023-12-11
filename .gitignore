@@ -42,3 +42,4 @@ tools/include/*
 tools/lib/*
 tools/libexec/*
 tools/share/*
+packages_dpkg/*_dpkg
