@@ -1,21 +1,21 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-### dependency amtk-5 tepl-6 gspell-1
+
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 44.2
-PKG_NAME = gedit
-PKG_URL = https://download.gnome.org/sources/gedit/44/gedit-44.2.tar.xz
+PKG_VERSION = 2.48.3
+PKG_NAME = at-spi2-core
+PKG_URL = https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.3.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: gsettings-desktop-schemas(>=43.0), amtk(>=5.6.1), tepl(>=6.4.0), gspell(>=1.12.0) "
+PKG_DEBIAN_DEPANDS = "Depends: glib(>=2.74.5),  gtk4(>=4.8.3), dbus(>=1.14.6.1), libx11(>=1.8.4), libxtst(>=1.2.4), libxi(>=1.8) "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: librares"
 
-PKG_DEBIAN_DEST = "Description: The greeter is a program to present a graphical login screen. There are several alternative greeters, but the gtk+ package is the reference implementation"
+PKG_DEBIAN_DEST = "Description: The At-Spi2 Core package contains a comprehensive accessibility framework for the Assistive Technologies available on the GNOME platform. This includes a set of interfaces which are implemented by other toolkits and applications."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,14 +57,15 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dgtk_doc=false ${PGK_SOURCE_DIR} 
+	@cd ${PKG_BUILD_DIR} &&  meson setup --prefix=/usr --buildtype=release -Dsystemd_user_dir=/usr/lib/systemd/system ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && ninja
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG}  ninja  install
+	@rm ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete

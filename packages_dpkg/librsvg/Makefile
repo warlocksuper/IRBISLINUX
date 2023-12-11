@@ -1,21 +1,21 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-### dependency amtk-5 tepl-6 gspell-1
+
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 44.2
-PKG_NAME = gedit
-PKG_URL = https://download.gnome.org/sources/gedit/44/gedit-44.2.tar.xz
+PKG_VERSION = 2.54.5
+PKG_NAME = librsvg
+PKG_URL = https://download.gnome.org/sources/librsvg/2.54/librsvg-2.54.5.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: gsettings-desktop-schemas(>=43.0), amtk(>=5.6.1), tepl(>=6.4.0), gspell(>=1.12.0) "
+PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.17.6.2),  gdk-pixbuf(>=2.42.10),  pango(>=1.50.12.1), rustc(>=1.67.1) "
 
 
 PKG_DEBIAN_SECTION = "Section: xorg"
 
-PKG_DEBIAN_DEST = "Description: The greeter is a program to present a graphical login screen. There are several alternative greeters, but the gtk+ package is the reference implementation"
+PKG_DEBIAN_DEST = "Description: The librsvg package contains a library and tools used to manipulate, convert and view Scalable Vector Graphic (SVG) images."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,14 +57,14 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dgtk_doc=false ${PGK_SOURCE_DIR} 
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-vala --disable-static  --docdir=/usr/share/doc/librsvg-2.54.5
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && ninja
+	@cd ${PKG_BUILD_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete

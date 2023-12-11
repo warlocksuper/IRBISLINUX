@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+cat > /etc/acpi/events/lid << "EOF"
+event=button/lid
+action=/etc/acpi/lid.sh
+EOF
+
+cat > /etc/acpi/lid.sh << "EOF"
+#!/bin/sh
+/bin/grep -q open /proc/acpi/button/lid/LID/state && exit 0
+/usr/sbin/pm-suspend
+EOF
+chmod +x /etc/acpi/lid.sh
+
+systemctl enable acpid.socket
+systemctl enable acpid

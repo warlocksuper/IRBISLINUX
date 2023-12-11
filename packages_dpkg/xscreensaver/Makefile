@@ -1,21 +1,21 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-### dependency amtk-5 tepl-6 gspell-1
+#depand libglade
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 44.2
-PKG_NAME = gedit
-PKG_URL = https://download.gnome.org/sources/gedit/44/gedit-44.2.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 6.08
+PKG_NAME = xscreensaver
+PKG_URL = https://www.jwz.org/xscreensaver/xscreensaver-6.08.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: gsettings-desktop-schemas(>=43.0), amtk(>=5.6.1), tepl(>=6.4.0), gspell(>=1.12.0) "
+PKG_DEBIAN_DEPANDS = "Depends: gtk3(>=3.24.36),   libglade(>=2.6.4)  "
 
 
 PKG_DEBIAN_SECTION = "Section: xorg"
 
-PKG_DEBIAN_DEST = "Description: The greeter is a program to present a graphical login screen. There are several alternative greeters, but the gtk+ package is the reference implementation"
+PKG_DEBIAN_DEST = "Description:  The XScreenSaver package is a modular screen saver and locker for the X Window System. It is highly customizable and allows the use of any program that can draw on the root window as a display mode. The purpose of XScreenSaver is to display pretty pictures on your screen when it is not in use, in keeping with the philosophy that unattended monitors should always be doing something interesting, just like they do in the movies. However, XScreenSaver can also be used as a screen locker, to prevent others from using your terminal while you are away."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,14 +57,15 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dgtk_doc=false ${PGK_SOURCE_DIR} 
+	@sed -i 's/-lsystemd/-lelogind/' ${PGK_SOURCE_DIR}/driver/Makefile.in
+	##@cd ${PKG_BUILD_DIR} &&  ${PGK_SOURCE_DIR}/configure --prefix=/usr --with-systemd --with-jpeg --with-png --with-pixbuf --with-glx
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && ninja
+	@cd ${PKG_BUILD_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete

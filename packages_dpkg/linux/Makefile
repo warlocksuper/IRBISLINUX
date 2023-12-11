@@ -1,21 +1,21 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-### dependency amtk-5 tepl-6 gspell-1
+
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 44.2
-PKG_NAME = gedit
-PKG_URL = https://download.gnome.org/sources/gedit/44/gedit-44.2.tar.xz
+PKG_VERSION = 6.1.37
+PKG_NAME = linux
+PKG_URL =  https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.1.37.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: gsettings-desktop-schemas(>=43.0), amtk(>=5.6.1), tepl(>=6.4.0), gspell(>=1.12.0) "
+PKG_DEBIAN_DEPANDS = "Depends: libxcb(>=1.51) "
 
 
 PKG_DEBIAN_SECTION = "Section: xorg"
 
-PKG_DEBIAN_DEST = "Description: The greeter is a program to present a graphical login screen. There are several alternative greeters, but the gtk+ package is the reference implementation"
+PKG_DEBIAN_DEST = "Description: The xcb-util-wm package contains libraries which provide client and window-manager helpers for EWMH and ICCCM."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,14 +57,15 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dgtk_doc=false ${PGK_SOURCE_DIR} 
+	@cp CONFIG ${PGK_SOURCE_DIR}/.config
+#	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-static=no
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && ninja
+	@cd ${PGK_SOURCE_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cd ${PGK_SOURCE_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
@@ -83,4 +84,4 @@ ${PKG_BUILD_DIR_DEBIAN}:
 ${PKG_DPKG_FILE_PATH}:
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
-	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
+	

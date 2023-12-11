@@ -1,21 +1,19 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-### dependency amtk-5 tepl-6 gspell-1
-
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 44.2
-PKG_NAME = gedit
-PKG_URL = https://download.gnome.org/sources/gedit/44/gedit-44.2.tar.xz
+PKG_VERSION = 1.12.0
+PKG_NAME = gspell
+PKG_URL = https://download.gnome.org/sources/gspell/1.12/gspell-1.12.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: gsettings-desktop-schemas(>=43.0), amtk(>=5.6.1), tepl(>=6.4.0), gspell(>=1.12.0) "
+PKG_DEBIAN_DEPANDS = "Depends: gtk3(>=3.24.36), enchant(>=2.3.3), icu(>=72.1)  "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: library"
 
-PKG_DEBIAN_DEST = "Description: The greeter is a program to present a graphical login screen. There are several alternative greeters, but the gtk+ package is the reference implementation"
+PKG_DEBIAN_DEST = "Description: The gspell package provides a flexible API to add spell checking to a GTK+ application."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,14 +55,14 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dgtk_doc=false ${PGK_SOURCE_DIR} 
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && ninja
+	@cd ${PKG_BUILD_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
