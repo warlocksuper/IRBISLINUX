@@ -58,10 +58,10 @@ ${PGK_SOURCE_DIR}:
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
 	@sed -i 's/-lsystemd/-lelogind/' ${PGK_SOURCE_DIR}/driver/Makefile.in
-	##@cd ${PKG_BUILD_DIR} &&  ${PGK_SOURCE_DIR}/configure --prefix=/usr --with-systemd --with-jpeg --with-png --with-pixbuf --with-glx
+	#@cd ${PKG_BUILD_DIR} &&  ${PGK_SOURCE_DIR}/configure --prefix=/usr --with-systemd --with-jpeg --with-png --with-pixbuf --with-glx --with-dpms-ext --with-pam --enable-root-passwd --with-shadow --with-login-manager
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && make
+	#@cd ${PKG_BUILD_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:

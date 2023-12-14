@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 0.4.2
-PKG_NAME = xcb-util-wm
-PKG_URL = https://xcb.freedesktop.org/dist/xcb-util-wm-0.4.2.tar.xz
+PKG_VERSION = 4.4.36
+PKG_NAME = libxcrypt
+PKG_URL = https://github.com/besser82/libxcrypt/releases/download/v4.4.36/libxcrypt-4.4.36.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libxcb(>=1.51) "
+PKG_DEBIAN_DEPANDS = "Depends: basefiles "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: basic"
 
-PKG_DEBIAN_DEST = "Description: The xcb-util-wm package contains libraries which provide client and window-manager helpers for EWMH and ICCCM."
+PKG_DEBIAN_DEST = "Description: The Libxcrypt package contains a modern library for one-way hashing of passwords."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,7 +57,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-static=no
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-hashes=strong,glibc
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make

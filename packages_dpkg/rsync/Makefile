@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 0.4.2
-PKG_NAME = xcb-util-wm
-PKG_URL = https://xcb.freedesktop.org/dist/xcb-util-wm-0.4.2.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 3.2.7
+PKG_NAME = rsync
+PKG_URL = https://www.samba.org/ftp/rsync/src/rsync-3.2.7.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libxcb(>=1.51) "
+PKG_DEBIAN_DEPANDS = "Depends: popt(>=1.19) "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: network"
 
-PKG_DEBIAN_DEST = "Description: The xcb-util-wm package contains libraries which provide client and window-manager helpers for EWMH and ICCCM."
+PKG_DEBIAN_DEST = "Description: The rsync package contains the rsync utility. This is useful for synchronizing large file archives over a network."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,7 +57,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-static=no
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --disable-lz4  --disable-xxhash --without-included-zlib
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make

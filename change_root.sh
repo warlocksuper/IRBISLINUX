@@ -2,7 +2,7 @@
 
 ##GLIB_CFLAGS=/usr/lib GLIB_LIBS=/usr/lib
 
-ROOT_DIR=`pwd`/rootfs
+ROOT_DIR=/media/linux/IRBIS\ LINUX
 sudo mkdir -p $ROOT_DIR/dev
 sudo mount -v --bind /dev $ROOT_DIR/dev
 

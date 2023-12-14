@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if ! id "rsyncd" >/dev/null 2>&1; then
+    groupadd -g 48 rsyncd 
+    useradd -c "rsyncd Daemon" -m -d /home/rsync -g rsyncd -s /bin/false -u 48 rsyncd
+fi
+

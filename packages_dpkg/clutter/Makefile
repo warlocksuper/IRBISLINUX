@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 0.4.2
-PKG_NAME = xcb-util-wm
-PKG_URL = https://xcb.freedesktop.org/dist/xcb-util-wm-0.4.2.tar.xz
+PKG_VERSION = 1.26.4
+PKG_NAME = clutter
+PKG_URL = https://download.gnome.org/sources/clutter/1.26/clutter-1.26.4.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libxcb(>=1.51) "
+PKG_DEBIAN_DEPANDS = "Depends: at-spi2-core(>=2.48.3), cogl(>=1.22.8),  json-glib(>=1.6.6) "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: libraries"
 
-PKG_DEBIAN_DEST = "Description: The xcb-util-wm package contains libraries which provide client and window-manager helpers for EWMH and ICCCM."
+PKG_DEBIAN_DEST = "Description: The Clutter package contains an open source software library used for creating fast, visually rich and animated graphical user interfaces."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,7 +57,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-static=no
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-egl-backend  --enable-evdev-input --enable-wayland-backend  --enable-wayland-compositor 
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make

@@ -2,20 +2,21 @@ OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
 
+#depand glu
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 0.4.2
-PKG_NAME = xcb-util-wm
-PKG_URL = https://xcb.freedesktop.org/dist/xcb-util-wm-0.4.2.tar.xz
+PKG_VERSION = 9.0.3
+PKG_NAME = glu
+PKG_URL = https://archive.mesa3d.org/glu/glu-9.0.3.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libxcb(>=1.51) "
+PKG_DEBIAN_DEPANDS = "Depends: mesa(>=22.3.5) "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: libraries"
 
-PKG_DEBIAN_DEST = "Description: The xcb-util-wm package contains libraries which provide client and window-manager helpers for EWMH and ICCCM."
+PKG_DEBIAN_DEST = "Description: This package provides the Mesa OpenGL Utility library."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,14 +58,14 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-static=no
+	@cd ${PKG_BUILD_DIR} && meson setup ${PGK_SOURCE_DIR} --prefix=/usr  --sysconfdir=/etc --localstatedir=/var -Dgl_provider=gl  --buildtype=release
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && make
+	@cd ${PKG_BUILD_DIR} && ninja
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
+	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG}  ninja  install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete

@@ -1,15 +1,19 @@
 PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sbin:/usr/libexec
 
-PKG_LIST_DIR = basefile_dpkg glib_dpkg  libffi_dpkg make-ca_dpkg at-spi2-core_dpkg brotli_dpkg liboauth_dpkg p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg mesa_dpkg 
+PKG_LIST_DIR = basefile_dpkg glib_dpkg libxcrypt_dpkg libffi_dpkg make-ca_dpkg at-spi2-core_dpkg brotli_dpkg liboauth_dpkg p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg mesa_dpkg 
 PKG_LIST_DIR += acpid_dpkg rest_dpkg yaml_dpkg ruby_dpkg harfbuzz_dpkg SDL_dpkg libwebp_dpkg libwpe_dpkg wpebackend-fdo_dpkg enchant_dpkg openjpeg_dpkg 
-PKG_LIST_DIR += links_dpkg lynx_dpkg libxml2_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
-PKG_LIST_DIR += polkit_dpkg  gcr_dpkg gnome-keyring_dpkg extra-cmake-modules_dpkg sddm_dpkg librsvg_dpkg gdk-pixbuf_dpkg  libglade_dpkg gnome-shell_dpkg xscreensaver_dpkg xmlto_dpkg xdg-utils_dpkg gnome-online-accounts_dpkg gnome-control-center_dpkg
+PKG_LIST_DIR += rsync_dpkg xterm_dpkg  links_dpkg lynx_dpkg libxml2_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
+PKG_LIST_DIR += polkit_dpkg  gcr_dpkg gnome-keyring_dpkg   gnome-shell_dpkg glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
+PKG_LIST_DIR += extra-cmake-modules_dpkg sddm_dpkg librsvg_dpkg gdk-pixbuf_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg gnome-control-center_dpkg
 
 # не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg 
 
 export
 
 all: ${PKG_LIST_DIR}
+
+libxcrypt_dpkg:
+	${MAKE} -C libxcrypt
 
 basefile_dpkg:
 	${MAKE} -C basefile
@@ -38,6 +42,12 @@ brotli_dpkg:
 sgml-common_dpkg:
 		${MAKE} -C sgml-common		
 
+xterm_dpkg:
+		${MAKE} -C xterm
+
+rsync_dpkg:
+		${MAKE} -C rsync
+
 liboauth_dpkg:
 		${MAKE} -C liboauth				
 
@@ -62,6 +72,17 @@ gcr_dpkg:
 gnome-keyring_dpkg:
 		${MAKE} -C gnome-keyring		
 
+glu_dpkg:
+		${MAKE} -C glu
+
+clutter_dpkg:
+		${MAKE} -C clutter
+
+pinentry_dpkg:
+		${MAKE} -C pinentry
+
+cogl_dpkg:
+		${MAKE} -C cogl
 		
 gnome-shell_dpkg:
 		${MAKE} -C gnome-shell	
