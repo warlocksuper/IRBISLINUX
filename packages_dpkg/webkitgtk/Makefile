@@ -1,16 +1,16 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-#depand Ruby 1.9 libwebp enchant
+#depand Ruby 1.9 libwebp enchant DFGSpeculativeJIT.cpp.o ошибка
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 2.38.5
+PKG_VERSION = 2.41.91
 PKG_NAME = webkitgtk
-PKG_URL = https://webkitgtk.org/releases/webkitgtk-2.38.5.tar.xz
+PKG_URL = https://webkitgtk.org/releases/webkitgtk-2.41.91.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: gcr(>=4.0.0), json-glib(>=1.6.6), rest(>=0.9.1) "
+PKG_DEBIAN_DEPANDS = "Depends: gcr(>=4.0.0), json-glib(>=1.6.6), rest(>=0.9.1), unifdef(>=2.12), libavif(>=0.11.1) "
 
 
 PKG_DEBIAN_SECTION = "Section: webkitgtk"
@@ -57,14 +57,14 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:  
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && cmake -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc -DPORT=GTK -DLIB_INSTALL_DIR=/usr/lib -DUSE_LIBHYPHEN=OFF -DENABLE_GAMEPAD=OFF -DENABLE_MINIBROWSER=ON -DENABLE_DOCUMENTATION=OFF -DUSE_WOFF2=OFF -DUSE_WPE_RENDERER=ON -DENABLE_BUBBLEWRAP_SANDBOX=OFF -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} &&  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_SKIP_RPATH=ON  -DPORT=GTK  -DLIB_INSTALL_DIR=/usr/lib -DUSE_LIBHYPHEN=OFF  -DENABLE_GAMEPAD=OFF -DENABLE_MINIBROWSER=ON -DENABLE_DOCUMENTATION=OFF  -DUSE_WOFF2=OFF -DUSE_GTK4=OFF -DUSE_WPE_RENDERER=ON  -DUSE_JPEGXL=OFF  -DENABLE_BUBBLEWRAP_SANDBOX=ON -Wno-dev -G Ninja ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}: 
-	@cd ${PKG_BUILD_DIR} && make -j1 V=99
+	@cd ${PKG_BUILD_DIR} && ninja
 
 
 ${PKG_MAKE_INTALL}:  
-	@cd ${PKG_BUILD_DIR} && make  DESTDIR=${PKG_BUILD_DIR_DPKG} install
+	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
 
 ${PKG_BUILD_DIR_DEBIAN}: 
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete

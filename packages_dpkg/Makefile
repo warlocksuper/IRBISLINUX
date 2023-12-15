@@ -5,8 +5,9 @@ PKG_LIST_DIR += acpid_dpkg rest_dpkg yaml_dpkg ruby_dpkg harfbuzz_dpkg SDL_dpkg 
 PKG_LIST_DIR += libhandy_dpkg rsync_dpkg xterm_dpkg  links_dpkg lynx_dpkg libxml2_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
 PKG_LIST_DIR += polkit_dpkg  gcr_dpkg gnome-keyring_dpkg   gnome-shell_dpkg glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
 PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg gnome-icon-theme_dpkg gdk-pixbuf-xlib_dpkg gnome-icon-theme-extras_dpkg 
-PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg
-PKG_LIST_DIR += extra-cmake-modules_dpkg sddm_dpkg librsvg_dpkg gdk-pixbuf_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg gnome-control-center_dpkg
+PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  gdm_dpkg  unifdef_dpkg  yasm_dpkg libaom_dpkg libavif_dpkg
+PKG_LIST_DIR += webkitgtk_dpkg gnome-online-accounts_dpkg  gnome-control-center_dpkg  gvfs_dpkg
+PKG_LIST_DIR += extra-cmake-modules_dpkg sddm_dpkg librsvg_dpkg gdk-pixbuf_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg 
 
 # не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg 
 
@@ -95,11 +96,29 @@ gnome-icon-theme_dpkg:
 gnome-icon-theme-symbolic_dpkg:
 		${MAKE} -C gnome-icon-theme-symbolic
 
+libavif_dpkg:
+		${MAKE} -C libavif
+
+libaom_dpkg:
+		${MAKE} -C libaom
+
 gdk-pixbuf-xlib_dpkg:
 		${MAKE} -C gdk-pixbuf-xlib
 
 gnome-icon-theme-extras_dpkg:
 		${MAKE} -C gnome-icon-theme-extras
+
+gnome-themes-extra_dpkg:
+		${MAKE} -C gnome-themes-extra
+		
+yasm_dpkg:
+		${MAKE} -C yasm
+		
+unifdef_dpkg:
+		${MAKE} -C unifdef
+		 
+gvfs_dpkg:
+		${MAKE} -C gvfs
 
 glu_dpkg:
 		${MAKE} -C glu
@@ -116,6 +135,8 @@ cogl_dpkg:
 gnome-shell_dpkg:
 		${MAKE} -C gnome-shell	
 
+gdm_dpkg:
+		${MAKE} -C gdm	
 
 gnome-control-center_dpkg:
 		${MAKE} -C gnome-control-center		

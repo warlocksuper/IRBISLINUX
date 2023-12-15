@@ -5,9 +5,9 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 43.4.1
+PKG_VERSION = 44.3
 PKG_NAME = gnome-control-center
-PKG_URL = https://download.gnome.org/sources/gnome-control-center/43/gnome-control-center-43.4.1.tar.xz
+PKG_URL = https://download.gnome.org/sources/gnome-control-center/44/gnome-control-center-44.3.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.1), libtasn1(>=4.19.0.1) "
