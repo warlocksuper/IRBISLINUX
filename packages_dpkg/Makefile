@@ -1,9 +1,11 @@
 PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sbin:/usr/libexec
 
-PKG_LIST_DIR = basefile_dpkg glib_dpkg libxcrypt_dpkg libffi_dpkg make-ca_dpkg at-spi2-core_dpkg brotli_dpkg liboauth_dpkg p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg mesa_dpkg 
+PKG_LIST_DIR = basefile_dpkg glib_dpkg libxcrypt_dpkg gobject-introspection_dpkg libffi_dpkg make-ca_dpkg at-spi2-core_dpkg brotli_dpkg liboauth_dpkg p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg mesa_dpkg 
 PKG_LIST_DIR += acpid_dpkg rest_dpkg yaml_dpkg ruby_dpkg harfbuzz_dpkg SDL_dpkg libwebp_dpkg libwpe_dpkg wpebackend-fdo_dpkg enchant_dpkg openjpeg_dpkg 
-PKG_LIST_DIR += rsync_dpkg xterm_dpkg  links_dpkg lynx_dpkg libxml2_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
+PKG_LIST_DIR += libhandy_dpkg rsync_dpkg xterm_dpkg  links_dpkg lynx_dpkg libxml2_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
 PKG_LIST_DIR += polkit_dpkg  gcr_dpkg gnome-keyring_dpkg   gnome-shell_dpkg glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
+PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg gnome-icon-theme_dpkg gdk-pixbuf-xlib_dpkg gnome-icon-theme-extras_dpkg 
+PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg
 PKG_LIST_DIR += extra-cmake-modules_dpkg sddm_dpkg librsvg_dpkg gdk-pixbuf_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg gnome-control-center_dpkg
 
 # не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg 
@@ -14,6 +16,9 @@ all: ${PKG_LIST_DIR}
 
 libxcrypt_dpkg:
 	${MAKE} -C libxcrypt
+
+gobject-introspection_dpkg:
+	${MAKE} -C gobject-introspection
 
 basefile_dpkg:
 	${MAKE} -C basefile
@@ -26,6 +31,9 @@ gcc_dpkg:
 
 libffi_dpkg:
 		${MAKE} -C  libffi
+
+libhandy_dpkg:
+		${MAKE} -C  libhandy
 			
 linux_dpkg:
 		${MAKE} -C linux	
@@ -71,6 +79,27 @@ gcr_dpkg:
 
 gnome-keyring_dpkg:
 		${MAKE} -C gnome-keyring		
+
+XML-Simple_dpkg:
+		${MAKE} -C XML-Simple
+
+hicolor-icon-theme_dpkg:
+		${MAKE} -C hicolor-icon-theme	
+
+icon-naming-utils_dpkg:
+		${MAKE} -C icon-naming-utils
+
+gnome-icon-theme_dpkg:
+		${MAKE} -C gnome-icon-theme
+
+gnome-icon-theme-symbolic_dpkg:
+		${MAKE} -C gnome-icon-theme-symbolic
+
+gdk-pixbuf-xlib_dpkg:
+		${MAKE} -C gdk-pixbuf-xlib
+
+gnome-icon-theme-extras_dpkg:
+		${MAKE} -C gnome-icon-theme-extras
 
 glu_dpkg:
 		${MAKE} -C glu
