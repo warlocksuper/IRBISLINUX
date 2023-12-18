@@ -1,7 +1,7 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-
+###libpwquality-1.4.5
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
@@ -10,12 +10,12 @@ PKG_NAME = gnome-control-center
 PKG_URL = https://download.gnome.org/sources/gnome-control-center/44/gnome-control-center-44.3.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.1), libtasn1(>=4.19.0.1) "
+PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.1), libtasn1(>=4.19.0.1),  libpwquality(>=1.4.5), gnome-bluetooth(>=42.6) , colord-gtk(>=0.3.0), libgtop(>=2.40.0), udisks(>=2.10.0)  "
 
 
-PKG_DEBIAN_SECTION = "Section: security"
+PKG_DEBIAN_SECTION = "Section: gnome"
 
-PKG_DEBIAN_DEST = "Description: The p11-kit package provides a way to load and enumerate PKCS 11 (a Cryptographic Token Interface Standard) modules."
+PKG_DEBIAN_DEST = "Description: The GNOME Control Center package contains the GNOME settings manager."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/brotli
 

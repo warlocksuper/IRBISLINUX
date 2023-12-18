@@ -6,14 +6,21 @@ PKG_LIST_DIR += libhandy_dpkg rsync_dpkg xterm_dpkg  links_dpkg lynx_dpkg libxml
 PKG_LIST_DIR += polkit_dpkg  gcr_dpkg gnome-keyring_dpkg   gnome-shell_dpkg glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
 PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg gnome-icon-theme_dpkg gdk-pixbuf-xlib_dpkg gnome-icon-theme-extras_dpkg 
 PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  gdm_dpkg  unifdef_dpkg  yasm_dpkg libaom_dpkg libavif_dpkg
-PKG_LIST_DIR += webkitgtk_dpkg gnome-online-accounts_dpkg  gnome-control-center_dpkg  gvfs_dpkg
+PKG_LIST_DIR += gnome-online-accounts_dpkg cracklib_dpkg  libpwquality_dpkg libmbim_dpkg  libqmi_dpkg gsound_dpkg gnome-bluetooth_dpkg ModemManager_dpkg  
+PKG_LIST_DIR += colord_dpkg colord-gtk_dpkg libgtop_dpkg udisks_dpkg  gnome-control-center_dpkg  gvfs_dpkg
 PKG_LIST_DIR += extra-cmake-modules_dpkg sddm_dpkg librsvg_dpkg gdk-pixbuf_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg 
 
-# не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg 
+# не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg    webkitgtk_dpkg
 
 export
 
 all: ${PKG_LIST_DIR}
+
+udisks_dpkg:
+	${MAKE} -C udisks
+
+libgtop_dpkg:
+	${MAKE} -C libgtop
 
 libxcrypt_dpkg:
 	${MAKE} -C libxcrypt
@@ -98,6 +105,34 @@ gnome-icon-theme-symbolic_dpkg:
 
 libavif_dpkg:
 		${MAKE} -C libavif
+
+libpwquality_dpkg:
+		${MAKE} -C libpwquality
+
+cracklib_dpkg:
+		${MAKE} -C cracklib
+
+colord_dpkg:
+		${MAKE} -C colord
+
+colord-gtk_dpkg:
+		${MAKE} -C colord-gtk
+
+gsound_dpkg:
+		${MAKE} -C gsound
+
+gnome-bluetooth_dpkg:
+		${MAKE} -C gnome-bluetooth
+
+libqmi_dpkg:
+		${MAKE} -C libqmi
+
+libmbim_dpkg:
+		${MAKE} -C libmbim
+
+
+ModemManager_dpkg:
+		${MAKE} -C ModemManager
 
 libaom_dpkg:
 		${MAKE} -C libaom

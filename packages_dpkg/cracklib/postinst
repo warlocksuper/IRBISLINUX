@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+unxz -v                  /usr/share/dict/cracklib-words.xz  
+ln -v -sf cracklib-words /usr/share/dict/words               
+echo $(hostname) >>      /usr/share/dict/cracklib-extra-words 
+install -v -m755 -d      /usr/lib/cracklib                    
+create-cracklib-dict     /usr/share/dict/cracklib-words  /usr/share/dict/cracklib-extra-words
