@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 3.0.2
-PKG_NAME = libblockdev
-PKG_URL = https://github.com/storaged-project/libblockdev/releases/download/3.0.2-1/libblockdev-3.0.2.tar.gz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
+PKG_VERSION = 2.14
+PKG_NAME = cpio
+PKG_URL = https://ftp.gnu.org/gnu/cpio/cpio-2.14.tar.bz2
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  glib(>=2.74.5), keyutils(>=1.6.1)  "
+PKG_DEBIAN_DEPANDS = "Depends:  basefile"
 
 
-PKG_DEBIAN_SECTION = "Section: libraries"
+PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: libblockdev is a C library supporting GObject Introspection for manipulation of block devices. It has a plugin-based architecture where each technology (like LVM, Btrfs, MD RAID, Swap,...) is implemented in a separate plugin, possibly with multiple implementations (e.g. using LVM CLI or the new LVM DBus API)."
+PKG_DEBIAN_DEST = "Description: The cpio package contains tools for archiving."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,13 +57,8 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --with-python3     \
-            --without-escrow   \
-            --without-gtk-doc  \
-            --without-lvm      \
-            --without-lvm_dbus \
-            --without-nvdimm   \
-            --without-tools --without-nvme --without-crypto --without-fs   --without-btrfs   --without-mpath
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-mt   \
+            --with-rmt=/usr/libexec/rmt
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make
@@ -71,6 +66,7 @@ ${PKG_COMPILE}:
 
 ${PKG_MAKE_INTALL}:
 	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
+	@rm  ${PKG_BUILD_DIR_DPKG}/usr/share/info/dir
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
