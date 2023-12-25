@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+ln -s /etc/irbis-release /etc/lsb-release
