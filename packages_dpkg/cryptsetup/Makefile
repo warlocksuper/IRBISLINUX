@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 2.76.4
-PKG_NAME = glib
-PKG_URL = https://download.gnome.org/sources/glib/2.76/glib-2.76.4.tar.xz
+PKG_VERSION = 2.4.3
+PKG_NAME = cryptsetup
+PKG_URL =  https://www.kernel.org/pub/linux/utils/cryptsetup/v2.4/cryptsetup-2.4.3.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libxslt(>=1.1.37), pcre2(>=10.40) "
+PKG_DEBIAN_DEPANDS = "Depends: lvm2(>=2.03.22), popt(>=1.19), json-c(>=0.17) "
 
 
-PKG_DEBIAN_SECTION = "Section: librares"
+PKG_DEBIAN_SECTION = "Section: security"
 
-PKG_DEBIAN_DEST = "Description: The GLib package contains low-level libraries useful for providing data structure handling for C, portability wrappers and interfaces for such runtime functionality as an event loop, threads, dynamic loading and an object system."
+PKG_DEBIAN_DEST = "Description: cryptsetup is used to set up transparent encryption of block devices using the kernel crypto API."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,15 +57,14 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i  ${ROOT_DIR}/packages_dpkg/glib/glib-skip_warnings-1.patch
-	@cd ${PKG_BUILD_DIR} &&  meson --prefix=/usr --buildtype=release -Dman=false -Dgtk_doc=false ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-static=no --disable-ssh-token 
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && ninja
+	@cd ${PKG_BUILD_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
@@ -85,4 +84,3 @@ ${PKG_DPKG_FILE_PATH}:
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
-	

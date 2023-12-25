@@ -10,7 +10,7 @@ PKG_NAME = libblockdev
 PKG_URL = https://github.com/storaged-project/libblockdev/releases/download/3.0.2-1/libblockdev-3.0.2.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  glib(>=2.74.5), keyutils(>=1.6.1)  "
+PKG_DEBIAN_DEPANDS = "Depends:  glib(>=2.74.5), keyutils(>=1.6.1) ,  libbytesize(>=2.9), cryptsetup(>=2.4.3), libnvme(>=1.5) "
 
 
 PKG_DEBIAN_SECTION = "Section: libraries"
@@ -63,7 +63,7 @@ ${PKG_CONFIGURE}:
             --without-lvm      \
             --without-lvm_dbus \
             --without-nvdimm   \
-            --without-tools --without-nvme --without-crypto --without-fs   --without-btrfs   --without-mpath
+            --without-tools --without-btrfs   --without-mpath
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make
