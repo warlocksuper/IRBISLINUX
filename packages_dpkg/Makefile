@@ -341,6 +341,4 @@ webkitgtk_dpkg:
 		
 gnome-online-accounts_dpkg:
 		${MAKE} -C gnome-online-accounts			
-						
-				
-								
+													

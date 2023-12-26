@@ -10,7 +10,7 @@ PKG_NAME = xterm
 PKG_URL = https://invisible-mirror.net/archives/xterm/xterm-384.tgz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tgz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: basefiles "
+PKG_DEBIAN_DEPANDS = "Depends: basefile "
 
 
 PKG_DEBIAN_SECTION = "Section: xorg"
@@ -86,7 +86,7 @@ ${PKG_BUILD_DIR_DEBIAN}:
 	@echo ${PKG_DEBIAN_DEST} >> ${PKG_BUILD_DIR_DEBIAN}
 	@cp postinst ${PKG_BUILD_DIR_DPKG}/DEBIAN/
 	@cp XTerm ${PKG_BUILD_DIR_DPKG}/etc/X11/app-defaults/
-	@cd ${PGK_SOURCE_DIR} && 	cp -v *.desktop   ${PKG_BUILD_DIR_DPKG}/usr/share/applications/
+	@cd ${PGK_SOURCE_DIR} && cp -v *.desktop   ${PKG_BUILD_DIR_DPKG}/usr/share/applications/
 	@echo "/etc/X11/app-defaults/XTerm"  >  ${PKG_BUILD_DIR_DPKG}/DEBIAN/conffiles
 	
 ${PKG_DPKG_FILE_PATH}:
