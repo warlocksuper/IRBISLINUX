@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm -vf                     /usr/lib/libcursesw.so
+echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
+ln -sf /usr/lib/libcursesw.so /usr/lib/libcurses.so
