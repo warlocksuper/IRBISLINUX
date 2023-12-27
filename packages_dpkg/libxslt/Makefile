@@ -10,7 +10,7 @@ PKG_NAME = libxslt
 PKG_URL = https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.38.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libxcb(>=1.51) "
+PKG_DEBIAN_DEPANDS = "Depends: libxml2(>=2.10.3) "
 
 
 PKG_DEBIAN_SECTION = "Section: libraries"
@@ -57,9 +57,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}${IR_CONFIGURE} --enable-static=no --disable-static                       \
-            --docdir=/usr/share/doc/libxslt-1.1.38 \
-            PYTHON=/usr/bin/python3
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --runstatedir=/run --enable-static=no --disable-static --docdir=/usr/share/doc/libxslt-1.1.38 PYTHON=/usr/bin/python3
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make
