@@ -67,6 +67,7 @@ ${PKG_COMPILE}:
 
 ${PKG_MAKE_INTALL}:
 	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cp -rf polkit-1 ${PKG_BUILD_DIR_DPKG}/etc/
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete

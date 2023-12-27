@@ -10,7 +10,7 @@ PKG_NAME = gnome-keyring
 PKG_URL = https://download.gnome.org/sources/gnome-keyring/42/gnome-keyring-42.1.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: dbus(>=1.14.6.1),  gcr(>=3.41.1) "
+PKG_DEBIAN_DEPANDS = "Depends: dbus(>=1.14.6.1),  gcr3(>=3.41.1) "
 
 export XML_CATALOG_FILES=/etc/xml/catalog
 
