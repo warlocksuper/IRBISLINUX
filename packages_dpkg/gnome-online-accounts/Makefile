@@ -57,7 +57,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:  
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dgoabackend=true  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dgoabackend=false  ${PGK_SOURCE_DIR}
 
 ###  -Dkerberos=false -Dgoogle_client_secret=5ntt6GbbkjnTVXx-MSxbmx5e -Dgoogle_client_id=595013732528-llk8trb03f0ldpqq6nprjp1s79596646.apps.googleusercontent.com 
 ${PKG_COMPILE}: 

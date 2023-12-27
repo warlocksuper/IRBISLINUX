@@ -3,12 +3,12 @@ PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sb
 PKG_LIST_DIR = basefile_dpkg glib_dpkg ncurses_dpkg dwz_dpkg psmisc_dpkg cpio_dpkg libxcrypt_dpkg gobject-introspection_dpkg LSB-Tools_dpkg libffi_dpkg make-ca_dpkg at-spi2-core_dpkg brotli_dpkg liboauth_dpkg p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg mesa_dpkg 
 PKG_LIST_DIR += acpid_dpkg rest_dpkg yaml_dpkg ruby_dpkg harfbuzz_dpkg SDL_dpkg libwebp_dpkg libwpe_dpkg wpebackend-fdo_dpkg enchant_dpkg openjpeg_dpkg 
 PKG_LIST_DIR += libhandy_dpkg rsync_dpkg xterm_dpkg  links_dpkg lynx_dpkg libxml2_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
-PKG_LIST_DIR += upower_dpkg polkit_dpkg gcr3_dpkg  gcr_dpkg gnome-keyring_dpkg   gnome-shell_dpkg glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
+PKG_LIST_DIR += upower_dpkg polkit_dpkg gcr3_dpkg  gcr_dpkg gnome-keyring_dpkg mutter_dpkg gnome-shell_dpkg gnome-shell-extensions_dpkg  glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
 PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg gnome-icon-theme_dpkg gdk-pixbuf-xlib_dpkg gnome-icon-theme-extras_dpkg 
 PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  gdm_dpkg  unifdef_dpkg  yasm_dpkg libaom_dpkg libavif_dpkg
 PKG_LIST_DIR += krb5_dpkg ConsoleKit_dpkg   libpipeline_dpkg  xfce4-settings_dpkg 
-PKG_LIST_DIR += libxslt_dpkg gnome-online-accounts_dpkg cracklib_dpkg  libpwquality_dpkg libmbim_dpkg  libqmi_dpkg gsound_dpkg gnome-bluetooth_dpkg ModemManager_dpkg  
-PKG_LIST_DIR += colord_dpkg colord-gtk_dpkg libgtop_dpkg  libatasmart_dpkg keyutils_dpkg libaio_dpkg  LVM2_dpkg libbytesize_dpkg e2fsprogs_dpkg
+PKG_LIST_DIR += libxslt_dpkg gnome-session_dpkg colord_dpkg colord-gtk_dpkg gnome-online-accounts_dpkg cracklib_dpkg  libpwquality_dpkg libmbim_dpkg  libqmi_dpkg gsound_dpkg gnome-bluetooth_dpkg ModemManager_dpkg  
+PKG_LIST_DIR += libgtop_dpkg  libatasmart_dpkg keyutils_dpkg libaio_dpkg  LVM2_dpkg libbytesize_dpkg e2fsprogs_dpkg
 PKG_LIST_DIR +=  json-c_dpkg cryptsetup_dpkg libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg  gvfs_dpkg   
 PKG_LIST_DIR += extra-cmake-modules_dpkg sddm_dpkg librsvg_dpkg gdk-pixbuf_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg 
 
@@ -17,6 +17,9 @@ PKG_LIST_DIR += extra-cmake-modules_dpkg sddm_dpkg librsvg_dpkg gdk-pixbuf_dpkg 
 export
 
 all: ${PKG_LIST_DIR}
+
+gnome-session_dpkg:
+	${MAKE} -C gnome-session
 
 libxslt_dpkg:
 	${MAKE} -C libxslt
@@ -234,6 +237,12 @@ pinentry_dpkg:
 
 cogl_dpkg:
 		${MAKE} -C cogl
+
+mutter_dpkg:
+	${MAKE} -C mutter	
+
+gnome-shell-extensions_dpkg:
+		${MAKE} -C gnome-shell-extensions
 		
 gnome-shell_dpkg:
 		${MAKE} -C gnome-shell	

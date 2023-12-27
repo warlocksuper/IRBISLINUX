@@ -1,7 +1,7 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-###libpwquality-1.4.5
+###libpwquality-1.4.5 Без 'online-accounts' и printers
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 

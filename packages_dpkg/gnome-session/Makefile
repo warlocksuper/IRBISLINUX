@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 4.1.0
-PKG_NAME = gcr
-PKG_URL =  https://download.gnome.org/sources/gcr/4.1/gcr-4.1.0.tar.xz
+PKG_VERSION = 44.0
+PKG_NAME = gnome-session
+PKG_URL = https://download.gnome.org/sources/gnome-session/44/gnome-session-44.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  glib(>=2.74.5), libgcrypt(>=1.10.1), p11-kit(>=0.24.1)  "
+PKG_DEBIAN_DEPANDS = "Depends: gnome-desktop(>=43.2), json-glib(>=1.6.6), mesa(>=22.3.6), systemd(>=254), upower(>=1.90.3) "
 
 
-PKG_DEBIAN_SECTION = "Section: library"
+PKG_DEBIAN_SECTION = "Section: gnome"
 
-PKG_DEBIAN_DEST = "Description: The Gcr package contains libraries used for displaying certificates and accessing key stores. It also provides the viewer for crypto files on the GNOME Desktop."
+PKG_DEBIAN_DEST = "Description: The GNOME Session package contains the GNOME session manager."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,14 +57,14 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} &&  meson --prefix=/usr --buildtype=release -Dgtk_doc=false  ${PGK_SOURCE_DIR} 
+	@cd ${PKG_BUILD_DIR} && meson setup --prefix=/usr --buildtype=release ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && ninja
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG}  ninja  install
+	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete

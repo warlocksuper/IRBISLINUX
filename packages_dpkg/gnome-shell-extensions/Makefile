@@ -5,19 +5,19 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 4.1.0
-PKG_NAME = gcr
-PKG_URL =  https://download.gnome.org/sources/gcr/4.1/gcr-4.1.0.tar.xz
+PKG_VERSION = 44.0
+PKG_NAME = gnome-shell-extensions
+PKG_URL = https://download.gnome.org/sources/gnome-shell-extensions/44/gnome-shell-extensions-44.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  glib(>=2.74.5), libgcrypt(>=1.10.1), p11-kit(>=0.24.1)  "
+PKG_DEBIAN_DEPANDS = "Depends: ibgtop(>=2.40.0) "
 
 
-PKG_DEBIAN_SECTION = "Section: library"
+PKG_DEBIAN_SECTION = "Section: gnome"
 
-PKG_DEBIAN_DEST = "Description: The Gcr package contains libraries used for displaying certificates and accessing key stores. It also provides the viewer for crypto files on the GNOME Desktop."
+PKG_DEBIAN_DEST = "Description: The GNOME Shell Extensions package contains a collection of extensions providing additional and optional functionality to the GNOME Shell."
 
-PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
+PKG_COMPILE = ${PGK_BUILD_DIR}/brotli
 
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
@@ -57,17 +57,17 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} &&  meson --prefix=/usr --buildtype=release -Dgtk_doc=false  ${PGK_SOURCE_DIR} 
+##	@cd ${PGK_SOURCE_DIR} && sed '20,$ d' -i trust/trust-extract-compat 
+	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && ninja
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG}  ninja  install
+	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
 
 ${PKG_BUILD_DIR_DEBIAN}:
-	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
 	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}

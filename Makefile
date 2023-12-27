@@ -18,6 +18,8 @@ CONFIG_OS_ARCH = "x86_64"
 CONFIG_OS_VENDOR = "irbis"	
 endif
 
+IR_CONFIGURE=' --prefix=/usr --sysconfdir=/etc --localstatedir=/var --runstatedir=/run '
+
 ## OS_ARCH_TARGET = ${CONFIG_OS_ARCH}-${CONFIG_OS_VENDOR}-linux-gnu
 
 export
@@ -78,3 +80,10 @@ libstdc++_stage1_tools:
 	
 busybox:
 	${MAKE} -C packages/busybox temporary_tools	
+	
+	
+create_repo:
+	@cd ${ROOT_DPKG_ARCH} && dpkg-scanpackages -m . > Packages
+	@cd ${ROOT_DPKG_ARCH} && cat Packages | gzip -9 > Packages.gz
+	@cd ${ROOT_DPKG_ARCH} && cat Packages | bzip2 -9 > Packages.bz2
+	

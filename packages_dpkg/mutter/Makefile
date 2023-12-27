@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 4.1.0
-PKG_NAME = gcr
-PKG_URL =  https://download.gnome.org/sources/gcr/4.1/gcr-4.1.0.tar.xz
+PKG_VERSION = 44.3
+PKG_NAME = mutter
+PKG_URL = https://download.gnome.org/sources/mutter/44/mutter-44.3.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  glib(>=2.74.5), libgcrypt(>=1.10.1), p11-kit(>=0.24.1)  "
+PKG_DEBIAN_DEPANDS = "Depends: libxcb(>=1.51) "
 
 
-PKG_DEBIAN_SECTION = "Section: library"
+PKG_DEBIAN_SECTION = "Section: gnome"
 
-PKG_DEBIAN_DEST = "Description: The Gcr package contains libraries used for displaying certificates and accessing key stores. It also provides the viewer for crypto files on the GNOME Desktop."
+PKG_DEBIAN_DEST = "Description: Mutter is the window manager for GNOME. It is not invoked directly, but from GNOME Session (on a machine with a hardware accelerated video driver)."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,14 +57,14 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} &&  meson --prefix=/usr --buildtype=release -Dgtk_doc=false  ${PGK_SOURCE_DIR} 
+	@cd ${PKG_BUILD_DIR} && meson setup --prefix=/usr --buildtype=release -Dtests=false -Dprofiler=false ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && ninja
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG}  ninja  install
+	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete

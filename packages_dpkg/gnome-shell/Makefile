@@ -5,9 +5,9 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 43.3
+PKG_VERSION = 44.3
 PKG_NAME = gnome-shell
-PKG_URL = https://download.gnome.org/sources/gnome-shell/43/gnome-shell-43.3.tar.xz
+PKG_URL = https://download.gnome.org/sources/gnome-shell/44/gnome-shell-44.3.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.1), libtasn1(>=4.19.0.1) "
