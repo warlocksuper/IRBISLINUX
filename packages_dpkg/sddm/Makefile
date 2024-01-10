@@ -1,7 +1,7 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-#depend Extra Cmake Modules
+#depend Extra Cmake Modules    QT5
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
@@ -58,7 +58,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} &&  cmake -DCMAKE_INSTALL_PREFIX=/usr  -DCMAKE_BUILD_TYPE=Release  -DRUNTIME_DIR=/run/sddm   -DBUILD_MAN_PAGES=ON  -DDATA_INSTALL_DIR=/usr/share/sddm -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} &&  cmake -DCMAKE_INSTALL_PREFIX=/usr  -DCMAKE_BUILD_TYPE=Release  -DRUNTIME_DIR=/run/sddm   -DBUILD_MAN_PAGES=OFF  -DDATA_INSTALL_DIR=/usr/share/sddm -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf  ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make

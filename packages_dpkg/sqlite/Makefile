@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 2022.2
-PKG_NAME = xorgproto
-PKG_URL = https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2022.2.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libxcb(>=1.51) "
+PKG_VERSION = 3.42.0
+PKG_NAME = sqlite
+PKG_URL = https://sqlite.org/2023/sqlite-autoconf-3420000.tar.gz
+PKG_TAR_FILE = sqlite-autoconf-3420000.tar.gz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/sqlite-autoconf-3420000
+PKG_DEBIAN_DEPANDS = "Depends: basefile "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: databases"
 
-PKG_DEBIAN_DEST = "Description: The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system."
+PKG_DEBIAN_DEST = "Description: The SQLite package is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,7 +57,13 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-legacy
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --disable-static  \
+            --enable-fts{4,5} \
+            CPPFLAGS="-DSQLITE_ENABLE_COLUMN_METADATA=1 \
+                      -DSQLITE_ENABLE_UNLOCK_NOTIFY=1   \
+                      -DSQLITE_ENABLE_DBSTAT_VTAB=1     \
+                      -DSQLITE_SECURE_DELETE=1          \
+                      -DSQLITE_ENABLE_FTS3_TOKENIZER=1"
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make
@@ -68,8 +74,6 @@ ${PKG_MAKE_INTALL}:
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
-	@find ${PKG_BUILD_DIR_DPKG} -name "XKBgeom.h" -type f -delete
-	@find ${PKG_BUILD_DIR_DPKG} -name "vldXvMC.h" -type f -delete
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
 	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
@@ -85,4 +89,4 @@ ${PKG_BUILD_DIR_DEBIAN}:
 ${PKG_DPKG_FILE_PATH}:
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
-	
+	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg

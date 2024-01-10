@@ -10,7 +10,7 @@ PKG_NAME = extra-cmake-modules
 PKG_URL = https://download.kde.org/stable/frameworks/5.109/extra-cmake-modules-5.109.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libxcb(>=1.51) "
+PKG_DEBIAN_DEPANDS = "Depends: cmake(>=3.27.0-rc4) "
 
 
 PKG_DEBIAN_SECTION = "Section: kde"
@@ -59,14 +59,14 @@ ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
 	@cd ${PGK_SOURCE_DIR} && sed -i '/"lib64"/s/64//' ${PGK_SOURCE_DIR}/kde-modules/KDEInstallDirsCommon.cmake
 	@cd ${PGK_SOURCE_DIR} && sed -e '/PACKAGE_INIT/i set(SAVE_PACKAGE_PREFIX_DIR "${PACKAGE_PREFIX_DIR}")'  -e '/^include/a set(PACKAGE_PREFIX_DIR "${SAVE_PACKAGE_PREFIX_DIR}")' -i  ${PGK_SOURCE_DIR}/ECMConfig.cmake.in 
-	@cd ${PKG_BUILD_DIR} && cmake -DCMAKE_INSTALL_PREFIX=/usr  ${PGK_SOURCE_DIR}
+	cd ${PGK_SOURCE_DIR} && cmake -DCMAKE_INSTALL_PREFIX=/usr  ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && make
+	@cd ${PGK_SOURCE_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
+	@cd ${PGK_SOURCE_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
