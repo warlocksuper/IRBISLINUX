@@ -17,7 +17,7 @@ PKG_DEBIAN_SECTION = "Section: kde"
 
 PKG_DEBIAN_DEST = "Description: Qt5 is a cross-platform application framework that is widely used for developing application software with a graphical user interface (GUI) (in which cases Qt5 is classified as a widget toolkit), and also used for developing non-GUI programs such as command-line tools and consoles for servers. Two of the major users of Qt are KDE Frameworks 5 (KF5) and LXQt."
 
-PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
+
 
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
@@ -28,6 +28,8 @@ PKG_BUILD_DIR = ${PKG_BUILD_DIR_ALL}/${PKG_NAME}
 PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
+
+PKG_COMPILE = ${PGK_BUILD_DIR}/qtbase/bin/moc
 
 PKG_DPKG_FILE_PATH = ${PKG_BUILD_DIR}/${PKG_DPKG_FILE}
 
@@ -75,7 +77,7 @@ ${PKG_COMPILE}:
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && make INSTALL_ROOT=${PKG_BUILD_DIR_DPKG}  DESTDIR=${PKG_BUILD_DIR_DPKG} install
+	@cd ${PKG_BUILD_DIR} && make INSTALL_ROOT=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
