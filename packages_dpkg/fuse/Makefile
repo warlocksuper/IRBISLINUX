@@ -1,21 +1,21 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-#depand Run-time dependency gcr-base-3 found: NO
+
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 1.50.6
-PKG_NAME = gvfs
-PKG_URL = https://download.gnome.org/sources/gvfs/1.50/gvfs-1.50.6.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 3.16.1
+PKG_NAME = fuse
+PKG_URL = https://github.com/libfuse/libfuse/releases/download/fuse-3.16.1/fuse-3.16.1.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  dbus(>=1.14.6.1),  glib(>=2.74.5), libusb(>=1.0.26),  libsecret(>=0.20.5), avahi(>=0.8),  fuse(>=3.16.1),  libcdio-paranoia(>=10.2+2.0.1) "
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
 
-PKG_DEBIAN_SECTION = "Section: gnome"
+PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: The Gvfs package is a userspace virtual filesystem designed to work with the I/O abstractions of GLib's GIO library."
+PKG_DEBIAN_DEST = "Description: FUSE (Filesystem in Userspace) is a simple interface for userspace programs to export a virtual filesystem to the Linux kernel. Fuse also aims to provide a secure method for non privileged users to create and mount their own filesystem implementations."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,15 +57,14 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && meson setup --prefix=/usr --buildtype=release  -Dgoa=false         \
-      -Dgoogle=false -Dgphoto2=false -Dmtp=false -Dnfs=false  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && meson setup --prefix=/usr --buildtype=release -Dafc=false -Dbluray=false -Dsmb=false -Dgoogle=false ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && ninja
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cd ${PKG_BUILD_DIR} && sudo DESTDIR=${PKG_BUILD_DIR_DPKG}  ninja  install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
@@ -73,6 +72,7 @@ ${PKG_BUILD_DIR_DEBIAN}:
 	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Version: ${PKG_VERSION}" >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo "Provides: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo ${PKG_DEBIAN_SECTION} >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo ${PKG_DEBIAN_DEPANDS} >> ${PKG_BUILD_DIR_DEBIAN}

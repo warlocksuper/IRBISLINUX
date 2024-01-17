@@ -72,4 +72,6 @@ EOF
 
 localectl --no-convert set-x11-keymap us,ru pc104, dvorak grp:lctrl_lshift_toggle
 
+echo "setxkbmap \"us, ru\" " >> /usr/share/sddm/scripts/Xsetup 
+
 

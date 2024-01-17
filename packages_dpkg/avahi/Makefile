@@ -1,21 +1,21 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-#depand Run-time dependency gcr-base-3 found: NO
+#libdaemon-0.14
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 1.50.6
-PKG_NAME = gvfs
-PKG_URL = https://download.gnome.org/sources/gvfs/1.50/gvfs-1.50.6.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 0.8
+PKG_NAME = avahi
+PKG_URL = https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  dbus(>=1.14.6.1),  glib(>=2.74.5), libusb(>=1.0.26),  libsecret(>=0.20.5), avahi(>=0.8),  fuse(>=3.16.1),  libcdio-paranoia(>=10.2+2.0.1) "
+PKG_DEBIAN_DEPANDS = "Depends: glib(>=2.76.4),  libdaemon(>=0.14)"
 
 
-PKG_DEBIAN_SECTION = "Section: gnome"
+PKG_DEBIAN_SECTION = "Section:  network"
 
-PKG_DEBIAN_DEST = "Description: The Gvfs package is a userspace virtual filesystem designed to work with the I/O abstractions of GLib's GIO library."
+PKG_DEBIAN_DEST = "Description: The Avahi package is a system which facilitates service discovery on a local network."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,15 +57,28 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && meson setup --prefix=/usr --buildtype=release  -Dgoa=false         \
-      -Dgoogle=false -Dgphoto2=false -Dmtp=false -Dnfs=false  ${PGK_SOURCE_DIR}
+	@cd ${PGK_SOURCE_DIR} && sed -i '426a if (events & AVAHI_WATCH_HUP) { \
+client_free(c); \
+return; \
+}' avahi-daemon/simple-protocol.c
+
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --disable-static     \
+    --disable-libevent   \
+    --disable-mono       \
+    --disable-monodoc    \
+    --disable-python     \
+    --disable-qt3        \
+    --disable-qt4        \
+    --enable-core-docs   \
+    --with-distro=none   \
+    --with-dbus-system-address='unix:path=/run/dbus/system_bus_socket'
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && ninja
+	@cd ${PKG_BUILD_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
@@ -73,6 +86,7 @@ ${PKG_BUILD_DIR_DEBIAN}:
 	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Version: ${PKG_VERSION}" >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo "Provides: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo ${PKG_DEBIAN_SECTION} >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo ${PKG_DEBIAN_DEPANDS} >> ${PKG_BUILD_DIR_DEBIAN}

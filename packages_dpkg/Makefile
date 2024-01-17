@@ -4,8 +4,13 @@ PKG_LIST_DIR = basefile_dpkg dbus_dpkg glib_dpkg ncurses_dpkg dwz_dpkg psmisc_dp
 PKG_LIST_DIR +=  setxkbmap_dpkg
 
 
-PKG_LIST_DIR +=  extra-cmake-modules_dpkg sqlite_dpkg sddm_dpkg qt-everywhere-opensource-src_dpkg 
+### KDE
+PKG_LIST_DIR +=  extra-cmake-modules_dpkg sqlite_dpkg sddm_dpkg qt-everywhere-opensource-src_dpkg phonon_dpkg
+
+
 PKG_LIST_DIR += wayland_dpkg wayland-protocols_dpkg
+
+
 
 
 PKG_LIST_DIR += acpid_dpkg rest_dpkg yaml_dpkg ruby_dpkg harfbuzz_dpkg SDL_dpkg libwebp_dpkg libwpe_dpkg wpebackend-fdo_dpkg enchant_dpkg openjpeg_dpkg 
@@ -16,8 +21,9 @@ PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  gdm_dpkg
 PKG_LIST_DIR += krb5_dpkg ConsoleKit_dpkg   libpipeline_dpkg  xfce4-settings_dpkg 
 PKG_LIST_DIR += libxslt_dpkg gnome-session_dpkg colord_dpkg colord-gtk_dpkg gnome-online-accounts_dpkg cracklib_dpkg  libpwquality_dpkg libmbim_dpkg  libqmi_dpkg gsound_dpkg gnome-bluetooth_dpkg ModemManager_dpkg  
 PKG_LIST_DIR += libgtop_dpkg  libatasmart_dpkg keyutils_dpkg libaio_dpkg  LVM2_dpkg libbytesize_dpkg e2fsprogs_dpkg
-PKG_LIST_DIR +=  json-c_dpkg cryptsetup_dpkg libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg  gvfs_dpkg   
-PKG_LIST_DIR +=   librsvg_dpkg gdk-pixbuf_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg 
+PKG_LIST_DIR +=  json-c_dpkg cryptsetup_dpkg libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg 
+PKG_LIST_DIR +=  libdaemon_dpkg avahi_dpkg fuse_dpkg  libcdio_dpkg  libcdio-paranoia_dpkg  gvfs_dpkg   
+PKG_LIST_DIR +=  librsvg_dpkg gdk-pixbuf_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg 
 
 # не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg    webkitgtk_dpkg
 
@@ -25,6 +31,23 @@ export
 
 all: ${PKG_LIST_DIR}
 
+libcdio-paranoia_dpkg:
+	${MAKE} -C libcdio-paranoia
+
+libcdio_dpkg:
+	${MAKE} -C libcdio
+
+fuse_dpkg:
+	${MAKE} -C fuse
+
+libdaemon_dpkg:
+	${MAKE} -C libdaemon
+
+avahi_dpkg:
+	${MAKE} -C avahi
+
+phonon_dpkg:
+	${MAKE} -C phonon
 
 setxkbmap_dpkg:
 	${MAKE} -C setxkbmap
