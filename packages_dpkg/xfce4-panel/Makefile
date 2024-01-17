@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 2.48.3
-PKG_NAME = at-spi2-core
-PKG_URL = https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.3.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 4.18.4
+PKG_NAME = xfce4-panel
+PKG_URL = https://archive.xfce.org/src/xfce/xfce4-panel/4.18/xfce4-panel-4.18.4.tar.bz2
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: glib(>=2.74.5),  gtk4(>=4.8.3), dbus(>=1.14.6.1), libx11(>=1.8.4), libxtst(>=1.2.4), libxi(>=1.8) "
+PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.17.6.2), exo(>=4.18.0), garcon(>=4.18.0),  libwnck(>=43.0), fontconfig(>=2.14.2), expat(>=2.5.0) "
 
 
-PKG_DEBIAN_SECTION = "Section: librares"
+PKG_DEBIAN_SECTION = "Section: xfce"
 
-PKG_DEBIAN_DEST = "Description: The At-Spi2 Core package contains a comprehensive accessibility framework for the Assistive Technologies available on the GNOME platform. This includes a set of interfaces which are implemented by other toolkits and applications."
+PKG_DEBIAN_DEST = "Description: The Xfce4 Panel package contains the Xfce4 Panel."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,15 +57,14 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} &&  meson setup --prefix=/usr --buildtype=release -Dsystemd_user_dir=/usr/lib/systemd/system ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-vala=no
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && ninja
+	@cd ${PKG_BUILD_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG}  ninja  install
-	@rm ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
+	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
@@ -77,7 +76,6 @@ ${PKG_BUILD_DIR_DEBIAN}:
 	@echo "Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo ${PKG_DEBIAN_SECTION} >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo ${PKG_DEBIAN_DEPANDS} >> ${PKG_BUILD_DIR_DEBIAN}
-	@echo "Replaces: gtk3 " >> ${PKG_BUILD_DIR_DEBIAN} 
 	@echo "Installed-Size: `du -s ${PKG_BUILD_DIR_DPKG} | cut -f1`" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo ${PKG_DEBIAN_DEST} >> ${PKG_BUILD_DIR_DEBIAN}
 	@cp postinst ${PKG_BUILD_DIR_DPKG}/DEBIAN/	

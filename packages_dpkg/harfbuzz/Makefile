@@ -67,7 +67,6 @@ ${PKG_MAKE_INTALL}:
 	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}: 
-	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
 	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}

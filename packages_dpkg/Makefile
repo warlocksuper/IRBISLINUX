@@ -22,14 +22,41 @@ PKG_LIST_DIR += krb5_dpkg ConsoleKit_dpkg   libpipeline_dpkg  xfce4-settings_dpk
 PKG_LIST_DIR += libxslt_dpkg gnome-session_dpkg colord_dpkg colord-gtk_dpkg gnome-online-accounts_dpkg cracklib_dpkg  libpwquality_dpkg libmbim_dpkg  libqmi_dpkg gsound_dpkg gnome-bluetooth_dpkg ModemManager_dpkg  
 PKG_LIST_DIR += libgtop_dpkg  libatasmart_dpkg keyutils_dpkg libaio_dpkg  LVM2_dpkg libbytesize_dpkg e2fsprogs_dpkg
 PKG_LIST_DIR +=  json-c_dpkg cryptsetup_dpkg libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg 
-PKG_LIST_DIR +=  libdaemon_dpkg avahi_dpkg fuse_dpkg  libcdio_dpkg  libcdio-paranoia_dpkg  gvfs_dpkg   
-PKG_LIST_DIR +=  librsvg_dpkg gdk-pixbuf_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg 
+PKG_LIST_DIR +=  libdaemon_dpkg avahi_dpkg fuse_dpkg  libcdio_dpkg  libcdio-paranoia_dpkg    gvfs_dpkg   
+PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg xbitmaps_dpkg
+
+### XFCE4
+PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg
 
 # не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg    webkitgtk_dpkg
 
 export
 
 all: ${PKG_LIST_DIR}
+
+libXrender_dpkg:
+	${MAKE} -C libXrender
+
+expat_dpkg:
+	${MAKE} -C expat
+
+graphite2_dpkg:
+	${MAKE} -C graphite2
+
+fontconfig_dpkg:
+	${MAKE} -C fontconfig
+
+cairo_dpkg:
+	${MAKE} -C cairo
+
+garcon_dpkg:
+	${MAKE} -C garcon
+
+xfce4-panel_dpkg:
+	${MAKE} -C xfce4-panel
+
+xbitmaps_dpkg:
+	${MAKE} -C xbitmaps
 
 libcdio-paranoia_dpkg:
 	${MAKE} -C libcdio-paranoia
