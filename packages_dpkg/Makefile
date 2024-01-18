@@ -26,13 +26,26 @@ PKG_LIST_DIR +=  libdaemon_dpkg avahi_dpkg fuse_dpkg  libcdio_dpkg  libcdio-para
 PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg xbitmaps_dpkg
 
 ### XFCE4
-PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg
+PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg xfce4-pulseaudio-plugin_dpkg  boost_dpkg  gtkmm_dpkg  pavucontrol_dpkg 
 
 # не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg    webkitgtk_dpkg
 
 export
 
 all: ${PKG_LIST_DIR}
+
+boost_dpkg:
+	${MAKE} -C boost
+
+gtkmm_dpkg:
+	${MAKE} -C gtkmm
+
+pavucontrol_dpkg:
+	${MAKE} -C pavucontrol
+
+
+xfce4-pulseaudio-plugin_dpkg:
+	${MAKE} -C xfce4-pulseaudio-plugin
 
 libXrender_dpkg:
 	${MAKE} -C libXrender
