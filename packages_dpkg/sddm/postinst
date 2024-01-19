@@ -6,7 +6,7 @@ if ! id "sddm" >/dev/null 2>&1; then
 fi
 
 
-if [ ! -f /tmp/foo.txt ]; then
+if [ ! -f /etc/sddm.conf ]; then
 
 sddm --example-config > /etc/sddm.conf
 
