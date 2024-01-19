@@ -26,15 +26,22 @@ PKG_LIST_DIR +=  libdaemon_dpkg avahi_dpkg fuse_dpkg  libcdio_dpkg  libcdio-para
 PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg xbitmaps_dpkg 
 
 ### XFCE4
-PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glimm_dpkg  gtkmm_dpkg  pavucontrol_dpkg 
+PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg  gtkmm_dpkg  pavucontrol_dpkg 
 
 # не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg    webkitgtk_dpkg
 
 export
 
-all: ${PKG_LIST_DIR}
+PKG_LIST = basefile dbus glib glibmm
 
-glimm_dpkg:
+
+
+#all: ${PKG_LIST_DIR}
+all:	${PKG_LIST}
+	${MAKE} -C $<_pkg
+
+
+glibmm_dpkg:
 	${MAKE} -C glimm
 
 mm-common_dpkg:

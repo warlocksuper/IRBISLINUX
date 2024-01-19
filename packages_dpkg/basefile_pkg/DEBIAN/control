@@ -1,0 +1,8 @@
+Package: basefile
+Architecture: amd64
+Version: 0.2
+Provides: basefile
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: system
+Installed-Size: 
+Description:  Скелет системы IRBIS linux
