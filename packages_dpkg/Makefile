@@ -32,14 +32,18 @@ PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_
 
 export
 
-PKG_LIST = basefile dbus glib glibmm
+PKG_LIST = basefile dbus glib glibmm atkmm_pkg
 
 
 
-#all: ${PKG_LIST_DIR}
-all:	${PKG_LIST}
-	${MAKE} -C $<_pkg
+all: ${PKG_LIST_DIR}
+##all:	${PKG_LIST}
 
+
+#${PKG_LIST}:
+#	${MAKE} -C $@ $<
+
+all_pkg:
 
 glibmm_dpkg:
 	${MAKE} -C glimm
