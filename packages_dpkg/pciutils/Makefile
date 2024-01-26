@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 2022.2
-PKG_NAME = xorgproto
-PKG_URL = https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2022.2.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 3.10.0
+PKG_NAME = pciutils
+PKG_URL = https://mj.ucw.cz/download/linux/pci/pciutils-3.10.0.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libxcb(>=1.51) "
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system."
+PKG_DEBIAN_DEST = "Description: The PCI Utils package contains a set of programs for listing PCI devices, inspecting their status and setting their configuration registers."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,19 +57,22 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-legacy
+##	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-static=no
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && make
+	@cd ${PGK_SOURCE_DIR} && make PREFIX=/usr                \
+     SHAREDIR=/usr/share/hwdata \
+     SHARED=yes
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
+	@cd ${PGK_SOURCE_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} PREFIX=/usr                \
+     SHAREDIR=/usr/share/hwdata \
+     SHARED=yes                 \
+     install install-lib 
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
-	@find ${PKG_BUILD_DIR_DPKG} -name "XKBgeom.h" -type f -delete
-	@find ${PKG_BUILD_DIR_DPKG} -name "vldXvMC.h" -type f -delete
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
 	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
@@ -85,5 +88,6 @@ ${PKG_BUILD_DIR_DEBIAN}:
 ${PKG_DPKG_FILE_PATH}:
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
+	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
 	

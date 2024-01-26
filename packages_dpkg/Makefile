@@ -1,7 +1,7 @@
 PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sbin:/usr/libexec
 
 PKG_LIST_DIR = basefile_dpkg dbus_dpkg glib_dpkg ncurses_dpkg dwz_dpkg psmisc_dpkg cpio_dpkg libxcrypt_dpkg gobject-introspection_dpkg LSB-Tools_dpkg libffi_dpkg make-ca_dpkg at-spi2-core_dpkg brotli_dpkg liboauth_dpkg p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg mesa_dpkg 
-PKG_LIST_DIR +=  setxkbmap_dpkg
+PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg
 
 
 ### KDE
@@ -26,9 +26,12 @@ PKG_LIST_DIR +=  libdaemon_dpkg avahi_dpkg fuse_dpkg  libcdio_dpkg  libcdio-para
 PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg xbitmaps_dpkg 
 
 ### XFCE4
-PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg  gtkmm_dpkg  pavucontrol_dpkg 
+PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg check_dpkg  pulseaudio_dpkg  xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg  gtkmm_dpkg  pavucontrol_dpkg 
 
 # не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg    webkitgtk_dpkg
+
+#Sound
+PKG_LIST_DIR += alsa-lib_dpkg alsa-plugins_dpkg alsa-utils_dpkg fltk_dpkg   alsa-firmware_dpkg  alsa-oss_dpkg  alsa-tools_dpkg
 
 export
 
@@ -42,8 +45,42 @@ all: ${PKG_LIST_DIR}
 
 #${PKG_LIST}:
 #	${MAKE} -C $@ $<
+check_dpkg:
+	${MAKE} -C check
 
-all_pkg:
+
+pulseaudio_dpkg:
+	${MAKE} -C pulseaudio
+
+alsa-firmware_dpkg:
+	${MAKE} -C alsa-firmware
+
+
+alsa-oss_dpkg:
+	${MAKE} -C alsa-oss
+
+
+pciutils_dpkg:
+	${MAKE} -C pciutils
+
+
+fltk_dpkg:
+	${MAKE} -C fltk
+
+alsa-tools_dpkg:
+	${MAKE} -C alsa-tools
+
+alsa-utils_dpkg:
+	${MAKE} -C alsa-utils
+
+alsa-plugins_dpkg:
+	${MAKE} -C alsa-plugins
+
+
+
+alsa-lib_dpkg:
+	${MAKE} -C alsa-lib
+
 
 glibmm_dpkg:
 	${MAKE} -C glimm
