@@ -10,7 +10,7 @@ PKG_NAME = sddm
 PKG_URL = https://github.com/sddm/sddm/archive/v0.20.0/sddm-0.20.0.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: extra-cmake-modules(>=5.109.0), krb5(>=1.21.2) "
+PKG_DEBIAN_DEPANDS = "Depends: extra-cmake-modules(>=5.109.0), krb5(>=1.21.2), e2fsprogs(>=1.47.0) "
 
 export XML_CATALOG_FILES=/etc/xml/catalog
 
