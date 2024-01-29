@@ -11,7 +11,7 @@ PKG_NAME = cogl
 PKG_URL = https://download.gnome.org/sources/cogl/1.22/cogl-1.22.8.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.17.6.2), gdk-pixbuf(>=2.42.10), glu(>=9.0.3), mesa(>=22.3.5), pango(>=1.50.12.1), wayland(>=1.21.0) "
+PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.17.6), gdk-pixbuf(>=2.42.10), glu(>=9.0.3), mesa(>=22.3.5), pango(>=1.50.12.1), wayland(>=1.21.0) "
 
 
 PKG_DEBIAN_SECTION = "Section: libraries"
