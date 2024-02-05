@@ -5,9 +5,9 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 2.79.1
+PKG_VERSION = 2.76.4
 PKG_NAME = glib
-PKG_URL = https://download.gnome.org/sources/glib/2.79/glib-2.79.1.tar.xz
+PKG_URL = https://download.gnome.org/sources/glib/2.76/glib-2.76.4.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: libxslt(>=1.1.37), pcre2(>=10.40) "
@@ -57,7 +57,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-#	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i  ${ROOT_DIR}/packages_dpkg/glib/glib-skip_warnings-1.patch
+	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i  ${ROOT_DIR}/packages_dpkg/glib/glib-skip_warnings-1.patch
 	@cd ${PKG_BUILD_DIR} &&  meson --prefix=/usr --buildtype=release -Dman=false -Dgtk_doc=false ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}:

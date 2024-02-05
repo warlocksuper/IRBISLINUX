@@ -6,6 +6,9 @@ PKG_LIST_DIR +=  readline_dpkg dwz_dpkg psmisc_dpkg cpio_dpkg libxcrypt_dpkg gob
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg
 
 
+#### XORG
+PKG_LIST_DIR +=  xf86-input-synaptics_dpkg
+
 ### KDE
 PKG_LIST_DIR +=  extra-cmake-modules_dpkg sqlite_dpkg sddm_dpkg qt-everywhere-opensource-src_dpkg phonon_dpkg
 
@@ -48,6 +51,9 @@ all: ${PKG_LIST_DIR}
 
 #${PKG_LIST}:
 #	${MAKE} -C $@ $<
+
+xf86-input-synaptics_dpkg:
+	${MAKE} -C xf86-input-synaptics
 
 readline_dpkg:
 	${MAKE} -C readline
