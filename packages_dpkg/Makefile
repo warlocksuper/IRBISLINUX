@@ -1,6 +1,6 @@
 PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sbin:/usr/libexec
 
-PKG_LIST_DIR = basefile_dpkg dbus_dpkg glib_dpkg ncurses_dpkg 
+PKG_LIST_DIR = basefile_dpkg dbus_dpkg linux_dpkg ncurses_dpkg linux_dpkg ##glib_dpkg 
 
 PKG_LIST_DIR +=  readline_dpkg dwz_dpkg psmisc_dpkg cpio_dpkg libxcrypt_dpkg gobject-introspection_dpkg LSB-Tools_dpkg libffi_dpkg make-ca_dpkg at-spi2-core_dpkg brotli_dpkg liboauth_dpkg p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg mesa_dpkg 
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg
@@ -32,11 +32,13 @@ PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_
 
 ### XFCE4
 PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg check_dpkg  pulseaudio_dpkg  xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg  gtkmm_dpkg  pavucontrol_dpkg 
+PKG_LIST_DIR +=   xfce4-taskmanager_dpkg
+
 
 # не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg    webkitgtk_dpkg
 
 #Sound
-PKG_LIST_DIR += alsa-lib_dpkg alsa-plugins_dpkg alsa-utils_dpkg fltk_dpkg   alsa-firmware_dpkg  alsa-oss_dpkg 
+PKG_LIST_DIR += alsa-lib_dpkg alsa-plugins_dpkg alsa-utils_dpkg fltk_dpkg   alsa-firmware_dpkg  alsa-oss_dpkg alsa-ucm-conf_dpkg
 PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg libvpx_dpkg nasm_dpkg x264_dpkg  x265_dpkg   ffmpeg_dpkg pipewire_dpkg  alsa-tools_dpkg
 
 export
@@ -51,6 +53,12 @@ all: ${PKG_LIST_DIR}
 
 #${PKG_LIST}:
 #	${MAKE} -C $@ $<
+
+xfce4-taskmanager_dpkg:
+	${MAKE} -C xfce4-taskmanager
+
+alsa-ucm-conf_dpkg:
+	${MAKE} -C alsa-ucm-conf
 
 xf86-input-synaptics_dpkg:
 	${MAKE} -C xf86-input-synaptics
