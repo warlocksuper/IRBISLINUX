@@ -39,7 +39,11 @@ PKG_LIST_DIR +=   xfce4-taskmanager_dpkg
 
 #Sound
 PKG_LIST_DIR += alsa-lib_dpkg alsa-plugins_dpkg alsa-utils_dpkg fltk_dpkg   alsa-firmware_dpkg  alsa-oss_dpkg alsa-ucm-conf_dpkg
-PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg libvpx_dpkg nasm_dpkg x264_dpkg  x265_dpkg   ffmpeg_dpkg pipewire_dpkg  alsa-tools_dpkg
+PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg libvpx_dpkg nasm_dpkg x264_dpkg  x265_dpkg   ffmpeg_dpkg pipewire_dpkg   ##alsa-tools_dpkg
+
+
+
+PKG_LIST_DIR += bluez_dpkg
 
 export
 
@@ -53,6 +57,9 @@ all: ${PKG_LIST_DIR}
 
 #${PKG_LIST}:
 #	${MAKE} -C $@ $<
+
+bluez_dpkg:
+	${MAKE} -C bluez
 
 xfce4-taskmanager_dpkg:
 	${MAKE} -C xfce4-taskmanager
