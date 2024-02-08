@@ -1,2 +1,8 @@
 #!/bin/bash
 
+
+systemctl --user enable pipewire
+
+systemctl --user enable  pipewire-pulse
+
+systemctl --user enable wireplumber
