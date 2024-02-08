@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 0.3.77
-PKG_NAME = pipewire
-PKG_URL = https://github.com/PipeWire/pipewire/archive/0.3.77/pipewire-0.3.77.tar.gz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
+PKG_VERSION = 0.1.1
+PKG_NAME = libfreeaptx
+PKG_URL = https://github.com/iamthehorker/libfreeaptx/archive/refs/tags/0.1.1.tar.gz
+PKG_TAR_FILE = ${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  pulseaudio(>=16.1), ffmpeg(>=6.0), sbc(>=2.0), libfreeaptx(>=0.1.1) "
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: libraries"
 
-PKG_DEBIAN_DEST = "Description: The pipewire package contains a server and userspace API to handle multimedia pipelines. This includes a universal API to connect to multimedia devices, as well as sharing multimedia files between applications."
+PKG_DEBIAN_DEST = "Description: This is Open Source implementation of Audio Processing Technology codec (aptX) derived from ffmpeg 4.0 project and licensed under LGPLv2.1+. This codec is mainly used in Bluetooth A2DP profile."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,17 +57,14 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} &&  meson setup  ${PGK_SOURCE_DIR}  \
-      --prefix=/usr           \
-      --buildtype=release  -Dffmpeg=enabled -Dbluez5=enabled -Dbluez5-codec-aptx=enabled -Dbluez5-codec-aac=enabled  \
-      -Dsession-managers="[]"   
+#	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-static=no
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && ninja
+	@cd ${PGK_SOURCE_DIR} && CC=gcc make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cd ${PGK_SOURCE_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete

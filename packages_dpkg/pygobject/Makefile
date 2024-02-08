@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 0.3.77
-PKG_NAME = pipewire
-PKG_URL = https://github.com/PipeWire/pipewire/archive/0.3.77/pipewire-0.3.77.tar.gz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
+PKG_VERSION = 3.44.1
+PKG_NAME = pygobject
+PKG_URL = https://download.gnome.org/sources/pygobject/3.44/pygobject-3.44.1.tar.xz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  pulseaudio(>=16.1), ffmpeg(>=6.0), sbc(>=2.0), libfreeaptx(>=0.1.1) "
+PKG_DEBIAN_DEPANDS = "Depends:  python3(>=3.11.2.2), gobject-introspection(>=1.76.1), pycairo(>=1.24.0) "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: dev"
 
-PKG_DEBIAN_DEST = "Description: The pipewire package contains a server and userspace API to handle multimedia pipelines. This includes a universal API to connect to multimedia devices, as well as sharing multimedia files between applications."
+PKG_DEBIAN_DEST = "Description: PyGObject3 provides Python bindings to the GObject class from GLib."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,17 +57,15 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} &&  meson setup  ${PGK_SOURCE_DIR}  \
-      --prefix=/usr           \
-      --buildtype=release  -Dffmpeg=enabled -Dbluez5=enabled -Dbluez5-codec-aptx=enabled -Dbluez5-codec-aac=enabled  \
-      -Dsession-managers="[]"   
+##	@cd ${PGK_SOURCE_DIR} && mv -v tests/test_gdbus.py{,.nouse}
+	@cd ${PKG_BUILD_DIR} &&  meson setup --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --buildtype=release ${PGK_SOURCE_DIR}  
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && ninja
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja  install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete

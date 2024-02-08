@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 0.3.77
-PKG_NAME = pipewire
-PKG_URL = https://github.com/PipeWire/pipewire/archive/0.3.77/pipewire-0.3.77.tar.gz
+PKG_VERSION = 0.29.36
+PKG_NAME = Cython
+PKG_URL = https://github.com/cython/cython/releases/download/0.29.36/Cython-0.29.36.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  pulseaudio(>=16.1), ffmpeg(>=6.0), sbc(>=2.0), libfreeaptx(>=0.1.1) "
+PKG_DEBIAN_DEPANDS = "Depends:  python3(>=3.11.2.2) "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: dev"
 
-PKG_DEBIAN_DEST = "Description: The pipewire package contains a server and userspace API to handle multimedia pipelines. This includes a universal API to connect to multimedia devices, as well as sharing multimedia files between applications."
+PKG_DEBIAN_DEST = "Description: The Cython package provides a compiler for writing C extensions for the Python language."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,17 +57,14 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} &&  meson setup  ${PGK_SOURCE_DIR}  \
-      --prefix=/usr           \
-      --buildtype=release  -Dffmpeg=enabled -Dbluez5=enabled -Dbluez5-codec-aptx=enabled -Dbluez5-codec-aac=enabled  \
-      -Dsession-managers="[]"   
+#	@cd ${PKG_BUILD_DIR} &&  meson setup --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --buildtype=release ${PGK_SOURCE_DIR}  
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && ninja
+	@cd ${PGK_SOURCE_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@cd ${PGK_SOURCE_DIR} && PYTHONPATH=${PKG_BUILD_DIR_DPKG}  python setup.py install --install-dir=${PKG_BUILD_DIR_DPKG}    ##make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
@@ -76,6 +73,7 @@ ${PKG_BUILD_DIR_DEBIAN}:
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Version: ${PKG_VERSION}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Provides: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo "Replaces:  pygobject " >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo ${PKG_DEBIAN_SECTION} >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo ${PKG_DEBIAN_DEPANDS} >> ${PKG_BUILD_DIR_DEBIAN}

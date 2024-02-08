@@ -6,6 +6,11 @@ PKG_LIST_DIR +=  readline_dpkg dwz_dpkg psmisc_dpkg cpio_dpkg libxcrypt_dpkg gob
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg
 
 
+## Python
+
+PKG_LIST_DIR +=  pycairo_dpkg  pygobject_dpkg  # Cython_dpkg
+
+
 #### XORG
 PKG_LIST_DIR +=  xf86-input-synaptics_dpkg
 
@@ -39,11 +44,11 @@ PKG_LIST_DIR +=   xfce4-taskmanager_dpkg
 
 #Sound
 PKG_LIST_DIR += alsa-lib_dpkg alsa-plugins_dpkg alsa-utils_dpkg fltk_dpkg   alsa-firmware_dpkg  alsa-oss_dpkg alsa-ucm-conf_dpkg
-PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg libvpx_dpkg nasm_dpkg x264_dpkg  x265_dpkg   ffmpeg_dpkg pipewire_dpkg   ##alsa-tools_dpkg
+PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg libvpx_dpkg nasm_dpkg x264_dpkg  x265_dpkg   ffmpeg_dpkg  sbc_dpkg  libfreeaptx_dpkg  pipewire_dpkg   ##alsa-tools_dpkg
 
 
 
-PKG_LIST_DIR += bluez_dpkg
+PKG_LIST_DIR += bluez_dpkg blueman_dpkg
 
 export
 
@@ -57,6 +62,25 @@ all: ${PKG_LIST_DIR}
 
 #${PKG_LIST}:
 #	${MAKE} -C $@ $<
+
+libfreeaptx_dpkg:
+	${MAKE} -C libfreeaptx
+
+sbc_dpkg:
+	${MAKE} -C sbc
+
+Cython_dpkg:
+	${MAKE} -C Cython
+
+pycairo_dpkg:
+	${MAKE} -C pycairo
+
+pygobject_dpkg:
+	${MAKE} -C pygobject
+
+
+blueman_dpkg:
+	${MAKE} -C blueman
 
 bluez_dpkg:
 	${MAKE} -C bluez
