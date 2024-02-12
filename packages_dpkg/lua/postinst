@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+
+
+ln -s /usr/bin/luac5.2 /usr/bin/luac
+ln -s /usr/bin/lua5.2 /usr/bin/lua

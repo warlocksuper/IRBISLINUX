@@ -15,7 +15,7 @@ PKG_LIST_DIR +=  pycairo_dpkg  pygobject_dpkg  # Cython_dpkg
 PKG_LIST_DIR +=  xf86-input-synaptics_dpkg
 
 ### KDE
-PKG_LIST_DIR +=  extra-cmake-modules_dpkg sqlite_dpkg sddm_dpkg qt-everywhere-opensource-src_dpkg phonon_dpkg
+PKG_LIST_DIR +=  extra-cmake-modules_dpkg sqlite_dpkg sddm_dpkg qt-everywhere-opensource-src_dpkg phonon_dpkg phonon-backend-gstreamer_dpkg a52dec_dpkg libmad_dpkg lua_dpkg  vlc_dpkg phonon-backend-vlc_dpkg
 
 
 PKG_LIST_DIR += wayland_dpkg wayland-protocols_dpkg
@@ -44,11 +44,11 @@ PKG_LIST_DIR +=   xfce4-taskmanager_dpkg
 
 #Sound
 PKG_LIST_DIR += alsa-lib_dpkg alsa-plugins_dpkg alsa-utils_dpkg fltk_dpkg   alsa-firmware_dpkg  alsa-oss_dpkg alsa-ucm-conf_dpkg
-PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg libvpx_dpkg nasm_dpkg x264_dpkg  x265_dpkg   ffmpeg_dpkg  sbc_dpkg  libfreeaptx_dpkg  pipewire_dpkg   ##alsa-tools_dpkg
+PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg libvpx_dpkg nasm_dpkg x264_dpkg  x265_dpkg   ffmpeg_dpkg  sbc_dpkg  libfreeaptx_dpkg  # pipewire_dpkg   ##alsa-tools_dpkg
 
 
 
-PKG_LIST_DIR += bluez_dpkg blueman_dpkg
+PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg  docbook_dpkg  gtkglext_dpkg  gksu_dpkg  synaptic_dpkg 
 
 export
 
@@ -62,6 +62,38 @@ all: ${PKG_LIST_DIR}
 
 #${PKG_LIST}:
 #	${MAKE} -C $@ $<
+
+phonon-backend-vlc_dpkg:
+	${MAKE} -C phonon-backend-vlc
+
+lua_dpkg:
+	${MAKE} -C lua
+
+libmad_dpkg:
+	${MAKE} -C libmad
+
+a52dec_dpkg:
+	${MAKE} -C a52dec
+
+
+vlc_dpkg:
+	${MAKE} -C vlc
+
+phonon-backend-gstreamer_dpkg:
+	${MAKE} -C phonon-backend-gstreamer
+
+
+gtkglext_dpkg:
+	${MAKE} -C gtkglext
+
+gksu_dpkg:
+	${MAKE} -C gksu
+
+docbook_dpkg:
+	${MAKE} -C docbook
+
+synaptic_dpkg:
+	${MAKE} -C synaptic
 
 libfreeaptx_dpkg:
 	${MAKE} -C libfreeaptx

@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 4.10.0
-PKG_NAME = phonon-backend-gstreamer
-PKG_URL = https://download.kde.org/stable/phonon/phonon-backend-gstreamer/4.10.0/phonon-backend-gstreamer-4.10.0.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 5.2.4
+PKG_NAME = lua
+PKG_URL = https://www.lua.org/ftp/lua-5.2.4.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  phonon(>=4.11.1),  gstreamer(>=1.22.0),  libxml2(>=2.10.3) "
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
 
-PKG_DEBIAN_SECTION = "Section: kde"
+PKG_DEBIAN_SECTION = "Section: dev"
 
-PKG_DEBIAN_DEST = "Description: Phonon is the multimedia API for KDE. It replaces the old aRts package. Phonon needs either the GStreamer or VLC backend."
+PKG_DEBIAN_DEST = "Description: Lua is a powerful light-weight programming language designed for extending applications. It is also frequently used as a general-purpose, stand-alone language. Lua is implemented as a small library of C functions, written in ANSI C, and compiles unmodified in all known platforms. The implementation goals are simplicity, efficiency, portability, and low embedding cost. The result is a fast language engine with small footprint, making it ideal in embedded systems too."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,17 +57,26 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} &&  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ${PGK_SOURCE_DIR}
+#	@cd ${PGK_SOURCE_DIR} && 	patch -Np1 -i   ${ROOT_DIR}/packages_dpkg/lua/lua-5.2.4-shared_library-1.patch
+#	@sed -i '/#define LUA_ROOT/s:/usr/local/:/usr/:' ${PGK_SOURCE_DIR}/src/luaconf.h 
+#	@sed -r -e '/^LUA_(SO|A|T)=/ s/lua/lua5.2/' -e '/^LUAC_T=/ s/luac/luac5.2/' -i ${PGK_SOURCE_DIR}/src/Makefile 
+
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && make
+	@cd ${PGK_SOURCE_DIR} && make MYCFLAGS="-fPIC" linux
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
+	@cd ${PGK_SOURCE_DIR} && make TO_BIN='lua5.2 luac5.2'                     \
+     TO_LIB="liblua5.2.so liblua5.2.so.5.2 liblua5.2.so.5.2.4" \
+     INSTALL_DATA="cp -d"                        \
+     INSTALL_TOP=${PKG_BUILD_DIR_DPKG}/usr                \
+     INSTALL_INC=${PKG_BUILD_DIR_DPKG}/usr/include/lua5.2  install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
+	install -d ${PKG_BUILD_DIR_DPKG}/usr/lib/pkgconfig/
+	@cp lua.pc ${PKG_BUILD_DIR_DPKG}/usr/lib/pkgconfig/ 
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
 	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
@@ -83,4 +92,6 @@ ${PKG_BUILD_DIR_DEBIAN}:
 ${PKG_DPKG_FILE_PATH}:
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
+	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
+	

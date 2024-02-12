@@ -10,7 +10,7 @@ PKG_NAME = sgml-common
 PKG_URL = https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/sgml-common-0.6.3.tgz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tgz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.1)"
+PKG_DEBIAN_DEPANDS = "Depends: "
 
 
 PKG_DEBIAN_SECTION = "Section: docs"
@@ -58,16 +58,16 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i ${ROOT_SOURCE}/sgml-common-0.6.3-manpage-1.patch
+#	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i ${ROOT_SOURCE}/sgml-common-0.6.3-manpage-1.patch
 	@cd ${PGK_SOURCE_DIR} && autoreconf -f -i	
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --sysconfdir=/etc 
+	@cd ${PGK_SOURCE_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --sysconfdir=/etc 
 
 ${PKG_COMPILE}:
-	${MAKE} -C ${PKG_BUILD_DIR}
+	@cd ${PGK_SOURCE_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	${MAKE} -C ${PKG_BUILD_DIR} DESTDIR=${PKG_BUILD_DIR_DPKG} docdir=/usr/share/doc install
+	@cd ${PGK_SOURCE_DIR} && make  DESTDIR=${PKG_BUILD_DIR_DPKG} docdir=/usr/share/doc install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
@@ -85,3 +85,6 @@ ${PKG_BUILD_DIR_DEBIAN}:
 ${PKG_DPKG_FILE_PATH}:
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
+	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
+	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
+	

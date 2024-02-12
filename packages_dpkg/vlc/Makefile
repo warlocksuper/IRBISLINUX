@@ -5,17 +5,17 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 4.10.0
-PKG_NAME = phonon-backend-gstreamer
-PKG_URL = https://download.kde.org/stable/phonon/phonon-backend-gstreamer/4.10.0/phonon-backend-gstreamer-4.10.0.tar.xz
+PKG_VERSION = 3.0.18
+PKG_NAME = vlc
+PKG_URL = https://download.videolan.org/vlc/3.0.18/vlc-3.0.18.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  phonon(>=4.11.1),  gstreamer(>=1.22.0),  libxml2(>=2.10.3) "
+PKG_DEBIAN_DEPANDS = "Depends: alsa-lib(>=1.2.9), desktop-file-utils(>=0.26), ffmpeg(>=6.0), a52dec(>=0.7.4), libgcrypt(>=1.10.1), libmad(>=0.15.1b), Lua(>=5.2.4) "
 
 
-PKG_DEBIAN_SECTION = "Section: kde"
+PKG_DEBIAN_SECTION = "Section: video"
 
-PKG_DEBIAN_DEST = "Description: Phonon is the multimedia API for KDE. It replaces the old aRts package. Phonon needs either the GStreamer or VLC backend."
+PKG_DEBIAN_DEST = "Description: VLC is a media player, streamer, and encoder. It can play from many inputs, such as files, network streams, capture devices, desktops, or DVD, SVCD, VCD, and audio CD. It can use most audio and video codecs (MPEG 1/2/4, H264, VC-1, DivX, WMV, Vorbis, AC3, AAC, etc.), and it can also convert to different formats and/or send streams through the network.."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,7 +57,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} &&  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && BUILDCC=gcc ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --disable-libva
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make
@@ -65,10 +65,14 @@ ${PKG_COMPILE}:
 
 ${PKG_MAKE_INTALL}:
 	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
+	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install-exec
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
+	install -d ${PKG_BUILD_DIR_DPKG}/usr/bin
+	@cp ${PKG_BUILD_DIR_DPKG}/../bin/vlc-static ${PKG_BUILD_DIR_DPKG}/usr/bin/vlc
+	@cp ${PKG_BUILD_DIR_DPKG}/../bin/vlc-wrapper ${PKG_BUILD_DIR_DPKG}/usr/bin/vlc-wrapper	
 	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Version: ${PKG_VERSION}" >> ${PKG_BUILD_DIR_DEBIAN}
@@ -83,4 +87,6 @@ ${PKG_BUILD_DIR_DEBIAN}:
 ${PKG_DPKG_FILE_PATH}:
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
+	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
+	
