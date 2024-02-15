@@ -1,26 +1,28 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-
+PKG_SRC_URL = https://download.kde.org/stable/frameworks/5.109
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 5.103.0
-PKG_NAME = extra-cmake-modules
-PKG_URL = https://download.kde.org/stable/frameworks/5.103/extra-cmake-modules-5.103.0.tar.xz
+PKG_VERSION = 5.109.0
+PKG_NAME = kapidox
+PKG_URL =  ${PKG_SRC_URL}/kapidox-5.109.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
-PKG_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: cmake(>=3.27.0-rc4) "
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
 
-PKG_DEBIAN_SECTION = "Section: KDE"
+PKG_DEBIAN_SECTION = "Section: kde"
 
-PKG_DEBIAN_DEST = "Description: The Extra Cmake Modules package contains extra CMake modules used by KDE Frameworks 5 and other packages."
+PKG_DEBIAN_DEST = "Description: KDE Frameworks kapidox."
 
-PKG_COMPILE = ${PGK_BUILD_DIR}/brotli
+PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
+PKG_DPKG_PATH_FILE = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
+
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
 PKG_BUILD_DIR_ALL = ${ROOT_DIR}/build_dpkg
@@ -34,7 +36,7 @@ PKG_DPKG_FILE_PATH = ${PKG_BUILD_DIR}/${PKG_DPKG_FILE}
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
 
-all: ${PKG_BUILD_DIR_ALL} ${PKG_BUILD_DIR_DPKG} ${PKG_TAR} ${PKG_SOURCE_DIR} ${PKG_CONFIGURE} ${PKG_COMPILE} ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} ${PKG_DPKG_FILE_PATH}
+${PKG_DPKG_PATH_FILE}: ${PKG_BUILD_DIR_ALL} ${PKG_BUILD_DIR_DPKG} ${PKG_TAR} ${PGK_SOURCE_DIR} ${PKG_CONFIGURE} ${PKG_COMPILE} ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} ${PKG_DPKG_FILE_PATH}
 
 ${PKG_BUILD_DIR_ALL}:
 	@mkdir -p ${PKG_BUILD_DIR_ALL}
@@ -52,23 +54,24 @@ ${PKG_TAR}:
 	wget ${PKG_URL} -P ${ROOT_SOURCE}/
 
 
-${PKG_SOURCE_DIR}:
+${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_SOURCE_DIR} && sed -i '/"lib64"/s/64//' kde-modules/KDEInstallDirsCommon.cmake
-	@cd ${PKG_BUILD_DIR} && cmake -DCMAKE_INSTALL_PREFIX=/usr ${PKG_SOURCE_DIR}
+#	@cd ${PKG_BUILD_DIR} && pip3 wheel -w dist --no-build-isolation --no-deps ${PGK_SOURCE_DIR}
+#	@cd ${PKG_BUILD_DIR} && pip3 install --target ${PKG_BUILD_DIR_DPKG} --no-index --find-links dist --no-cache-dir --no-user kapidox
+	@cd ${PGK_SOURCE_DIR} && cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -Wno-dev ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && make
+	@cd ${PGK_SOURCE_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
-##	ln -sr ${PKG_BUILD_DIR_DPKG}/usr/libexec/p11-kit/trust-extract-compat ${PKG_BUILD_DIR_DPKG}/usr/bin/update-ca-certificates
+	@cd ${PGK_SOURCE_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
+	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
 	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
@@ -84,4 +87,6 @@ ${PKG_BUILD_DIR_DEBIAN}:
 ${PKG_DPKG_FILE_PATH}:
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
+	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
+	@echo "" > ${ROOT_DIR}/instaled/${PKG_NAME}_dpkg
 	

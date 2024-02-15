@@ -1,19 +1,21 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
+
+
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 2.10.4
-PKG_NAME = libxml2
-PKG_URL = https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.4.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 4.5
+PKG_NAME = docbook
+PKG_URL = https://www.docbook.org/sgml/4.5/docbook-4.5.zip
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.zip
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: icu(>=72.1), valgrind(>=3.20.0) "
+PKG_DEBIAN_DEPANDS = "Depends: sgml-common(>=0.6.3) "
 
 
-PKG_DEBIAN_SECTION = "Section: libraries"
+PKG_DEBIAN_SECTION = "Section: doc"
 
-PKG_DEBIAN_DEST = "Description: The libxml2 package contains libraries and utilities used for parsing XML files."
+PKG_DEBIAN_DEST = "Description: The DocBook-4.5 SGML DTD package contains document type definitions for verification of SGML data files against the DocBook rule set. These are useful for structuring books and software documentation to a standard allowing you to utilize transformations already written for that standard."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -51,18 +53,23 @@ ${PKG_TAR}:
 
 
 ${PGK_SOURCE_DIR}:
-	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
+	@cd ${ROOT_SOURCE} && unzip  ${PKG_TAR_FILE}  -d ${PKG_NAME}-${PKG_VERSION}
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var -disable-static --with-history PYTHON=/usr/bin/python3 --docdir=/usr/share/doc/libxml2-2.10.3
+	@sed -i -e '/ISO 8879/d' -e '/gml/d' ${PGK_SOURCE_DIR}/docbook.cat
+#	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-static=no
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && make
+#	@cd ${PKG_BUILD_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
+	@install -v -d  ${PKG_BUILD_DIR_DPKG}/usr/share/sgml/docbook/sgml-dtd-4.5
+	@install -v -d  ${PKG_BUILD_DIR_DPKG}/etc/sgml
+	install -v ${PGK_SOURCE_DIR}/docbook.cat ${PKG_BUILD_DIR_DPKG}/usr/share/sgml/docbook/sgml-dtd-4.5/catalog 
+	@cd ${PGK_SOURCE_DIR} && cp -v -af *.dtd *.mod *.dcl ${PKG_BUILD_DIR_DPKG}/usr/share/sgml/docbook/sgml-dtd-4.5 
+#	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
@@ -83,3 +90,4 @@ ${PKG_DPKG_FILE_PATH}:
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
+	

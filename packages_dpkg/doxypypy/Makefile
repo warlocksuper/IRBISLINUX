@@ -1,19 +1,21 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
+
+
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 2.10.4
-PKG_NAME = libxml2
-PKG_URL = https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.4.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 0.8.8.7
+PKG_NAME = doxypypy
+PKG_URL = https://files.pythonhosted.org/packages/source/d/doxypypy/doxypypy-0.8.8.7.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: icu(>=72.1), valgrind(>=3.20.0) "
+PKG_DEBIAN_DEPANDS = "Depends:  python3(>=3.11.2.2) "
 
 
-PKG_DEBIAN_SECTION = "Section: libraries"
+PKG_DEBIAN_SECTION = "Section: dev"
 
-PKG_DEBIAN_DEST = "Description: The libxml2 package contains libraries and utilities used for parsing XML files."
+PKG_DEBIAN_DEST = "Description: The Doxypypy package is a doxygen filter for python."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -55,14 +57,15 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var -disable-static --with-history PYTHON=/usr/bin/python3 --docdir=/usr/share/doc/libxml2-2.10.3
+	@cd ${PKG_BUILD_DIR} &&  pip3 wheel -w dist --no-build-isolation --no-deps ${PGK_SOURCE_DIR}
+#	@cd ${PKG_BUILD_DIR} &&  meson setup --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --buildtype=release ${PGK_SOURCE_DIR}  
 
 ${PKG_COMPILE}:
-	@cd ${PKG_BUILD_DIR} && make
+#	@cd ${PGK_SOURCE_DIR} && make
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
+	@cd ${PGK_SOURCE_DIR} && PYTHONPATH=${PKG_BUILD_DIR_DPKG}  pip3 install --no-index --find-links dist --no-cache-dir --no-user doxypypy ##make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
@@ -71,6 +74,7 @@ ${PKG_BUILD_DIR_DEBIAN}:
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Version: ${PKG_VERSION}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Provides: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo "Replaces:  pygobject " >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo ${PKG_DEBIAN_SECTION} >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo ${PKG_DEBIAN_DEPANDS} >> ${PKG_BUILD_DIR_DEBIAN}
@@ -83,3 +87,4 @@ ${PKG_DPKG_FILE_PATH}:
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
+	

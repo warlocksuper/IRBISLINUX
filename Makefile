@@ -9,7 +9,9 @@ ROOT_BUILD = ${PWD}/build
 ROOT_SOURCE = ${PWD}/source
 ROOT_TOOLS = ${ROOT_FS}/tools
 ROOT_DPKG_ARCH = ${ROOT_DIR}/DPKG
-PATH = $(shell printenv PATH):${ROOT_TOOLS}/bin:${ROOT_FS}/usr/bin
+PKG_BUILD_DIR_ALL = ${ROOT_DIR}/build_dpkg
+#PATH = $(shell printenv PATH):${ROOT_TOOLS}/bin:${ROOT_FS}/usr/bin
+PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/libexec
 OS_CONFIG = ./.config
 ifeq (,$(wildcard $(OS_CONFIG)))
 	include ${OS_CONFIG}
@@ -18,6 +20,9 @@ CONFIG_OS_ARCH = "x86_64"
 CONFIG_OS_VENDOR = "irbis"	
 endif
 
+CONFIGURE = /configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --runstatedir=/run 
+MESON = meson --prefix=/usr --sysconfdir=/etc --buildtype=release --localstatedir=/var --runstatedir=/run  
+CMAKE = cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release 
 
 ## OS_ARCH_TARGET = ${CONFIG_OS_ARCH}-${CONFIG_OS_VENDOR}-linux-gnu
 

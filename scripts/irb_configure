@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+PWD=`pwd`
+
+if [  -f $PWD/configure ]; then
+
+echo 'fond configure file'
+
+elif [  -f $PWD/meson.build ]; then
+
+echo 'fond  meson file'
+
+else 
+
+echo "not found config"
+
+fi
+
+

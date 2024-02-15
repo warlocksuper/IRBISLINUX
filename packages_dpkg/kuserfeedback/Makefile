@@ -1,19 +1,21 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
+
+
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 2.10.4
-PKG_NAME = libxml2
-PKG_URL = https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.4.tar.xz
+PKG_VERSION = 1.2.0
+PKG_NAME = kuserfeedback
+PKG_URL = https://download.kde.org/stable/kuserfeedback/kuserfeedback-1.2.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: icu(>=72.1), valgrind(>=3.20.0) "
+PKG_DEBIAN_DEPANDS = "Depends: extra-cmake-modules(>=5.109.0),  qt-everywhere-opensource-src(>=5.15.10) "
 
 
-PKG_DEBIAN_SECTION = "Section: libraries"
+PKG_DEBIAN_SECTION = "Section: kde"
 
-PKG_DEBIAN_DEST = "Description: The libxml2 package contains libraries and utilities used for parsing XML files."
+PKG_DEBIAN_DEST = "Description: The kuserfeedback package contains a framework for collecting user feedback for applications via telemetry and surveys."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -55,7 +57,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var -disable-static --with-history PYTHON=/usr/bin/python3 --docdir=/usr/share/doc/libxml2-2.10.3
+	@cd ${PKG_BUILD_DIR} && cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF  -Wno-dev ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make
@@ -83,3 +85,4 @@ ${PKG_DPKG_FILE_PATH}:
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
+	
