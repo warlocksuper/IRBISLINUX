@@ -52,16 +52,16 @@ PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_
 
 export
 
-PKG_LIST = basefile dbus glib glibmm atkmm_pkg
+PKG_LIST = mobile-broadband-provider-info NetworkManager gpgme qca qtwebkit
 
 
 
-all: ${PKG_LIST_DIR}
+all: ${PKG_LIST} ${PKG_LIST_DIR}
 ##all:	${PKG_LIST}
 
 
-#${PKG_LIST}:
-#	${MAKE} -C $@ $<
+${PKG_LIST}:
+	${MAKE} -C $@_pkg
 
 doxypypy_dpkg:
 	${MAKE} -C doxypypy
