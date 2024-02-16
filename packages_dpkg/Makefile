@@ -52,7 +52,7 @@ PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_
 
 export
 
-PKG_LIST = mobile-broadband-provider-info NetworkManager gpgme qca qtwebkit
+PKG_LIST = mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit
 
 
 

@@ -2,7 +2,9 @@ PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sb
 
 PKG_LIST_DIR = extra-cmake-modules  attica  karchive kcodecs kconfig kcoreaddons kdbusaddons kdnssd kguiaddons  ki18n kidletime kimageformats kitemmodels kitemviews kplotting kwidgetsaddons kwindowsystem 
 PKG_LIST_DIR += networkmanager-qt solid sonnet threadweaver kauth kcompletion kcrash kdoctools kpty kunitconversion kconfigwidgets kservice kglobalaccel kpackage kdesu kemoticons kiconthemes kjobwidgets
-PKG_LIST_DIR += knotifications ktextwidgets kxmlgui kbookmarks kwallet kded kio kdeclarative kcmutils kirigami2 syndication knewstuff frameworkintegration kinit kparts  kactivities kdewebkit
+PKG_LIST_DIR += knotifications ktextwidgets kxmlgui kbookmarks kwallet kded kio kdeclarative kcmutils kirigami2 syndication knewstuff frameworkintegration kinit kparts  kactivities syntax-highlighting ktexteditor
+PKG_LIST_DIR += kdesignerplugin kwayland plasma-framework modemmanager-qt
+#kdewebkit
 
 .PHONY: extra-cmake-modules  attica  karchive kcodecs kconfig kcoreaddons kdnssd
 
