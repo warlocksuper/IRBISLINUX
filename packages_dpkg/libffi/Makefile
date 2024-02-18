@@ -10,7 +10,7 @@ PKG_NAME = libffi
 PKG_URL = https://github.com/libffi/libffi/releases/download/v3.4.4/libffi-3.4.4.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: basefile "
+PKG_DEBIAN_DEPANDS = "Depends: "
 
 
 PKG_DEBIAN_SECTION = "Section: basic"
@@ -66,21 +66,10 @@ ${PKG_COMPILE}:
 ${PKG_MAKE_INTALL}:
 	@cd ${PKG_BUILD_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG} install
 
-${PKG_BUILD_DIR_DEBIAN}:
-	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
-	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
-	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
-	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
-	@echo "Version: ${PKG_VERSION}" >> ${PKG_BUILD_DIR_DEBIAN}
-	@echo "Provides: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
-	@echo "Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>" >> ${PKG_BUILD_DIR_DEBIAN}
-	@echo ${PKG_DEBIAN_SECTION} >> ${PKG_BUILD_DIR_DEBIAN}
-	@echo ${PKG_DEBIAN_DEPANDS} >> ${PKG_BUILD_DIR_DEBIAN}
-	@echo "Installed-Size: `du -s ${PKG_BUILD_DIR_DPKG} | cut -f1`" >> ${PKG_BUILD_DIR_DEBIAN}
-	@echo ${PKG_DEBIAN_DEST} >> ${PKG_BUILD_DIR_DEBIAN}
-	@cp postinst ${PKG_BUILD_DIR_DPKG}/DEBIAN/	
+include ${ROOT_DIR}/scripts/build_dpkg.mk
 	
 ${PKG_DPKG_FILE_PATH}:
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
+	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg

@@ -21,7 +21,7 @@ CONFIG_OS_VENDOR = "irbis"
 endif
 
 CONFIGURE = /configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --runstatedir=/run 
-MESON = meson --prefix=/usr --sysconfdir=/etc --buildtype=release --localstatedir=/var --runstatedir=/run  
+MESON = meson --prefix=/usr --sysconfdir=/etc --buildtype=release --localstatedir=/var 
 CMAKE = cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release 
 
 ## OS_ARCH_TARGET = ${CONFIG_OS_ARCH}-${CONFIG_OS_VENDOR}-linux-gnu
