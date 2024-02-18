@@ -1,8 +1,8 @@
 PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sbin:/usr/libexec
 
-PKG_LIST_DIR = basefile_dpkg dbus_dpkg linux_dpkg ncurses_dpkg linux_dpkg ##glib_dpkg 
+PKG_LIST_DIR = basefile_dpkg dbus_dpkg xf86-input-synaptics_dpkg ncurses_dpkg # glib_dpkg ## linux_dpkg
 
-PKG_LIST_DIR +=  readline_dpkg dwz_dpkg psmisc_dpkg cpio_dpkg libxcrypt_dpkg gobject-introspection_dpkg LSB-Tools_dpkg libffi_dpkg make-ca_dpkg at-spi2-core_dpkg brotli_dpkg liboauth_dpkg p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg mesa_dpkg 
+PKG_LIST_DIR +=  readline_dpkg dwz_dpkg psmisc_dpkg cpio_dpkg libxcrypt_dpkg gobject-introspection_dpkg LSB-Tools_dpkg libffi_dpkg make-ca_dpkg at-spi2-core_dpkg brotli_dpkg  p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg mesa_dpkg 
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 
 
@@ -12,7 +12,7 @@ PKG_LIST_DIR +=  pycairo_dpkg  pygobject_dpkg # doxypypy_dpkg  # Cython_dpkg  н
 
 
 #### XORG
-PKG_LIST_DIR +=  xf86-input-synaptics_dpkg
+PKG_LIST_DIR +=  xf86-input-synaptics_dpkg liboauth_dpkg
 
 ### KDE
 PKG_LIST_DIR +=  sqlite_dpkg sddm_dpkg qt-everywhere-opensource-src_dpkg phonon_dpkg phonon-backend-gstreamer_dpkg a52dec_dpkg libmad_dpkg lua_dpkg  vlc_dpkg phonon-backend-vlc_dpkg polkit-qt-1_dpkg libdbusmenu-qt_dpkg   plasma-wayland-protocols_dpkg kuserfeedback_dpkg KDE_dpkg
@@ -52,7 +52,7 @@ PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_
 
 export
 
-PKG_LIST = mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit
+PKG_LIST = # mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit
 
 
 

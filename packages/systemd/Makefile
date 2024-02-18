@@ -4,3 +4,5 @@ https://anduin.linuxfromscratch.org/LFS/systemd-man-pages-254.tar.xz
 
 
 https://github.com/systemd/systemd/archive/v252/systemd-252.tar.gz
+
+./configure --buildtype=release --prefix=/usr --sysconfdir=/etc
