@@ -66,6 +66,7 @@ ${PKG_COMPILE}:
 
 ${PKG_MAKE_INTALL}:
 	@cd ${PKG_BUILD_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG} ninja install
+	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/bin/gtk4-builder-tool
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
