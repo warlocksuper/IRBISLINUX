@@ -69,8 +69,7 @@ ${PKG_CONFIGURE}:
             -system-sqlite                            \
             -nomake examples                          \
             -no-rpath                                 \
-            -journald                                 \
-            -skip qtwebengine 
+            -journald                               
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make

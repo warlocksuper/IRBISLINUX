@@ -8,14 +8,14 @@ PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 
 ## Python
 
-PKG_LIST_DIR +=  pycairo_dpkg  pygobject_dpkg # doxypypy_dpkg  # Cython_dpkg  надо найти способ создавать пакеты python
+PKG_LIST_DIR +=  pycairo_dpkg  pygobject_dpkg   # doxypypy_dpkg  # Cython_dpkg  надо найти способ создавать пакеты python
 
 
 #### XORG
 PKG_LIST_DIR +=  xf86-input-synaptics_dpkg liboauth_dpkg
 
 ### KDE
-PKG_LIST_DIR +=  sqlite_dpkg sddm_dpkg qt-everywhere-opensource-src_dpkg phonon_dpkg phonon-backend-gstreamer_dpkg a52dec_dpkg libmad_dpkg lua_dpkg  vlc_dpkg phonon-backend-vlc_dpkg polkit-qt-1_dpkg libdbusmenu-qt_dpkg   plasma-wayland-protocols_dpkg kuserfeedback_dpkg KDE_dpkg
+PKG_LIST_DIR +=  sqlite_dpkg sddm_dpkg  phonon_dpkg phonon-backend-gstreamer_dpkg a52dec_dpkg libmad_dpkg lua_dpkg  vlc_dpkg phonon-backend-vlc_dpkg polkit-qt-1_dpkg libdbusmenu-qt_dpkg   plasma-wayland-protocols_dpkg kuserfeedback_dpkg KDE_dpkg
 
 
 PKG_LIST_DIR += wayland_dpkg wayland-protocols_dpkg
@@ -52,7 +52,7 @@ PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_
 
 export
 
-PKG_LIST =  at-spi2-core attr LMDB libxcvt lzo squashfuse libappimage  qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qcoro signond libaccounts-glib libaccounts-qt   # ostree flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit
+PKG_LIST =  at-spi2-core attr LMDB libxcvt lzo squashfuse libappimage  qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qt-everywhere-opensource  qcoro signond libaccounts-glib libaccounts-qt  libpcap qtwebengine # ostree flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit
 
 
 
@@ -293,9 +293,6 @@ setxkbmap_dpkg:
 
 sqlite_dpkg:
 	${MAKE} -C sqlite
-
-qt-everywhere-opensource-src_dpkg:
-	${MAKE} -C qt-everywhere-opensource-src
 
 dbus_dpkg:
 	${MAKE} -C dbus
