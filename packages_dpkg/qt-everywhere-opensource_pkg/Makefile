@@ -31,11 +31,13 @@ PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/qtbase/bin/moc
 
-PKG_DPKG_FILE_PATH = ${PKG_BUILD_DIR}/${PKG_DPKG_FILE}
+PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
+PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
+ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
 all: ${PKG_BUILD_DIR_ALL} ${PKG_BUILD_DIR_DPKG} ${PKG_TAR} ${PGK_SOURCE_DIR} ${PKG_CONFIGURE} ${PKG_COMPILE} ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} ${PKG_DPKG_FILE_PATH}
 
 ${PKG_BUILD_DIR_ALL}:
@@ -58,6 +60,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 ${PKG_CONFIGURE}:
+	@echo "build  ${PKG_DPKG_FILE_PATH}  ${PKG_COMPLITE}   "
 	@mkdir -p ${PKG_BUILD_DIR}
 	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  \
             -sysconfdir /etc/xdg                      \
@@ -95,6 +98,9 @@ ${PKG_BUILD_DIR_DEBIAN}:
 ${PKG_DPKG_FILE_PATH}:
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
-	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
-	@echo "" > ${ROOT_DIR}/packages_dpkg/${PKG_NAME}_dpkg
+	
+else
+all: 
+	@echo "Уже собранно $(PKG_COMPLITE) ${PKG_NAME}"	
+endif	

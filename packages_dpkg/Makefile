@@ -1,4 +1,4 @@
-PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sbin:/usr/libexec
+PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sbin:/usr/libexec:${ROOT_TOOLS}/pkg-build
 
 PKG_LIST_DIR = basefile_dpkg dbus_dpkg xf86-input-synaptics_dpkg ncurses_dpkg # glib_dpkg ## linux_dpkg
 
@@ -52,7 +52,7 @@ PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_
 
 export
 
-PKG_LIST =  at-spi2-core attr LMDB libxcvt lzo squashfuse libappimage  qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qt-everywhere-opensource  qcoro signond libaccounts-glib libaccounts-qt  libpcap qtwebengine # ostree flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit
+PKG_LIST =  at-spi2-core attr LMDB libxcvt lzo squashfuse libappimage  qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qt-everywhere-opensource  qcoro signond libaccounts-glib libaccounts-qt  libpcap qtwebengine #   ostree flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit
 
 
 
