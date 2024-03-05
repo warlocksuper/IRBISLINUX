@@ -1,22 +1,17 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
-PKG_SRC_URL = https://download.kde.org/stable/plasma/5.27.7/
 
-
-
-
-
-PKG_VERSION = 5.27.7.1
-PKG_NAME = plasma-desktop
-PKG_URL =  ${PKG_SRC_URL}/plasma-desktop-5.27.7.1.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 4.9.0
+PKG_NAME = libqalculate
+PKG_URL =  https://github.com/Qalculate/libqalculate/releases/download/v4.9.0/libqalculate-4.9.0.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  plasma-workspace(>=5.27.7), signon-plugin-oauth2(>=0.25) "
-PKG_DEBIAN_SECTION = "Section: kde"
-PKG_DEBIAN_DEST = "Description: plasma-desktop."
+PKG_DEBIAN_DEPANDS = "Depends: "
+PKG_DEBIAN_SECTION = "Section: library"
+PKG_DEBIAN_DEST = "Description: The libqalculate package contains a library that provides functions for a multi-purpose calculator."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
 
-
+#export FUSE_CPPFLAGS = -I/usr/include/fuse3
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
 
@@ -29,7 +24,7 @@ PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 PKG_COMPILE_MAKE = ""
 # PKG_COMPILE_NINJA = ""
-PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
+PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
@@ -54,7 +49,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PGK_SOURCE_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  #   ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --disable-static  --sysconfdir=/etc --docdir=/usr/share/doc/attr-2.5.1  #CONFIGURE  CMAKE
 
 include ${ROOT_DIR}/scripts/compile.mk
 

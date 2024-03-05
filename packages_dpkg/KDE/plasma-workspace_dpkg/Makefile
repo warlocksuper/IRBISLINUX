@@ -11,7 +11,7 @@ PKG_NAME = plasma-workspace
 PKG_URL =  ${PKG_SRC_URL}/plasma-workspace-5.27.7.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:   libksysguard(>=5.27.7) "
+PKG_DEBIAN_DEPANDS = "Depends:   libksysguard(>=5.27.7), kpipewire(>=5.27.10), libqalculate(>=4.9.0) "
 PKG_DEBIAN_SECTION = "Section: kde"
 PKG_DEBIAN_DEST = "Description: plasma-workspace."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb

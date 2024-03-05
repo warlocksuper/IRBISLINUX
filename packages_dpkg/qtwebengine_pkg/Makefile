@@ -32,7 +32,7 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})  ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE ${PKG_COMPILE} ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -64,9 +64,28 @@ ${PGK_SOURCE_DIR}:
 PKG_CONFIGURE:
 	@cd ${PKG_BUILD_DIR} &&  qmake ${PGK_SOURCE_DIR} 
 
-include ${ROOT_DIR}/scripts/compile.mk
+${PKG_COMPILE}:
+	@cd ${PKG_BUILD_DIR} && make
 
-include ${ROOT_DIR}/scripts/build_dpkg.mk
+
+${PKG_MAKE_INTALL}:
+	@cd ${PKG_BUILD_DIR} && make INSTALL_ROOT=${PKG_BUILD_DIR_DPKG} install
+
+
+${PKG_BUILD_DIR_DEBIAN}:
+	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
+	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
+	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo "Version: ${PKG_VERSION}" >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo "Provides: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo "Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>" >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo ${PKG_DEBIAN_SECTION} >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo ${PKG_DEBIAN_DEPANDS} >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo "Installed-Size: `du -s ${PKG_BUILD_DIR_DPKG} | cut -f1`" >> ${PKG_BUILD_DIR_DEBIAN}
+	@echo ${PKG_DEBIAN_DEST} >> ${PKG_BUILD_DIR_DEBIAN}
+	@cp postinst ${PKG_BUILD_DIR_DPKG}/DEBIAN/	
+
 
 else
 all: 
