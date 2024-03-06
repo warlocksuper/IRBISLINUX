@@ -1,14 +1,14 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
-PKG_SRC_URL = https://download.kde.org/stable/plasma/5.27.7/
+PKG_SRC_URL = https://download.kde.org/stable/plasma/5.27.10/
 
 
 
 
 
-PKG_VERSION = 5.27.7
+PKG_VERSION = 5.27.10
 PKG_NAME = plasma-workspace
-PKG_URL =  ${PKG_SRC_URL}/plasma-workspace-5.27.7.tar.xz
+PKG_URL =  ${PKG_SRC_URL}/plasma-workspace-5.27.10.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends:   libksysguard(>=5.27.7), kpipewire(>=5.27.10), libqalculate(>=4.9.0) "

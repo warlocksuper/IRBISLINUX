@@ -7,13 +7,13 @@ PKG_SRC_URL = https://download.kde.org/stable/plasma/5.27.10/
 
 
 PKG_VERSION = 5.27.10
-PKG_NAME = plasma-desktop
-PKG_URL =  ${PKG_SRC_URL}/plasma-desktop-5.27.10.tar.xz
+PKG_NAME = plasma-pa
+PKG_URL =  ${PKG_SRC_URL}/plasma-pa-5.27.10.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  plasma-workspace(>=5.27.7), signon-plugin-oauth2(>=0.25) "
+PKG_DEBIAN_DEPANDS = "Depends:  "
 PKG_DEBIAN_SECTION = "Section: kde"
-PKG_DEBIAN_DEST = "Description: plasma-desktop."
+PKG_DEBIAN_DEST = "Description: plasma-pa"
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
 
 
