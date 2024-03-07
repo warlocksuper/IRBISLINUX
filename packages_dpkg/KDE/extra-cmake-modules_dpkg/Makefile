@@ -1,11 +1,11 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-PKG_SRC_URL = https://download.kde.org/stable/frameworks/5.109
+PKG_SRC_URL = https://download.kde.org/stable/frameworks/5.115
 
-PKG_VERSION = 5.109.0
+PKG_VERSION = 5.115.0
 PKG_NAME = extra-cmake-modules
-PKG_URL =   ${PKG_SRC_URL}/extra-cmake-modules-5.109.0.tar.xz
+PKG_URL =   ${PKG_SRC_URL}/extra-cmake-modules-5.115.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: cmake(>=3.27.0-rc4) "
@@ -31,9 +31,9 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
 
-PKG_COMPLITE =  $(shell if [ -f "${PKG_DPKG_FILE_PATH}" ]; then echo "1"; else echo "0"; fi ) ## определяет естьли собранный файл пакета если нет собираем
+PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
-ifeq ($(strip $(PKG_COMPLITE)),$(strip "0"))
+ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
 all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
@@ -51,8 +51,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PGK_SOURCE_DIR} && sed -i '/"lib64"/s/64//' ${PGK_SOURCE_DIR}/kde-modules/KDEInstallDirsCommon.cmake
-	@cd ${PGK_SOURCE_DIR} && sed -e '/PACKAGE_INIT/i set(SAVE_PACKAGE_PREFIX_DIR "${PACKAGE_PREFIX_DIR}")'  -e '/^include/a set(PACKAGE_PREFIX_DIR "${SAVE_PACKAGE_PREFIX_DIR}")' -i  ${PGK_SOURCE_DIR}/ECMConfig.cmake.in 
+#	@cd ${PGK_SOURCE_DIR} && sed -i '/"lib64"/s/64//' ${PGK_SOURCE_DIR}/kde-modules/KDEInstallDirsCommon.cmake
+#	@cd ${PGK_SOURCE_DIR} && sed -e '/PACKAGE_INIT/i set(SAVE_PACKAGE_PREFIX_DIR "${PACKAGE_PREFIX_DIR}")'  -e '/^include/a set(PACKAGE_PREFIX_DIR "${SAVE_PACKAGE_PREFIX_DIR}")' -i  ${PGK_SOURCE_DIR}/ECMConfig.cmake.in 
 	@cd ${PKG_BUILD_DIR} && $(CMAKE)  ${PGK_SOURCE_DIR}
 
 include ${ROOT_DIR}/scripts/compile.mk
