@@ -1,14 +1,12 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
-PKG_SRC_URL = https://download.kde.org/stable/frameworks/5.109
 
+PKG_SRC_URL = https://download.kde.org/stable/frameworks/5.115
 
+PKG_VERSION = 5.115.0
 
-
-
-PKG_VERSION = 5.109.0
 PKG_NAME = kglobalaccel
-PKG_URL =  ${PKG_SRC_URL}/kglobalaccel-5.109.0.tar.xz
+PKG_URL =  ${PKG_SRC_URL}/kglobalaccel-5.115.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends:  "
@@ -29,7 +27,7 @@ PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 PKG_COMPILE_MAKE = ""
 # PKG_COMPILE_NINJA = ""
-PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
+PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
@@ -54,7 +52,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE) -Wno-dev ${PGK_SOURCE_DIR}
+	@cd ${PGK_SOURCE_DIR} && $(CMAKE) -Wno-dev #${PGK_SOURCE_DIR}
 
 include ${ROOT_DIR}/scripts/compile.mk
 

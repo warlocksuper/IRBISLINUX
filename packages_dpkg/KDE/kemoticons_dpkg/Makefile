@@ -1,17 +1,15 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
-PKG_SRC_URL = https://download.kde.org/stable/frameworks/5.109
 
+PKG_SRC_URL = https://download.kde.org/stable/frameworks/5.115
 
+PKG_VERSION = 5.115.0
 
-
-
-PKG_VERSION = 5.109.0
 PKG_NAME = kemoticons
-PKG_URL =  ${PKG_SRC_URL}/kemoticons-5.109.0.tar.xz
+PKG_URL =  ${PKG_SRC_URL}/kemoticons-5.115.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_DEBIAN_DEPANDS = "Depends:  kservice(>=${PKG_VERSION})"
 PKG_DEBIAN_SECTION = "Section: kde"
 PKG_DEBIAN_DEST = "Description: KDE Frameworks kemoticons."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb

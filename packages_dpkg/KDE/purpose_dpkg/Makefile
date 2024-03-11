@@ -1,19 +1,17 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
-PKG_SRC_URL = https://download.kde.org/stable/plasma/5.27.10/
+PKG_SRC_URL = ${KDE_FRAMEWORK_URL}
 
 
+PKG_VERSION = ${KDE_FRAMEWORK_VERSION}
 
-
-
-PKG_VERSION = 5.27.10
-PKG_NAME = plasma-sdk
-PKG_URL =  ${PKG_SRC_URL}/plasma-sdk-5.27.10.tar.xz
+PKG_NAME = purpose
+PKG_URL =  ${PKG_SRC_URL}/purpose-${KDE_FRAMEWORK_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_DEBIAN_DEPANDS = "Depends:  kirigami2 "
 PKG_DEBIAN_SECTION = "Section: kde"
-PKG_DEBIAN_DEST = "Description: plasma-sdk"
+PKG_DEBIAN_DEST = "Description: KDE Frameworks purpose."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
 
 
@@ -54,7 +52,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(CMAKE) -Wno-dev ${PGK_SOURCE_DIR}
 
 include ${ROOT_DIR}/scripts/compile.mk
 

@@ -7,13 +7,13 @@ PKG_SRC_URL = https://download.kde.org/stable/plasma/5.27.10/
 
 
 PKG_VERSION = 5.27.10
-PKG_NAME = plasma-sdk
-PKG_URL =  ${PKG_SRC_URL}/plasma-sdk-5.27.10.tar.xz
+PKG_NAME = breeze-plymouth
+PKG_URL =  ${PKG_SRC_URL}/breeze-plymouth-5.27.10.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends:  "
 PKG_DEBIAN_SECTION = "Section: kde"
-PKG_DEBIAN_DEST = "Description: plasma-sdk"
+PKG_DEBIAN_DEST = "Description: breeze-plymouth"
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
 
 
@@ -29,7 +29,7 @@ PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 PKG_COMPILE_MAKE = ""
 # PKG_COMPILE_NINJA = ""
-PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
+PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
@@ -54,7 +54,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PGK_SOURCE_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  #   ${PGK_SOURCE_DIR}
 
 include ${ROOT_DIR}/scripts/compile.mk
 

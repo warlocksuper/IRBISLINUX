@@ -1,17 +1,15 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
-PKG_SRC_URL = https://download.kde.org/stable/frameworks/5.115
+PKG_SRC_URL = ${KDE_FRAMEWORK_URL}
 
 
+PKG_VERSION = ${KDE_FRAMEWORK_VERSION}
 
-
-
-PKG_VERSION = 5.115.0
 PKG_NAME = kdelibs4support
-PKG_URL =  ${PKG_SRC_URL}/portingAids/kdelibs4support-5.115.0.tar.xz
+PKG_URL =  ${PKG_SRC_URL}/portingAids/kdelibs4support-${KDE_FRAMEWORK_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_DEBIAN_DEPANDS = "Depends:  kio, knotifications, kparts, kunitconversion, kded "
 PKG_DEBIAN_SECTION = "Section: kde"
 PKG_DEBIAN_DEST = "Description: KDE Frameworks kdelibs4support."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb

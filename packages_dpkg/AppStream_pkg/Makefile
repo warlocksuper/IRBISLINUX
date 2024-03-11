@@ -1,19 +1,14 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
-PKG_SRC_URL = https://download.kde.org/stable/plasma/5.27.10/
 
-
-
-
-
-PKG_VERSION = 5.27.10
-PKG_NAME = plasma-sdk
-PKG_URL =  ${PKG_SRC_URL}/plasma-sdk-5.27.10.tar.xz
+PKG_VERSION = 1.0.1
+PKG_NAME = AppStream
+PKG_URL =  https://www.freedesktop.org/software/appstream/releases/AppStream-1.0.1.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
-PKG_DEBIAN_SECTION = "Section: kde"
-PKG_DEBIAN_DEST = "Description: plasma-sdk"
+PKG_DEBIAN_DEPANDS = "Depends:  libxmlb(>=0.3.15)"
+PKG_DEBIAN_SECTION = "Section: dev"
+PKG_DEBIAN_DEST = "Description: The AppStream package contains a library and tool that is useful for retrieving software metadata and making it easily accessible to programs which need it."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
 
 
@@ -27,12 +22,12 @@ PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
-PKG_COMPILE_MAKE = ""
-# PKG_COMPILE_NINJA = ""
+#PKG_COMPILE_MAKE = ""
+ PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
-.PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
+.PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE, DEL_ANY_FILE
 
 PKG_COMPLITE =  $(shell if [ -f "${PKG_DPKG_FILE_PATH}" ]; then echo "1"; else echo "0"; fi ) ## определяет естьли собранный файл пакета если нет собираем
 
@@ -54,7 +49,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
+#	@cd ${PGK_SOURCE_DIR} &&  ./autogen.sh  --prefix=/usr
+	@cd ${PKG_BUILD_DIR} &&  $(MESON)  -Dapidocs=false -Ddocs=false -Dstemming=false -Dqt5=true ${PGK_SOURCE_DIR}
 
 include ${ROOT_DIR}/scripts/compile.mk
 

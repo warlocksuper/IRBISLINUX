@@ -1,14 +1,16 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
-PKG_SRC_URL = https://download.kde.org/stable/frameworks/5.109
+
+
+PKG_SRC_URL = ${KDE_FRAMEWORK_URL}
+
+
+PKG_VERSION = ${KDE_FRAMEWORK_VERSION}
 
 
 
-
-
-PKG_VERSION = 5.109.0
 PKG_NAME = solid
-PKG_URL =  ${PKG_SRC_URL}/solid-5.109.0.tar.xz
+PKG_URL =  ${PKG_SRC_URL}/solid-${KDE_FRAMEWORK_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends:  "
