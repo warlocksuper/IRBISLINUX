@@ -1,26 +1,17 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-
-PKG_SRC_URL = https://download.kde.org/stable/plasma/5.27.10/
-
-
-
-
-
-PKG_VERSION = 5.27.10
-
-
-PKG_NAME = libksysguard
-PKG_URL =  ${PKG_SRC_URL}/libksysguard-5.27.10.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:    "
-PKG_DEBIAN_SECTION = "Section: kde"
-PKG_DEBIAN_DEST = "Description: libksysguard."
+PKG_VERSION = 20.11.1
+PKG_NAME = node
+PKG_URL =  https://nodejs.org/dist/v20.11.1/node-v20.11.1.tar.xz
+PKG_TAR_FILE = ${PKG_NAME}-v${PKG_VERSION}.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-v${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends: "
+PKG_DEBIAN_SECTION = "Section: dev"
+PKG_DEBIAN_DEST = "Description: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
 
-
+#export FUSE_CPPFLAGS = -I/usr/include/fuse3
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
 
@@ -58,7 +49,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --sysconfdir=/etc --shared-brotli --shared-cares --shared-libuv --shared-openssl --shared-nghttp2  --shared-zlib  --with-intl=system-icu 
 
 include ${ROOT_DIR}/scripts/compile.mk
 

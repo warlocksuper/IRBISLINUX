@@ -1,26 +1,17 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-
-PKG_SRC_URL = https://download.kde.org/stable/plasma/5.27.10/
-
-
-
-
-
-PKG_VERSION = 5.27.10
-
-
-PKG_NAME = libksysguard
-PKG_URL =  ${PKG_SRC_URL}/libksysguard-5.27.10.tar.xz
+PKG_VERSION = 3.12.2
+PKG_NAME = Python
+PKG_URL =  https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:    "
-PKG_DEBIAN_SECTION = "Section: kde"
-PKG_DEBIAN_DEST = "Description: libksysguard."
+PKG_DEBIAN_DEPANDS = "Depends: "
+PKG_DEBIAN_SECTION = "Section: dev"
+PKG_DEBIAN_DEST = "Description: The Python 3 package contains the Python development environment. This is useful for object-oriented programming, writing scripts, prototyping large programs or developing entire applications."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
 
-
+#export FUSE_CPPFLAGS = -I/usr/include/fuse3
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
 
@@ -58,7 +49,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --sysconfdir=/etc --enable-shared   --with-system-expat  --enable-optimizations
 
 include ${ROOT_DIR}/scripts/compile.mk
 

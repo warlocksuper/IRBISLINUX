@@ -1,7 +1,5 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
-
-
 PKG_SRC_URL = https://download.kde.org/stable/plasma/5.27.10/
 
 
@@ -9,15 +7,13 @@ PKG_SRC_URL = https://download.kde.org/stable/plasma/5.27.10/
 
 
 PKG_VERSION = 5.27.10
-
-
-PKG_NAME = libksysguard
-PKG_URL =  ${PKG_SRC_URL}/libksysguard-5.27.10.tar.xz
+PKG_NAME = qqc2-breeze-style
+PKG_URL =  ${PKG_SRC_URL}/qqc2-breeze-style-5.27.10.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:    "
+PKG_DEBIAN_DEPANDS = "Depends:  "
 PKG_DEBIAN_SECTION = "Section: kde"
-PKG_DEBIAN_DEST = "Description: libksysguard."
+PKG_DEBIAN_DEST = "Description: qqc2-breeze-style"
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
 
 
