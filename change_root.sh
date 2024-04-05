@@ -2,7 +2,7 @@
 
 ##GLIB_CFLAGS=/usr/lib GLIB_LIBS=/usr/lib
 
-ROOT_DIR=/media/linux/IRBIS\ LINUX
+ROOT_DIR=/home/warlock/IRBISLINUX/rootfsg
 sudo mkdir -p $ROOT_DIR/dev
 sudo mount -v --bind /dev $ROOT_DIR/dev
 
@@ -13,7 +13,7 @@ sudo mkdir -p $ROOT_DIR/sys
 sudo mount -vt sysfs sysfs $ROOT_DIR/sys
 sudo mkdir -p $ROOT_DIR/tmp
 sudo mount -vt tmpfs tmpfs $ROOT_DIR/tmp
-sudo busybox chroot rootfs /usr/bin/env -i   \
+sudo busybox chroot $ROOT_DIR /usr/bin/env -i   \
     HOME=/root                  \
     LANG=en_US.UTF-8		\
     LC_ALL=C			\
