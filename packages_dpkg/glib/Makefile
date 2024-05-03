@@ -5,9 +5,9 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 2.79.1
+PKG_VERSION = 2.78.4
 PKG_NAME = glib
-PKG_URL = https://download.gnome.org/sources/glib/2.79/glib-2.79.1.tar.xz
+PKG_URL = https://download.gnome.org/sources/glib/2.78/glib-2.78.4.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: libxslt(>=1.1.37), pcre2(>=10.40) "
