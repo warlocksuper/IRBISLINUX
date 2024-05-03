@@ -10,7 +10,7 @@ PKG_NAME = liboauth
 PKG_URL = https://downloads.sourceforge.net/liboauth/liboauth-1.0.3.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.1), curl(>=4.2.0)"
+PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.1), curl(>=4.2.0), openssl(>=3.2.1) "
 
 
 PKG_DEBIAN_SECTION = "Section: docs"
@@ -58,7 +58,8 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-##	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i ${ROOT_SOURCE}/liboauth-1.0.3-openssl-1.1.0-3.patch
+#	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i ${ROOT_SOURCE}/liboauth-1.0.3-openssl-1.1.0-3.patch
+	@cp -rf hash.c ${PGK_SOURCE_DIR}/src/
 	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --sysconfdir=/etc --disable-static
 
 ${PKG_COMPILE}:

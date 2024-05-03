@@ -1,9 +1,0 @@
-Package: libical
-Architecture: amd64
-Version: 3.0.16
-Provides: libical
-Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
-Section: devel
-Depends: glib(>=2.42.10), icu(>=72.1)  
-Installed-Size: 
-Description: An implementation of basic iCAL protocols

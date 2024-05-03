@@ -7,11 +7,13 @@ ROOT_DIR = ${PWD}
 ROOT_FS = ${PWD}/rootfs
 ROOT_BUILD = ${PWD}/build
 ROOT_SOURCE = ${PWD}/source
-ROOT_TOOLS = ${ROOT_FS}/tools
+ROOT_TOOLS = ${PWD}/tools
 ROOT_DPKG_ARCH = ${ROOT_DIR}/DPKG
 PKG_BUILD_DIR_ALL = ${ROOT_DIR}/build_dpkg
-#PATH = $(shell printenv PATH):${ROOT_TOOLS}/bin:${ROOT_FS}/usr/bin
+PKG_PRG_DIR = ${ROOT_DIR}/packages_dpkg
 PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/libexec
+PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
+
 OS_CONFIG = ./.config
 ifeq (,$(wildcard $(OS_CONFIG)))
 	include ${OS_CONFIG}
@@ -20,7 +22,7 @@ CONFIG_OS_ARCH = "x86_64"
 CONFIG_OS_VENDOR = "irbis"	
 endif
 
-CONFIGURE = /configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --runstatedir=/run 
+CONFIGURE = /configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var 
 MESON = meson --prefix=/usr --sysconfdir=/etc --buildtype=release --localstatedir=/var 
 CMAKE = cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release 
 
@@ -99,5 +101,6 @@ create_repo:
 	@cd ${ROOT_DPKG_ARCH} && cat Packages | bzip2 -9 > Packages.bz2
 	
 	
-
+create_live_usb:
+	${MAKE}  -C live_usb
 		
