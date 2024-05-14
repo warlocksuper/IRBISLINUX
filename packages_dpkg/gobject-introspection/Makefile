@@ -58,7 +58,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dgi_cross_use_prebuilt_gi=true ${PGK_SOURCE_DIR}
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && ninja
