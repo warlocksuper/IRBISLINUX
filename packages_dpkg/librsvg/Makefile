@@ -10,7 +10,7 @@ PKG_NAME = librsvg
 PKG_URL = https://download.gnome.org/sources/librsvg/2.54/librsvg-2.54.5.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.17.6.2),  gdk-pixbuf(>=2.42.10),  pango(>=1.50.12.1), rustc(>=1.67.1) "
+PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.17.6),  gdk-pixbuf(>=2.42.10),  pango(>=1.50.12.1), rustc(>=1.67.1) "
 
 
 PKG_DEBIAN_SECTION = "Section: xorg"
