@@ -21,4 +21,5 @@ password  required    pam_pwquality.so   authtok_type=UNIX retry=1 difok=1 \
 password  required    pam_unix.so        yescrypt shadow try_first_pass
 
 # End /etc/pam.d/system-password
+EOF
 
