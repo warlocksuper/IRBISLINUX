@@ -25,7 +25,7 @@ chmod -v 4755 /usr/sbin/unix_chkpwd
 
 
 if [ ! -e /etc/pam.d/system-account ]; then
-cat > /etc/pam.d/system-account << "EOF" &&
+cat > /etc/pam.d/system-account << "EOF" 
 # Begin /etc/pam.d/system-account
 
 account   required    pam_unix.so
@@ -36,7 +36,7 @@ fi
 
 
 if [ ! -e /etc/pam.d/system-auth ]; then
-cat > /etc/pam.d/system-auth << "EOF" &&
+cat > /etc/pam.d/system-auth << "EOF" 
 # Begin /etc/pam.d/system-auth
 
 auth      required    pam_unix.so
@@ -46,7 +46,7 @@ EOF
 fi
 
 if [ ! -e /etc/pam.d/system-session ]; then
-cat > /etc/pam.d/system-session << "EOF" &&
+cat > /etc/pam.d/system-session << "EOF" 
 # Begin /etc/pam.d/system-session
 
 session   required    pam_unix.so
