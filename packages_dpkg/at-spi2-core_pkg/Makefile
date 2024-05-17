@@ -8,7 +8,7 @@ PKG_URL = https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: glib(>=2.74.5), dbus(>=1.14.6.1), libx11(>=1.8.4), libxtst(>=1.2.4), libxi(>=1.8) "
-
+PKG_BUILD_REPLACES = " gtk3 "
 
 PKG_DEBIAN_SECTION = "Section: librares"
 
@@ -65,7 +65,7 @@ PKG_CONFIGURE:
 include ${ROOT_DIR}/scripts/compile.mk
 
 PKG_MAKE_POST_INTALL:
-	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
+#	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
 
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk
