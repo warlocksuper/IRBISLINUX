@@ -7,7 +7,7 @@ PKG_NAME = at-spi2-core
 PKG_URL = https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.3.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: glib(>=2.74.5),  gtk4(>=4.8.3), dbus(>=1.14.6.1), libx11(>=1.8.4), libxtst(>=1.2.4), libxi(>=1.8) "
+PKG_DEBIAN_DEPANDS = "Depends: glib(>=2.74.5), dbus(>=1.14.6.1), libx11(>=1.8.4), libxtst(>=1.2.4), libxi(>=1.8) "
 
 
 PKG_DEBIAN_SECTION = "Section: librares"
