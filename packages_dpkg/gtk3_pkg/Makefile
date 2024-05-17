@@ -7,7 +7,7 @@ PKG_NAME = gtk3
 PKG_URL = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.41.tar.xz
 PKG_TAR_FILE = gtk+-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/gtk+-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: at-spi2-core(>=2.48.3),  gdk-pixbuf(>=2.42.10), libepoxy(>=1.5.10), pango(>=1.50.12.1) "
+PKG_DEBIAN_DEPANDS = "Depends: at-spi2-core(>=2.48.3),  gdk-pixbuf(>=2.42.10), libepoxy(>=1.5.10), pango(>=1.50.12.1), libxcursor(>=1.2.1) "
 
 
 PKG_DEBIAN_SECTION = "Section: librares"
