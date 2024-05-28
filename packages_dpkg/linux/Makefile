@@ -5,9 +5,9 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 6.1.76
+PKG_VERSION = 6.1.92
 PKG_NAME = linux
-PKG_URL =  https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.76.tar.xz
+PKG_URL =  https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.92.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.2)  "
@@ -89,8 +89,11 @@ ${PKG_COMPILE}:
 
 ${PKG_MAKE_INTALL}:
 	find ${PGK_SOURCE_DIR}/usr/include -type f ! -name '*.h' -delete
+	install -d ${PKG_BUILD_DIR_DPKG}/usr/include/
 	cp -rv ${PGK_SOURCE_DIR}/usr/include/* ${PKG_BUILD_DIR_DPKG}/usr/include/
-	cd ${PGK_SOURCE_DIR} && make INSTALL_MOD_PATH=${PKG_BUILD_DIR_DPKG2} modules_install
+	install -d ${PKG_BUILD_DIR_DPKG2}/usr
+	cd ${PGK_SOURCE_DIR} && make INSTALL_MOD_PATH=${PKG_BUILD_DIR_DPKG2}/usr modules_install
+	install -d ${PKG_BUILD_DIR_DPKG3}/usr
 	cp -iv ${PGK_SOURCE_DIR}/arch/x86/boot/bzImage ${PKG_BUILD_DIR_DPKG3}/boot/vmlinuz-${PKG_VERSION}-irbislinux
 	cp -iv ${PGK_SOURCE_DIR}/System.map ${PKG_BUILD_DIR_DPKG3}/boot/System.map-${PKG_VERSION}
 	cp -iv ${PGK_SOURCE_DIR}/.config  ${PKG_BUILD_DIR_DPKG3}/boot/config-${PKG_VERSION}
