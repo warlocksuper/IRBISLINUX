@@ -6,9 +6,9 @@ PKG_NAME = systemd
 PKG_URL =  https://github.com/systemd/systemd/archive/v255/systemd-255.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  libseccomp(>=2.5.4), util-linux(>=2.38.1), kmod(>=30), openssl(>=3.0.8), libseccomp(>=2.5.4), zstd(>=1.5.4)"
+PKG_DEBIAN_DEPANDS = "Depends:  libseccomp(>=2.5.4), util-linux(>=2.38.1), kmod(>=30), openssl(>=3.0.8), libseccomp(>=2.5.4), zstd(>=1.5.4), libxcrypt"
 PKG_DEBIAN_SECTION = "Section: system"
-PKG_DEBIAN_DEST = "Description: While systemd was installed when building LFS, there are many features provided by the package that were not included in the initial installation because Linux-PAM was not yet installed. The systemd package needs to be rebuilt to provide a working systemd-logind service, which provides many additional features for dependent packages."
+PKG_DEBIAN_DEST = "Description: system and service manager."
 PKG_BUILD_REPLACES = " elogind, eudev, sysvinit "
 
 
@@ -52,8 +52,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PGK_SOURCE_DIR} && sed -i -e 's/GROUP="render"/GROUP="video"/' -e 's/GROUP="sgx", //' rules.d/50-udev-default.rules.in
-	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i ${PKG_PRG_DIR}/${PKG_NAME}_pkg/systemd-255-upstream_fixes-1.patch
+#	@cd ${PGK_SOURCE_DIR} && sed -i -e 's/GROUP="render"/GROUP="video"/' -e 's/GROUP="sgx", //' rules.d/50-udev-default.rules.in
+#	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i ${PKG_PRG_DIR}/${PKG_NAME}_pkg/systemd-255-upstream_fixes-1.patch
 	@cd ${PKG_BUILD_DIR} && $(MESON)  -Ddefault-dnssec=no -Dfirstboot=false -Dinstall-tests=false -Dldconfig=false        \
       -Dman=auto              \
       -Dsysusers=false        \

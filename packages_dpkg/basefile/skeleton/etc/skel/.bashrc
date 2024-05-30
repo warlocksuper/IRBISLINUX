@@ -1,4 +1,4 @@
-export PATH=$PATH:/usr/sbin:/usr/libexec
+export PATH=$PATH:/usr/sbin:/usr/libexec:/sbin
 
 if [ -f "/etc/bashrc" ] ; then
   source /etc/bashrc

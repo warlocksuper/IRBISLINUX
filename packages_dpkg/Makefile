@@ -2,7 +2,7 @@ PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sb
 
 PKG_LIST_DIR = basefile_dpkg dbus_dpkg xf86-input-synaptics_dpkg ncurses_dpkg readline_dpkg  #linux_dpkg # glib_dpkg ## linux_dpkg
 
-PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg libxcrypt_dpkg LSB-Tools_dpkg libffi_dpkg make-ca_dpkg brotli_dpkg  p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg mesa_dpkg #gobject-introspection
+PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg libffi_dpkg make-ca_dpkg brotli_dpkg  p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg mesa_dpkg #gobject-introspection
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 
 
@@ -48,18 +48,21 @@ PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg lib
 
 
 
-PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg  synaptic_dpkg 
+PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg 
 
 export
 
-PKG_LIST =  openssl kmod bzip2 usbutils  util-linux coreutils systemd bash at-spi2-core attr LMDB libxcvt lzo squashfuse libappimage  qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qt-everywhere-opensource  qcoro signond libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
-PKG_LIST += Linux-PAM gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc 
+PKG_LIST = xz fakeroot openssl kmod bzip2 usbutils  util-linux coreutils libxcrypt systemd bash at-spi2-core attr LMDB libxcvt lzo squashfuse libappimage  qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qt-everywhere-opensource  qcoro signond libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
+PKG_LIST += Linux-PAM gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
+
+
+#perl-xml-parser  synaptic
 
 
 
 
-all: ${PKG_LIST} ${PKG_LIST_DIR}
-##all:	${PKG_LIST}
+#all: ${PKG_LIST} ${PKG_LIST_DIR}
+all:	${PKG_LIST}
 #all: ${PKG_LIST_DIR}
 
 python_modules_dpkg:
@@ -114,9 +117,6 @@ gksu_dpkg:
 
 docbook_dpkg:
 	${MAKE} -C docbook
-
-synaptic_dpkg:
-	${MAKE} -C synaptic
 
 libfreeaptx_dpkg:
 	${MAKE} -C libfreeaptx
@@ -372,9 +372,6 @@ udisks_dpkg:
 
 libgtop_dpkg:
 	${MAKE} -C libgtop
-
-libxcrypt_dpkg:
-	${MAKE} -C libxcrypt
 
 LSB-Tools_dpkg:
 	${MAKE} -C LSB-Tools
