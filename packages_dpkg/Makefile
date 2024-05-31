@@ -52,7 +52,7 @@ PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_
 
 export
 
-PKG_LIST = xz fakeroot openssl kmod bzip2 usbutils  util-linux coreutils libxcrypt systemd bash at-spi2-core attr LMDB libxcvt lzo squashfuse libappimage  qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qt-everywhere-opensource  qcoro signond libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
+PKG_LIST = xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash at-spi2-core attr LMDB libxcvt lzo squashfuse libappimage  qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qt-everywhere-opensource  qcoro signond libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
 PKG_LIST += Linux-PAM gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 

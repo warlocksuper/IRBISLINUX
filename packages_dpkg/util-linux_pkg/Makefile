@@ -3,12 +3,12 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
-PKG_VERSION = 2.39.3
+PKG_VERSION = 2.40.1
 PKG_NAME = util-linux
-PKG_URL = https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.xz
+PKG_URL = https://www.kernel.org/pub/linux/utils/util-linux/v2.40/util-linux-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_DEBIAN_DEPANDS = "Depends:  bison "
 
 
 PKG_DEBIAN_SECTION = "Section: system"
@@ -29,8 +29,8 @@ PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
 
-PKG_COMPILE_MAKE = ""
-#PKG_COMPILE_NINJA = ""
+#PKG_COMPILE_MAKE = ""
+PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
@@ -60,9 +60,20 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --disable-static  --sysconfdir=/etc  --libdir=/usr/lib  --runstatedir=/run  --disable-chfn-chsh --disable-login --disable-nologin --disable-su --disable-setpriv  --disable-runuser --disable-pylibmount --disable-static --without-python ADJTIME_PATH=/var/lib/hwclock/adjtime --docdir=/usr/share/doc/util-linux-2.39.3
+#	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --disable-static  --sysconfdir=/etc  --libdir=/usr/lib  --runstatedir=/run  --disable-chfn-chsh --disable-login --disable-nologin --disable-su --disable-setpriv  --disable-runuser --disable-pylibmount --disable-static --without-python ADJTIME_PATH=/var/lib/hwclock/adjtime --docdir=/usr/share/doc/util-linux-2.39.3
 #	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
-
+	@cd ${PKG_BUILD_DIR} && $(MESON) -Dfs-search-path=/usr/bin:/usr/local/bin \
+    -Dlibuser=disabled \
+    -Dlibutempter=disabled \
+    -Dncurses=disabled \
+    -Dncursesw=enabled \
+    -Deconf=disabled \
+    -Dbuild-chfn-chsh=enabled \
+    -Dbuild-line=disabled \
+    -Dbuild-mesg=enabled \
+    -Dbuild-newgrp=enabled \
+    -Dbuild-vipw=enabled \
+    -Dbuild-write=enabled ${PGK_SOURCE_DIR}
 
 include ${ROOT_DIR}/scripts/compile.mk
 

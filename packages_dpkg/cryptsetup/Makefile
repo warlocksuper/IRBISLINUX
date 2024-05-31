@@ -5,12 +5,12 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 2.4.3
+PKG_VERSION = 2.7.2
 PKG_NAME = cryptsetup
-PKG_URL =  https://www.kernel.org/pub/linux/utils/cryptsetup/v2.4/cryptsetup-2.4.3.tar.xz
+PKG_URL =  https://www.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-2.2.2.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: lvm2(>=2.03.22), popt(>=1.19), json-c(>=0.17) "
+PKG_DEBIAN_DEPANDS = "Depends: lvm2, popt(>=1.19), json-c(>=0.17), openssl  "
 
 
 PKG_DEBIAN_SECTION = "Section: security"
