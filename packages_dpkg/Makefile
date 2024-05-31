@@ -26,13 +26,13 @@ PKG_LIST_DIR += wayland_dpkg wayland-protocols_dpkg
 PKG_LIST_DIR += acpid_dpkg rest_dpkg yaml_dpkg ruby_dpkg harfbuzz_dpkg SDL_dpkg libwebp_dpkg libwpe_dpkg wpebackend-fdo_dpkg enchant_dpkg openjpeg_dpkg 
 PKG_LIST_DIR += libhandy_dpkg rsync_dpkg xterm_dpkg  links_dpkg lynx_dpkg libxml2_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
 PKG_LIST_DIR += upower_dpkg polkit_dpkg gcr3_dpkg  gcr_dpkg gnome-keyring_dpkg mutter_dpkg gnome-shell_dpkg gnome-shell-extensions_dpkg  glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
-PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg gnome-icon-theme_dpkg gdk-pixbuf_dpkg gdk-pixbuf-xlib_dpkg gnome-icon-theme-extras_dpkg 
+PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg gnome-icon-theme_dpkg gdk-pixbuf-xlib_dpkg gnome-icon-theme-extras_dpkg 
 PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  gdm_dpkg  unifdef_dpkg  yasm_dpkg libaom_dpkg libavif_dpkg
 PKG_LIST_DIR += krb5_dpkg ConsoleKit_dpkg   libpipeline_dpkg  xfce4-settings_dpkg 
 PKG_LIST_DIR += libxslt_dpkg gnome-session_dpkg colord_dpkg colord-gtk_dpkg gnome-online-accounts_dpkg cracklib_dpkg  libpwquality_dpkg libmbim_dpkg  libqmi_dpkg gsound_dpkg gnome-bluetooth_dpkg ModemManager_dpkg  
 PKG_LIST_DIR += libgtop_dpkg  libatasmart_dpkg keyutils_dpkg libaio_dpkg  LVM2_dpkg libbytesize_dpkg e2fsprogs_dpkg
 PKG_LIST_DIR +=  json-c_dpkg cryptsetup_dpkg libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg 
-PKG_LIST_DIR +=  libdaemon_dpkg avahi_dpkg fuse_dpkg  libcdio_dpkg  libcdio-paranoia_dpkg    gvfs_dpkg   
+PKG_LIST_DIR +=  libdaemon_dpkg avahi_dpkg  libcdio_dpkg  libcdio-paranoia_dpkg    gvfs_dpkg   
 PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg xbitmaps_dpkg 
 
 ### XFCE4
@@ -52,7 +52,7 @@ PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_
 
 export
 
-PKG_LIST = xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash at-spi2-core attr LMDB libxcvt lzo squashfuse libappimage  qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qt-everywhere-opensource  qcoro signond libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
+PKG_LIST = xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash at-spi2-core attr LMDB libxcvt lzo fuse squashfuse gdk-pixbuf  libappimage  qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qt-everywhere-opensource  qcoro signond libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
 PKG_LIST += Linux-PAM gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 
@@ -276,9 +276,6 @@ libcdio-paranoia_dpkg:
 
 libcdio_dpkg:
 	${MAKE} -C libcdio
-
-fuse_dpkg:
-	${MAKE} -C fuse
 
 libdaemon_dpkg:
 	${MAKE} -C libdaemon
@@ -627,9 +624,6 @@ xscreensaver_dpkg:
 
 librsvg_dpkg:
 		${MAKE} -C librsvg
-
-gdk-pixbuf_dpkg:
-		${MAKE} -C gdk-pixbuf
 
 webkitgtk_dpkg:
 		${MAKE} -C webkitgtk

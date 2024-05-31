@@ -55,7 +55,7 @@ PKG_CONFIGURE:
 #	@cd ${PGK_SOURCE_DIR} && sed -i -e 's/GROUP="render"/GROUP="video"/' -e 's/GROUP="sgx", //' rules.d/50-udev-default.rules.in
 #	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i ${PKG_PRG_DIR}/${PKG_NAME}_pkg/systemd-255-upstream_fixes-1.patch
 	@cd ${PKG_BUILD_DIR} && $(MESON)  -Ddefault-dnssec=no -Dfirstboot=false -Dinstall-tests=false -Dldconfig=false        \
-      -Dman=auto              \
+      -Dman=false              \
       -Dsysusers=false        \
       -Drpmmacrosdir=no       \
       -Dhomed=disabled        \
@@ -66,8 +66,7 @@ PKG_CONFIGURE:
       -Ddev-kvm-mode=0660     \
       -Dnobody-group=nogroup  \
       -Dsysupdate=disabled    \
-      -Dukify=disabled        \
-      -Ddocdir=/usr/share/doc/systemd-255  ${PGK_SOURCE_DIR}  
+      -Dukify=disabled  ${PGK_SOURCE_DIR}  
 
 include ${ROOT_DIR}/scripts/compile.mk
 

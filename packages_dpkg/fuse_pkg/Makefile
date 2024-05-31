@@ -1,22 +1,23 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
+
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 4.4.36
-PKG_NAME = libxcrypt
-PKG_URL = https://github.com/besser82/libxcrypt/releases/download/v4.4.36/libxcrypt-4.4.36.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 3.16.2
+PKG_NAME = fuse
+PKG_URL = https://github.com/libfuse/libfuse/releases/download/fuse-${PKG_VERSION}/fuse-${PKG_VERSION}.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: basefile "
-PKG_BUILD_REPLACES = " glibc "
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
-PKG_DEBIAN_SECTION = "Section: basic"
 
-PKG_DEBIAN_DEST = "Description: The Libxcrypt package contains a modern library for one-way hashing of passwords."
+PKG_DEBIAN_SECTION = "Section: system"
+
+PKG_DEBIAN_DEST = "Description: FUSE (Filesystem in Userspace) is a simple interface for userspace programs to export a virtual filesystem to the Linux kernel. Fuse also aims to provide a secure method for non privileged users to create and mount their own filesystem implementations."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -35,8 +36,8 @@ PKG_DPKG_FILE_PATH = ${PKG_BUILD_DIR}/${PKG_DPKG_FILE}
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
 
-PKG_COMPILE_MAKE = ""
-#PKG_COMPILE_NINJA = ""
+#PKG_COMPILE_MAKE = ""
+PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
@@ -66,8 +67,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}$(CONFIGURE)   --enable-hashes=strong,glibc
-
+	@cd ${PKG_BUILD_DIR} && meson setup --prefix=/usr --buildtype=release -Dexamples=false ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk

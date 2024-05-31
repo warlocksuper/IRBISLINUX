@@ -6,17 +6,17 @@ export  PATH
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 4.4.36
-PKG_NAME = libxcrypt
-PKG_URL = https://github.com/besser82/libxcrypt/releases/download/v4.4.36/libxcrypt-4.4.36.tar.xz
+PKG_VERSION = 2.42.12
+PKG_NAME = gdk-pixbuf
+PKG_URL = https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: basefile "
-PKG_BUILD_REPLACES = " glibc "
+PKG_DEBIAN_DEPANDS = "Depends: glib(>=2.74.5), libjpeg-turbo(>=2.1.5.1),  libpng(>=1.6.39), shared-mime-info(>=2.2),  librsvg(>=2.54.5), tiff "
 
-PKG_DEBIAN_SECTION = "Section: basic"
 
-PKG_DEBIAN_DEST = "Description: The Libxcrypt package contains a modern library for one-way hashing of passwords."
+PKG_DEBIAN_SECTION = "Section: xorg"
+
+PKG_DEBIAN_DEST = "Description:  The Gdk Pixbuf package is a toolkit for image loading and pixel buffer manipulation. It is used by GTK+ 2 and GTK+ 3 to load and manipulate images. In the past it was distributed as part of GTK+ 2 but it was split off into a separate package in preparation for the change to GTK+ 3."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -35,8 +35,8 @@ PKG_DPKG_FILE_PATH = ${PKG_BUILD_DIR}/${PKG_DPKG_FILE}
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
 
-PKG_COMPILE_MAKE = ""
-#PKG_COMPILE_NINJA = ""
+#PKG_COMPILE_MAKE = ""
+PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
@@ -48,6 +48,7 @@ PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяе
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
 all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
+	install -Dt ${PKG_BUILD_DIR_DPKG}/usr/share/libalpm/hooks -m644 *.hook
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -66,8 +67,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}$(CONFIGURE)   --enable-hashes=strong,glibc
-
+	@cd ${PKG_BUILD_DIR} &&  $(MESON) --wrap-mode=nofallback -Dman=false -Dbuiltin_loaders=all -Dintrospection=enabled -Dothers=enabled  ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk
@@ -77,4 +77,4 @@ include ${ROOT_DIR}/scripts/build_dpkg.mk
 else
 all: 
 	@echo "Уже собранно ${PKG_COMPLITE} ${PKG_NAME}"	
-endif		
+endif	

@@ -1,12 +1,12 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-PKG_VERSION = 0.5.0
+PKG_VERSION = 0.5.2
 PKG_NAME = squashfuse
-PKG_URL =  https://github.com/vasi/squashfuse/releases/download/0.5.0/squashfuse-0.5.0.tar.gz
+PKG_URL =  https://github.com/vasi/squashfuse/releases/download/${PKG_VERSION}/squashfuse-${PKG_VERSION}.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: "
+PKG_DEBIAN_DEPANDS = "Depends: fuse "
 PKG_DEBIAN_SECTION = "Section: library"
 PKG_DEBIAN_DEST = "Description: This library is part of the AppImage project. It implements functionality for dealing with AppImage files. It is written in C++ and is using Boost."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
@@ -49,7 +49,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)    #CONFIGURE  CMAKE
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --enable-static=no  #CONFIGURE  CMAKE
+	@cd ${PKG_BUILD_DIR} && sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' -i libtool
 
 include ${ROOT_DIR}/scripts/compile.mk
 
