@@ -1,0 +1,32 @@
+[org/gtk/settings/file-chooser]
+window-position=(417, 158)
+window-size=(1096, 822)
+date-format='regular'
+location-mode='path-bar'
+show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=148
+sort-column='name'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+
+[org/gnome/gedit/plugins/filebrowser]
+tree-view=true
+root='file:///'
+virtual-root='file:///home/warlock/Desktop'
+
+[org/gnome/gedit/state/window]
+bottom-panel-size=140
+side-panel-active-page='GeditWindowDocumentsPanel'
+side-panel-size=200
+size=(900, 700)
+state=128
+
+[org/gnome/desktop/interface]
+gtk-theme='Breeze-Dark'
+
+[org/gnome/gedit/preferences/editor]
+wrap-last-split-mode='word'
+scheme='oblivion'

@@ -3,7 +3,7 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 0.2
+PKG_VERSION = 0.3
 PKG_NAME = basefile
 
 PKG_DEBIAN_SECTION = "Section: system"
@@ -53,6 +53,7 @@ ${PKG_MAKE_INTALL}:
 
 ${PKG_BUILD_DIR_DEBIAN}:
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
+	@cp DEBIAN/conffiles ${PKG_BUILD_DIR_DPKG}/DEBIAN/
 	@echo "Package: ${PKG_NAME}" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Architecture: amd64" >> ${PKG_BUILD_DIR_DEBIAN}
 	@echo "Version: ${PKG_VERSION}" >> ${PKG_BUILD_DIR_DEBIAN}

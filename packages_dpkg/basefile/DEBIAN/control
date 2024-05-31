@@ -1,8 +1,0 @@
-Package: basefileIRBIS
-Architecture: amd64
-Version: 0.1
-Provides: basefileIRBIS
-Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
-Section: system
-Installed-Size: 
-Description: basefileIRBIS Setting
