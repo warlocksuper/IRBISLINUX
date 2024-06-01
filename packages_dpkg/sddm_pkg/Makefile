@@ -1,20 +1,28 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
+#depend Extra Cmake Modules    QT5
+
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 
-PKG_VERSION = 0.10.0
-PKG_NAME = qcoro
-PKG_URL = https://github.com/danvratil/qcoro/archive/refs/tags/v0.10.0.tar.gz
-PKG_TAR_FILE = v${PKG_VERSION}.tar.gz
+COPY_ROOTFS = ${ROOT_FS}/etc
+
+PKG_VERSION = 0.21.0
+PKG_NAME = sddm
+PKG_URL = https://github.com/sddm/sddm/archive/v${PKG_VERSION}/sddm-${PKG_VERSION}.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_DEBIAN_DEPANDS = "Depends: extra-cmake-modules(>=5.109.0), krb5(>=1.21.2), e2fsprogs(>=1.47.0) "
 
+export XML_CATALOG_FILES=/etc/xml/catalog
 
-PKG_DEBIAN_SECTION = "Section: librares"
+PKG_DEBIAN_SECTION = "Section: xorg"
 
-PKG_DEBIAN_DEST = "Description: The QCoro library provides set of tools to make use of C++20 coroutines with Qt."
+PKG_DEBIAN_DEST = "Description: The sddm package contains a lightweight display manager based upon Qt and QML.."
+
+PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
+
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -25,7 +33,7 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
+PKG_DPKG_FILE_PATH = ${PKG_BUILD_DIR}/${PKG_DPKG_FILE}
 
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
@@ -39,11 +47,10 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
 
-PKG_COMPLITE =  `check_version ${PKG_DPKG_FILE_PATH}` #$(shell if [ -f "${PKG_DPKG_FILE_PATH}" ]; then echo "1"; else echo "0"; fi ) ## определяет естьли собранный файл пакета если нет собираем
+PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
-ifeq ($(strip $(PKG_COMPLITE)),$(strip 0))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN} 
-	@echo ${PKG_DPKG_FILE_PATH}
+ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -62,14 +69,10 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} &&  cmake -DCMAKE_INSTALL_PREFIX=/usr  -DCMAKE_BUILD_TYPE=Release  -DBUILD_MAN_PAGES=OFF  -DDATA_INSTALL_DIR=/usr/share/sddm -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf  ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk
-
-PKG_MAKE_POST_INTALL:
-	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
-
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk
 	

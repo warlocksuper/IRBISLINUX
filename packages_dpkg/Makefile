@@ -15,7 +15,7 @@ PKG_LIST_DIR +=  pycairo_dpkg  pygobject_dpkg   # doxypypy_dpkg  # Cython_dpkg  
 PKG_LIST_DIR +=  xf86-input-synaptics_dpkg liboauth_dpkg
 
 ### KDE
-PKG_LIST_DIR +=  sqlite_dpkg sddm_dpkg  phonon_dpkg phonon-backend-gstreamer_dpkg a52dec_dpkg libmad_dpkg lua_dpkg  vlc_dpkg phonon-backend-vlc_dpkg polkit-qt-1_dpkg libdbusmenu-qt_dpkg   plasma-wayland-protocols_dpkg kuserfeedback_dpkg #KDE_dpkg
+PKG_LIST_DIR +=  sqlite_dpkg phonon_dpkg phonon-backend-gstreamer_dpkg a52dec_dpkg libmad_dpkg lua_dpkg  vlc_dpkg phonon-backend-vlc_dpkg polkit-qt-1_dpkg libdbusmenu-qt_dpkg   plasma-wayland-protocols_dpkg kuserfeedback_dpkg #KDE_dpkg
 
 
 PKG_LIST_DIR += wayland_dpkg wayland-protocols_dpkg
@@ -52,8 +52,8 @@ PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_
 
 export
 
-PKG_LIST = xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash at-spi2-core attr LMDB libxcvt lzo fuse squashfuse gdk-pixbuf  libappimage  qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qt-everywhere-opensource  qcoro signond libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
-PKG_LIST += Linux-PAM gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
+PKG_LIST = basefile xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash at-spi2-core attr LMDB libxcvt lzo fuse squashfuse gdk-pixbuf  Linux-PAM sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator  qt-everywhere-opensource  qcoro signond libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
+PKG_LIST += gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  libappimage #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 
 #perl-xml-parser  synaptic
@@ -421,9 +421,6 @@ p11-kit_dpkg:
 
 acpid_dpkg:
 		${MAKE} -C acpid		
-
-sddm_dpkg:
-		${MAKE} -C sddm		
 
 gcr3_dpkg:
 		${MAKE} -C gcr3

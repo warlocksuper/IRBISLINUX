@@ -1,9 +1,9 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-PKG_VERSION = 1.6.0
+PKG_VERSION = 1.6.1
 PKG_NAME = Linux-PAM
-PKG_URL =  https://github.com/linux-pam/linux-pam/releases/download/v1.6.0/Linux-PAM-1.6.0.tar.xz
+PKG_URL =  https://github.com/linux-pam/linux-pam/releases/download/v${PKG_VERSION}/Linux-PAM-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: libtirpc(>=1.2.6), libpwquality(>=1.4.5)"
@@ -52,8 +52,7 @@ PKG_CONFIGURE:
 	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --sbindir=/usr/sbin                  \
             --sysconfdir=/etc                    \
             --libdir=/usr/lib                    \
-            --enable-securedir=/usr/lib/security \
-            --docdir=/usr/share/doc/Linux-PAM-1.6.0  #CONFIGURE  CMAKE
+            --enable-securedir=/usr/lib/security  --enable-logind --disable-db
 
 include ${ROOT_DIR}/scripts/compile.mk
 
