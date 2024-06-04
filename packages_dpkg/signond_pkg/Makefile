@@ -8,7 +8,7 @@ PKG_NAME = signond
 PKG_URL = https://gitlab.com/accounts-sso/signond/-/archive/VERSION_8.61/signond-VERSION_8.61.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-VERSION_${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-VERSION_${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_DEBIAN_DEPANDS = "Depends: doxygen "
 
 
 PKG_DEBIAN_SECTION = "Section: librares"

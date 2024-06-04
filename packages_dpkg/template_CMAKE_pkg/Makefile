@@ -39,9 +39,9 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
 
-PKG_COMPLITE =  `check_version ${PKG_DPKG_FILE_PATH}` #$(shell if [ -f "${PKG_DPKG_FILE_PATH}" ]; then echo "1"; else echo "0"; fi ) ## определяет естьли собранный файл пакета если нет собираем
+PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
-ifeq ($(strip $(PKG_COMPLITE)),$(strip 0))
+ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
 all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN} 
 	@echo ${PKG_DPKG_FILE_PATH}
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}

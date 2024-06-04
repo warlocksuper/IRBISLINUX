@@ -1,28 +1,22 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-#depend Extra Cmake Modules    QT5
-
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 
-COPY_ROOTFS = ${ROOT_FS}/etc
+PKG_VERSION = 1.11.0
+PKG_NAME = doxygen
+PKG_URL = https://github.com/doxygen/doxygen/archive/refs/tags/Release_1_11_0.tar.gz
+PKG_TAR_FILE = Release_1_11_0.tar.gz
 
-PKG_VERSION = 0.21.0
-PKG_NAME = sddm
-PKG_URL = https://github.com/sddm/sddm/archive/v${PKG_VERSION}/sddm-${PKG_VERSION}.tar.gz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: extra-cmake-modules(>=5.109.0), krb5(>=1.21.2), e2fsprogs(>=1.47.0) "
 
-export XML_CATALOG_FILES=/etc/xml/catalog
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-Release_1_11_0
+PKG_DEBIAN_DEPANDS = "Depends: llvm, spdlog "
 
-PKG_DEBIAN_SECTION = "Section: xorg"
 
-PKG_DEBIAN_DEST = "Description: The sddm package contains a lightweight display manager based upon Qt and QML.."
+PKG_DEBIAN_SECTION = "Section: doc"
 
-PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
-
+PKG_DEBIAN_DEST = "Description: Documentation system for C++, C, Java, IDL and PHP"
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -33,9 +27,10 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
+PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
+
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
-PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 PKG_COMPILE_MAKE = ""
 #PKG_COMPILE_NINJA = ""
@@ -49,7 +44,8 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN} 
+	@echo ${PKG_DPKG_FILE_PATH}
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -68,10 +64,21 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} &&  cmake -DCMAKE_INSTALL_PREFIX=/usr  -DCMAKE_BUILD_TYPE=Release  -DBUILD_MAN_PAGES=OFF  -DDATA_INSTALL_DIR=/usr/share/sddm -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DCMAKE_BUILD_TYPE:STRING=None \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DDOC_INSTALL_DIR:PATH=share/doc/doxygen \
+    -Dbuild_doc:BOOL=ON \
+    -Dbuild_wizard:BOOL=ON \
+    -Duse_sys_spdlog:BOOL=ON \
+    -Duse_sys_sqlite3:BOOL=ON \
+    -Duse_libclang:BOOL=ON ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk
+
+PKG_MAKE_POST_INTALL:
+##	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
+
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk
 	
