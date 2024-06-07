@@ -3,11 +3,12 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
-PKG_VERSION = 0.5.2
+PKG_VERSION = 0.5.1
 PKG_NAME = thunar-archive-plugin
 PKG_URL = https://archive.xfce.org/src/thunar-plugins/${PKG_NAME}/0.5/${PKG_NAME}-${PKG_VERSION}.tar.bz2
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+#https://sourceforge.net/projects/libuuid/files/libuuid-1.0.3.tar.gz/download
 PKG_DEBIAN_DEPANDS = "Depends: thunar, hicolor-icon-theme "
 #PKG_BUILD_REPLACES = "  "
 

@@ -23,10 +23,10 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-PKG_DPKG_FILE_PATH = ${PKG_BUILD_DIR}/${PKG_DPKG_FILE}
+
 
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
-
+PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 #PKG_COMPILE_MAKE = ""
 PKG_COMPILE_NINJA = ""
@@ -59,7 +59,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Dman=true -Dwayland_backend=false  -Dbroadway_backend=true  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(MESON) -Dman=false -Dwayland_backend=false  -Dbroadway_backend=true  ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk
