@@ -11,7 +11,7 @@ PKG_NAME = ark
 PKG_URL =  ${PKG_SRC_URL}/ark-23.08.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  libarchive(>=3.6.2) "
+PKG_DEBIAN_DEPANDS = "Depends:  libarchive(>=3.6.2), kitemmodels "
 PKG_DEBIAN_SECTION = "Section: kde"
 PKG_DEBIAN_DEST = "Description: The Ark package is a KF5 archive tool. It is a graphical front end to tar and similar tools."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb

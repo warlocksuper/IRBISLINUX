@@ -8,8 +8,8 @@ PKG_NAME = perl-xml-parser
 PKG_URL = https://search.cpan.org/CPAN/authors/id/T/TO/TODDR/XML-Parser-${PKG_VERSION}.tar.gz
 PKG_TAR_FILE = XML-Parser-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/XML-Parser-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
-
+PKG_DEBIAN_DEPANDS = "Depends:  perl, expat"
+PKG_BUILD_REPLACES = " xml-simple "
 
 PKG_DEBIAN_SECTION = "Section: system"
 
@@ -30,7 +30,7 @@ PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
 
 #PKG_COMPILE_MAKE = ""
-PKG_COMPILE_PERL = Makefile.PL INSTALLDIRS=IRBIS
+PKG_COMPILE_PERL = Makefile.PL INSTALLDIRS=vendor
 #PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 

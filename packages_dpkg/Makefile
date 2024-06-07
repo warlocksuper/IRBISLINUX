@@ -43,7 +43,7 @@ PKG_LIST_DIR +=   xfce4-taskmanager_dpkg
 # не собираются sgml-common_dpkg  gnome-control-center_dpkg gcc_dpkg webkitgtk_dpkg   linux_dpkg    webkitgtk_dpkg
 
 #Sound
-PKG_LIST_DIR += alsa-lib_dpkg alsa-plugins_dpkg alsa-utils_dpkg fltk_dpkg   alsa-firmware_dpkg  alsa-oss_dpkg alsa-ucm-conf_dpkg
+PKG_LIST_DIR +=  alsa-plugins_dpkg alsa-utils_dpkg fltk_dpkg   alsa-firmware_dpkg  alsa-oss_dpkg 
 PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg libvpx_dpkg nasm_dpkg x264_dpkg  x265_dpkg   ffmpeg_dpkg  sbc_dpkg  libfreeaptx_dpkg  # pipewire_dpkg   ##alsa-tools_dpkg
 
 
@@ -52,7 +52,11 @@ PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_
 
 export
 
-PKG_LIST = basefile xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash at-spi2-core attr LMDB libxcvt lzo fuse squashfuse gdk-pixbuf  Linux-PAM sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation qt-everywhere-opensource  qcoro fmt spdlog doxygen signond libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
+PKG_LIST = basefile xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash perl-xml-parser thunar-archive-plugin at-spi2-core attr LMDB libxcvt lzo fuse squashfuse gdk-pixbuf  Linux-PAM sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation qt-everywhere-opensource  qcoro fmt spdlog 
+
+PKG_LIST += alsa-ucm-conf alsa-lib 
+
+PKG_LIST += doxygen signond libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
 PKG_LIST += gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  libappimage #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 

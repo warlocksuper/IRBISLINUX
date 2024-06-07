@@ -22,7 +22,7 @@ ifdef PKG_COMPILE_PERL
 COMPILE:
 	@cd ${PKG_COMPILE_DIR} && CC=gcc perl  $(PKG_COMPILE_PERL)
 	@cd ${PKG_COMPILE_DIR} &&  make
-
+	@cd ${PKG_COMPILE_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG}  install
 
 ${PKG_MAKE_INTALL}:
 	@cd ${PKG_COMPILE_DIR} && make DESTDIR=${PKG_BUILD_DIR_DPKG}  install
