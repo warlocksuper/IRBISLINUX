@@ -58,12 +58,14 @@ PKG_CONFIGURE:
 #include ${ROOT_DIR}/scripts/compile.mk
 COMPILE:
 	@cd ${PGK_SOURCE_DIR} && make  -f Makefile-libbz2_so 
-	@cd ${PGK_SOURCE_DIR} && mkdir -p ${PKG_BUILD_DIR_DPKG}/usr
-	@cd ${PGK_SOURCE_DIR} && mkdir -p ${PKG_BUILD_DIR_DPKG}/usr/bin
-	@cd ${PGK_SOURCE_DIR} && mkdir -p ${PKG_BUILD_DIR_DPKG}/usr/lib
+	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
+	install -d ${PKG_BUILD_DIR_DPKG}/usr/bin
+	install -d ${PKG_BUILD_DIR_DPKG}/usr/lib
+	install -d ${PKG_BUILD_DIR_DPKG}/usr/include
 	@cd ${PGK_SOURCE_DIR} && cp -r libbz2.so.1.0 ${PKG_BUILD_DIR_DPKG}/usr/lib/libbz2.so.1.0
 	@cd ${PGK_SOURCE_DIR} && cp -r libbz2.so.1.0.8 ${PKG_BUILD_DIR_DPKG}/usr/lib/libbz2.so.1.0.8
 	@cd ${PGK_SOURCE_DIR} && cp -r bzip2-shared ${PKG_BUILD_DIR_DPKG}/usr/bin/bzip2	
+	@cd ${PGK_SOURCE_DIR} && cp -r bzlib.h ${PKG_BUILD_DIR_DPKG}/usr/include/	
 	@cd ${PKG_BUILD_DIR_DPKG}/usr/bin && ln -sfv bzip2 bzcat
 	@cd ${PKG_BUILD_DIR_DPKG}/usr/bin && ln -sfv bzip2 bunzip2
 	@cd ${PKG_BUILD_DIR_DPKG}/usr/lib && ln -sv libbz2.so.1.0.8 libbz2.so
