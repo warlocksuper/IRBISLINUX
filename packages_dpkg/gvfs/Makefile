@@ -10,7 +10,7 @@ PKG_NAME = gvfs
 PKG_URL = https://download.gnome.org/sources/gvfs/1.50/gvfs-1.50.6.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  dbus(>=1.14.6.1),  glib(>=2.74.5), libusb(>=1.0.26),  libsecret(>=0.20.5), avahi(>=0.8),  fuse(>=3.16.1),  libcdio-paranoia(>=10.2+2.0.1) "
+PKG_DEBIAN_DEPANDS = "Depends:  dbus(>=1.14.6.1),  glib(>=2.74.5), libusb(>=1.0.26),  libsecret(>=0.20.5), avahi(>=0.8),  fuse(>=3.16.1),  libcdio-paranoia(>=10.2+2.0.1), udisks(>=2.10.0) "
 
 
 PKG_DEBIAN_SECTION = "Section: gnome"

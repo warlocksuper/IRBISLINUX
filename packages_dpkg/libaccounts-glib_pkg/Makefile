@@ -3,12 +3,12 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
-PKG_VERSION = 1.26
+PKG_VERSION = 1.27
 PKG_NAME = libaccounts-glib
-PKG_URL = https://gitlab.com/accounts-sso/libaccounts-glib/-/archive/1.26/libaccounts-glib-1.26.tar.gz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_URL = https://gitlab.com/accounts-sso/libaccounts-glib/-/archive/VERSION_${PKG_VERSION}/libaccounts-glib-VERSION_${PKG_VERSION}.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-VERSION_${PKG_VERSION}.tar.gz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-VERSION_${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends:  pygobject(>=3.48.2), gtk-doc "
 
 
 PKG_DEBIAN_SECTION = "Section: librares"

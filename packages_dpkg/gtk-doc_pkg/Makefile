@@ -1,9 +1,9 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-PKG_VERSION = 1.33.2
+PKG_VERSION = 1.34.0
 PKG_NAME = gtk-doc
-PKG_URL =  https://download.gnome.org/sources/gtk-doc/1.33/gtk-doc-1.33.2.tar.xz
+PKG_URL =  https://download.gnome.org/sources/gtk-doc/1.34/gtk-doc-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends:  docbook-xml(>=4.5)"
@@ -42,7 +42,7 @@ BUILD_DIR:
 	@mkdir -p ${ROOT_SOURCE}
 
 ${PKG_TAR}:
-	wget ${PKG_URL} -P ${ROOT_SOURCE}/
+	wget ${PKG_URL} -P ${ROOT_SOURCE}/ --no-check-certificate
 
 
 ${PGK_SOURCE_DIR}:
@@ -50,7 +50,10 @@ ${PGK_SOURCE_DIR}:
 
 PKG_CONFIGURE:
 	@cd ${PGK_SOURCE_DIR} &&  autoreconf -fiv
-	@cd ${PKG_BUILD_DIR} &&  ${PGK_SOURCE_DIR}/$(CONFIGURE)    --with-xml-catalog=/usr/share/xml/docbook/xml-dtd-4.5
+	@cd ${PKG_BUILD_DIR} &&  ${PGK_SOURCE_DIR}/$(CONFIGURE)  --with-xml-catalog=/usr/share/xml/docbook/xml-dtd-4.3
+
+
+
 
 include ${ROOT_DIR}/scripts/compile.mk
 

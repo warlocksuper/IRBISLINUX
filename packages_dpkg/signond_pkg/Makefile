@@ -1,8 +1,9 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
+PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
+
 PKG_VERSION = 8.61
 PKG_NAME = signond
 PKG_URL = https://gitlab.com/accounts-sso/signond/-/archive/VERSION_8.61/signond-VERSION_8.61.tar.gz
@@ -38,9 +39,9 @@ PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} д�
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
 
-PKG_COMPLITE =  `check_version ${PKG_DPKG_FILE_PATH}` ## определяет естьли собранный файл пакета если нет собираем
+PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
-ifneq ($(strip $(PKG_COMPLITE)),$(strip "yes"))
+ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
 all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}

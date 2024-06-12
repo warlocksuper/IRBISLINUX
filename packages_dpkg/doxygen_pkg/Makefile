@@ -67,11 +67,11 @@ PKG_CONFIGURE:
 	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DCMAKE_BUILD_TYPE:STRING=None \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DDOC_INSTALL_DIR:PATH=share/doc/doxygen \
-    -Dbuild_doc:BOOL=ON \
+    -Dbuild_doc:BOOL=OFF \
     -Dbuild_wizard:BOOL=ON \
     -Duse_sys_spdlog:BOOL=ON \
     -Duse_sys_sqlite3:BOOL=ON \
-    -Duse_libclang:BOOL=ON ${PGK_SOURCE_DIR}
+    -Duse_libclang:BOOL=OFF ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk

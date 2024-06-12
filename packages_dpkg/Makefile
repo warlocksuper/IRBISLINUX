@@ -8,7 +8,7 @@ PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 
 ## Python
 
-PKG_LIST_DIR +=  pycairo_dpkg  pygobject_dpkg   # doxypypy_dpkg  # Cython_dpkg  надо найти способ создавать пакеты python
+PKG_LIST_DIR +=  pycairo_dpkg  # doxypypy_dpkg  # Cython_dpkg  надо найти способ создавать пакеты python
 
 
 #### XORG
@@ -57,11 +57,11 @@ PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
 
-PKG_LIST += doxygen signond libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
+PKG_LIST += doxygen signond pygobject gtk-doc libaccounts-glib libaccounts-qt  libpcap plymouth Python   lm-sensors libqalculate signon-plugin-oauth2 libxmlb  AppStream docbook-xml qemu 
 PKG_LIST += gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  libappimage #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 
-#perl-xml-parser  synaptic
+#perl-xml-parser  synaptic  
 
 
 
@@ -134,10 +134,6 @@ Cython_dpkg:
 
 pycairo_dpkg:
 	${MAKE} -C pycairo
-
-pygobject_dpkg:
-	${MAKE} -C pygobject
-
 
 blueman_dpkg:
 	${MAKE} -C blueman

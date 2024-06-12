@@ -10,7 +10,7 @@ PKG_NAME = udisks
 PKG_URL = https://github.com/storaged-project/udisks/releases/download/udisks-2.10.0/udisks-2.10.0.tar.bz2
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libatasmart(>=0.19), libblockdev(>=3.0.2), libgudev(>=238), libxslt(>=1.1.37), polkit(>=123)  "
+PKG_DEBIAN_DEPANDS = "Depends: libatasmart(>=0.19), libblockdev(>=3.0.2), libgudev(>=238), libxslt(>=1.1.37), polkit(>=123), elogind(>=246.10)  "
 
 
 PKG_DEBIAN_SECTION = "Section: system"
