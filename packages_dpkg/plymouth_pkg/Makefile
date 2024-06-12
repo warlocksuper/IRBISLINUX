@@ -6,7 +6,7 @@ PKG_NAME = plymouth
 PKG_URL =  https://www.freedesktop.org/software/plymouth/releases/plymouth-24.004.60.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: "
+PKG_DEBIAN_DEPANDS = "Depends: libevdev(>=1.13.2), libxkbcommon(>=1.5.0), xkeyboardconfig(>=2.38) "
 PKG_DEBIAN_SECTION = "Section: library"
 PKG_DEBIAN_DEST = "Description: Plymouth is an application that runs very early in the boot process (even before the root filesystem is mounted!) that provides a graphical boot animation while the boot process happens in the background."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
