@@ -11,6 +11,12 @@ PKG_DEBIAN_SECTION = "Section: system"
 PKG_DEBIAN_DEST = "Description: The lm_sensors package provides userspace support for the hardware monitoring drivers in the Linux kernel. This is useful for monitoring the temperature of the CPU and adjusting the performance of some hardware (such as cooling fans)."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
 
+BUILD_STATIC_LIB = 0
+LIBDIR = /usr/lib
+PREFIX = /usr
+ETCDIR = /etc
+
+export BUILD_STATIC_LIB LIBDIR PREFIX ETCDIR
 export FUSE_CPPFLAGS = -I/usr/include/fuse3
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
@@ -23,13 +29,13 @@ PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 PKG_COMPILE_MAKE = ""
-PKG_COMPILE_MAKE_ADD_OPT = " PREFIX=/usr BUILD_STATIC_LIB=0 "
-PKG_COMPILE_MAKE_INSTALL_ADD_OPT = ' ETCDIR=/etc '
+#PKG_COMPILE_MAKE_ADD_OPT = "  "
+#PKG_COMPILE_MAKE_INSTALL_ADD_OPT = ' '
 # PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
-.PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
+.PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE 
 
 PKG_COMPLITE =  $(shell if [ -f "${PKG_DPKG_FILE_PATH}" ]; then echo "1"; else echo "0"; fi ) ## определяет естьли собранный файл пакета если нет собираем
 
