@@ -10,6 +10,7 @@ PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 ## sudo python -m pip install --upgrade packaging
 ## sudo python -m pip install --upgrade scanner
 
+
 PKG_LIST_DIR +=  pycairo_dpkg  # doxypypy_dpkg  # Cython_dpkg  надо найти способ создавать пакеты python
 
 
@@ -33,12 +34,12 @@ PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  gdm_dpkg
 PKG_LIST_DIR += krb5_dpkg ConsoleKit_dpkg   libpipeline_dpkg  xfce4-settings_dpkg 
 PKG_LIST_DIR += libxslt_dpkg gnome-session_dpkg colord_dpkg colord-gtk_dpkg gnome-online-accounts_dpkg cracklib_dpkg  libpwquality_dpkg libmbim_dpkg  libqmi_dpkg gsound_dpkg gnome-bluetooth_dpkg ModemManager_dpkg  
 PKG_LIST_DIR += libgtop_dpkg  libatasmart_dpkg keyutils_dpkg libaio_dpkg  LVM2_dpkg libbytesize_dpkg e2fsprogs_dpkg
-PKG_LIST_DIR +=  json-c_dpkg cryptsetup_dpkg libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg 
+PKG_LIST_DIR +=  json-c_dpkg libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg 
 PKG_LIST_DIR +=  libdaemon_dpkg avahi_dpkg  libcdio_dpkg  libcdio-paranoia_dpkg    gvfs_dpkg   
 PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg xbitmaps_dpkg 
 
 ### XFCE4
-PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg check_dpkg  pulseaudio_dpkg  xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg  gtkmm_dpkg  pavucontrol_dpkg 
+PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg check_dpkg  pulseaudio_dpkg  xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg  pavucontrol_dpkg 
 PKG_LIST_DIR +=   xfce4-taskmanager_dpkg
 
 
@@ -59,7 +60,7 @@ PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
 
-PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python lm-sensors libqalculate signon-plugin-oauth2 gobject-introspection libxmlb  AppStream docbook-xml qemu 
+PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python lm-sensors libqalculate signon-plugin-oauth2 gobject-introspection libxmlb parted gtkmm3 cryptsetup gparted AppStream docbook-xml qemu 
 PKG_LIST += gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  libappimage #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 
@@ -237,9 +238,6 @@ libsigc++_dpkg:
 boost_dpkg:
 	${MAKE} -C boost
 
-gtkmm_dpkg:
-	${MAKE} -C gtkmm
-
 pavucontrol_dpkg:
 	${MAKE} -C pavucontrol
 
@@ -330,9 +328,6 @@ krb5_dpkg:
 
 json-c_dpkg:
 	${MAKE} -C json-c
-
-cryptsetup_dpkg:
-	${MAKE} -C cryptsetup
 
 e2fsprogs_dpkg:
 	${MAKE} -C e2fsprogs

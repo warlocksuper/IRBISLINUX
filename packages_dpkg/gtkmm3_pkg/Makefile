@@ -3,17 +3,23 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 2.39.3
-PKG_NAME = util-linux
-PKG_URL = https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+
+COPY_ROOTFS = ${ROOT_FS}/etc
+
+PKG_VERSION = 3.24.9
+PKG_NAME = gtkmm3
+PKG_URL = https://download.gnome.org/sources/gtkmm/3.24/gtkmm-${PKG_VERSION}.tar.xz
+PKG_TAR_FILE = gtkmm-${PKG_VERSION}.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/gtkmm-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends: gtk3(>=3.24.36), graphviz(>=7.1.0), mm-common(>=1.0.6) "
 
 
-PKG_DEBIAN_SECTION = "Section: system"
+PKG_DEBIAN_SECTION = "Section: libraries"
 
-PKG_DEBIAN_DEST = "Description: The Util-linux package contains miscellaneous utility programs."
+PKG_DEBIAN_DEST = "Description: The Gtkmm package provides a C++ interface to GTK+ 3.."
+
+PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
+
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -24,9 +30,8 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
-
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
+PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 
 #PKG_COMPILE_MAKE = ""
@@ -60,8 +65,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Dmsvc14x-parallel-installable=false ${PGK_SOURCE_DIR}
-#	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
+	@cd ${PKG_BUILD_DIR} && $(MESON)  -Dmaintainer-mode=true -Dmsvc14x-parallel-installable=true -Dbuild-documentation=false ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk
