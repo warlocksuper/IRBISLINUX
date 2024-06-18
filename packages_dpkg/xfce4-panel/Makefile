@@ -10,7 +10,7 @@ PKG_NAME = xfce4-panel
 PKG_URL = https://archive.xfce.org/src/xfce/xfce4-panel/4.18/xfce4-panel-4.18.4.tar.bz2
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.17.6.2), exo(>=4.18.0), garcon(>=4.18.0),  libwnck(>=43.0), fontconfig(>=2.14.2), expat(>=2.5.0) "
+PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.17.6.2), exo(>=4.18.0), garcon(>=4.18.0),  libwnck(>=43.0), fontconfig(>=2.14.2), expat(>=2.5.0), colord(>=1.4.6) "
 
 
 PKG_DEBIAN_SECTION = "Section: xfce"

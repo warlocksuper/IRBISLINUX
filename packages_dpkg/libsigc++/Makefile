@@ -10,7 +10,7 @@ PKG_NAME = libsigc++
 PKG_URL =  https://download.gnome.org/sources/libsigc++/2.12/libsigc++-2.12.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: boost(>=1.83.0), libxslt(>=1.1.38) "
+PKG_DEBIAN_DEPANDS = "Depends: boost(>=1.83.0), libxslt(>=1.1.38), libcanberra(>=0.30) "
 
 
 PKG_DEBIAN_SECTION = "Section: libraries"

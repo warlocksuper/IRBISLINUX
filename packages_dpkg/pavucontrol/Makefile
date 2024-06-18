@@ -10,7 +10,7 @@ PKG_NAME = pavucontrol
 PKG_URL = https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-5.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: pulseaudio(>=16.1) , gtkmm(>=3.24.8), libsigc++(>=2.12.0) "
+PKG_DEBIAN_DEPANDS = "Depends: pulseaudio(>=16.1) , gtkmm3(>=3.24.8), libsigc++(>=2.12.0) "
 
 
 PKG_DEBIAN_SECTION = "Section: audio"

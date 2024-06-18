@@ -10,7 +10,7 @@ PKG_NAME = colord
 PKG_URL = https://www.freedesktop.org/software/colord/releases/colord-1.4.6.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: dbus(>=1.14.6.1), glib(>=2.74.5), lcms2(>=2.14), polkit(>=123), sqlite(>=3400100) "
+PKG_DEBIAN_DEPANDS = "Depends: dbus(>=1.14.6.1), glib(>=2.74.5), lcms2(>=2.14), polkit(>=123), sqlite(>=3.42.0) "
 
 
 PKG_DEBIAN_SECTION = "Section: system"

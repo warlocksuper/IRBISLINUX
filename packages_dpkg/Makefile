@@ -28,7 +28,7 @@ PKG_LIST_DIR += wayland_dpkg wayland-protocols_dpkg
 
 PKG_LIST_DIR += acpid_dpkg rest_dpkg yaml_dpkg ruby_dpkg harfbuzz_dpkg SDL_dpkg libwebp_dpkg libwpe_dpkg wpebackend-fdo_dpkg enchant_dpkg openjpeg_dpkg 
 PKG_LIST_DIR += libhandy_dpkg rsync_dpkg xterm_dpkg  links_dpkg lynx_dpkg libxml2_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
-PKG_LIST_DIR += upower_dpkg polkit_dpkg gcr3_dpkg  gcr_dpkg gnome-keyring_dpkg mutter_dpkg gnome-shell_dpkg gnome-shell-extensions_dpkg  glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
+PKG_LIST_DIR += upower_dpkg gcr3_dpkg  gcr_dpkg gnome-keyring_dpkg mutter_dpkg gnome-shell_dpkg gnome-shell-extensions_dpkg  glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
 PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg gnome-icon-theme_dpkg gdk-pixbuf-xlib_dpkg gnome-icon-theme-extras_dpkg 
 PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  gdm_dpkg  unifdef_dpkg  yasm_dpkg libaom_dpkg libavif_dpkg
 PKG_LIST_DIR += krb5_dpkg ConsoleKit_dpkg   libpipeline_dpkg  xfce4-settings_dpkg 
@@ -61,7 +61,7 @@ PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core 
 PKG_LIST += alsa-ucm-conf alsa-lib 
 
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python lm-sensors libqalculate signon-plugin-oauth2 gobject-introspection libxmlb parted gtkmm3 cryptsetup gparted
-PKG_LIST +=  pulseaudio 
+PKG_LIST +=  pulseaudio polkit
 PKG_LIST +=  AppStream docbook-xml qemu 
 PKG_LIST += gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  libappimage #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
@@ -403,9 +403,7 @@ rsync_dpkg:
 
 liboauth_dpkg:
 		${MAKE} -C liboauth				
-
-polkit_dpkg:
-		${MAKE} -C polkit			
+		
 		
 p11-kit_dpkg:
 		${MAKE} -C p11-kit			

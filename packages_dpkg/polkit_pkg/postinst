@@ -1,0 +1,26 @@
+#!/bin/bash
+
+
+if ! id "polkitd" >/dev/null 2>&1; then
+	groupadd -fg 27 polkitd &&
+	useradd -c "PolicyKit Daemon Owner" -d /etc/polkit-1 -u 27 -g polkitd -s /usr/bin/false polkitd
+fi
+install -d -o root -g root -m 755 /usr/share/polkit-1/rules.d
+
+chmod u+s /usr/bin/pkexec
+chmod u+s /usr/lib/polkit-1/polkit-agent-helper-1
+
+echo "/usr/bin/bash" > /etc/shells
+echo "/bin/sh" >> /etc/shells
+
+
+cat > /etc/pam.d/polkit-1 << "EOF"
+# Begin /etc/pam.d/polkit-1
+
+auth     include        system-auth
+account  include        system-account
+password include        system-password
+session  include        system-session
+
+# End /etc/pam.d/polkit-1
+EOF

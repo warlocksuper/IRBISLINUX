@@ -5,7 +5,7 @@ include ${OS_CONFIG}
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 
-PKG_VERSION = 1.2.11
+PKG_VERSION = 1.2.12
 PKG_NAME = alsa-lib
 PKG_URL = https://www.alsa-project.org/files/pub/lib/alsa-lib-${PKG_VERSION}.tar.bz2
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2

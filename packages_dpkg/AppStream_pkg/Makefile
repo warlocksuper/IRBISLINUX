@@ -50,7 +50,7 @@ ${PGK_SOURCE_DIR}:
 
 PKG_CONFIGURE:
 #	@cd ${PGK_SOURCE_DIR} &&  ./autogen.sh  --prefix=/usr
-	@cd ${PKG_BUILD_DIR} &&  $(MESON)  -Dapidocs=false -Ddocs=false -Dstemming=false -Dqt5=true ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} &&  $(MESON)  -Dapidocs=false -Ddocs=false -Dstemming=false -Dqt5=true -Dgir=false ${PGK_SOURCE_DIR}
 
 include ${ROOT_DIR}/scripts/compile.mk
 
