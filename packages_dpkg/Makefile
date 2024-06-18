@@ -61,12 +61,12 @@ PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core 
 PKG_LIST += alsa-ucm-conf alsa-lib 
 
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python lm-sensors libqalculate signon-plugin-oauth2 gobject-introspection libxmlb parted gtkmm3 cryptsetup gparted
-PKG_LIST +=  pulseaudio polkit
+PKG_LIST +=  pulseaudio polkit synaptic
 PKG_LIST +=  AppStream docbook-xml qemu 
 PKG_LIST += gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  libappimage #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 
-#perl-xml-parser  synaptic   gtk-doc libaccounts-glib
+#perl-xml-parser     gtk-doc libaccounts-glib
 
 
 

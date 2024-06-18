@@ -4,3 +4,7 @@
 gtk-update-icon-cache -f /usr/share/icons/hicolor/
 
 glib-compile-schemas /usr/share/glib-2.0/schemas/
+
+echo "pkexec synaptic" > /usr/sbin/synaptic-pkexec
+
+chmod u+x /usr/sbin/synaptic-pkexec

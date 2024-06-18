@@ -35,7 +35,7 @@ PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
 PKG_COMPILE_MAKE = ""
 #PKG_COMPILE_NINJA = ""
-PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
+PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
 
@@ -66,7 +66,7 @@ PKG_CONFIGURE:
 	@cd ${PGK_SOURCE_DIR} && autoreconf -i
 #	@cd ${PGK_SOURCE_DIR} && ./autogen.sh
 #	@cd ${PGK_SOURCE_DIR} && make distclean
-	@cd ${PGK_SOURCE_DIR} && ${PGK_SOURCE_DIR}$(CONFIGURE)  
+	@cd ${PGK_SOURCE_DIR} && .$(CONFIGURE)  
 
 
 include ${ROOT_DIR}/scripts/compile.mk
