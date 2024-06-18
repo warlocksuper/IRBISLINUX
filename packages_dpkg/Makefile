@@ -9,9 +9,10 @@ PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 ## Python 
 ## sudo python -m pip install --upgrade packaging
 ## sudo python -m pip install --upgrade scanner
+## sudo pip3 install cython
+## sudo python -m pip install --upgrade PyGObject
 
-
-PKG_LIST_DIR +=  pycairo_dpkg  # doxypypy_dpkg  # Cython_dpkg  надо найти способ создавать пакеты python
+#PKG_LIST_DIR +=  pycairo_dpkg  # doxypypy_dpkg  # Cython_dpkg  надо найти способ создавать пакеты python
 
 
 #### XORG
@@ -51,7 +52,7 @@ PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg lib
 
 
 
-PKG_LIST_DIR += bluez_dpkg blueman_dpkg  sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg 
+PKG_LIST_DIR += bluez_dpkg   sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg 
 
 export
 
@@ -62,7 +63,7 @@ PKG_LIST += alsa-ucm-conf alsa-lib
 
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python lm-sensors libqalculate signon-plugin-oauth2 gobject-introspection libxmlb parted gtkmm3 cryptsetup gparted
 PKG_LIST +=  pulseaudio polkit synaptic
-PKG_LIST +=  AppStream docbook-xml qemu 
+PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu 
 PKG_LIST += gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  libappimage #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 
@@ -133,12 +134,6 @@ sbc_dpkg:
 
 Cython_dpkg:
 	${MAKE} -C Cython
-
-pycairo_dpkg:
-	${MAKE} -C pycairo
-
-blueman_dpkg:
-	${MAKE} -C blueman
 
 bluez_dpkg:
 	${MAKE} -C bluez

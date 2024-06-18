@@ -1,21 +1,22 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-
+PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
+export  PATH
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 1.2.12
-PKG_NAME = alsa-ucm-conf
-PKG_URL = https://github.com/alsa-project/alsa-ucm-conf/archive/refs/tags/v${PKG_VERSION}.tar.gz
-PKG_TAR_FILE = v${PKG_VERSION}.tar.gz
+PKG_VERSION = 2.3.5
+PKG_NAME = blueman
+PKG_URL = https://github.com/blueman-project/blueman/releases/download/2.3.5/blueman-2.3.5.tar.xz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: alsa-lib(>=1.2.9) "
+PKG_DEBIAN_DEPANDS = "Depends:  bluez(>=5.68), pygobject(>=3.44.1) "
 
 
-PKG_DEBIAN_SECTION = "Section: audio"
+PKG_DEBIAN_SECTION = "Section: bluetooth"
 
-PKG_DEBIAN_DEST = "Description: ALSA Use Case Manager configuration"
+PKG_DEBIAN_DEST = "Description: Blueman is designed to provide a simple yet effective means for controlling the BlueZ API and simplifying Bluetooth tasks."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -32,25 +33,19 @@ PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
-
 PKG_COMPILE_MAKE = ""
 #PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
-PKG_DEB_NAME = libasound2
-PKG_BUILD_DEB_DIR = ${PKG_BUILD_DIR_ALL}/${PKG_DEB_NAME}
-PKG_BUILD_DEB_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
-PKG_ORIG = ${PKG_NAME}(>=${PKG_VERSION})
-PKG_DPKG_DEB_FILE = ${PKG_DEB_NAME}.${PKG_VERSION}.deb 
+
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
 
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN}
-	@echo ${PKG_DPKG_FILE_PATH}
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -69,17 +64,10 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-#	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}$(CONFIGURE) --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --enable-static=no
-COMPILE:
-${PKG_MAKE_INTALL}:
-# include ${ROOT_DIR}/scripts/compile.mk
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}$(CONFIGURE) --localstatedir=/var --enable-static=no
 
-PKG_MAKE_POST_INTALL:
-	install -vdm 755 ${PKG_BUILD_DIR_DPKG}/usr/share/alsa/
-	@cp -av ${PGK_SOURCE_DIR}/ucm2 ${PKG_BUILD_DIR_DPKG}/usr/share/alsa/
-	
-##	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
 
+include ${ROOT_DIR}/scripts/compile.mk
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk
 	
