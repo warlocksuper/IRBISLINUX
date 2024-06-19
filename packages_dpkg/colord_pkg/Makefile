@@ -4,17 +4,20 @@ include ${OS_CONFIG}
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
 
-PKG_VERSION = 3.24.41
-PKG_NAME = gtk3
-PKG_URL = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.41.tar.xz
-PKG_TAR_FILE = gtk+-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/gtk+-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: at-spi2-core(>=2.48.3),  gdk-pixbuf(>=2.42.10), libepoxy(>=1.5.10), pango(>=1.50.12.1), libxcursor(>=1.2.1) "
+PKG_VERSION = 1.4.7
+PKG_NAME = colord
+PKG_URL = https://www.freedesktop.org/software/colord/releases/colord-${PKG_VERSION}.tar.xz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends: dbus(>=1.14.6.1), glib(>=2.74.5), lcms2(>=2.14), polkit(>=123), sqlite(>=3.42.0),libgusb(>=0.4.5) "
 
 
-PKG_DEBIAN_SECTION = "Section: librares"
+PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: The GTK+ 3 package contains libraries used for creating graphical user interfaces for applications."
+PKG_DEBIAN_DEST = "Description: Colord is a system service that makes it easy to manage, install, and generate color profiles. It is used mainly by GNOME Color Manager for system integration and use when no users are logged in."
+
+PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
+
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -25,10 +28,8 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-
-
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
-PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
+PKG_DPKG_FILE_PATH = ${PKG_BUILD_DIR}/${PKG_DPKG_FILE}
 
 #PKG_COMPILE_MAKE = ""
 PKG_COMPILE_NINJA = ""
@@ -37,20 +38,22 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 
 
 
-.PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
+.PHONY:  all, COMPILE, PKG_CONFIGURE
 
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN} 
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
+	@rm -rf ${PGK_SOURCE_DIR}
 	
 	
 BUILD_DIR:
 	@mkdir -p ${PKG_BUILD_DIR_DPKG}
 	@mkdir -p ${ROOT_SOURCE}
+	@rm -rf ${PGK_SOURCE_DIR}
 
 
 ${PKG_TAR}:
@@ -61,14 +64,21 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Dman=false -Dwayland_backend=false  -Dbroadway_backend=true -Dintrospection=true ${PGK_SOURCE_DIR}
+	sed '/cmsUnregisterPluginsTHR/d' -i  ${PGK_SOURCE_DIR}/lib/colord/cd-context-lcms.c
+	@cd ${PKG_BUILD_DIR} &&  meson setup \
+      --prefix=/usr            \
+      --buildtype=release      \
+      -Ddaemon_user=colord     \
+      -Dvapi=true              \
+      -Dsystemd=true           \
+      -Dlibcolordcompat=true   \
+      -Dargyllcms_sensor=false \
+      -Dbash_completion=false  \
+      -Ddocs=false             \
+      -Dman=false  ${PGK_SOURCE_DIR} 
 
 
 include ${ROOT_DIR}/scripts/compile.mk
-
-PKG_MAKE_POST_INTALL:
-#	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
-
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk
 	

@@ -1,7 +1,8 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-
+PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
+export  PATH
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 

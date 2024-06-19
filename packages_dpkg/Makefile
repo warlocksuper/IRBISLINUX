@@ -56,7 +56,7 @@ PKG_LIST_DIR += bluez_dpkg   sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg
 
 export
 
-PKG_LIST = basefile xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash 
+PKG_LIST = basefile glib xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash 
 PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt lzo fuse squashfuse gdk-pixbuf  Linux-PAM sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation qt-everywhere-opensource  qcoro fmt spdlog 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
@@ -64,7 +64,7 @@ PKG_LIST += alsa-ucm-conf alsa-lib
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python lm-sensors libqalculate signon-plugin-oauth2 gobject-introspection libxmlb parted gtkmm3 cryptsetup gparted
 PKG_LIST +=  pulseaudio polkit synaptic
 PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu 
-PKG_LIST += gtk3 libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  libappimage #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
+PKG_LIST += gtk3 colord libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools wine  libappimage #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 
 #perl-xml-parser     gtk-doc libaccounts-glib

@@ -4,17 +4,22 @@ include ${OS_CONFIG}
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
 
-PKG_VERSION = 3.24.41
-PKG_NAME = gtk3
-PKG_URL = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.41.tar.xz
-PKG_TAR_FILE = gtk+-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/gtk+-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: at-spi2-core(>=2.48.3),  gdk-pixbuf(>=2.42.10), libepoxy(>=1.5.10), pango(>=1.50.12.1), libxcursor(>=1.2.1) "
+COPY_ROOTFS = ${ROOT_FS}/etc
+
+PKG_VERSION = 2.80.3
+PKG_NAME = glib
+PKG_URL = https://download.gnome.org/sources/glib/2.80/glib-${PKG_VERSION}.tar.xz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends: libxslt(>=1.1.37), pcre2(>=10.40) "
 
 
 PKG_DEBIAN_SECTION = "Section: librares"
 
-PKG_DEBIAN_DEST = "Description: The GTK+ 3 package contains libraries used for creating graphical user interfaces for applications."
+PKG_DEBIAN_DEST = "Description: The GLib package contains low-level libraries useful for providing data structure handling for C, portability wrappers and interfaces for such runtime functionality as an event loop, threads, dynamic loading and an object system."
+
+PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
+
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -24,8 +29,6 @@ PKG_BUILD_DIR = ${PKG_BUILD_DIR_ALL}/${PKG_NAME}
 PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
-
-
 
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -42,7 +45,7 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN} 
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -51,6 +54,7 @@ all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_IN
 BUILD_DIR:
 	@mkdir -p ${PKG_BUILD_DIR_DPKG}
 	@mkdir -p ${ROOT_SOURCE}
+	@rm -fr ${PGK_SOURCE_DIR}
 
 
 ${PKG_TAR}:
@@ -61,14 +65,12 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Dman=false -Dwayland_backend=false  -Dbroadway_backend=true -Dintrospection=true ${PGK_SOURCE_DIR}
+	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i  ${ROOT_DIR}/packages_dpkg/glib_pkg/0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
+	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i  ${ROOT_DIR}/packages_dpkg/glib_pkg/glib_packaging.patch
+	@cd ${PKG_BUILD_DIR} && $(MESON) -Dman-pages=disabled -Ddocumentation=false ${PGK_SOURCE_DIR} #-Dintrospection=disabled 
 
 
 include ${ROOT_DIR}/scripts/compile.mk
-
-PKG_MAKE_POST_INTALL:
-#	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
-
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk
 	
