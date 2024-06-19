@@ -3,23 +3,17 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-
-COPY_ROOTFS = ${ROOT_FS}/etc
-
-PKG_VERSION = 4.18.3
-PKG_NAME = xfce4-session
-PKG_URL = https://archive.xfce.org/src/xfce/xfce4-session/4.18/xfce4-session-4.18.3.tar.bz2
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  libwnck(>=43.0), libxfce4ui(>=4.18.2), iceauth(>=1.0.9)  "
+PKG_VERSION = 4.14.4
+PKG_NAME = gtk4
+PKG_URL = https://download.gnome.org/sources/gtk/4.14/gtk-${PKG_VERSION}.tar.xz
+PKG_TAR_FILE = gtk-${PKG_VERSION}.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/gtk-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.17.6), dconf(>=0.40.0), desktop-file-utils(>=0.26), fontconfig(>=2.14.2), fribidi(>=1.0.12), gdk-pixbuf(>=2.42.12), gst-plugins-bad(>=1.22.0), harfbuzz(>=7.0.0), iso-codes(>=4.15.0), libcloudproviders(>=0.3.6), colord(>=1.4.7), cups(>=2.4.2), mesa(>=22.3.5), libepoxy(>=1.5.10), tracker(>=3.4.2), libxdamage(>=1.1.6)  "  #adwaita-icon-theme cantarell-fonts
 
 
-PKG_DEBIAN_SECTION = "Section: xfce"
+PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: Xfce4 Session is a session manager for Xfce. Its task is to save the state of your desktop (opened applications and their location) and restore it during a next startup. You can create several different sessions and choose one of them on startup."
-
-PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
-
+PKG_DEBIAN_DEST = "Description: GObject-based multi-platform GUI toolkit."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -30,14 +24,13 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-
-
-PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
+PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
-PKG_COMPILE_MAKE = ""
-#PKG_COMPILE_NINJA = ""
+
+#PKG_COMPILE_MAKE = ""
+PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
@@ -66,8 +59,12 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-#	@cd ${PGK_SOURCE_DIR} && ./autogen.sh
-	@cd ${PGK_SOURCE_DIR} && ./configure --prefix=/usr  --sysconfdir=/etc --disable-legacy-sm --with-x
+	@cd ${PKG_BUILD_DIR} && $(MESON)  -Dbroadway-backend=true \
+    -Dcloudproviders=enabled \
+    -Dcolord=enabled \
+    -Ddocumentation=false \
+    -Dman-pages=false \
+    -Dtracker=enabled ${PGK_SOURCE_DIR}
 
 
 
