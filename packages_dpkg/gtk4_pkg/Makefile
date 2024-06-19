@@ -64,7 +64,7 @@ PKG_CONFIGURE:
     -Dcolord=enabled \
     -Ddocumentation=false \
     -Dman-pages=false \
-    -Dtracker=enabled ${PGK_SOURCE_DIR}
+    -Dtracker=enabled -Dvulkan=disabled ${PGK_SOURCE_DIR}
 
 
 
