@@ -10,7 +10,7 @@ PKG_NAME = xfce4-session
 PKG_URL = https://archive.xfce.org/src/xfce/xfce4-session/4.18/xfce4-session-4.18.3.tar.bz2
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  libwnck(>=43.0), libxfce4ui(>=4.18.2)  "
+PKG_DEBIAN_DEPANDS = "Depends:  libwnck(>=43.0), libxfce4ui(>=4.18.2), iceauth(>=1.0.9)  "
 
 
 PKG_DEBIAN_SECTION = "Section: xfce"
