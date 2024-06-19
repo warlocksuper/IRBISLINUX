@@ -57,7 +57,7 @@ PKG_LIST_DIR += bluez_dpkg   sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg
 export
 
 PKG_LIST = basefile glib xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash 
-PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt lzo fuse squashfuse gdk-pixbuf  Linux-PAM sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation qt-everywhere-opensource  qcoro fmt spdlog 
+PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt lzo fuse squashfuse gdk-pixbuf pam sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation qt-everywhere-opensource  qcoro fmt spdlog 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
 

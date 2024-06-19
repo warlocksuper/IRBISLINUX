@@ -2,15 +2,15 @@ OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
 PKG_VERSION = 1.6.1
-PKG_NAME = Linux-PAM
+PKG_NAME = pam
 PKG_URL =  https://github.com/linux-pam/linux-pam/releases/download/v${PKG_VERSION}/Linux-PAM-${PKG_VERSION}.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+PKG_TAR_FILE = Linux-PAM-${PKG_VERSION}.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/Linux-PAM-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: libtirpc(>=1.2.6), libpwquality(>=1.4.5)"
 PKG_DEBIAN_SECTION = "Section: security"
 PKG_DEBIAN_DEST = "Description: The Linux PAM package contains Pluggable Authentication Modules used by the local system administrator to control how application programs authenticate users.."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
-
+PKG_BUILD_REPLACES = " linux-pam "
 #export FUSE_CPPFLAGS = -I/usr/include/fuse3
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
