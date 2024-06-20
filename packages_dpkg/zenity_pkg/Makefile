@@ -1,25 +1,19 @@
-_pkgname="zenity"
-pkgname="${_pkgname}-git"
-pkgver=4.0.1.r11.gb19fa274
-
-
-
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
+PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
-PKG_VERSION = 2.39.3
-PKG_NAME = util-linux
-PKG_URL = https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 4.0.1
+PKG_NAME = zenity
+PKG_URL = https://gitlab.gnome.org/GNOME/zenity/-/archive/${PKG_VERSION}/zenity-${PKG_VERSION}.tar.bz2
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_DEBIAN_DEPANDS = "Depends: libadwaita(>=1.2.2), graphene(>=1.10.8) "
 
 
-PKG_DEBIAN_SECTION = "Section: system"
+PKG_DEBIAN_SECTION = "Section: misc"
 
-PKG_DEBIAN_DEST = "Description: The Util-linux package contains miscellaneous utility programs."
+PKG_DEBIAN_DEST = "Description: Display graphical dialog boxes from shell scripts."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -66,7 +60,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON)  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(MESON)  -Dmanpage=false ${PGK_SOURCE_DIR}
 #	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 
