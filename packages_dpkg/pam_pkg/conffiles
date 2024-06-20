@@ -1,0 +1,6 @@
+/etc/pam.d/other
+/etc/pam.d/system-account
+/etc/pam.d/system-auth
+/etc/pam.d/system-password
+/etc/pam.d/system-session
+/etc/pam.d/system-user

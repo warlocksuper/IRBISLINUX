@@ -38,8 +38,11 @@ all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_IN
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 BUILD_DIR:
-	@mkdir -p ${PKG_BUILD_DIR_DPKG}
+	@mkdir -p ${PKG_BUILD_DIR_DPKG}/etc
+	@mkdir -p ${PKG_BUILD_DIR_DPKG}/DEBIAN
 	@mkdir -p ${ROOT_SOURCE}
+	@cp -rf pam.d  ${PKG_BUILD_DIR_DPKG}/etc/
+	@cp conffiles ${PKG_BUILD_DIR_DPKG}/DEBIAN/
 
 ${PKG_TAR}:
 	wget ${PKG_URL} -P ${ROOT_SOURCE}/
