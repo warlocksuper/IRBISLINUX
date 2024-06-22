@@ -64,7 +64,7 @@ PKG_LIST += alsa-ucm-conf alsa-lib
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python lm-sensors libqalculate signon-plugin-oauth2 gobject-introspection libxmlb parted gtkmm3 cryptsetup gparted
 PKG_LIST +=  pulseaudio polkit synaptic
 PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu 
-PKG_LIST += gtk3 colord libsm libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools gcc  glibc32   wine wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
+PKG_LIST += gtk3 colord libsm libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools jansson binutils gcc  glibc32 wine wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 
 #perl-xml-parser     gtk-doc libaccounts-glib

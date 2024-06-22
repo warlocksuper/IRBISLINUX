@@ -37,8 +37,10 @@ PKG_COMPILE_MAKE = ""
 #PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
-CC = gcc -m32 -mstackrealign
-CXX = g++ -m32 -mstackrealign
+CC = gcc -m32 
+CXX = g++ -m32 
+CFLAGS = -O2 -march=i686
+CXXFLAGS = -O2 -march=i686
 
 export CC CXX
 
@@ -69,7 +71,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} &&  ${PGK_SOURCE_DIR}/$(CONFIGURE)  --host=i686-pc-linux-gnu \
+	@cd ${PKG_BUILD_DIR} &&  ${PGK_SOURCE_DIR}/$(CONFIGURE)  --host=i686-pc-linux-gnu --build=i686-pc-linux-gnu \
         --libdir=/usr/lib32 \
         --libexecdir=/usr/lib32 \
         --with-headers=/usr/include
