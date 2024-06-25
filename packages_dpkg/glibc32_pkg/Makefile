@@ -71,7 +71,15 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} &&  ${PGK_SOURCE_DIR}/$(CONFIGURE)  --host=i686-pc-linux-gnu --build=i686-pc-linux-gnu \
+	@echo "slibdir=/usr/lib32" >> ${PKG_BUILD_DIR}/configparms
+	@echo "rtlddir=/usr/lib32" >> ${PKG_BUILD_DIR}/configparms
+	@echo "sbindir=/usr/bin" >> ${PKG_BUILD_DIR}/configparms
+	@echo "rootsbindir=/usr/bin" >> ${PKG_BUILD_DIR}/configparms
+	@echo "slibdir=/usr/lib32" >> ${PGK_SOURCE_DIR}/configparms
+	@echo "rtlddir=/usr/lib32" >> ${PGK_SOURCE_DIR}/configparms
+	@echo "sbindir=/usr/bin" >> ${PGK_SOURCE_DIR}/configparms
+	@echo "rootsbindir=/usr/bin" >> ${PGK_SOURCE_DIR}/configparms
+	@cd ${PKG_BUILD_DIR} &&  ${PGK_SOURCE_DIR}/$(CONFIGURE)  --host=i686-pc-linux-gnu \
         --libdir=/usr/lib32 \
         --libexecdir=/usr/lib32 \
         --with-headers=/usr/include

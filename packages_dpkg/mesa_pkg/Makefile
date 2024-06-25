@@ -3,17 +3,21 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 2.39.3
-PKG_NAME = util-linux
-PKG_URL = https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.xz
+
+PKG_VERSION = 24.1.2
+PKG_NAME = mesa
+PKG_URL = https://mesa.freedesktop.org/archive/mesa-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_DEBIAN_DEPANDS = "Depends: xcb-util-renderutil(>=0.3.10), xcb-util-image(>=0.4.1), libclc(>=17.0.6), glslang  "
 
 
-PKG_DEBIAN_SECTION = "Section: system"
+PKG_DEBIAN_SECTION = "Section: xorg"
 
-PKG_DEBIAN_DEST = "Description: The Util-linux package contains miscellaneous utility programs."
+PKG_DEBIAN_DEST = "Description: Mesa is an OpenGL compatible 3D graphics library."
+
+PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
+
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -26,6 +30,7 @@ PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
+
 
 #PKG_COMPILE_MAKE = ""
 PKG_COMPILE_NINJA = ""
@@ -58,8 +63,27 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Dmsvc14x-parallel-installable=false ${PGK_SOURCE_DIR}
-#	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
+	@cd ${PKG_BUILD_DIR} &&  $(MESON)  -D android-libbacktrace=disabled \
+    -D b_ndebug=true \
+    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink \
+    -D gallium-extra-hud=true \
+    -D gallium-nine=true \
+    -D gallium-omx=disabled \
+    -D gallium-opencl=icd \
+    -D gallium-rusticl=true \
+    -D gles1=disabled \
+    -D glx=dri \
+    -D intel-clc=enabled \
+    -D intel-rt=disabled \
+    -D libunwind=disabled \
+    -D microsoft-clc=disabled \
+    -D osmesa=true \
+    -D platforms=x11,wayland \
+    -D valgrind=disabled \
+    -D video-codecs=all \
+    -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio,nouveau \
+    -D vulkan-layers=device-select,intel-nullhw,overlay \
+    -Dtools='glsl','intel','intel-ui' ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk

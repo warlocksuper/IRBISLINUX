@@ -2,7 +2,7 @@ PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sb
 
 PKG_LIST_DIR = basefile_dpkg dbus_dpkg xf86-input-synaptics_dpkg ncurses_dpkg readline_dpkg  #linux_dpkg # glib_dpkg ## linux_dpkg
 
-PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg libffi_dpkg make-ca_dpkg brotli_dpkg  p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg mesa_dpkg 
+PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg libffi_dpkg make-ca_dpkg brotli_dpkg  p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg 
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 
 
@@ -64,10 +64,10 @@ PKG_LIST += alsa-ucm-conf alsa-lib
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python lm-sensors libqalculate signon-plugin-oauth2 gobject-introspection libxmlb parted gtkmm3 cryptsetup gparted
 PKG_LIST +=  pulseaudio polkit synaptic
 PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu 
-PKG_LIST += gtk3 colord libsm libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools jansson binutils gcc  glibc32 wine wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
+PKG_LIST += gtk3 colord libsm libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools jansson binutils libwnck yaml-cpp qt6-base extra-cmake-modules kpmcore calamares  glslang  libclc mesa  glibc32  gcc wine wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 
-#perl-xml-parser     gtk-doc libaccounts-glib
+#perl-xml-parser     gtk-doc libaccounts-glib  systemtap
 
 PKG_LINUX = linux_dpkg
 
@@ -526,9 +526,6 @@ xcb-util-renderutil_dpkg:
 		
 xcb-util-cursor_dpkg:
 		${MAKE} -C xcb-util-cursor		
-		
-mesa_dpkg:
-		${MAKE} -C mesa
 		
 rest_dpkg:
 		${MAKE} -C rest	
