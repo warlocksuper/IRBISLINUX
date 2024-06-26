@@ -1,20 +1,24 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
+
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 
-PKG_VERSION = 6.7.2
-PKG_NAME = qt6-base
-PKG_URL =https://qt-mirror.dannhauer.de/official_releases/qt/6.7/${PKG_VERSION}/single/qt-everywhere-src-${PKG_VERSION}.tar.xz
-PKG_TAR_FILE = qt-everywhere-src-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/qt-everywhere-src-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_VERSION = 1.14.10
+PKG_NAME = dbus
+PKG_URL = https://dbus.freedesktop.org/releases/dbus/dbus-${PKG_VERSION}.tar.xz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends: systemd(>=254) "
 
 
-PKG_DEBIAN_SECTION = "Section: librares"
+PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: The QCoro library provides set of tools to make use of C++20 coroutines with Qt."
+PKG_DEBIAN_DEST = "Description: Even though D-Bus was built in LFS, there are some features provided by the package that other BLFS packages need, but their dependencies didn't fit into LFS."
+
+PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
+
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -25,7 +29,7 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-
+PKG_BUILD_NOT_DEL_LA = "1"
 
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -62,13 +66,13 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --runstatedir=/run  --enable-user-session --disable-doxygen-docs --disable-xml-docs --disable-static --docdir=/usr/share/doc/dbus-1.14.8 --with-system-socket=/run/dbus/system_bus_socket --with-systemduserunitdir=/lib/systemd/user --with-systemdsystemunitdir=/lib/systemd/system
 
 
 include ${ROOT_DIR}/scripts/compile.mk
 
 PKG_MAKE_POST_INTALL:
-	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
+#	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
 
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk

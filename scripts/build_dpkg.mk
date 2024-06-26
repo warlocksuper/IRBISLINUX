@@ -1,6 +1,8 @@
 
 ${PKG_BUILD_DIR_DEBIAN}:
+ifndef PKG_BUILD_NOT_DEL_LA
 	@find ${PKG_BUILD_DIR_DPKG} -name "*.la" -type f -delete
+endif	
 	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/share/info/dir
 	install -d ${PKG_BUILD_DIR_DPKG}/DEBIAN
 	@echo "Package: ${PKG_NAME}" > ${PKG_BUILD_DIR_DEBIAN}

@@ -1,6 +1,6 @@
 PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sbin:/usr/libexec:${ROOT_TOOLS}/pkg-build
 
-PKG_LIST_DIR = basefile_dpkg dbus_dpkg xf86-input-synaptics_dpkg ncurses_dpkg readline_dpkg  #linux_dpkg # glib_dpkg ## linux_dpkg
+PKG_LIST_DIR = basefile_dpkg xf86-input-synaptics_dpkg ncurses_dpkg readline_dpkg  #linux_dpkg # glib_dpkg ## linux_dpkg
 
 PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg libffi_dpkg make-ca_dpkg brotli_dpkg  p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg 
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
@@ -28,7 +28,7 @@ PKG_LIST_DIR += wayland_dpkg wayland-protocols_dpkg
 
 
 PKG_LIST_DIR += acpid_dpkg rest_dpkg yaml_dpkg ruby_dpkg harfbuzz_dpkg SDL_dpkg libwebp_dpkg libwpe_dpkg wpebackend-fdo_dpkg enchant_dpkg openjpeg_dpkg 
-PKG_LIST_DIR += libhandy_dpkg rsync_dpkg xterm_dpkg  links_dpkg lynx_dpkg libxml2_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
+PKG_LIST_DIR += libhandy_dpkg rsync_dpkg xterm_dpkg  links_dpkg lynx_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
 PKG_LIST_DIR += upower_dpkg gcr3_dpkg  gcr_dpkg gnome-keyring_dpkg mutter_dpkg gnome-shell_dpkg gnome-shell-extensions_dpkg  glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
 PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg gnome-icon-theme_dpkg gdk-pixbuf-xlib_dpkg gnome-icon-theme-extras_dpkg 
 PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  gdm_dpkg  unifdef_dpkg  yasm_dpkg libaom_dpkg libavif_dpkg
@@ -64,7 +64,9 @@ PKG_LIST += alsa-ucm-conf alsa-lib
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python lm-sensors libqalculate signon-plugin-oauth2 gobject-introspection libxmlb parted gtkmm3 cryptsetup gparted
 PKG_LIST +=  pulseaudio polkit synaptic
 PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu 
-PKG_LIST += gtk3 colord libsm libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin   dosfstools jansson binutils libwnck yaml-cpp qt6-base extra-cmake-modules kpmcore calamares  glslang  libclc mesa  glibc32  gcc wine wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
+PKG_LIST += gtk3 colord libsm  dbus libxml2  libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver dosfstools jansson binutils libwnck yaml-cpp qt6-base extra-cmake-modules kpmcore calamares  glslang  libclc mesa  glibc32  gcc wine wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 
+
+#  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   # node  qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    glibc   
 
 
 #perl-xml-parser     gtk-doc libaccounts-glib  systemtap
@@ -562,9 +564,6 @@ links_dpkg:
 
 lynx_dpkg:
 		${MAKE} -C lynx
-
-libxml2_dpkg:
-		${MAKE} -C libxml2
 
 libglade_dpkg:
 		${MAKE} -C libglade

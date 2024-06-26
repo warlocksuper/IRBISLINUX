@@ -1,20 +1,19 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
+PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
+PKG_VERSION = 4.18.3
+PKG_NAME = xfce4-screensaver
+PKG_URL = https://archive.xfce.org/src/apps/${PKG_NAME}/4.18/${PKG_NAME}-${PKG_VERSION}.tar.bz2
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends: libxklavier(>=5.4), libwnck(>=43.0), garcon(>=4.18.1), dbus-glib(>=0.112), libxkbfile(>=1.1.2)  " #libxss 
+#PKG_BUILD_REPLACES = "  "
 
-PKG_VERSION = 6.7.2
-PKG_NAME = qt6-base
-PKG_URL =https://qt-mirror.dannhauer.de/official_releases/qt/6.7/${PKG_VERSION}/single/qt-everywhere-src-${PKG_VERSION}.tar.xz
-PKG_TAR_FILE = qt-everywhere-src-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/qt-everywhere-src-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_DEBIAN_SECTION = "Section: xfce4"
 
-
-PKG_DEBIAN_SECTION = "Section: librares"
-
-PKG_DEBIAN_DEST = "Description: The QCoro library provides set of tools to make use of C++20 coroutines with Qt."
+PKG_DEBIAN_DEST = "Description: Xfce Screensaver."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -42,8 +41,7 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN} 
-	@echo ${PKG_DPKG_FILE_PATH}
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -62,14 +60,13 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE) --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug
 
 
 include ${ROOT_DIR}/scripts/compile.mk
-
-PKG_MAKE_POST_INTALL:
-	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
-
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk
 	
