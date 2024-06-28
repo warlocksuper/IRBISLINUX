@@ -11,7 +11,7 @@ PKG_NAME = gwenview
 PKG_URL =  ${PKG_SRC_URL}/gwenview-23.08.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  exiv2(>=0.27.6), kimageannotator(>=0.6.1),  lcms2(>=2.14) "
+PKG_DEBIAN_DEPANDS = "Depends:  exiv2(>=0.27.6), kimageannotator(>=0.6.1),  lcms2(>=2.14), knotifications(>=5.115), kactivities(>=5.115.0), libkdcraw(>=23.08.0), baloo(>=5.109.0), libdbusmenu-qt|>=0.9.3+16.04.20160218)  "
 PKG_DEBIAN_SECTION = "Section: kde"
 PKG_DEBIAN_DEST = "Description: Gwenview is a fast and easy-to-use image viewer for KDE."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb

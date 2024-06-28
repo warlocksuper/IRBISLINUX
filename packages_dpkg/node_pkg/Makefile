@@ -1,12 +1,22 @@
+####
+#
+# make и make install нужно произвети в ручную иначе возникает ошибка printf 
+#
+###
+
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
+
+PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
+export  PATH
+
 
 PKG_VERSION = 20.11.1
 PKG_NAME = node
 PKG_URL =  https://nodejs.org/dist/v20.11.1/node-v20.11.1.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-v${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-v${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: "
+PKG_DEBIAN_DEPANDS = "Depends: libuv,  brotli(>=1.0.9) "
 PKG_DEBIAN_SECTION = "Section: dev"
 PKG_DEBIAN_DEST = "Description: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
@@ -24,15 +34,15 @@ PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 PKG_COMPILE_MAKE = ""
 # PKG_COMPILE_NINJA = ""
-PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
+PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
 
-PKG_COMPLITE =  $(shell if [ -f "${PKG_DPKG_FILE_PATH}" ]; then echo "1"; else echo "0"; fi ) ## определяет естьли собранный файл пакета если нет собираем
+PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем   ##COMPILE ${PKG_MAKE_INTALL}
 
-ifeq ($(strip $(PKG_COMPLITE)),$(strip 0))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
+ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE  ${PKG_BUILD_DIR_DEBIAN}   
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -49,8 +59,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --sysconfdir=/etc --shared-brotli --shared-cares --shared-libuv --shared-openssl --shared-nghttp2  --shared-zlib  --with-intl=system-icu 
-
+	@cd ${PGK_SOURCE_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --shared-brotli --shared-cares --shared-libuv --shared-nghttp2  --shared-zlib  --with-intl=system-icu --shared-openssl --shared-openssl-includes=/usr/include --shared-openssl-libpath=/usr/lib
+	
 include ${ROOT_DIR}/scripts/compile.mk
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk

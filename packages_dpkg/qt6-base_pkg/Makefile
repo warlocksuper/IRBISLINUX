@@ -34,7 +34,8 @@ PKG_COMPILE_MAKE = ""
 #PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
-
+INTERFACE_INCLUDE_DIRECTORIES = /usr/include
+export INTERFACE_INCLUDE_DIRECTORIES
 
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
@@ -62,7 +63,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF -DINTERFACE_INCLUDE_DIRECTORIES=/usr/include -Wno-dev  ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk
