@@ -1,27 +1,25 @@
-## 
-##  configure   /usr/bin/pwd
-## sudo pip3 install html5lib
-## -la -lb -lc
-##
-
-
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 
-PKG_VERSION = 6.7.1
-PKG_NAME = qt6-base
-PKG_URL = https://qt-mirror.dannhauer.de/official_releases/qt/6.7/${PKG_VERSION}/single/qt-everywhere-src-${PKG_VERSION}.tar.xz
-PKG_TAR_FILE = qt-everywhere-src-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/qt-everywhere-src-${PKG_VERSION}
+PKG_VERSION = 18.1.8
+PKG_NAME = llvm
+PKG_BASE_URL = https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VERSION}
+PKG_URL = ${PKG_BASE_URL}/llvm-${PKG_VERSION}.src.tar.xz
+PKG_URL2 = ${PKG_BASE_URL}/third-party-${PKG_VERSION}.src.tar.xz
+PKG_URL3 = ${PKG_BASE_URL}/cmake-${PKG_VERSION}.src.tar.xz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.src.tar.xz
+PKG_TAR_FILE2 = third-party-${PKG_VERSION}.src.tar.xz
+PKG_TAR_FILE3 = cmake-${PKG_VERSION}.src.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}.src
 PKG_DEBIAN_DEPANDS = "Depends:  "
 
 
-PKG_DEBIAN_SECTION = "Section: librares"
+PKG_DEBIAN_SECTION = "Section: misc"
 
-PKG_DEBIAN_DEST = "Description: The QCoro library provides set of tools to make use of C++20 coroutines with Qt."
+PKG_DEBIAN_DEST = "Description: Compiler infrastructure and LLVM runtime libraries."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -32,19 +30,17 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-
-
-PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
-PKG_COMPILE_MAKE = ""
-#PKG_COMPILE_NINJA = ""
+PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
+
+
+#PKG_COMPILE_MAKE = ""
+PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
-INTERFACE_INCLUDE_DIRECTORIES = /usr/include
-export INTERFACE_INCLUDE_DIRECTORIES
 
-PKG_COMPILE_MAKE_ADD_OPT = -j1
+
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
 
@@ -65,13 +61,34 @@ BUILD_DIR:
 
 ${PKG_TAR}:
 	wget ${PKG_URL} -P ${ROOT_SOURCE}/
+	wget ${PKG_URL2} -P ${ROOT_SOURCE}/
+	wget ${PKG_URL3} -P ${ROOT_SOURCE}/
 
 
 ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
+	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE2}
+	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE3}
 
 PKG_CONFIGURE:
-#	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF -DINTERFACE_INCLUDE_DIRECTORIES=/usr/include -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -G Ninja  -DLLVM_INCLUDE_BENCHMARKS=OFF  \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_DOCDIR=share/doc \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DLLVM_BINUTILS_INCDIR=/usr/include \
+    -DLLVM_BUILD_DOCS=ON \
+    -DLLVM_BUILD_LLVM_DYLIB=ON \
+    -DLLVM_BUILD_TESTS=ON \
+    -DLLVM_ENABLE_BINDINGS=OFF \
+    -DLLVM_ENABLE_FFI=ON \
+    -DLLVM_ENABLE_RTTI=ON \
+    -DLLVM_ENABLE_SPHINX=ON \
+    -DLLVM_INSTALL_GTEST=ON \
+    -DLLVM_INSTALL_UTILS=ON \
+    -DLLVM_LINK_LLVM_DYLIB=ON \
+    -DLLVM_USE_PERF=ON \
+    -DSPHINX_WARNINGS_AS_ERRORS=OFF ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk
