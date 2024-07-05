@@ -3,18 +3,17 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
-
-PKG_VERSION = 2.42
-PKG_NAME = binutils
-PKG_URL = https://sourceware.org/pub/binutils/releases/binutils-${PKG_VERSION}.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  jansson(>=2.14), textinfo(>=7.0.3), libz(>=1.2.13), zstd(>=1.5.4) "
+PKG_VERSION = 0.26
+PKG_NAME = libisl
+PKG_URL = https://libisl.sourceforge.io/isl-${PKG_VERSION}.tar.xz
+PKG_TAR_FILE = isl-${PKG_VERSION}.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/isl-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends: libgmp(>=6.2.1) "
 #PKG_BUILD_REPLACES = "  "
 
-PKG_DEBIAN_SECTION = "Section: system"
+PKG_DEBIAN_SECTION = "Section: misc"
 
-PKG_DEBIAN_DEST = "Description: A set of programs to assemble and manipulate binary and object files."
+PKG_DEBIAN_DEST = "Description: Library for manipulating sets and relations of integer points bounded by linear constraints."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -61,35 +60,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)   --prefix=/usr --enable-bootstrap \
-    --sysconfdir=/etc  \
-    --with-lib-path=/usr/lib:/usr/lib32:/usr/lib64 \
-    --with-bugurl=https://support.irbis.su \
-    --enable-cet \
-    --enable-colored-disassembly \
-    --enable-default-execstack=no \
-    --enable-deterministic-archives \
-    --enable-gold \
-    --enable-install-libiberty \
-    --enable-jansson \
-    --enable-ld=default \
-    --enable-new-dtags \
-    --enable-pgo-build=lto \
-    --enable-plugins \
-    --enable-relro \
-    --enable-shared \
-    --enable-targets=all \
-    --enable-threads \
-    --disable-gdb \
-    --disable-gdbserver \
-    --disable-libdecnumber \
-    --disable-readline \
-    --disable-sim \
-    --disable-werror \
-    --with-debuginfod \
-    --with-pic \
-    --with-system-zlib
-
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --disable-static  --sysconfdir=/etc  --libdir=/usr/lib  --runstatedir=/run  --disable-chfn-chsh --disable-login --disable-nologin --disable-su --disable-setpriv  --disable-runuser --disable-pylibmount --disable-static --without-python ADJTIME_PATH=/var/lib/hwclock/adjtime --docdir=/usr/share/doc/util-linux-2.39.3
+#	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 
 include ${ROOT_DIR}/scripts/compile.mk

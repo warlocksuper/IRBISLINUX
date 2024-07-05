@@ -1,7 +1,7 @@
 
 ifdef PKG_COMPILE_MAKE
 COMPILE:
-	@cd ${PKG_COMPILE_DIR} && make ${PKG_COMPILE_MAKE_ADD_OPT} 
+	@cd ${PKG_COMPILE_DIR} && make ${PKG_COMPILE_MAKE_ADD_OPT} -j1
 
 
 ${PKG_MAKE_INTALL}:
@@ -10,7 +10,7 @@ endif
 
 ifdef PKG_COMPILE_NINJA
 COMPILE:
-	@cd ${PKG_COMPILE_DIR} && ninja
+	@cd ${PKG_COMPILE_DIR} && ninja -j1
 
 
 ${PKG_MAKE_INTALL}:

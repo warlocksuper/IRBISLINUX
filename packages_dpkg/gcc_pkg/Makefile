@@ -10,7 +10,7 @@ PKG_URL = https://ftp.gnu.org/gnu/gcc/gcc-${PKG_VERSION}/gcc-${PKG_VERSION}.tar.
 ##http://mirror.linux-ia64.org/gnu/gcc/releases/gcc-12.3.0/gcc-12.3.0.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.3), diffutils(>=3.9) "
+PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.3), diffutils(>=3.9), libisl "
 
 
 PKG_DEBIAN_SECTION = "Section: system"
@@ -68,9 +68,9 @@ ${PGK_SOURCE_DIR}:
 PKG_CONFIGURE:
 	@mkdir -p ${PKG_BUILD_DIR}
 	@cd ${PGK_SOURCE_DIR}  && sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
-	@cd ${PGK_SOURCE_DIR}  && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+	@cd ${PGK_SOURCE_DIR}  && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64   
 	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --libdir=/usr/lib  \
-	--enable-languages=c,c++,fortran,go,lto,m2,objc,obj-c++,rust  --with-pkgversion="IRBIS LINUX 6.1.92"  \
+	--enable-languages=ada,c,c++,fortran,go,lto,m2,objc,obj-c++,rust  --with-pkgversion="IRBIS LINUX 14.1.0" --enable-libada   \
       --enable-bootstrap \
       --libexecdir=/usr/lib \
       --mandir=/usr/share/man \
@@ -94,7 +94,7 @@ PKG_CONFIGURE:
       --enable-plugin \
       --enable-shared \
       --enable-threads=posix \
-      --disable-libssp --enable-multilib   \
+      --disable-libssp --disable-multilib   \
       --disable-libstdcxx-pch \
       --disable-werror 
 
