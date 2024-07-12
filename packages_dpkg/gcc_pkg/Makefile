@@ -47,7 +47,7 @@ export CC CXX
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -70,13 +70,9 @@ PKG_CONFIGURE:
 	@cd ${PGK_SOURCE_DIR}  && sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 	@cd ${PGK_SOURCE_DIR}  && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64   
 	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --libdir=/usr/lib  \
-	--enable-languages=ada,c,c++,fortran,go,lto,m2,objc,obj-c++,rust  --with-pkgversion="IRBIS LINUX 14.1.0" --enable-libada   \
-      --enable-bootstrap \
-      --libexecdir=/usr/lib \
-      --mandir=/usr/share/man \
-      --infodir=/usr/share/info \
+	--enable-languages=c,c++,fortran,go,lto,m2,objc,obj-c++,rust \
+	--with-pkgversion="IRBIS LINUX 14.1.0" --libexecdir=/usr/lib --mandir=/usr/share/man  --infodir=/usr/share/info  \
       --with-bugurl=https://support.irbis.su \
-      --with-build-config=bootstrap-lto \
       --with-linker-hash-style=gnu \
       --with-system-zlib \
       --enable-__cxa_atexit \
@@ -94,7 +90,7 @@ PKG_CONFIGURE:
       --enable-plugin \
       --enable-shared \
       --enable-threads=posix \
-      --disable-libssp --disable-multilib   \
+      --disable-libssp --enable-multilib   \
       --disable-libstdcxx-pch \
       --disable-werror 
 

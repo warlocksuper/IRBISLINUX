@@ -54,12 +54,18 @@ ${PGK_SOURCE_DIR}:
 PKG_CONFIGURE:
 #	@cd ${PGK_SOURCE_DIR} && echo "rootsbindir=/usr/sbin" > configparms
 #	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i ${PKG_PRG_DIR}/${PKG_NAME}_pkg/glibc-2.39-fhs-1.patch
-	@cd ${PKG_BUILD_DIR} &&  ${PGK_SOURCE_DIR}/$(CONFIGURE)                             \
-             --disable-werror                         \
-             --enable-kernel=4.19                     \
-             --enable-stack-protector=strong          \
-             --disable-nscd                           \
-             libc_cv_slibdir=/usr/lib 
+	@cd ${PKG_BUILD_DIR} &&  ${PGK_SOURCE_DIR}/$(CONFIGURE)    --with-headers=/usr/include
+      --with-bugurl=https://support.irbis.su
+      --enable-bind-now
+      --enable-fortify-source
+      --enable-kernel=4.4
+      --enable-multi-arch
+      --enable-stack-protector=strong
+      --enable-systemtap
+      --disable-nscd
+      --disable-profile
+      --disable-werror
+
 
 include ${ROOT_DIR}/scripts/compile.mk
 
