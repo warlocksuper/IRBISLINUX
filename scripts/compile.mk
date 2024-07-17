@@ -16,3 +16,14 @@ COMPILE:
 ${PKG_MAKE_INTALL}:
 	@cd ${PKG_COMPILE_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG}  ninja install
 endif	
+
+ifdef PKG_COMPILE_CMAKE
+COMPILE:
+	@cd ${PKG_COMPILE_DIR} && cmake --build ${PKG_COMPILE_MAKE_ADD_OPT} 
+
+
+${PKG_MAKE_INTALL}:
+	@cd ${PKG_COMPILE_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG}  cmake  ${PKG_COMPILE_MAKE_INSTALL_ADD_OPT}  install
+endif	
+
+
