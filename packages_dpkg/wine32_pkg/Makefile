@@ -5,10 +5,10 @@ PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
 
 PKG_VERSION = 9.8
-PKG_NAME = wine
+PKG_NAME = wine32
 PKG_URL = https://dl.winehq.org/wine/source/9.x/wine-9.8.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+PKG_TAR_FILE = wine-${PKG_VERSION}.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/wine-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: desktop-file-utils(>=0.26),  fontconfig(>=2.14.2), gettext(>=0.21.1), libpcap(>=1.10.4),  libxcursor, libxkbcommon(>=1.5.0), libxi, libxrandr,  wayland "   #libunwind 
 
 
@@ -24,6 +24,7 @@ PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
 PKG_BUILD_DIR_ALL = ${ROOT_DIR}/build_dpkg
 PKG_BUILD_DIR = ${PKG_BUILD_DIR_ALL}/${PKG_NAME}
+PKG_BUILD_DIR64 = ${PKG_BUILD_DIR_ALL}/wine 
 PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
@@ -64,9 +65,9 @@ ${PGK_SOURCE_DIR}:
 PKG_CONFIGURE:
 	@cd ${PKG_BUILD_DIR} && LDFLAGS=" -L/usr/lib32 " ${PGK_SOURCE_DIR}/configure \
     --prefix=/usr \
-    --libdir=/usr/lib --without-wayland --without-vulkan \
+    --libdir=/usr/lib32 --without-wayland --without-vulkan \
     --with-x \
-    --with-gstreamer --enable-win64
+    --with-wine64=${PKG_BUILD_DIR64}
 
 
 

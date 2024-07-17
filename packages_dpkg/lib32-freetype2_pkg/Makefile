@@ -3,21 +3,17 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
+PKG_VERSION = 2.13.2
+PKG_NAME = lib32-freetype2
+PKG_URL =  https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${PKG_VERSION}.tar.xz
+PKG_TAR_FILE = freetype-${PKG_VERSION}.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/freetype-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends: lib32-zlib(>=1.3.1)  "
 
-PKG_VERSION = 9.8
-PKG_NAME = wine
-PKG_URL = https://dl.winehq.org/wine/source/9.x/wine-9.8.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: desktop-file-utils(>=0.26),  fontconfig(>=2.14.2), gettext(>=0.21.1), libpcap(>=1.10.4),  libxcursor, libxkbcommon(>=1.5.0), libxi, libxrandr,  wayland "   #libunwind 
 
+PKG_DEBIAN_SECTION = "Section: misc"
 
-PKG_DEBIAN_SECTION = "Section: wine"
-
-PKG_DEBIAN_DEST = "Description: A compatibility layer for running Windows programs"
-
-PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
-
+PKG_DEBIAN_DEST = "Description: Font rasterization library (32-bit)."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -31,12 +27,12 @@ PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
-
-PKG_COMPILE_MAKE = ""
-#PKG_COMPILE_NINJA = ""
+#PKG_COMPILE_MAKE = ""
+PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
-export LDFLAGS+= -L/usr/lib32 
+
+
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
 
@@ -44,6 +40,7 @@ PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяе
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
 all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
+	rm -rf ${PKG_BUILD_DIR_DPKG}/usr/{include,share,bin}
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -62,12 +59,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && LDFLAGS=" -L/usr/lib32 " ${PGK_SOURCE_DIR}/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib --without-wayland --without-vulkan \
-    --with-x \
-    --with-gstreamer --enable-win64
-
+	@cd ${PKG_BUILD_DIR} && $(MESON) --cross-file lib32 -Ddefault_library=shared  ${PGK_SOURCE_DIR}
+#	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 
 include ${ROOT_DIR}/scripts/compile.mk

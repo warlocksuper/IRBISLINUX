@@ -9,7 +9,7 @@ PKG_NAME = mesa
 PKG_URL = https://mesa.freedesktop.org/archive/mesa-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: xcb-util-renderutil(>=0.3.10), xcb-util-image(>=0.4.1), libclc(>=17.0.6), glslang  "
+PKG_DEBIAN_DEPANDS = "Depends: xcb-util-renderutil(>=0.3.10), xcb-util-image(>=0.4.1), libclc(>=17.0.6), glslang, libva(>=2.22.0)  "
 
 
 PKG_DEBIAN_SECTION = "Section: xorg"
@@ -64,25 +64,25 @@ ${PGK_SOURCE_DIR}:
 
 PKG_CONFIGURE:
 	@cd ${PKG_BUILD_DIR} &&  $(MESON)  -D android-libbacktrace=disabled \
-    -D b_ndebug=true \
-    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink \
-    -D gallium-extra-hud=true \
-    -D gallium-nine=true \
-    -D gallium-omx=disabled \
-    -D gallium-opencl=icd \
-    -D gallium-rusticl=true \
-    -D gles1=disabled \
-    -D glx=dri \
-    -D intel-clc=enabled \
-    -D intel-rt=disabled \
-    -D libunwind=disabled \
-    -D microsoft-clc=disabled \
-    -D osmesa=true \
-    -D platforms=x11,wayland \
-    -D valgrind=disabled \
-    -D video-codecs=all \
-    -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio,nouveau \
-    -D vulkan-layers=device-select,intel-nullhw,overlay \
+    -Db_ndebug=true \
+    -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink \
+    -Dgallium-extra-hud=true \
+    -Dgallium-nine=true \
+    -Dgallium-omx=disabled \
+    -Dgallium-opencl=icd \
+    -Dgallium-rusticl=true \
+    -Dgles1=disabled \
+    -Dglx=dri \
+    -Dintel-clc=enabled \
+    -Dintel-rt=disabled \
+    -Dlibunwind=disabled \
+    -Dmicrosoft-clc=disabled \
+    -Dosmesa=true \
+    -Dplatforms=x11,wayland \
+    -Dvalgrind=disabled \
+    -Dvideo-codecs=all \
+    -Dvulkan-drivers=amd,intel,intel_hasvk,swrast,virtio,nouveau \
+    -Dvulkan-layers=device-select,intel-nullhw,overlay \
     -Dtools='glsl','intel','intel-ui' ${PGK_SOURCE_DIR}
 
 
