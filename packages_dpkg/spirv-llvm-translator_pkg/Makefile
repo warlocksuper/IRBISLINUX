@@ -4,17 +4,17 @@ include ${OS_CONFIG}
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 
-PKG_VERSION = 17.0.6
-PKG_NAME = libclc
-PKG_URL = https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VERSION}/libclc-${PKG_VERSION}.src.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.src.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}.src
-PKG_DEBIAN_DEPANDS = "Depends: spirv-llvm-translator(>=18.1.1)  "
+PKG_VERSION = 18.1.2
+PKG_NAME = spirv-llvm-translator
+PKG_URL = https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v${PKG_VERSION}.tar.gz
+PKG_TAR_FILE = v${PKG_VERSION}.tar.gz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/SPIRV-LLVM-Translator-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends: spirv-tools(>=2024.2), llvm(>=18.1.8) "
 
 
-PKG_DEBIAN_SECTION = "Section: misc"
+PKG_DEBIAN_SECTION = "Section: librares"
 
-PKG_DEBIAN_DEST = "Description: Library requirements of the OpenCL C programming language."
+PKG_DEBIAN_DEST = "Description: Tool and a library for bi-directional translation between SPIR-V and LLVM IR."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -30,8 +30,8 @@ PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
 
-#PKG_COMPILE_MAKE = ""
-PKG_COMPILE_NINJA = ""
+PKG_COMPILE_MAKE = ""
+#PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
@@ -43,7 +43,6 @@ PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяе
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
 all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN} 
-	@echo ${PKG_DPKG_FILE_PATH}
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -62,13 +61,13 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -G Ninja  -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  -DLLVM_TOOLS_BINARY_DIR=/usr/bin -DLLVM_CLANG=/usr/bin/clang -DLLVM_AS=/usr/bin/llvm-as -DLLVM_LINK=/usr/bin/llvm-link -DLLVM_OPT=/usr/bin/opt  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(CMAKE) -G 'Unix Makefiles' -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_SKIP_RPATH=ON -DLLVM_INCLUDE_TESTS=ON  -DLLVM_EXTERNAL_LIT=/usr/bin/lit -DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv/ -Wno-dev ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk
 
 PKG_MAKE_POST_INTALL:
-	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
+	rm -rf ${PKG_BUILD_DIR_DPKG}/usr/lib64
 
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk

@@ -4,17 +4,17 @@ include ${OS_CONFIG}
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 
-PKG_VERSION = 17.0.6
-PKG_NAME = libclc
-PKG_URL = https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VERSION}/libclc-${PKG_VERSION}.src.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.src.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}.src
-PKG_DEBIAN_DEPANDS = "Depends: spirv-llvm-translator(>=18.1.1)  "
+PKG_VERSION = 1.3.283.0
+PKG_NAME = spirv-headers
+PKG_URL = https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-${PKG_VERSION}/${PKG_NAME}-${PKG_VERSION}.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/SPIRV-Headers-vulkan-sdk-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
 
-PKG_DEBIAN_SECTION = "Section: misc"
+PKG_DEBIAN_SECTION = "Section: librares"
 
-PKG_DEBIAN_DEST = "Description: Library requirements of the OpenCL C programming language."
+PKG_DEBIAN_DEST = "Description: SPIR-V Headers."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -30,8 +30,8 @@ PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
 
-#PKG_COMPILE_MAKE = ""
-PKG_COMPILE_NINJA = ""
+PKG_COMPILE_MAKE = ""
+#PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
@@ -62,13 +62,13 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -G Ninja  -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  -DLLVM_TOOLS_BINARY_DIR=/usr/bin -DLLVM_CLANG=/usr/bin/clang -DLLVM_AS=/usr/bin/llvm-as -DLLVM_LINK=/usr/bin/llvm-link -DLLVM_OPT=/usr/bin/opt  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DCMAKE_INSTALL_PREFIX=/usr  ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk
 
 PKG_MAKE_POST_INTALL:
-	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
+#	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
 
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk
