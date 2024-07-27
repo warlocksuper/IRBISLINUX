@@ -3,21 +3,17 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-
-PKG_VERSION = 24.1.2
-PKG_NAME = mesa
-PKG_URL = https://mesa.freedesktop.org/archive/mesa-${PKG_VERSION}.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 1.5
+PKG_NAME = libvdpau
+PKG_URL = https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/1.5/${PKG_NAME}-${PKG_VERSION}.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: xcb-util-renderutil(>=0.3.10), xcb-util-image(>=0.4.1), libclc(>=17.0.6), glslang, libva(>=2.22.0), libdrm(>=2.4.122), bindgen(>=0.69.4), libglvnd(>=1.7.0), directx-headers(>=1.614.0), vdpauinfo(>=1.5)  "
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: Mesa is an OpenGL compatible 3D graphics library."
-
-PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
-
+PKG_DEBIAN_DEST = "Description: Nvidia VDPAU library."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -30,7 +26,6 @@ PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
-
 
 #PKG_COMPILE_MAKE = ""
 PKG_COMPILE_NINJA = ""
@@ -63,27 +58,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} &&  $(MESON)  -D android-libbacktrace=disabled \
-    -Db_ndebug=true \
-    -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink \
-    -Dgallium-extra-hud=true \
-    -Dgallium-nine=true \
-    -Dgallium-omx=disabled \
-    -Dgallium-opencl=icd \
-    -Dgallium-rusticl=true \
-    -Dgles1=disabled \
-    -Dglx=dri \
-    -Dintel-clc=enabled \
-    -Dintel-rt=disabled \
-    -Dlibunwind=disabled \
-    -Dmicrosoft-clc=disabled \
-    -Dosmesa=true \
-    -Dplatforms=x11,wayland \
-    -Dvalgrind=disabled \
-    -Dvideo-codecs=all \
-    -Dvulkan-drivers=amd,intel,intel_hasvk,swrast,virtio,nouveau \
-    -Dvulkan-layers=device-select,intel-nullhw,overlay \
-    -Dtools='glsl','intel','intel-ui' ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(MESON) ${PGK_SOURCE_DIR}
+#	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 
 include ${ROOT_DIR}/scripts/compile.mk
