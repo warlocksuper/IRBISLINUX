@@ -341,7 +341,7 @@ resolve_deps() {
 	# deplist cannot be declared like this: local deplist=$(foo)
 	# Otherwise, the return value will depend on the assignment.   dpkg-query -f ' ${Package}(>=${Version}),' -W $@ | sed 's/,$/ /'
 	local deplist
-	deplist=($(check_deps "$@")) || exit $E_INSTALL_DEPS_FAILED
+	deplist=$(check_deps "$@") || exit $E_INSTALL_DEPS_FAILED
 	[[ -z $deplist ]] && return $R_DEPS_SATISFIED
 
 	if handle_deps "${deplist[@]}"; then
@@ -556,7 +556,7 @@ echo  $depe
 
 }
 
-deplist=($(dpkg-query -f ' ${Package}(>=${Version}),' -W "$@" | sed 's/,$/ /')) || exit $E_INSTALL_DEPS_FAILED
+#deplist=($(dpkg-query -f ' ${Package}(>=${Version}),' -W "$@" | sed 's/,$/ /')) || exit $E_INSTALL_DEPS_FAILED
 
 write_control() {
 
@@ -1008,9 +1008,7 @@ usage() {
 }
 
 version() {
-	printf "makepkg (pacman) %s\n" "$makepkg_version"
-	printf -- "Copyright (c) 2006-2024 Pacman Development Team <pacman-dev@lists.archlinux.org>.\n"
-	printf -- "Copyright (C) 2002-2006 Judd Vinet <jvinet@zeroflux.org>.\n"
+	printf "makepkg %s\n" "$makepkg_version"
 	printf '\n'
 	printf -- "$(gettext "\
 This is free software; see the source for copying conditions.\n\
@@ -1032,12 +1030,12 @@ fi
 ARGLIST=("$@")
 
 # Parse Command Line Options.
-OPT_SHORT="AcCdD:efFghiLmop:rRsSV"
+OPT_SHORT="AcCdD:efFghiLmop:rRsSVI"
 OPT_LONG=('allsource' 'check' 'clean' 'cleanbuild' 'config:' 'dir:' 'force' 'geninteg'
           'help' 'holdver' 'ignorearch' 'install' 'key:' 'log' 'noarchive' 'nobuild'
           'nocolor' 'nocheck' 'nodeps' 'noextract' 'noprepare' 'nosign' 'packagelist'
           'printsrcinfo' 'repackage' 'rmdeps' 'sign' 'skipchecksums' 'skipinteg'
-          'skippgpcheck' 'source' 'syncdeps' 'verifysource' 'version')
+          'skippgpcheck' 'source' 'syncdeps' 'verifysource' 'version' 'dpkg')
 
 # Pacman Options
 OPT_LONG+=('asdeps' 'noconfirm' 'needed' 'noprogressbar')
