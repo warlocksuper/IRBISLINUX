@@ -576,7 +576,7 @@ write_control() {
 	write_kv_pair "Package" "$pkgname"
 	write_kv_pair "Architecture" "$pkgarch"
 	write_kv_pair "Version" "$fullver"
-	write_kv_pair "Provides"    "${provides[@]}"
+	#write_kv_pair "Provides"    "${provides[@]}"
 	write_kv_pair "Maintainer"    "Dmitry Lebedev <D.Lebedev@irbis.su>"
 if [ -z   "${groups[@]}" ]
 then
