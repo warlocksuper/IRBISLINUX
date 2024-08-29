@@ -17,6 +17,7 @@ PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 ##  sudo pip3 install pygments
 ##  sudo pip3 install typogrify
 ## sudo python -m pip install --upgrade mako
+## sudo python -m pip install --upgrade Cython
 
 
 #PKG_LIST_DIR +=  pycairo_dpkg  # doxypypy_dpkg  # Cython_dpkg  надо найти способ создавать пакеты python
@@ -72,7 +73,7 @@ PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xm
 PKG_LIST +=  pulseaudio polkit synaptic
 PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu 
 PKG_LIST += gtk3 colord libsm  dbus libxml2  libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver xfce4-notifyd xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp libuv c-ares node  
-PKG_LIST += vulkan-headers libva llvm rustc spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai pango  pangomm-2.48 gtkmm-4.0 transmission python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl gcc glibc  glibc32  imagemagick libproxy  qt6-base extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 
+PKG_LIST += vulkan-headers libva llvm rustc spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing libseccomp apr apr-util apache sassc  libadwaita sysprof libdex  pango  pangomm-2.48 gtkmm-4.0 transmission python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl gcc glibc  glibc32  imagemagick libproxy  qt6-base extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 
 
 #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   #   qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit       libnatpmp 
 

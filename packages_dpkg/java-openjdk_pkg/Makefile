@@ -3,17 +3,17 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 1.54.0
-PKG_NAME = pango
+PKG_VERSION = 4.14.0
+PKG_NAME = java-openjdk
 
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libthai(>=0.1.28), sysprof(>=46.0)  "
+PKG_DEBIAN_DEPANDS = "Depends:  cairomm-1.16(>=1.18.0) "
 
 
 PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: A library for layout and rendering of text."
+PKG_DEBIAN_DEST = "Description: C++ bindings for GTK 4."
 
 PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-amd64.deb 
 
@@ -46,6 +46,9 @@ BUILD_DIR:
 
 COPYSOURCE:
 	cp PKGSRC ${PKG_BUILD_DIR}/
+	cp freedesktop-java.desktop ${PKG_BUILD_DIR}/
+	cp freedesktop-jconsole.desktop ${PKG_BUILD_DIR}/
+	cp freedesktop-jshell.desktop ${PKG_BUILD_DIR}/
 
 PKG_BUILD_DIR_DEBIAN:
 	cd ${PKG_BUILD_DIR} && ${ROOT_DIR}/scripts/makepkg -I ${ROOT_DPKG_ARCH} -i -d
