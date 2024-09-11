@@ -50,6 +50,7 @@ COPYSOURCE:
 	cp irbis.layout ${PKG_BUILD_DIR}/
 	cp httpd.logrotate ${PKG_BUILD_DIR}/
 	cp httpd.service ${PKG_BUILD_DIR}/
+	cp postinst ${PKG_BUILD_DIR}/
 
 PKG_BUILD_DIR_DEBIAN:
 	cd ${PKG_BUILD_DIR} && ${ROOT_DIR}/scripts/makepkg -I ${ROOT_DPKG_ARCH} -i -d --skipchecksums --skipinteg --skippgpcheck

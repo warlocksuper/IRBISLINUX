@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if ! id "http" >/dev/null 2>&1; then
+	groupadd -g 28 http &&
+	useradd -c "Apache Server" -d /srv/www -g http -s /bin/false -u 28 http
+fi
+
+
+systemctl enable httpd
+systemctl start httpd

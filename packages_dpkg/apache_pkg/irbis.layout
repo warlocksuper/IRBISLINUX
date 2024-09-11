@@ -11,7 +11,7 @@
 	installbuilddir: /usr/lib/httpd/build
 	errordir:        /usr/share/httpd/error
 	iconsdir:        /usr/share/httpd/icons
-	htdocsdir:       /srv/http
+	htdocsdir:       /var/www/html
 	manualdir:       /usr/share/httpd/manual
 	cgidir:          /srv/http/cgi-bin
 	includedir:      /usr/include/httpd
