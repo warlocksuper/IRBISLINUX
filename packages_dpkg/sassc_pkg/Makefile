@@ -8,7 +8,7 @@ PKG_NAME = sassc
 
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_DEBIAN_DEPANDS = "Depends: libsass(>=3.6.6)  "
 
 
 PKG_DEBIAN_SECTION = "Section: system"

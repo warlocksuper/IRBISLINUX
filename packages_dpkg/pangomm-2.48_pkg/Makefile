@@ -8,14 +8,14 @@ PKG_NAME = pangomm-2.48
 
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  cairomm-1.16(>=1.18.0), pango(>=1.54.0) "
+PKG_DEBIAN_DEPANDS = "Depends:  cairomm-1.16(>=1.18.0), pango(>=1.54.0), glibmm(>=2.68.2) "
 
 
 PKG_DEBIAN_SECTION = "Section: system"
 
 PKG_DEBIAN_DEST = "Description: C++ bindings for Pango."
 
-PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-amd64.deb 
+PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-1-amd64.deb 
 
 PKG_BUILD_DIR_ALL = ${ROOT_DIR}/build_dpkg
 PKG_BUILD_DIR = ${PKG_BUILD_DIR_ALL}/${PKG_NAME}

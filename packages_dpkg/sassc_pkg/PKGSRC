@@ -17,7 +17,7 @@ sha256sums=('608dc9002b45a91d11ed59e352469ecc05e4f58fc1259fc9a9f5b8f0f8348a03')
 build() {
 	cd "$_archive"
 	autoreconf -i
-	./configure --prefix=/usr --with-libsass
+	./configure --prefix=/usr 
 	make
 }
 

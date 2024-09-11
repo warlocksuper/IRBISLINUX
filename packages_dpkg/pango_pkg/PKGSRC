@@ -4,7 +4,6 @@
 pkgbase=pango
 pkgname=(
   pango
-  pango-docs
 )
 pkgver=1.54.0
 pkgrel=1
@@ -27,10 +26,8 @@ depends=(
   libxrender
 )
 makedepends=(
-  gi-docgen
   git
   gobject-introspection
-  help2man
   meson
 )
 source=("git+https://gitlab.gnome.org/GNOME/pango.git#tag=$pkgver")
@@ -42,7 +39,7 @@ prepare() {
 
 build() {
   local meson_options=(
-    -D documentation=true
+    -D documentation=false
     -D sysprof=enabled
   )
 
@@ -58,16 +55,9 @@ package_pango() {
 
   meson install -C build --destdir "$pkgdir"
 
-  mkdir -p doc/usr/share
-  mv {"$pkgdir",doc}/usr/share/doc
+
 }
 
-package_pango-docs() {
-  pkgdesc+=" (documentation)"
-  depends=()
-
-  mv doc/* "$pkgdir"
-}
 
 # vim:set sw=2 sts=-1 et:
 

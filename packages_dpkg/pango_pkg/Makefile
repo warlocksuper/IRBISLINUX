@@ -15,7 +15,7 @@ PKG_DEBIAN_SECTION = "Section: system"
 
 PKG_DEBIAN_DEST = "Description: A library for layout and rendering of text."
 
-PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-amd64.deb 
+PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-1-amd64.deb 
 
 PKG_BUILD_DIR_ALL = ${ROOT_DIR}/build_dpkg
 PKG_BUILD_DIR = ${PKG_BUILD_DIR_ALL}/${PKG_NAME}

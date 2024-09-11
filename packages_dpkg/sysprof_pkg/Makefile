@@ -8,14 +8,14 @@ PKG_NAME = sysprof
 
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libunwind(>=1.8.1), libdex(>=0.6.1), libadwaita(>=1.5.3) "
+PKG_DEBIAN_DEPANDS = "Depends: libunwind(>=1.8.1), libdex(>=0.6.1), libadwaita(>=1.5.3), libpanel(>=1.6.0) "
 
 
 PKG_DEBIAN_SECTION = "Section: system"
 
 PKG_DEBIAN_DEST = "Description: Kernel based performance profiler."
 
-PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-amd64.deb 
+PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-4-amd64.deb 
 
 PKG_BUILD_DIR_ALL = ${ROOT_DIR}/build_dpkg
 PKG_BUILD_DIR = ${PKG_BUILD_DIR_ALL}/${PKG_NAME}

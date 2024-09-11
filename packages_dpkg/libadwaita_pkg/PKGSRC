@@ -1,11 +1,8 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgbase=libadwaita
 pkgname=(
   libadwaita
   libadwaita-demos
-  libadwaita-docs
 )
 pkgver=1.5.3
 pkgrel=1
@@ -42,7 +39,7 @@ prepare() {
 
 build() {
   local meson_options=(
-    -D gtk_doc=true
+    -D gtk_doc=false -D introspection=disabled
   )
 
   arch-meson $pkgname build "${meson_options[@]}"
@@ -56,7 +53,7 @@ check() (
   weston --backend=headless-backend.so --socket=$WAYLAND_DISPLAY --idle-time=0 &
   _w=$!
 
-  trap "kill $_w; wait" EXIT
+#  trap "kill $_w; wait" EXIT
 
   meson test -C build --print-errorlogs
 )
@@ -84,7 +81,6 @@ package_libadwaita() {
   _pick demo usr/share/icons/hicolor/*/apps/org.gnome.Adwaita1.Demo[-.]*
   _pick demo usr/share/metainfo/org.gnome.Adwaita1.Demo.metainfo.xml
 
-  _pick docs usr/share/doc
 }
 
 package_libadwaita-demos() {
@@ -99,11 +95,6 @@ package_libadwaita-demos() {
   mv demo/* "$pkgdir"
 }
 
-package_libadwaita-docs() {
-  pkgdesc+=" (documentation)"
-  depends=()
-  mv docs/* "$pkgdir"
-}
 
 # vim:set sw=2 sts=-1 et:
 
