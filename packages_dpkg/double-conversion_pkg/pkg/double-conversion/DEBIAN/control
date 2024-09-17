@@ -1,8 +1,0 @@
-Package: double-conversion
-Architecture: amd64
-Version: 3.3.0-2
-Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
-Section: misc
-Depends: glibc(>=2.37.1)
-Installed-Size: 228259
-Description: Binary-decimal and decimal-binary routines for IEEE doubles
