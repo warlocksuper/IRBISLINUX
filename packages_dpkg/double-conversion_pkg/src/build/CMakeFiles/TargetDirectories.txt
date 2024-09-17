@@ -1,7 +1,0 @@
-/home/warlock/IRBISLINUX/packages_dpkg/double-conversion_pkg/src/build/CMakeFiles/double-conversion.dir
-/home/warlock/IRBISLINUX/packages_dpkg/double-conversion_pkg/src/build/CMakeFiles/edit_cache.dir
-/home/warlock/IRBISLINUX/packages_dpkg/double-conversion_pkg/src/build/CMakeFiles/rebuild_cache.dir
-/home/warlock/IRBISLINUX/packages_dpkg/double-conversion_pkg/src/build/CMakeFiles/list_install_components.dir
-/home/warlock/IRBISLINUX/packages_dpkg/double-conversion_pkg/src/build/CMakeFiles/install.dir
-/home/warlock/IRBISLINUX/packages_dpkg/double-conversion_pkg/src/build/CMakeFiles/install/local.dir
-/home/warlock/IRBISLINUX/packages_dpkg/double-conversion_pkg/src/build/CMakeFiles/install/strip.dir
