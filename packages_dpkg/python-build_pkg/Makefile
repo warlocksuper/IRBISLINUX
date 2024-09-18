@@ -54,7 +54,7 @@ COPYSOURCE:
 	cp PKGSRC ${PKG_BUILD_DIR}/
 
 ${PKG_BUILD_DIR_DEBIAN}:
-	@cd ${PKG_BUILD_DIR} && ${ROOT_DIR}/scripts/makepkg  --dpkg ${ROOT_DPKG_ARCH} -i -d --skipchecksums --skipinteg --skippgpcheck
+	@cd ${PKG_BUILD_DIR} && ${ROOT_DIR}/scripts/makepkg  --dpkg ${ROOT_DPKG_ARCH} -i --skipchecksums --skipinteg --skippgpcheck
 
 include ${ROOT_DIR}/scripts/compile.mk
 
