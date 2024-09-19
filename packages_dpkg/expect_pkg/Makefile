@@ -3,10 +3,10 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 4.14.0
-PKG_NAME = gtkmm-4.0
+PKG_VERSION = 5.45.4
+PKG_NAME = expect
+pkgrel = 5
 
-pkgrel = 4
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 
