@@ -3,16 +3,16 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 6.11
-PKG_NAME = linux
+PKG_VERSION = 1.10.0
+PKG_NAME = lz4
 
-pkgrel = 1
+pkgrel = 2
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 
 
 
-PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-${pkgrel}-amd64.deb 
+PKG_DPKG_FILE = ${PKG_NAME}-1:${PKG_VERSION}-${pkgrel}-amd64.deb 
 
 PKG_BUILD_DIR_ALL = ${ROOT_DIR}/build_dpkg
 PKG_BUILD_DIR = ${PKG_BUILD_DIR_ALL}/${PKG_NAME}

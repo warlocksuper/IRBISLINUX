@@ -65,8 +65,8 @@ PKG_LIST_DIR += bluez_dpkg   sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg
 
 export
 
-PKG_LIST = basefile glib xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash 
-PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt lzo fuse squashfuse gdk-pixbuf pam sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation qt-everywhere-opensource  qcoro fmt spdlog 
+PKG_LIST = basefile parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop mkinitcpio linux glib xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash 
+PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation qt-everywhere-opensource  qcoro fmt spdlog 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
 
@@ -83,7 +83,7 @@ PKG_LIST += vulkan-headers libva llvm rustc spirv-headers spirv-tools spirv-llvm
 
 #    нужные пакеты imagemagick  unifont libspiro  fontforge
 
-PKG_LINUX = linux_dpkg
+PKG_LINUX = linux
 
 
 #all: ${PKG_LIST} ${PKG_LIST_DIR}

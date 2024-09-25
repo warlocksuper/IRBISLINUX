@@ -3,8 +3,8 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 6.11
-PKG_NAME = linux
+PKG_VERSION = 20240922
+PKG_NAME = parallel
 
 pkgrel = 1
 

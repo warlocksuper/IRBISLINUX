@@ -3,10 +3,13 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 6.11
-PKG_NAME = linux
+PKG_VERSION = 8.3.3
+PKG_NAME = python-pytest
 
-pkgrel = 1
+pkgname=python-pytest
+pkgver=8.3.3
+pkgrel=1
+epoch=1
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 
