@@ -19,6 +19,8 @@ PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 ## sudo python -m pip install --upgrade mako
 ## sudo python -m pip install --upgrade Cython
 ## sudo python -m pip install --upgrade pytest
+## sudo python -m pip install --upgrade pyelftools
+## sudo python -m pip install --upgrade pefile
 
 
 #PKG_LIST_DIR +=  pycairo_dpkg  # doxypypy_dpkg  # Cython_dpkg  надо найти способ создавать пакеты python
@@ -65,7 +67,7 @@ PKG_LIST_DIR += bluez_dpkg   sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg
 
 export
 
-PKG_LIST = basefile parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop mkinitcpio linux glib xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt systemd bash 
+PKG_LIST = basefile parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop systemd asciidoc mkinitcpio linux glib xz fakeroot openssl kmod bzip2 usbutils util-linux coreutils libxcrypt  bash 
 PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation qt-everywhere-opensource  qcoro fmt spdlog 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
