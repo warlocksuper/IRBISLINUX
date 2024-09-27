@@ -14,7 +14,7 @@ COMPILE:
 
 
 ${PKG_MAKE_INTALL}:
-	@cd ${PKG_COMPILE_DIR} && DESTDIR=${PKG_BUILD_DIR_DPKG}  ninja install
+	@cd ${PKG_COMPILE_DIR} &&  ${NEED_SUDO} DESTDIR=${PKG_BUILD_DIR_DPKG}  ninja install
 endif	
 
 ifdef PKG_COMPILE_CMAKE

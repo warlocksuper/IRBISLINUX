@@ -9,7 +9,7 @@ PKG_URL = https://github.com/tukaani-project/xz/archive/refs/tags/v5.6.1.tar.gz
 PKG_TAR_FILE = v${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends:  flex "
-
+PKG_BUILD_REPLACES = " liblzma "
 
 PKG_DEBIAN_SECTION = "Section: system"
 
@@ -42,6 +42,8 @@ PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяе
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
 all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
+	rm -rf ${PKG_BUILD_DIR_DPKG}/usr/bin/lzmadec
+	rm -rf ${PKG_BUILD_DIR_DPKG}/usr/bin/lzmainfo
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}

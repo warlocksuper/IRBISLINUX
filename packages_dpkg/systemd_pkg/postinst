@@ -35,5 +35,11 @@ EOF
 
 fi
 
+if ! id "systemd-timesync" >/dev/null 2>&1; then
+	groupadd -fg 989 systemd-timesync 
+	useradd -c "systemd timesync"  -u 989 -g systemd-timesync -s /usr/sbin/nologin systemd-timesync
+	chown systemd-timesync:systemd-timesync  /var/lib/systemd/timesync
+fi
+
 
 systemctl daemon-reexec

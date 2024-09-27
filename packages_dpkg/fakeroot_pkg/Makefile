@@ -4,7 +4,7 @@ include ${OS_CONFIG}
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 
-PKG_VERSION = 1.34
+PKG_VERSION = 1.36
 PKG_NAME = fakeroot
 PKG_URL = https://deb.debian.org/debian/pool/main/f/${PKG_NAME}/${PKG_NAME}_${PKG_VERSION}.orig.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}_${PKG_VERSION}.orig.tar.gz
