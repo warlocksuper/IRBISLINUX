@@ -1,0 +1,10 @@
+#!/bin/bash
+
+  locale-gen
+
+  ldconfig -r .
+
+  iconvconfig
+  
+  
+    iconvconfig --nostdlib -o /usr/lib32/gconv/gconv-modules.cache /usr/lib32/gconv
