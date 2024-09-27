@@ -30,11 +30,10 @@ CMAKE = cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 
 export
 
-all:  ${ROOT_DPKG_ARCH}  aliases
-	${MAKE} -C packages_dpkg
+all: packagesdpkg
 
 
-tools_dir: temporary_tools
+tools_dir:
 	${MAKE} -C tools
 
 temporary_tools:

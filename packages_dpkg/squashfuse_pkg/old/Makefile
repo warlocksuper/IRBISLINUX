@@ -1,20 +1,17 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
-export  PATH
-
-
-PKG_VERSION = 23.08.0
-PKG_NAME = poppler
-PKG_URL =  https://poppler.freedesktop.org/poppler-23.08.0.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 0.5.2
+PKG_NAME = squashfuse
+PKG_URL =  https://github.com/vasi/squashfuse/releases/download/${PKG_VERSION}/squashfuse-${PKG_VERSION}.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: fontconfig(>=2.14.2), gobject-introspection(>=1.76.1)  "
+PKG_DEBIAN_DEPANDS = "Depends: fuse "
 PKG_DEBIAN_SECTION = "Section: library"
-PKG_DEBIAN_DEST = "Description: The Poppler package contains a PDF rendering library and command line tools used to manipulate PDF files. This is useful for providing PDF rendering functionality as a shared library."
+PKG_DEBIAN_DEST = "Description: This library is part of the AppImage project. It implements functionality for dealing with AppImage files. It is written in C++ and is using Boost."
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
 
+#export FUSE_CPPFLAGS = -I/usr/include/fuse3
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
 
@@ -32,9 +29,9 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
 
-PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
+PKG_COMPLITE =  $(shell if [ -f "${PKG_DPKG_FILE_PATH}" ]; then echo "1"; else echo "0"; fi ) ## определяет естьли собранный файл пакета если нет собираем
 
-ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
+ifeq ($(strip $(PKG_COMPLITE)),$(strip 0))
 all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
@@ -52,7 +49,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DENABLE_UNSTABLE_API_ABI_HEADERS=ON  ${PGK_SOURCE_DIR} 
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --enable-static=no  #CONFIGURE  CMAKE
+	@cd ${PKG_BUILD_DIR} && sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' -i libtool
 
 include ${ROOT_DIR}/scripts/compile.mk
 
