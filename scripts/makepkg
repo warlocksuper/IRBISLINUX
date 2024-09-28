@@ -551,8 +551,14 @@ write_pkginfo() {
 
 resolve_depands(){
 
+if [[ ! -z "$@" ]]; then
 depe=`dpkg-query -f ' ${Package}(>=${Version}),' -W $@ | sed 's/,$/ /'`
+
 echo  $depe
+else 
+depe=""
+echo  $depe
+fi
 
 }
 
