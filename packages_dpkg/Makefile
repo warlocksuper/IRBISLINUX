@@ -59,7 +59,7 @@ PKG_LIST_DIR +=   xfce4-taskmanager_dpkg
 
 #Sound
 PKG_LIST_DIR +=  alsa-plugins_dpkg alsa-utils_dpkg fltk_dpkg   alsa-firmware_dpkg  alsa-oss_dpkg 
-PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg libvpx_dpkg nasm_dpkg x264_dpkg  x265_dpkg   ffmpeg_dpkg  sbc_dpkg  libfreeaptx_dpkg  # pipewire_dpkg   ##alsa-tools_dpkg
+PKG_LIST_DIR += libass_dpkg  fdk-aac_dpkg lame_dpkg opus_dpkg libtheora_dpkg libvpx_dpkg nasm_dpkg x264_dpkg  x265_dpkg   ffmpeg_dpkg  libfreeaptx_dpkg  # pipewire_dpkg   ##alsa-tools_dpkg
 
 
 
@@ -68,15 +68,15 @@ PKG_LIST_DIR += bluez_dpkg   sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg
 export
 
 PKG_LIST = basefile parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop systemd asciidoc util-linux coreutils glib xz fakeroot openssl kmod bzip2 usbutils libxcrypt  bash 
-PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation qt-everywhere-opensource  qcoro fmt spdlog 
+PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
 
-PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python lm-sensors libqalculate signon-plugin-oauth2 gobject-introspection libxmlb parted gtkmm3 cryptsetup gparted
-PKG_LIST +=  pulseaudio polkit synaptic
-PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu 
+PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python libqalculate gobject-introspection libxmlb parted atkmm gtkmm3 cryptsetup glibmm sbc
+PKG_LIST +=  pulseaudio polkit 
+PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu mtdev qt-everywhere-opensource
 PKG_LIST += gtk3 colord libsm  dbus libxml2  libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver xfce4-notifyd xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp libuv c-ares node  
-PKG_LIST += vulkan-headers libva llvm rustc spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing libseccomp apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel sysprof libdex  pango glibmm  pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect glibc gcc  python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 
+PKG_LIST += vulkan-headers libva llvm rustc spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing libseccomp apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel sysprof libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect glibc gcc  python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 signon-plugin-oauth2 lm-sensors gparted synaptic
 
 #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   #   qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit       libnatpmp 
 
@@ -84,6 +84,8 @@ PKG_LIST += vulkan-headers libva llvm rustc spirv-headers spirv-tools spirv-llvm
 #perl-xml-parser     gtk-doc libaccounts-glib  
 
 #    нужные пакеты imagemagick  unifont libspiro  fontforge
+
+## 
 
 PKG_LINUX = mkinitcpio rdfind linux-firmware linux
 
