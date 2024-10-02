@@ -3,17 +3,17 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 1.26.2
-PKG_NAME = libinput
-PKG_URL = https://gitlab.freedesktop.org/libinput/libinput/-/archive/${PKG_VERSION}/${PKG_NAME}-${PKG_VERSION}.tar.bz2
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
+PKG_VERSION = 2.13.0
+PKG_NAME = libwacom
+PKG_URL = https://github.com/linuxwacom/libwacom/releases/download/${PKG_NAME}-${PKG_VERSION}/${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: glibc(>=2.37.1), libevdev(>=1.13.2), libwacom(>=2.13.0), mtdev(>=1.1.7), systemd(>=256.6) "
+PKG_DEBIAN_DEPANDS = "Depends:  glibc(>=2.37.1), libevdev(>=1.13.2), libgudev(>=238) "
 
 
 PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: Input device management and event handling library."
+PKG_DEBIAN_DEST = "Description: Library to identify Wacom tablets and their features."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -58,7 +58,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Dudev-dir=/usr/lib/udev -Ddocumentation=false ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(MESON)  ${PGK_SOURCE_DIR}
 #	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 

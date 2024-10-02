@@ -15,3 +15,6 @@ python -m pip install --upgrade Cython
 python -m pip install --upgrade pytest
 python -m pip install --upgrade pyelftools
 python -m pip install --upgrade pefile
+python -m pip install --upgrade libevdev
+python -m pip install --upgrade pyudev
+

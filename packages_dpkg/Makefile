@@ -74,7 +74,7 @@ PKG_LIST += alsa-ucm-conf alsa-lib
 
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python libqalculate gobject-introspection libxmlb parted atkmm gtkmm3 cryptsetup glibmm sbc
 PKG_LIST +=  pulseaudio polkit 
-PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu mtdev qt-everywhere-opensource
+PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu mtdev libwacom libinput qt-everywhere-opensource
 PKG_LIST += gtk3 colord libsm  dbus libxml2  libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver xfce4-notifyd xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp libuv c-ares node  
 PKG_LIST += vulkan-headers libva llvm rustc spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing libseccomp apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel sysprof libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect glibc gcc  python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 signon-plugin-oauth2 lm-sensors gparted synaptic
 
