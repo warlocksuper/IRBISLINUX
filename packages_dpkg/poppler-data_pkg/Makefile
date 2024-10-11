@@ -3,10 +3,10 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 1.34.0
-PKG_NAME = gtk-doc
+PKG_VERSION = 0.4.12
+PKG_NAME = poppler-data
 
-pkgrel = 1
+pkgrel = 2
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 

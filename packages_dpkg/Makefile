@@ -2,7 +2,7 @@ PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sb
 
 PKG_LIST_DIR = basefile_dpkg xf86-input-synaptics_dpkg ncurses_dpkg readline_dpkg  #linux_dpkg # glib_dpkg ## linux_dpkg
 
-PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg libffi_dpkg make-ca_dpkg brotli_dpkg  p11-kit_dpkg xorg-server_dpkg xcb-util-wm_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg 
+PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg libffi_dpkg make-ca_dpkg brotli_dpkg  p11-kit_dpkg xorg-server_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg 
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 
 
@@ -30,7 +30,7 @@ PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 PKG_LIST_DIR +=  xf86-input-synaptics_dpkg liboauth_dpkg
 
 ### KDE
-PKG_LIST_DIR +=  sqlite_dpkg phonon_dpkg phonon-backend-gstreamer_dpkg a52dec_dpkg libmad_dpkg lua_dpkg  vlc_dpkg phonon-backend-vlc_dpkg polkit-qt-1_dpkg libdbusmenu-qt_dpkg   plasma-wayland-protocols_dpkg kuserfeedback_dpkg #KDE_dpkg
+PKG_LIST_DIR +=  sqlite_dpkg phonon_dpkg phonon-backend-gstreamer_dpkg a52dec_dpkg libmad_dpkg vlc_dpkg phonon-backend-vlc_dpkg polkit-qt-1_dpkg libdbusmenu-qt_dpkg   plasma-wayland-protocols_dpkg kuserfeedback_dpkg #KDE_dpkg
 
 
 PKG_LIST_DIR += wayland_dpkg wayland-protocols_dpkg
@@ -39,19 +39,19 @@ PKG_LIST_DIR += wayland_dpkg wayland-protocols_dpkg
 
 
 PKG_LIST_DIR += acpid_dpkg rest_dpkg yaml_dpkg ruby_dpkg harfbuzz_dpkg SDL_dpkg libwebp_dpkg libwpe_dpkg wpebackend-fdo_dpkg enchant_dpkg openjpeg_dpkg 
-PKG_LIST_DIR += libhandy_dpkg rsync_dpkg xterm_dpkg  links_dpkg lynx_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
+PKG_LIST_DIR += libhandy_dpkg rsync_dpkg xterm_dpkg  links_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
 PKG_LIST_DIR += upower_dpkg gcr3_dpkg  gcr_dpkg gnome-keyring_dpkg mutter_dpkg gnome-shell_dpkg gnome-shell-extensions_dpkg  glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
 PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg gnome-icon-theme_dpkg gdk-pixbuf-xlib_dpkg gnome-icon-theme-extras_dpkg 
 PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  gdm_dpkg  unifdef_dpkg  yasm_dpkg libaom_dpkg libavif_dpkg
-PKG_LIST_DIR += krb5_dpkg ConsoleKit_dpkg   libpipeline_dpkg  xfce4-settings_dpkg 
+PKG_LIST_DIR +=  ConsoleKit_dpkg   libpipeline_dpkg  xfce4-settings_dpkg 
 PKG_LIST_DIR += libxslt_dpkg gnome-session_dpkg colord_dpkg colord-gtk_dpkg gnome-online-accounts_dpkg cracklib_dpkg  libpwquality_dpkg libmbim_dpkg  libqmi_dpkg gsound_dpkg gnome-bluetooth_dpkg ModemManager_dpkg  
 PKG_LIST_DIR += libgtop_dpkg  libatasmart_dpkg keyutils_dpkg libaio_dpkg  LVM2_dpkg libbytesize_dpkg e2fsprogs_dpkg
 PKG_LIST_DIR +=  json-c_dpkg libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg 
-PKG_LIST_DIR +=  libdaemon_dpkg avahi_dpkg  libcdio_dpkg  libcdio-paranoia_dpkg    gvfs_dpkg   
+PKG_LIST_DIR +=  libdaemon_dpkg libcdio_dpkg  libcdio-paranoia_dpkg    gvfs_dpkg   
 PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg gnome-online-accounts_dpkg xbitmaps_dpkg 
 
 ### XFCE4
-PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg check_dpkg  xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg  pavucontrol_dpkg 
+PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg check_dpkg  xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg   
 PKG_LIST_DIR +=   xfce4-taskmanager_dpkg
 
 
@@ -68,20 +68,26 @@ PKG_LIST_DIR += bluez_dpkg   sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg
 export
 
 PKG_LIST = basefile parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop systemd asciidoc util-linux coreutils glib xz fakeroot openssl kmod bzip2 usbutils libxcrypt  bash 
-PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam sddm qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
+PKG_LIST += wget perl-xml-parser file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
 
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python libqalculate gobject-introspection libxmlb parted atkmm gtkmm3 cryptsetup glibmm sbc
 PKG_LIST +=  pulseaudio polkit 
-PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu mtdev libwacom libinput qt-everywhere-opensource
+PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu mtdev libwacom libinput xcb-util-keysyms libtommath babl gegl libgexiv2 libmypaint mypaint-brushes1 glib-networking appstream-glib poppler-data gtk-doc lynx 
+PKG_LIST +=  pavucontrol gimp avahi xcb-proto libxcb  xcb-util-wm libicns qt5-base qt5-imageformats qt5-styleplugins qt5-svg qt5-declarative qt5-virtualkeyboard qt5-wayland sddm # libtomcrypt libfbclient 
 PKG_LIST += gtk3 colord libsm  dbus libxml2  libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver xfce4-notifyd xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp libuv c-ares node  
-PKG_LIST += vulkan-headers libva llvm rustc spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing libseccomp apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel sysprof libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect glibc gcc  python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 signon-plugin-oauth2 lm-sensors gparted synaptic
+PKG_LIST += vulkan-headers libva lua imlib2 conky-all 
+PKG_LIST += krb5 
+PKG_LIST += llvm rustc spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing libseccomp apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel sysprof libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect glibc gcc  python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders gtk4 signon-plugin-oauth2 lm-sensors gparted synaptic
+
+
+
 
 #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   #   qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit       libnatpmp 
 
 
-#perl-xml-parser     gtk-doc libaccounts-glib  
+#perl-xml-parser     libaccounts-glib  
 
 #    нужные пакеты imagemagick  unifont libspiro  fontforge
 
@@ -250,10 +256,6 @@ libsigc++_dpkg:
 boost_dpkg:
 	${MAKE} -C boost
 
-pavucontrol_dpkg:
-	${MAKE} -C pavucontrol
-
-
 xfce4-pulseaudio-plugin_dpkg:
 	${MAKE} -C xfce4-pulseaudio-plugin
 
@@ -289,9 +291,6 @@ libcdio_dpkg:
 
 libdaemon_dpkg:
 	${MAKE} -C libdaemon
-
-avahi_dpkg:
-	${MAKE} -C avahi
 
 phonon_dpkg:
 	${MAKE} -C phonon
@@ -533,9 +532,7 @@ KDE_dpkg:
 xorg-server_dpkg:
 		${MAKE} -C xorg-server
 		
-xcb-util-wm_dpkg:
-		${MAKE} -C xcb-util-wm
-		
+
 xorgproto_dpkg:
 		${MAKE} -C xorgproto
 		

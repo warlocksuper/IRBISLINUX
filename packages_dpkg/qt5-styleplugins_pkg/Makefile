@@ -3,10 +3,10 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 1.34.0
-PKG_NAME = gtk-doc
+PKG_VERSION = 5.0.0.20170311
+PKG_NAME = qt5-styleplugins
 
-pkgrel = 1
+pkgrel = 35
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 

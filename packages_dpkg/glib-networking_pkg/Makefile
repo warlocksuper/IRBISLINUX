@@ -3,23 +3,17 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-
-COPY_ROOTFS = ${ROOT_FS}/etc
-
-PKG_VERSION = 4.18.3
-PKG_NAME = xfce4-session
-PKG_URL = https://archive.xfce.org/src/xfce/xfce4-session/4.18/xfce4-session-4.18.3.tar.bz2
+PKG_VERSION = 2.80.0
+PKG_NAME = glib-networking
+PKG_URL = https://gitlab.gnome.org/GNOME/glib-networking/-/archive/2.80.0/glib-networking-2.80.0.tar.bz2
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  libwnck(>=43.0), libxfce4ui(>=4.18.2), iceauth(>=1.0.9)  "
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
 
-PKG_DEBIAN_SECTION = "Section: xfce"
+PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: Xfce4 Session is a session manager for Xfce. Its task is to save the state of your desktop (opened applications and their location) and restore it during a next startup. You can create several different sessions and choose one of them on startup."
-
-PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
-
+PKG_DEBIAN_DEST = "Description: Network extensions for GLib."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -30,15 +24,13 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-
-
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
+#PKG_COMPILE_MAKE = ""
+PKG_COMPILE_NINJA = ""
+PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
-PKG_COMPILE_MAKE = ""
-#PKG_COMPILE_NINJA = ""
-PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
 
@@ -66,9 +58,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-#	@cd ${PGK_SOURCE_DIR} && ./autogen.sh
-	@cd ${PGK_SOURCE_DIR} && ./configure --prefix=/usr  --sysconfdir=/etc --disable-legacy-sm --with-x
-
+	@cd ${PKG_BUILD_DIR} && $(MESON)  ${PGK_SOURCE_DIR}
+#	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 
 include ${ROOT_DIR}/scripts/compile.mk

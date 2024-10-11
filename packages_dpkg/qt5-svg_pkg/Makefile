@@ -3,8 +3,8 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 1.34.0
-PKG_NAME = gtk-doc
+PKG_VERSION = 5.15.15+kde+r5
+PKG_NAME = qt5-svg
 
 pkgrel = 1
 

@@ -1,25 +1,19 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
+PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
+PKG_VERSION = 1.21.7
+PKG_NAME = conky-all
+PKG_URL = https://github.com/brndnmtthws/conky/archive/refs/tags/v${PKG_VERSION}.tar.gz
+PKG_TAR_FILE = v${PKG_VERSION}.tar.gz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/conky-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends:  lua(>=5.4.7-1), imlib2(>=1.12.3-2) "
+#PKG_BUILD_REPLACES = "  "
 
-COPY_ROOTFS = ${ROOT_FS}/etc
+PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_VERSION = 4.18.3
-PKG_NAME = xfce4-session
-PKG_URL = https://archive.xfce.org/src/xfce/xfce4-session/4.18/xfce4-session-4.18.3.tar.bz2
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  libwnck(>=43.0), libxfce4ui(>=4.18.2), iceauth(>=1.0.9)  "
-
-
-PKG_DEBIAN_SECTION = "Section: xfce"
-
-PKG_DEBIAN_DEST = "Description: Xfce4 Session is a session manager for Xfce. Its task is to save the state of your desktop (opened applications and their location) and restore it during a next startup. You can create several different sessions and choose one of them on startup."
-
-PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
-
+PKG_DEBIAN_DEST = "Description: Conky is a free, light-weight system monitor for X, that displays any kind of information on your desktop. It can also run on Wayland (with caveats), macOS, output to your console, a file, or even HTTP."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -35,10 +29,10 @@ PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
-
 PKG_COMPILE_MAKE = ""
 #PKG_COMPILE_NINJA = ""
-PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
+PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
+PKG_AUTORECONFIG = ${PGK_SOURCE_DIR}/configure
 
 
 
@@ -65,10 +59,11 @@ ${PKG_TAR}:
 ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
-PKG_CONFIGURE:
-#	@cd ${PGK_SOURCE_DIR} && ./autogen.sh
-	@cd ${PGK_SOURCE_DIR} && ./configure --prefix=/usr  --sysconfdir=/etc --disable-legacy-sm --with-x
+${PKG_AUTORECONFIG}:
+	@cd ${PGK_SOURCE_DIR} && autoreconf -i
 
+PKG_CONFIGURE:
+	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk

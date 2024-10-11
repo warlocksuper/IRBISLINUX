@@ -3,10 +3,10 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 1.34.0
-PKG_NAME = gtk-doc
+PKG_VERSION = 2.10.38
+PKG_NAME = gimp
 
-pkgrel = 1
+pkgrel = 4
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 

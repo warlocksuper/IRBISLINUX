@@ -1,21 +1,21 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-#libdaemon-0.14
+
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 0.8
-PKG_NAME = avahi
-PKG_URL = https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
+PKG_VERSION = 5.0
+PKG_NAME = pavucontrol
+PKG_URL = http://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-6.1.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: glib(>=2.76.4),  libdaemon(>=0.14)"
+PKG_DEBIAN_DEPANDS = "Depends: gtkmm3(>=3.24.9), libsigc++(>=3.6.0), pulseaudio(>=17.0) "
 
 
-PKG_DEBIAN_SECTION = "Section:  network"
+PKG_DEBIAN_SECTION = "Section: audio"
 
-PKG_DEBIAN_DEST = "Description: The Avahi package is a system which facilitates service discovery on a local network."
+PKG_DEBIAN_DEST = "Description: PulseAudio Volume Control (pavucontrol) is a simple GTK based volume control tool ("mixer") for the PulseAudio sound server. In contrast to classic mixer tools, this one allows you to control both the volume of hardware devices and of each playback stream separately."
 
 PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
 
@@ -57,20 +57,7 @@ ${PGK_SOURCE_DIR}:
 
 ${PKG_CONFIGURE}:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PGK_SOURCE_DIR} && sed -i '426a if (events & AVAHI_WATCH_HUP) { \
-client_free(c); \
-return; \
-}' avahi-daemon/simple-protocol.c
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --disable-static     \
-    --disable-libevent   \
-    --disable-mono       \
-    --disable-monodoc    \
-    --disable-python     \
-    --disable-qt3        \
-    --disable-qt4        \
-    --enable-core-docs   \
-    --with-distro=none   \
-    --with-dbus-system-address='unix:path=/run/dbus/system_bus_socket'
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --docdir=/usr/share/doc/pavucontrol-5.0
 
 ${PKG_COMPILE}:
 	@cd ${PKG_BUILD_DIR} && make
