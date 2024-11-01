@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+if ! id "ldap" >/dev/null 2>&1; then
+	groupadd  -g 439  ldap
+	useradd -c "LDAP Server" -g ldap -b /var/lib/openldap ldap
+	passwd -ql ldap
+fi
+
+mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+

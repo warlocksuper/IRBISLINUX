@@ -4,3 +4,9 @@ if [ -d /var/lib/postgres/data ]; then
 	/usr/bin/postgresql-check-db-dir /var/lib/postgres/data || true
 fi
 
+if ! id "postgres" >/dev/null 2>&1; then
+	groupadd    postgres
+	useradd -c "PostgreSQL user" -g postgres -b /var/lib/postgres -s  /usr/bin/bash  postgres
+	passwd -ql postgres
+fi
+
