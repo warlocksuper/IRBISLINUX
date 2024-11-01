@@ -1,0 +1,103 @@
+# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+
+pkgname=gnome-settings-daemon
+pkgver=47.1
+pkgrel=1
+pkgdesc="GNOME Settings Daemon"
+url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
+arch=(x86_64)
+license=(
+  GPL-2.0-or-later
+  LGPL-2.0-or-later
+)
+depends=(
+  alsa-lib
+  bash
+  cairo
+  dconf
+  fontconfig
+  gcc-libs
+  gcr-4
+  geoclue
+  geocode-glib-2
+  glib2
+  glibc
+  gnome-desktop
+  gsettings-desktop-schemas
+  gtk3
+  libcanberra-pulse
+  libcolord
+  libcups
+  libgudev
+  libgweather4
+  libmm-glib
+  libnm
+  libnotify
+  libp11-kit
+  libpulse
+  librsvg
+  libwacom
+  libx11
+  libxext
+  libxfixes
+  libxi
+  nss
+  pango
+  polkit
+  pulse-native-provider
+  systemd
+  systemd-libs
+  upower
+  wayland
+  xorg-xrdb
+)
+makedepends=(
+  docbook-xsl
+  git
+  glib2-devel
+  libxslt
+  meson
+  python
+  usbguard
+)
+checkdepends=(
+  python-dbusmock
+  python-gobject
+)
+optdepends=('usbguard: USB protection support')
+groups=(gnome)
+backup=(etc/xdg/Xwayland-session.d/00-xrdb)
+source=(
+  "git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#tag=${pkgver/[a-z]/.&}"
+  "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+  0001-subprojects-Update-gvc-to-latest-commit.patch
+)
+b2sums=('2e0a3c678673511be82a69607bf23c46869eaf2478adec849bdecbc6015e9e4e91f5e0f216f2c1df833e08d91504c065ba9bff10a292a7ff166551eaf375cfef'
+        'SKIP'
+        '51cfe280b938ae8c74a46432feddbafb598d7e82fec7dfbf657791cb4749a0a205d5e99decb4953272451b03c91fe7c3891df0c4e945c2070615405db3ec897c')
+
+prepare() {
+  cd $pkgname
+
+  git apply -3 ../0001-subprojects-Update-gvc-to-latest-commit.patch
+
+  git submodule init
+  git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
+  git -c protocol.file.allow=always -c protocol.allow=never submodule update
+}
+
+build() {
+  arch-meson -Dsmartcard=false  -Dwayland=false $pkgname build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
+}
+
+package() {
+  meson install -C build --destdir "$pkgdir"
+}
+
+# vim:set sw=2 sts=-1 et:

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ -d /var/lib/postgres/data ]; then
+	/usr/bin/postgresql-check-db-dir /var/lib/postgres/data || true
+fi
+

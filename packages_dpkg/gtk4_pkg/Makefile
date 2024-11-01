@@ -62,9 +62,8 @@ PKG_CONFIGURE:
 	@cd ${PKG_BUILD_DIR} && $(MESON)  -Dbroadway-backend=true \
     -Dcloudproviders=enabled \
     -Dcolord=enabled \
-    -Ddocumentation=false \
     -Dman-pages=false \
-    -Dtracker=enabled -Dvulkan=disabled ${PGK_SOURCE_DIR}
+    -Dtracker=enabled -Dvulkan=disabled ${PGK_SOURCE_DIR}  ##     -Ddocumentation=false \
 
 
 

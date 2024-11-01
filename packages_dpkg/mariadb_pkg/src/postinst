@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+if ! id "mysql" >/dev/null 2>&1; then
+	groupadd mysql
+	useradd -c "Mysql Daemon IRBIS" -g mysql  mysql
+	passwd -ql mysql
+fi
+
+
+mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+

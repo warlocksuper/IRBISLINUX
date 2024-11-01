@@ -1,20 +1,25 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
+
+
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
 
-PKG_VERSION = 3.24.41
-PKG_NAME = gtk3
-PKG_URL = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.41.tar.xz
-PKG_TAR_FILE = gtk+-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/gtk+-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: at-spi2-core(>=2.48.3),  gdk-pixbuf(>=2.42.10), libepoxy(>=1.5.10), pango(>=1.50.12.1), libxcursor(>=1.2.1) "
-PKG_BUILD_REPLACES = "gtk+  "
+PKG_VERSION = 46.2
+PKG_NAME = gnome-bluetooth
+PKG_URL = https://download.gnome.org/sources/gnome-bluetooth/46/gnome-bluetooth-46.2.tar.xz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends: gtk4(>=4.8.3), gsound(>=1.0.3), libnotify(>=0.8.1), upower(>=1.90.2)  "
 
-PKG_DEBIAN_SECTION = "Section: librares"
 
-PKG_DEBIAN_DEST = "Description: The GTK+ 3 package contains libraries used for creating graphical user interfaces for applications."
+PKG_DEBIAN_SECTION = "Section: gnome"
+
+PKG_DEBIAN_DEST = "Description: The GNOME Bluetooth package contains tools for managing and manipulating Bluetooth devices using the GNOME Desktop."
+
+PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
+
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -25,15 +30,13 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-
-
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 #PKG_COMPILE_MAKE = ""
 PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
-
+PKG_AUTORECONFIG = ${PGK_SOURCE_DIR}/configure
 
 
 
@@ -42,7 +45,7 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN} 
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -60,15 +63,14 @@ ${PKG_TAR}:
 ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
+${PKG_AUTORECONFIG}:
+	@cd ${PGK_SOURCE_DIR} && autoreconf -i
+
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Dman=false -Dwayland_backend=true  -Dbroadway_backend=true -Dintrospection=true ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && meson setup --prefix=/usr --buildtype=release ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk
-
-PKG_MAKE_POST_INTALL:
-#	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
-
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk
 	

@@ -3,8 +3,8 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 1.17.0
-PKG_NAME = libxcb
+PKG_VERSION = 15.1.0
+PKG_NAME = unicode-character-database
 
 pkgrel = 1
 
@@ -26,7 +26,7 @@ PKG_COMPILE_MAKE = ""
 #PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 PKG_CONFIGURE = ${PKG_COMPILE_DIR}/Makefile
-PKG_BUILD_NOT_DEL_LA = ""
+
 
 .PHONY:  all, BUILD_DIR, COPYSOURCE, PKG_BUILD_DIR_DEBIAN
 

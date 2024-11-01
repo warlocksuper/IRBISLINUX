@@ -1,6 +1,7 @@
 #!/bin/bash
 
 
+python -m pip install --upgrade swig
 python -m pip install --upgrade packaging
 python -m pip install --upgrade scanner
 python -m pip install --upgrade cython
@@ -19,3 +20,10 @@ python -m pip install --upgrade libevdev
 python -m pip install --upgrade pyudev
 python -m pip install --upgrade parameterized
 python -m pip install --upgrade lxml
+python -m pip install --upgrade setuptools-rust
+python -m pip install --upgrade setuptools-gettext
+python -m pip install --upgrade configobj
+python -m pip install --upgrade tzlocal
+python -m pip install --upgrade PyYAML
+python -m pip install --upgrade dulwich
+python -m pip install --upgrade fastbencode
