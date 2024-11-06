@@ -1,11 +1,14 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
+
+###   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh                  устанавливает и обновляет rustc
+
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
-PKG_VERSION = 1.76.0
+PKG_VERSION = 1.82.0
 PKG_NAME = rustc
-PKG_URL = https://static.rust-lang.org/dist/rustc-1.76.0-src.tar.xz
+PKG_URL = https://static.rust-lang.org/dist/rustc-${PKG_VERSION}-src.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}-src.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}-src
 PKG_DEBIAN_DEPANDS = "Depends:  "
@@ -13,7 +16,7 @@ PKG_DEBIAN_DEPANDS = "Depends:  "
 
 PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: rustc compiller."
+PKG_DEBIAN_DEST = "Description: Systems programming language focused on safety, speed and concurrency."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -41,7 +44,7 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR}  ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE  ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -60,7 +63,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE) --llvm-config=/usr/bin/llvm-config --release-description="IRBIS Linux" --enable-llvm-link-shared --enable-ninja
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE) --llvm-config=/usr/bin/llvm-config --release-description="IRBIS Linux" --enable-llvm-link-shared 
 #	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 

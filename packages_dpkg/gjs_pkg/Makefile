@@ -3,23 +3,17 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-
-COPY_ROOTFS = ${ROOT_FS}/etc
-
-PKG_VERSION = 44.10
-PKG_NAME = gnome-shell
-PKG_URL = https://download.gnome.org/sources/gnome-shell/44/gnome-shell-${PKG_VERSION}.tar.xz
+PKG_VERSION = 1.82.1
+PKG_NAME = gjs
+PKG_URL = https://download.gnome.org/sources/gjs/1.82/${PKG_NAME}-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.1), libtasn1(>=4.19.0.1), evolution-data-server(>=3.54.0), gjs(>=1.82.1) "
+PKG_DEBIAN_DEPANDS = "Depends: libmozjs(>=0.128.3) "
 
 
 PKG_DEBIAN_SECTION = "Section: gnome"
 
-PKG_DEBIAN_DEST = "Description: The GNOME Shell is the core user interface of the GNOME Desktop environment."
-
-PKG_COMPILE = ${PGK_BUILD_DIR}/brotli
-
+PKG_DEBIAN_DEST = "Description: Javascript Bindings for GNOME."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -30,6 +24,7 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
+PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 #PKG_COMPILE_MAKE = ""
@@ -63,7 +58,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dtests=false  -Dman=false ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(MESON) -Dinstalled_tests=false ${PGK_SOURCE_DIR}
+#	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 
 include ${ROOT_DIR}/scripts/compile.mk

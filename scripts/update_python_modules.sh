@@ -7,7 +7,7 @@ python -m pip install --upgrade scanner
 python -m pip install --upgrade cython
 python -m pip install --upgrade PyGObject
 python -m pip install --upgrade html5lib
-python -m pip install --upgrade  sphinx
+python -m pip install --upgrade sphinx
 python -m pip install --upgrade markdown
 python -m pip install --upgrade pygments
 python -m pip install --upgrade typogrify

@@ -28,8 +28,9 @@ endif
 
 ifdef PKG_COMPILE_CARGO
 COMPILE:
-	@cd ${PKG_COMPILE_DIR} && cargo build --release --frozen --all-targets ${PKG_COMPILE_MAKE_ADD_OPT} 
+	@cd ${PKG_COMPILE_DIR} && cargo build --release ${PKG_COMPILE_MAKE_ADD_OPT} 
 
-
+${PKG_MAKE_INTALL}:
+	@cd ${PKG_COMPILE_DIR} && cargo install --path ${PKG_BUILD_DIR_DPKG} 
 endif	
 
