@@ -562,6 +562,26 @@ fi
 
 }
 
+
+resolve_replaces()
+{
+
+if [[ ! -z "$@" ]]; then
+local spd=""
+	for val in "$@"; do
+		if [[ $val = *$'\n'* ]]; then
+			error "$(gettext "Invalid value for %s")" "$val"
+			exit $E_PKGBUILD_ERROR
+		fi
+		spd="$spd $val, "
+	done
+	echo $spd | sed 's/,$/ /'
+else 
+depe=""
+echo  $depe
+fi
+
+}
 #deplist=($(dpkg-query -f ' ${Package}(>=${Version}),' -W "$@" | sed 's/,$/ /')) || exit $E_INSTALL_DEPS_FAILED
 
 write_control() {
@@ -590,6 +610,9 @@ then
 else
 	write_kv_pair "Section"       "${groups[@]}"	
 fi 
+	#write_kv_pair "Replaces"    "${replaces[@]//+([[:space:]])/}"
+	qrep=$(resolve_replaces "${replaces[@]}")
+	write_kv_pair "Replaces"      "$qrep"
 	qdep=$(resolve_depands "${depends[@]}")
 	write_kv_pair "Depends"      "$qdep"
 	write_kv_pair "Installed-Size" "$size"

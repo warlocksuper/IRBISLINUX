@@ -80,15 +80,15 @@ PKG_LIST += gtk3 colord libsm  dbus libxml2  libxfce4ui xfce4-session xfce4-powe
 PKG_LIST += vulkan-headers libva lua imlib2 conky-all 
 PKG_LIST += krb5 
 PKG_LIST += llvm mariadb perl perl-ipc-run postgresql libsasl libsodium groff openldap libcap-ng  audit gtk4 bash-completion dconf gsettings-desktop-schemas gnome-desktop gnome-session libsoup libsoup3 geocode-glib libgweather4 geoclue gnome-settings-daemon
-PKG_LIST += make-ca rest  gnome-online-accounts breezy gnome-common unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs gjs  gnome-shell gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing libseccomp apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel sysprof libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect glibc gcc  python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors gparted synaptic
+PKG_LIST += make-ca rest gnome-online-accounts breezy gnome-common unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs gjs tdb talloc tevent perl-parse-yapp ncurses samba gettext gnome-control-center gnome-shell gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing libseccomp apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel sysprof libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect glibc gcc  python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors gparted synaptic
 
 
 
 
-#  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   #   qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit       libnatpmp   gnome-control-center  rustc
+#  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   #   qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    webkit2gtk   libnatpmp     rustc
 
 
-#perl-xml-parser     libaccounts-glib   lld webkit2gtk-4.1
+#perl-xml-parser     libaccounts-glib   lld -4.1
 
 #    нужные пакеты imagemagick  unifont libspiro  fontforge
 

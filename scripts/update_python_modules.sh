@@ -27,3 +27,4 @@ python -m pip install --upgrade tzlocal
 python -m pip install --upgrade PyYAML
 python -m pip install --upgrade dulwich
 python -m pip install --upgrade fastbencode
+python -m pip install --upgrade dnspython
