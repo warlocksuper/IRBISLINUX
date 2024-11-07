@@ -2,7 +2,7 @@ PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sb
 
 PKG_LIST_DIR = basefile_dpkg xf86-input-synaptics_dpkg ncurses_dpkg readline_dpkg  #linux_dpkg # glib_dpkg ## linux_dpkg
 
-PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg libffi_dpkg  brotli_dpkg  p11-kit_dpkg xorg-server_dpkg xorgproto_dpkg xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg 
+PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg libffi_dpkg  brotli_dpkg  p11-kit_dpkg xorg-server_dpkg  xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg 
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 
 
@@ -31,11 +31,6 @@ PKG_LIST_DIR +=  xf86-input-synaptics_dpkg liboauth_dpkg
 
 ### KDE
 PKG_LIST_DIR +=  sqlite_dpkg phonon_dpkg phonon-backend-gstreamer_dpkg a52dec_dpkg libmad_dpkg vlc_dpkg phonon-backend-vlc_dpkg polkit-qt-1_dpkg libdbusmenu-qt_dpkg   plasma-wayland-protocols_dpkg kuserfeedback_dpkg #KDE_dpkg
-
-
-PKG_LIST_DIR += wayland_dpkg wayland-protocols_dpkg
-
-
 
 
 PKG_LIST_DIR += acpid_dpkg yaml_dpkg ruby_dpkg harfbuzz_dpkg SDL_dpkg libwebp_dpkg libwpe_dpkg wpebackend-fdo_dpkg enchant_dpkg openjpeg_dpkg 
@@ -75,11 +70,11 @@ PKG_LIST += alsa-ucm-conf alsa-lib
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python libqalculate gobject-introspection libxmlb parted atkmm gtkmm3 cryptsetup glibmm sbc
 PKG_LIST +=  pulseaudio polkit 
 PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu mtdev libwacom libinput xcb-util-keysyms libtommath babl gegl libgexiv2 libmypaint mypaint-brushes1 glib-networking appstream-glib poppler-data gtk-doc lynx 
-PKG_LIST +=  pavucontrol gimp avahi xcb-proto libxcb  xcb-util-wm libicns qt5-base qt5-imageformats qt5-styleplugins qt5-svg qt5-declarative qt5-virtualkeyboard qt5-wayland qt5-websockets qt5-webglplugin sddm xfce4-notifyd # libtomcrypt libfbclient 
+PKG_LIST +=  pavucontrol gimp avahi xcb-proto libxcb  xcb-util-wm libicns qt5-base qt5-imageformats qt5-styleplugins qt5-svg qt5-declarative qt5-virtualkeyboard qt5-wayland qt5-websockets qt5-webglplugin qt5-x11extras sddm xfce4-notifyd # libtomcrypt libfbclient 
 PKG_LIST +=  cairo gtk3 colord libsm  dbus libxml2  libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver  xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp libuv c-ares node  
 PKG_LIST += vulkan-headers libva lua imlib2 conky-all 
 PKG_LIST += krb5 
-PKG_LIST += llvm mariadb perl perl-ipc-run postgresql libsasl libsodium groff openldap libcap-ng  audit orc cdparanoia opus libxv  gstreamer gtk4 bash-completion dconf gsettings-desktop-schemas gnome-desktop gnome-session libsoup libsoup3 geocode-glib libgweather4 geoclue gnome-settings-daemon
+PKG_LIST += llvm mariadb perl perl-ipc-run postgresql libsasl libsodium groff openldap libcap-ng  audit orc cdparanoia opus libxv v4l-utils aalib opencore-amr flac libcaca libdv mpg123 libraw1394 libavc1394 libiec61883 wayland xorgproto wayland-protocols xorg-xwayland  mutter46 gnome-shell gstreamer gtk4 bash-completion dconf gsettings-desktop-schemas gnome-desktop gnome-session libsoup libsoup3 geocode-glib libgweather4 geoclue gnome-settings-daemon
 PKG_LIST += make-ca rest gnome-online-accounts breezy gnome-common unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs gjs tdb talloc tevent perl-parse-yapp ncurses samba gettext gnome-control-center gnome-shell gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing  apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel sysprof libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect glibc gcc  python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors gparted synaptic
 
 
@@ -516,10 +511,6 @@ KDE_dpkg:
 		
 xorg-server_dpkg:
 		${MAKE} -C xorg-server
-		
-
-xorgproto_dpkg:
-		${MAKE} -C xorgproto
 		
 xcb-util-renderutil_dpkg:
 		${MAKE} -C xcb-util-renderutil

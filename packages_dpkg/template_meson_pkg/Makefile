@@ -1,8 +1,7 @@
-OS_CONFIG = ${ROOT_DIR}/.config
-include ${OS_CONFIG}
-
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
+
+
 PKG_VERSION = 2.39.3
 PKG_NAME = util-linux
 PKG_URL = https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.xz

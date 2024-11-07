@@ -63,7 +63,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dtests=false  -Dman=false ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Dtests=false  -Dman=false -Dextensions_tool=false -Dextensions_app=false -Dsoup2=false ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk

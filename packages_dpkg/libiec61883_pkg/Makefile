@@ -1,8 +1,11 @@
+OS_CONFIG = ${ROOT_DIR}/.config
+include ${OS_CONFIG}
+
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
-PKG_VERSION = 2.39.3
-PKG_NAME = util-linux
-PKG_URL = https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.xz
+PKG_VERSION = 1.2.0
+PKG_NAME = libiec61883
+PKG_URL = https://www.kernel.org/pub/linux/libs/ieee1394/${PKG_NAME}-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends:  "
@@ -10,7 +13,7 @@ PKG_DEBIAN_DEPANDS = "Depends:  "
 
 PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: The Util-linux package contains miscellaneous utility programs."
+PKG_DEBIAN_DEST = "Description: A higher level API for streaming DV, MPEG-2 and audio over Linux IEEE 1394."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
