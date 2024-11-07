@@ -673,8 +673,6 @@ create_package() {
 
 	pkgtype=${pkgtype:-pkg}
 
-	mkdir -p DEBIAN
-
 	if [[ ! -d $pkgdir ]]; then
 		error "$(gettext "Missing %s directory.")" "\$pkgdir/"
 		plainerr "$(gettext "Aborting...")"
@@ -683,7 +681,7 @@ create_package() {
 
 	cd_safe "$pkgdir"
 	msg "$(gettext "Creating package \"%s.deb\"...")" "$pkgname"
-
+	mkdir -p DEBIAN
 	pkgarch="amd64" ##$(get_pkg_arch)
 	msg2 "$(gettext "Generating %s file...")" "control"
 	#write_pkginfo > .PKGINFO
