@@ -51,7 +51,7 @@ PKG_LIST_DIR +=  libdaemon_dpkg libcdio_dpkg  libcdio-paranoia_dpkg    gvfs_dpkg
 PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg xbitmaps_dpkg 
 
 ### XFCE4
-PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  cairo_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg check_dpkg  xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg   
+PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg check_dpkg  xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg   
 PKG_LIST_DIR +=   xfce4-taskmanager_dpkg
 
 
@@ -76,10 +76,10 @@ PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xm
 PKG_LIST +=  pulseaudio polkit 
 PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu mtdev libwacom libinput xcb-util-keysyms libtommath babl gegl libgexiv2 libmypaint mypaint-brushes1 glib-networking appstream-glib poppler-data gtk-doc lynx 
 PKG_LIST +=  pavucontrol gimp avahi xcb-proto libxcb  xcb-util-wm libicns qt5-base qt5-imageformats qt5-styleplugins qt5-svg qt5-declarative qt5-virtualkeyboard qt5-wayland qt5-websockets qt5-webglplugin sddm xfce4-notifyd # libtomcrypt libfbclient 
-PKG_LIST += gtk3 colord libsm  dbus libxml2  libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver  xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp libuv c-ares node  
+PKG_LIST +=  cairo gtk3 colord libsm  dbus libxml2  libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver  xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp libuv c-ares node  
 PKG_LIST += vulkan-headers libva lua imlib2 conky-all 
 PKG_LIST += krb5 
-PKG_LIST += llvm mariadb perl perl-ipc-run postgresql libsasl libsodium groff openldap libcap-ng  audit gtk4 bash-completion dconf gsettings-desktop-schemas gnome-desktop gnome-session libsoup libsoup3 geocode-glib libgweather4 geoclue gnome-settings-daemon
+PKG_LIST += llvm mariadb perl perl-ipc-run postgresql libsasl libsodium groff openldap libcap-ng  audit orc gstreamer gtk4 bash-completion dconf gsettings-desktop-schemas gnome-desktop gnome-session libsoup libsoup3 geocode-glib libgweather4 geoclue gnome-settings-daemon
 PKG_LIST += make-ca rest gnome-online-accounts breezy gnome-common unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs gjs tdb talloc tevent perl-parse-yapp ncurses samba gettext gnome-control-center gnome-shell gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing  apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel sysprof libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect glibc gcc  python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors gparted synaptic
 
 

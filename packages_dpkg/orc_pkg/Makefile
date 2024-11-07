@@ -3,17 +3,17 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 4.15.2
-PKG_NAME = gtk4
-PKG_URL = https://download.gnome.org/sources/gtk/4.15/gtk-${PKG_VERSION}.tar.xz
-PKG_TAR_FILE = gtk-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/gtk-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.18.2), dconf(>=0.40.0), desktop-file-utils(>=0.26), fontconfig(>=2.14.2), fribidi(>=1.0.12), gdk-pixbuf(>=2.42.12), gst-plugins-bad(>=1.22.0), harfbuzz(>=7.0.0), iso-codes(>=4.15.0), libcloudproviders(>=0.3.6), colord(>=1.4.7), cups(>=2.4.2), mesa(>=22.3.5), libepoxy(>=1.5.10), tracker(>=3.4.2), libxdamage(>=1.1.6)  "  #adwaita-icon-theme cantarell-fonts
+PKG_VERSION = 0.4.40
+PKG_NAME = orc
+PKG_URL = https://gitlab.freedesktop.org/gstreamer/orc/-/archive/0.4.40/${PKG_NAME}-${PKG_VERSION}.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
 
 PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: GObject-based multi-platform GUI toolkit."
+PKG_DEBIAN_DEST = "Description: Optimized Inner Loop Runtime Compiler."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -24,14 +24,13 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
-
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
-
+PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 #PKG_COMPILE_MAKE = ""
 PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
+
 
 
 
@@ -59,12 +58,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON)  -Dbroadway-backend=true \
-    -Dcloudproviders=enabled \
-    -Dcolord=enabled \
-    -Dman-pages=false \
-    -Dtracker=enabled -Dvulkan=disabled ${PGK_SOURCE_DIR}  ##     -Ddocumentation=false \
-
+	@cd ${PKG_BUILD_DIR} && $(MESON)  ${PGK_SOURCE_DIR}
+#	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 
 include ${ROOT_DIR}/scripts/compile.mk
