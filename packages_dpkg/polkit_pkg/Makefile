@@ -65,7 +65,7 @@ ${PGK_SOURCE_DIR}:
 
 PKG_CONFIGURE:
 	@cd ${PKG_BUILD_DIR} && sed -e 's/JS_Init/JS::DisableJitBackend(); &/'  -i  ${PGK_SOURCE_DIR}/src/polkitbackend/polkitbackendjsauthority.cpp
-	@cd ${PKG_BUILD_DIR} &&  meson setup ${PGK_SOURCE_DIR} --prefix=/usr --buildtype=release -Dman=false -Dsession_tracking=libsystemd-login  -Dtests=true -Dintrospection=false
+	@cd ${PKG_BUILD_DIR} &&  meson setup ${PGK_SOURCE_DIR} --prefix=/usr --buildtype=release -Dman=false     -D polkitd_uid=27 -D polkitd_user=polkitd -D session_tracking=libsystemd-login  -Dtests=true -Dintrospection=true
 
 
 include ${ROOT_DIR}/scripts/compile.mk

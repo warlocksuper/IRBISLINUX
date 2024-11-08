@@ -1,5 +1,5 @@
-OS_CONFIG = ${ROOT_DIR}/.config
-include ${OS_CONFIG}
+
+# исправление ошибки g_close   в файле с ошибкой добавить  #include <glib/gstdio.h>
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
@@ -9,7 +9,7 @@ PKG_URL = https://download.gnome.org/sources/gtk/4.15/gtk-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = gtk-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/gtk-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.18.2), dconf(>=0.40.0), desktop-file-utils(>=0.26), fontconfig(>=2.14.2), fribidi(>=1.0.12), gdk-pixbuf(>=2.42.12), gst-plugins-bad(>=1.22.0), harfbuzz(>=7.0.0), iso-codes(>=4.15.0), libcloudproviders(>=0.3.6), colord(>=1.4.7), cups(>=2.4.2), mesa(>=22.3.5), libepoxy(>=1.5.10), tracker(>=3.4.2), libxdamage(>=1.1.6)  "  #adwaita-icon-theme cantarell-fonts
-
+PKG_BUILD_REPLACES = " cairo, wayland-protocols "
 
 PKG_DEBIAN_SECTION = "Section: system"
 
@@ -59,7 +59,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON)  -Dbroadway-backend=true \
+	@cd ${PKG_BUILD_DIR} && $(MESON)  -Dbroadway-backend=true -Dintrospection="enabled" \
     -Dcloudproviders=enabled \
     -Dcolord=enabled \
     -Dman-pages=false \

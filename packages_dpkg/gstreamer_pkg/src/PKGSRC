@@ -264,8 +264,10 @@ build() {
     -D gstreamer:ptp-helper-permissions=capabilities
     -D libnice=disabled
     -D orc-source=system
-    -D package-name="Arch Linux GStreamer ${epoch:+$epoch:}$pkgver-$pkgrel"
-    -D package-origin="https://www.archlinux.org/"
+    -D qt5=disabled
+    -D qt6=disabled
+    -D package-name="IRBIS Linux GStreamer ${epoch:+$epoch:}$pkgver-$pkgrel"
+    -D package-origin="https://www.irbis.su"
     -D vaapi=enabled
   )
 

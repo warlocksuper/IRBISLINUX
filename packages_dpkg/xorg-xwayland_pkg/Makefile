@@ -7,8 +7,8 @@ PKG_NAME = xorg-xwayland
 PKG_URL = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = xwayland-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/xwayland-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: xorgproto(>=2024.1), wayland-protocols "
-
+PKG_DEBIAN_DEPANDS = "Depends: xorgproto(>=2024.1), wayland-protocols(>=1.34) "
+PKG_BUILD_REPLACES = " xorg-server "
 
 PKG_DEBIAN_SECTION = "Section: system"
 

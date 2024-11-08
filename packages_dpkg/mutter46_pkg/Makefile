@@ -3,12 +3,12 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 42.4
+PKG_VERSION = 44.9
 PKG_NAME = mutter46
-PKG_URL = https://gitlab.gnome.org/GNOME/mutter/-/archive/42.4/mutter-42.4.tar.gz
-PKG_TAR_FILE = mutter-${PKG_VERSION}.tar.gz
+PKG_URL = https://download.gnome.org/sources/mutter/44/mutter-44.9.tar.xz
+PKG_TAR_FILE = mutter-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/mutter-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
+PKG_DEBIAN_DEPANDS = "Depends: "
 
 
 PKG_DEBIAN_SECTION = "Section: system"
@@ -58,7 +58,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON) -D docs=false     -D egl_device=true     -D installed_tests=false     -D tests=false     -D wayland_eglstream=false  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(MESON) -D docs=false     -D egl_device=true     -D installed_tests=false     -D tests=false     -D wayland_eglstream=false  -D profiler=false ${PGK_SOURCE_DIR}
 #	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 
