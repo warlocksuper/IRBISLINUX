@@ -1,1 +1,3 @@
 util-linux: tinfo ncurses flex
+libxslt: libxml2
+glib: libxslt pcre2
