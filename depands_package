@@ -1,1 +1,1 @@
-util-linux: tinfo ncurses 
+util-linux: tinfo ncurses flex
