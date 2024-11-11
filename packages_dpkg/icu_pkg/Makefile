@@ -1,10 +1,10 @@
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
 
-PKG_VERSION = 72_1
+PKG_VERSION = 72.1
 PKG_NAME = icu
 PKG_URL = https://github.org/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-src.tgz
-PKG_TAR_FILE = icu4c-${PKG_VERSION}-src.tgz
+PKG_TAR_FILE = icu4c-72_1-src.tgz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/icu/source
 PKG_DEBIAN_DEPANDS = "Depends: "
 
