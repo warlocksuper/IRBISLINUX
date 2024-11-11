@@ -3,7 +3,7 @@ include ${OS_CONFIG}
 
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
-PKG_VERSION = 2.40.1
+PKG_VERSION = 2.40.2
 PKG_NAME = util-linux
 PKG_URL = https://www.kernel.org/pub/linux/utils/util-linux/v2.40/util-linux-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz

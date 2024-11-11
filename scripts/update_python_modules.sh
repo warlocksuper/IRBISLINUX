@@ -32,3 +32,4 @@ python -m pip install --upgrade gitlint
 python -m pip install --upgrade jinja2
 python -m pip install --upgrade attrs
 python -m pip install --upgrade head
+python -m pip install --upgrade help2man
