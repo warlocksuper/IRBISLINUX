@@ -1,6 +1,6 @@
 PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sbin:/usr/libexec:${ROOT_TOOLS}/pkg-build
 
-PKG_LIST_DIR = basefile_dpkg xf86-input-synaptics_dpkg ncurses_dpkg readline_dpkg  #linux_dpkg # glib_dpkg ## linux_dpkg
+PKG_LIST_DIR = basefile_dpkg xf86-input-synaptics_dpkg readline_dpkg  #linux_dpkg # glib_dpkg ## linux_dpkg
 
 PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg libffi_dpkg  brotli_dpkg  p11-kit_dpkg xorg-server_dpkg  xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg 
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
@@ -62,7 +62,7 @@ PKG_LIST_DIR += bluez_dpkg   sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg
 
 export
 
-PKG_LIST = basefile parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison util-linux asciidoc  coreutils glib xz fakeroot wget openssl kmod bzip2 usbutils libxcrypt systemd  bash 
+PKG_LIST = basefile parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses util-linux asciidoc  coreutils glib xz fakeroot wget openssl kmod bzip2 usbutils libxcrypt systemd  bash 
 PKG_LIST += wget perl-xml-parser itstool file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
@@ -75,7 +75,7 @@ PKG_LIST +=  cairo gtk3 colord libsm  dbus libxml2  libxfce4ui xfce4-session xfc
 PKG_LIST += vulkan-headers libva lua imlib2 conky-all 
 PKG_LIST += krb5 
 PKG_LIST += llvm mariadb perl perl-ipc-run postgresql libsasl libsodium groff openldap libcap-ng  audit orc cdparanoia opus libxv v4l-utils aalib opencore-amr flac libcaca libdv mpg123 libraw1394 libavc1394 libiec61883 wayland xorgproto  wayland-protocols libdecor xorg-xwayland libei sysprof mutter46 gtk4 gnome-shell gnome-desktop gnome-session polkit-gnome libplist libimobiledevice-glue libusbmuxd libimobiledevice gvfs libshout speexdsp speex utf8cpp taglib twolame libvpx wavpack java-common opencv  gstreamer bash-completion dconf gsettings-desktop-schemas libsoup libsoup3 geocode-glib libgweather4 geoclue gnome-settings-daemon
-PKG_LIST += make-ca rest gnome-online-accounts breezy gnome-common unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs gjs tdb talloc tevent perl-parse-yapp ncurses samba gettext gnome-control-center gnome-shell gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing  apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel  libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect glibc gcc  python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors gparted synaptic
+PKG_LIST += make-ca rest gnome-online-accounts breezy gnome-common unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs gjs tdb talloc tevent perl-parse-yapp samba gettext gnome-control-center gnome-shell gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing  apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel  libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect glibc gcc  python-build cython python-yaml mesa  ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors gparted synaptic
 
 
 
@@ -311,9 +311,6 @@ gnome-session_dpkg:
 
 libxslt_dpkg:
 	${MAKE} -C libxslt
-
-ncurses_dpkg:
-	${MAKE} -C ncurses
 
 xfce4-settings_dpkg:
 	${MAKE} -C xfce4-settings
