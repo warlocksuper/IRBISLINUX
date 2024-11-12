@@ -1,9 +1,9 @@
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
 
-PKG_VERSION = 1.1.38
+PKG_VERSION = 1.1.42
 PKG_NAME = libxslt
-PKG_URL = https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.38.tar.xz
+PKG_URL = https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.42.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: libxml2(>=2.10.3) "
