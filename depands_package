@@ -4,3 +4,5 @@ libxslt: libxml2
 glib: libxslt pcre2
 libarchive: nettle lz4
 fakeroot: sed util-linux
+gnutls: libgmp libunistring nettle libtasn1 p11-kit libz zstd
+wget: gnutls
