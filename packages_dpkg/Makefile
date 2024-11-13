@@ -62,8 +62,10 @@ PKG_LIST_DIR += bluez_dpkg   sgml-common_dpkg   gtkglext_dpkg  gksu_dpkg
 
 export
 
-PKG_LIST = basefile nettle libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion util-linux asciidoc coreutils pcre2 icu   
-PKG_LIST += valgrind libxml2 libxslt glib xz gnutls sed fakeroot gnutls
+## basefile
+
+PKG_LIST = yay nettle gnutls libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion util-linux asciidoc coreutils pcre2 icu   
+PKG_LIST += valgrind libxml2 libxslt glib xz  sed fakeroot gnutls
 PKG_LIST += glibc gcc glibc32
 PKG_LIST += wget libcap-ng openssl wget kmod bzip2 usbutils libxcrypt systemd  bash 
 PKG_LIST += perl-xml-parser itstool file-roller thunar-archive-plugin at-spi2-core attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
