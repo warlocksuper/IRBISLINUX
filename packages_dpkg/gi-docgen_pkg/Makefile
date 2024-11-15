@@ -1,9 +1,9 @@
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
 
-PKG_VERSION = 2.54.0
-PKG_NAME = at-spi2-core
-pkgrel = 2
+PKG_VERSION = 2024.1
+PKG_NAME = gi-docgen
+pkgrel = 1
 
 PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-${pkgrel}-amd64.deb 
 

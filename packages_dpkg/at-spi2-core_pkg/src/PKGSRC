@@ -1,0 +1,91 @@
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+
+pkgbase=at-spi2-core
+pkgname=(
+  at-spi2-core
+  at-spi2-core-docs
+)
+pkgver=2.54.0
+pkgrel=2
+pkgdesc="Protocol definitions and daemon for D-Bus at-spi"
+url="https://gitlab.gnome.org/GNOME/at-spi2-core"
+arch=(x86_64)
+license=(LGPL-2.1-or-later)
+depends=(
+  bash
+  dbus
+  glib2
+  glibc
+  gsettings-desktop-schemas
+  libx11
+  libxi
+  libxtst
+  systemd-libs
+  xorg-xprop
+)
+makedepends=(
+  dbus-broker
+  gi-docgen
+  git
+  glib2-devel
+  gobject-introspection
+  libxml2
+  meson
+  python-sphinx
+  systemd
+)
+checkdepends=(
+  at-spi2-core
+)
+source=("git+https://gitlab.gnome.org/GNOME/at-spi2-core.git#tag=AT_SPI2_CORE_${pkgver//./_}")
+b2sums=('3b1b575634dfa5269b98469f761ea5ae9621302121fa243c532a537894fdc7ee9a16ce631093afbd9c3648272084b87a3dd5b4c2263c50fcd48791a16ab0de76')
+
+prepare() {
+  cd at-spi2-core
+}
+
+build() {
+  local meson_options=(
+    -D default_bus=dbus-broker
+    -D docs=true
+  )
+
+  arch-meson at-spi2-core build "${meson_options[@]}"
+  meson compile -C build
+}
+
+
+package_at-spi2-core() {
+  provides=(
+    "at-spi2-atk=$pkgver-$pkgrel"
+    "atk=$pkgver-$pkgrel"
+    libatk-1.0.so
+    libatk-bridge-2.0.so
+    libatspi.so
+  )
+  conflicts=(
+    'at-spi2-atk<=2.38.0-2'
+    'atk<=2.38.0-2'
+  )
+  replaces=(
+    'at-spi2-atk(<=2.38.0-2)'
+    'atk(<=2.38.0-2)'
+  )
+
+  meson install -C build --destdir "$pkgdir"
+
+  mkdir -p doc/usr/share
+  mv {"$pkgdir",doc}/usr/share/doc
+}
+
+package_at-spi2-core-docs() {
+  pkgdesc+=" (documentation)"
+  depends=()
+
+  mv doc/* "$pkgdir"
+}
+
+# vim:set sw=2 sts=-1 et:
+

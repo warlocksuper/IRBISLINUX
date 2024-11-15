@@ -1,0 +1,105 @@
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: David Herrmann <dh.herrmann@gmail.com>
+
+pkgbase=dbus-broker
+pkgname=(
+  dbus-broker
+  dbus-broker-units
+  dbus-units
+)
+pkgver=36
+pkgrel=4
+pkgdesc="Linux D-Bus Message Broker"
+url="https://github.com/bus1/dbus-broker/wiki"
+arch=(x86_64)
+license=("Apache-2.0")
+depends=(
+  audit
+  libcap-ng
+  expat
+  systemd-libs
+)
+makedepends=(
+  meson
+  python-docutils
+  systemd
+)
+source=(
+  https://github.com/bus1/dbus-broker/releases/download/v$pkgver/$pkgbase-$pkgver.tar.xz{,.asc}
+  0001-units-Enable-statically.patch
+)
+b2sums=('84a805982f038f0d9fe62b7f34de8ecbbdbd9b889edba05ab182f00116612545d2bf44d6ea0c6b5e121591a5ab3d2f0f6d5fa3dd413e8c36fe3494e35ac050f3'
+        'SKIP'
+        '02e30f49224835af2d327d6c3eecad5509913ad69b75c6b04d00cb4a8a0c9b8e0c043055d43172a215a4e3729527a2f807115117a9b1d1dc27c5f43259a12e36')
+validpgpkeys=(
+  BE5FBC8C9C1C9F60A4F0AEAE7A4F3A09EBDEFF26  # David Herrmann <dh.herrmann@gmail.com>
+)
+
+# https://github.com/bus1/dbus-broker/releases
+sha256sums=('d333d99bd2688135b6d6961e7ad1360099d186078781c87102230910ea4e162b'
+            'SKIP'
+            '20dcaf03d837d0715f71ccce3d393cba06a4b96f89f4fec3b6e35c1de0592d7d')
+
+prepare() {
+  cd $pkgbase-$pkgver
+  patch -Np1 -i ../0001-units-Enable-statically.patch
+}
+
+build() {
+  local meson_options=(
+    -D audit=true
+    -D docs=true
+    -D linux-4-17=true
+    -D system-console-users=gdm,sddm,lightdm,lxdm
+  )
+
+  arch-meson $pkgbase-$pkgver build "${meson_options[@]}"
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
+}
+
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
+
+package_dbus-broker() {
+  depends+=(
+    libaudit.so
+    libcap-ng.so
+    libexpat.so
+    libsystemd.so
+  )
+
+  meson install -C build --destdir "$pkgdir"
+
+  _pick unit "$pkgdir"/usr/lib/systemd/{system,user}/dbus.service
+}
+
+package_dbus-broker-units() {
+  pkgdesc+=" - Service units"
+  depends=(
+    dbus
+    dbus-broker
+  )
+  provides=(dbus-units)
+  conflicts=(dbus-daemon-units)
+
+  mv unit/* "$pkgdir"
+}
+
+package_dbus-units() {
+  pkgdesc="D-Bus service units (default provider)"
+  license=(CC0-1.0)
+  depends=(dbus-broker-units)
+}
+
+# vim:set sw=2 sts=-1 et:
