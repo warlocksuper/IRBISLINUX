@@ -64,11 +64,11 @@ export
 
 ## basefile
 
-PKG_LIST =  nettle gmp gnutls libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion util-linux asciidoc coreutils pcre2 icu   
-PKG_LIST += valgrind libxml2 libxslt glib xz  sed fakeroot  
+PKG_LIST =  nettle gmp gnutls libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion  asciidoc coreutils pcre2 icu   
+PKG_LIST += valgrind libxml2 libxslt gettext glib xz  sed fakeroot  
 PKG_LIST += wget libcap-ng openssl wget kmod bzip2 usbutils libxcrypt systemd  bash 
 PKG_LIST += perl-xml-parser itstool file-roller thunar-archive-plugin gi-docgen dbus-broker at-spi2-core mesa yay attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
-PKG_LIST += glibc gcc glibc32
+PKG_LIST +=  glibc gcc glibc32 util-linux
 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
@@ -81,7 +81,7 @@ PKG_LIST +=  cairo gtk3 colord libsm  dbus libxfce4ui xfce4-session xfce4-power-
 PKG_LIST += vulkan-headers libva lua imlib2 conky-all 
 PKG_LIST += krb5 
 PKG_LIST += llvm mariadb perl perl-ipc-run postgresql libsasl libsodium groff openldap   audit orc cdparanoia opus libxv v4l-utils aalib opencore-amr flac libcaca libdv mpg123 libraw1394 libavc1394 libiec61883 wayland xorgproto  wayland-protocols libdecor xorg-xwayland libei sysprof mutter46 gtk4 gnome-shell gnome-desktop gnome-session polkit-gnome libplist libimobiledevice-glue libusbmuxd libimobiledevice gvfs libshout speexdsp speex utf8cpp taglib twolame libvpx wavpack java-common opencv  gstreamer  dconf gsettings-desktop-schemas libsoup libsoup3 geocode-glib libgweather4 geoclue gnome-settings-daemon
-PKG_LIST += make-ca rest gnome-online-accounts breezy gnome-common unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs gjs tdb talloc tevent perl-parse-yapp samba gettext gnome-control-center gnome-shell gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing  apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel  libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect   python-build cython python-yaml   ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors gparted synaptic
+PKG_LIST += make-ca rest gnome-online-accounts breezy gnome-common unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs gjs tdb talloc tevent perl-parse-yapp samba  gnome-control-center gnome-shell gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing  apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel  libdex  pango   pangomm-2.48 gtkmm-4.0 libb64 double-conversion dejagnu tcl expect   python-build cython python-yaml   ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors gparted synaptic
 
 
 
