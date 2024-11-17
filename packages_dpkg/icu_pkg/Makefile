@@ -52,7 +52,7 @@ BUILD_DIR:
 
 
 ${PKG_TAR}:
-	wget ${PKG_URL} -P ${ROOT_SOURCE}/
+	wget ${PKG_URL} -P ${ROOT_SOURCE}/ --no-check-certificate
 
 
 ${PGK_SOURCE_DIR}:

@@ -64,8 +64,8 @@ export
 
 ## basefile
 
-PKG_LIST =  nettle gnutls libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion util-linux asciidoc coreutils pcre2 icu   
-PKG_LIST += valgrind libxml2 libxslt glib xz  sed fakeroot gnutls
+PKG_LIST =  nettle gmp gnutls libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion util-linux asciidoc coreutils pcre2 icu   
+PKG_LIST += valgrind libxml2 libxslt glib xz  sed fakeroot  
 PKG_LIST += wget libcap-ng openssl wget kmod bzip2 usbutils libxcrypt systemd  bash 
 PKG_LIST += perl-xml-parser itstool file-roller thunar-archive-plugin gi-docgen dbus-broker at-spi2-core mesa yay attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
 PKG_LIST += glibc gcc glibc32

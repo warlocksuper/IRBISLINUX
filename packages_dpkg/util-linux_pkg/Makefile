@@ -62,11 +62,11 @@ ${PGK_SOURCE_DIR}:
 PKG_CONFIGURE:
 #	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --disable-static  --sysconfdir=/etc  --libdir=/usr/lib  --runstatedir=/run  --disable-chfn-chsh --disable-login --disable-nologin --disable-su --disable-setpriv  --disable-runuser --disable-pylibmount --disable-static --without-python ADJTIME_PATH=/var/lib/hwclock/adjtime --docdir=/usr/share/doc/util-linux-2.39.3
 #	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Dfs-search-path=/usr/bin:/usr/local/bin \
+	@cd ${PKG_BUILD_DIR} && $(MESON) -Dfs-search-path=/usr/bin:/usr//sbin \
     -Dlibuser=disabled \
     -Dlibutempter=disabled \
-    -Dncurses=disabled \
-    -Dncursesw=enabled \
+    -Dncurses=enabled \
+    -Dncursesw=disabled \
     -Deconf=disabled \
     -Dbuild-chfn-chsh=enabled \
     -Dbuild-line=disabled \

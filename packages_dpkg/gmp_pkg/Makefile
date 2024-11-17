@@ -7,7 +7,7 @@ PKG_URL = https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends:  "
-#PKG_BUILD_REPLACES = "  "
+PKG_BUILD_REPLACES = " libgmp  "
 
 PKG_DEBIAN_SECTION = "Section: system"
 
