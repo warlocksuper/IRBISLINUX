@@ -1,16 +1,16 @@
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
-PKG_VERSION = 3.8.0
-PKG_NAME = gnutls
-PKG_URL = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.0.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 1.3.1
+PKG_NAME = zlib
+PKG_URL = https://zlib.net/zlib-1.3.1.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: gmp(>=6.2.1), libunistring(>=1.1), nettle(>=3.8.1), libtasn1(>=4.19.0), p11-kit(>=0.24.1), zlib(>=1.3.1), zstd(>=1.5.4) "
+PKG_DEBIAN_DEPANDS = "Depends:  "
 #PKG_BUILD_REPLACES = "  "
 
 PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: Transport Security Layer implementation for the GNU system. gnutls."
+PKG_DEBIAN_DEST = "Description: Compression library implementing the deflate compression method found in gzip and PKZIP."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -60,7 +60,7 @@ ${PKG_AUTORECONFIG}:
 	@cd ${PGK_SOURCE_DIR} && autoreconf -i
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE) --docdir=/usr/share/doc/gnutls-3.8.0 --with-default-trust-store-pkcs11="pkcs11:"
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  
 
 
 include ${ROOT_DIR}/scripts/compile.mk
