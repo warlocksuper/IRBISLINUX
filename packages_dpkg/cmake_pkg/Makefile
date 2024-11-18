@@ -1,16 +1,16 @@
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
-PKG_VERSION = 1.3.1
-PKG_NAME = zlib
-PKG_URL = https://zlib.net/zlib-1.3.1.tar.gz
+PKG_VERSION =3.27.0-rc4
+PKG_NAME = cmake
+PKG_URL =https://github.com/Kitware/CMake/releases/download/v3.27.0-rc4/cmake-3.27.0-rc4.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  "
-PKG_BUILD_REPLACES = "  libz "
+PKG_DEBIAN_DEPANDS = "Depends:   curl, libarchive, json-c  "
+#PKG_BUILD_REPLACES = "  "
 
-PKG_DEBIAN_SECTION = "Section: system"
+PKG_DEBIAN_SECTION = "Section: devel"
 
-PKG_DEBIAN_DEST = "Description: Compression library implementing the deflate compression method found in gzip and PKZIP."
+PKG_DEBIAN_DEST = "Description: A cross-platform open-source make system."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -60,7 +60,7 @@ ${PKG_AUTORECONFIG}:
 	@cd ${PGK_SOURCE_DIR} && autoreconf -i
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/configure --prefix=/usr --system-libs --no-system-jsoncpp --no-system-librhash 
 
 
 include ${ROOT_DIR}/scripts/compile.mk

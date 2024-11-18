@@ -41,7 +41,7 @@ PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  unifdef_
 PKG_LIST_DIR +=  ConsoleKit_dpkg   libpipeline_dpkg  xfce4-settings_dpkg 
 PKG_LIST_DIR += gnome-session_dpkg colord_dpkg cracklib_dpkg  libpwquality_dpkg libmbim_dpkg  libqmi_dpkg ModemManager_dpkg  
 PKG_LIST_DIR += libgtop_dpkg  libatasmart_dpkg keyutils_dpkg libaio_dpkg  LVM2_dpkg libbytesize_dpkg e2fsprogs_dpkg
-PKG_LIST_DIR +=  json-c_dpkg libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg 
+PKG_LIST_DIR +=   libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg 
 PKG_LIST_DIR +=  libdaemon_dpkg libcdio_dpkg  libcdio-paranoia_dpkg    
 PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg xbitmaps_dpkg 
 
@@ -66,7 +66,7 @@ export
 
 PKG_LIST =  nettle gmp libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion  asciidoc coreutils pcre2 icu   
 PKG_LIST += valgrind libxml2 libxslt libunistring libtasn1 p11-kit zstd zlib gnutls gettext sed  
-PKG_LIST += wget libcap-ng openssl systemd curl cmake  xz glib wget kmod bzip2 usbutils libxcrypt libffi pyenv  bash gobject-introspection
+PKG_LIST += wget libcap-ng openssl libffi kmod  libxcrypt  curl json-c cmake  xz glib wget  bzip2 usbutils   pyenv  bash  gobject-introspection systemd
 PKG_LIST += perl-xml-parser itstool intltool gi-docgen dbus-broker at-spi2-core mesa yay attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
 PKG_LIST +=  glibc gcc glibc32 util-linux  fakeroot
 
