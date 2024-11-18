@@ -2,7 +2,7 @@ PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sb
 
 PKG_LIST_DIR = basefile_dpkg xf86-input-synaptics_dpkg readline_dpkg  #linux_dpkg # glib_dpkg ## linux_dpkg
 
-PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg  brotli_dpkg  p11-kit_dpkg xorg-server_dpkg  xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg 
+PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg  brotli_dpkg xorg-server_dpkg  xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg 
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 
 
@@ -64,11 +64,11 @@ export
 
 ## basefile
 
-PKG_LIST =  nettle gmp gnutls libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion  asciidoc coreutils pcre2 icu   
-PKG_LIST += valgrind libxml2 libxslt libunistring gettext gobject-introspection glib xz  sed fakeroot  
-PKG_LIST += wget libcap-ng openssl wget kmod bzip2 usbutils libxcrypt libffi pyenv  bash 
+PKG_LIST =  nettle gmp libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion  asciidoc coreutils pcre2 icu   
+PKG_LIST += valgrind libxml2 libxslt libunistring libtasn1 p11-kit zstd libz gnutls gettext sed  
+PKG_LIST += wget libcap-ng openssl curl cmake  xz glib wget kmod bzip2 usbutils libxcrypt libffi pyenv  bash gobject-introspection
 PKG_LIST += perl-xml-parser itstool intltool gi-docgen dbus-broker at-spi2-core mesa yay attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
-PKG_LIST +=  glibc gcc glibc32 util-linux systemd
+PKG_LIST +=  glibc gcc glibc32 util-linux systemd fakeroot
 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
@@ -404,10 +404,6 @@ rsync_dpkg:
 
 liboauth_dpkg:
 		${MAKE} -C liboauth				
-		
-		
-p11-kit_dpkg:
-		${MAKE} -C p11-kit			
 
 acpid_dpkg:
 		${MAKE} -C acpid		

@@ -5,7 +5,7 @@ PKG_NAME = gnutls
 PKG_URL = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.0.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: gmp(>=6.2.1), libunistring(>=1.1), nettle(>=3.8.1), libtasn1(>=4.19.0.1), p11-kit(>=0.24.1), libz(>=1.2.13), zstd(>=1.5.4) "
+PKG_DEBIAN_DEPANDS = "Depends: gmp(>=6.2.1), libunistring(>=1.1), nettle(>=3.8.1), libtasn1(>=4.19.0), p11-kit(>=0.24.1), libz(>=1.2.13), zstd(>=1.5.4) "
 #PKG_BUILD_REPLACES = "  "
 
 PKG_DEBIAN_SECTION = "Section: system"
