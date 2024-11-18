@@ -2,7 +2,7 @@ PATH = /sbin:/bin:/usr/sbin:/usr/bin:/usr/libexec:/usr/sbin:/usr/libexec:/usr/sb
 
 PKG_LIST_DIR = basefile_dpkg xf86-input-synaptics_dpkg readline_dpkg  #linux_dpkg # glib_dpkg ## linux_dpkg
 
-PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg libffi_dpkg  brotli_dpkg  p11-kit_dpkg xorg-server_dpkg  xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg 
+PKG_LIST_DIR +=   dwz_dpkg psmisc_dpkg cpio_dpkg  LSB-Tools_dpkg  brotli_dpkg  p11-kit_dpkg xorg-server_dpkg  xcb-util-renderutil_dpkg xcb-util-cursor_dpkg   python_modules_dpkg 
 PKG_LIST_DIR +=  setxkbmap_dpkg pciutils_dpkg docbook_dpkg
 
 
@@ -65,15 +65,15 @@ export
 ## basefile
 
 PKG_LIST =  nettle gmp gnutls libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion  asciidoc coreutils pcre2 icu   
-PKG_LIST += valgrind libxml2 libxslt gettext glib xz  sed fakeroot  
-PKG_LIST += wget libcap-ng openssl wget kmod bzip2 usbutils libxcrypt systemd  bash 
+PKG_LIST += valgrind libxml2 libxslt gettext gobject-introspection glib xz  sed fakeroot  
+PKG_LIST += wget libcap-ng openssl wget kmod bzip2 usbutils libxcrypt libffi pyenv  bash 
 PKG_LIST += perl-xml-parser itstool file-roller thunar-archive-plugin gi-docgen dbus-broker at-spi2-core mesa yay attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
-PKG_LIST +=  glibc gcc glibc32 util-linux
+PKG_LIST +=  glibc gcc glibc32 util-linux systemd
 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
 
-PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python libqalculate gobject-introspection libxmlb parted atkmm gtkmm3 cryptsetup glibmm sbc
+PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal Python libqalculate  libxmlb parted atkmm gtkmm3 cryptsetup glibmm sbc
 PKG_LIST +=  pulseaudio polkit 
 PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu mtdev libwacom libinput xcb-util-keysyms libtommath babl gegl libgexiv2 libmypaint mypaint-brushes1 glib-networking appstream-glib poppler-data gtk-doc lynx 
 PKG_LIST +=  pavucontrol gimp avahi xcb-proto libxcb  xcb-util-wm libicns qt5-base qt5-imageformats qt5-styleplugins qt5-svg qt5-declarative qt5-virtualkeyboard qt5-wayland qt5-websockets qt5-webglplugin qt5-x11extras sddm xfce4-notifyd # libtomcrypt libfbclient 
@@ -383,9 +383,6 @@ glib_dpkg:
 
 gcc_dpkg:
 		${MAKE} -C gcc	
-
-libffi_dpkg:
-		${MAKE} -C  libffi
 
 libhandy_dpkg:
 		${MAKE} -C  libhandy

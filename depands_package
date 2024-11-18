@@ -6,3 +6,4 @@ libarchive: nettle lz4
 fakeroot: sed util-linux
 gnutls: gmp libunistring nettle libtasn1 p11-kit libz zstd
 wget: gnutls
+systemd: libseccomp util-linux  kmod openssl  zstd  libxcrypt libffi

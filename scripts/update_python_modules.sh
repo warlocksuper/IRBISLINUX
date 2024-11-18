@@ -34,3 +34,5 @@ python -m pip install --upgrade attrs
 python -m pip install --upgrade head
 python -m pip install --upgrade help2man
 python -m pip install --upgrade ply
+python -m pip install --upgrade pywayland
+python -m pywayland.scanner --with-protocols
