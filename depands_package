@@ -10,6 +10,7 @@ openssl: perl
 systemd: libseccomp util-linux  kmod openssl  zstd  libxcrypt libffi
 thunar-archive-plugin: thunar  hicolor-icon-theme intltool
 curl: openssl
-cmake: curl libarchive cppdap jsoncpp
+cmake: curl libarchive cppdap jsoncpp libuv
 libcap-ng: python swig
 cppdap: nlohmann-json
+Python: mpdecimal

@@ -66,18 +66,18 @@ export
 
 PKG_LIST =  nettle gmp libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion  asciidoc coreutils pcre2 icu   
 PKG_LIST += valgrind libxml2 libxslt libunistring libtasn1 p11-kit zstd zlib gnutls gettext sed  
-PKG_LIST += wget libcap-ng perl openssl libffi kmod  libxcrypt  curl json-c nlohmann-json cppdap jsoncpp  cmake  xz Python gobject-introspection glib wget  bzip2 usbutils   pyenv  bash systemd
+PKG_LIST += wget libcap-ng perl openssl libffi kmod  libxcrypt  curl json-c nlohmann-json cppdap jsoncpp libuv cmake  xz mpdecimal Python gobject-introspection glib wget  bzip2 usbutils   pyenv  bash systemd
 PKG_LIST += perl-xml-parser itstool intltool gi-docgen dbus-broker at-spi2-core mesa yay attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
 PKG_LIST +=  glibc gcc glibc32 util-linux  fakeroot
 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
 
-PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth mpdecimal  libqalculate  libxmlb parted atkmm gtkmm3 cryptsetup glibmm sbc
+PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth  libqalculate  libxmlb parted atkmm gtkmm3 cryptsetup glibmm sbc
 PKG_LIST +=  pulseaudio polkit 
 PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu mtdev libwacom libinput xcb-util-keysyms libtommath babl gegl libgexiv2 libmypaint mypaint-brushes1 glib-networking appstream-glib poppler-data gtk-doc lynx 
 PKG_LIST +=  pavucontrol gimp avahi xcb-proto libxcb  xcb-util-wm libicns qt5-base qt5-imageformats qt5-styleplugins qt5-svg qt5-declarative qt5-virtualkeyboard qt5-wayland qt5-websockets qt5-webglplugin qt5-x11extras sddm xfce4-notifyd # libtomcrypt libfbclient 
-PKG_LIST +=  cairo gtk3 colord libsm  dbus libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver  xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp libuv c-ares node  
+PKG_LIST +=  cairo gtk3 colord libsm  dbus libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver  xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp c-ares node  
 PKG_LIST += vulkan-headers libva lua imlib2 conky-all 
 PKG_LIST += krb5 
 PKG_LIST += llvm mariadb perl-ipc-run postgresql libsasl libsodium groff openldap   audit orc cdparanoia opus libxv v4l-utils aalib opencore-amr flac libcaca libdv mpg123 libraw1394 libavc1394 libiec61883 wayland xorgproto  wayland-protocols libdecor xorg-xwayland libei sysprof mutter46 gtk4  gnome-shell gnome-desktop gnome-session polkit-gnome file-roller  thunar-archive-plugin libplist libimobiledevice-glue libusbmuxd libimobiledevice gvfs libshout speexdsp speex utf8cpp taglib twolame libvpx wavpack java-common opencv  gstreamer  dconf gsettings-desktop-schemas libsoup libsoup3 geocode-glib libgweather4 geoclue gnome-settings-daemon
