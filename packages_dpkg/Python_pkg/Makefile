@@ -57,7 +57,7 @@ PKG_CONFIGURE:
               --with-dbmliborder=gdbm:ndbm \
               --with-system-libmpdec \
               --enable-loadable-sqlite-extensions \
-              --with-ensurepip \
+              --with-ensurepip=upgrade \
               --with-tzpath=/usr/share/zoneinfo
 
 
