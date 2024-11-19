@@ -49,7 +49,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --sysconfdir=/etc --enable-shared  --with-computed-gotos \
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE) --enable-shared  --with-computed-gotos \
               --enable-optimizations \
               --with-lto \
               --enable-ipv6 \
@@ -57,7 +57,7 @@ PKG_CONFIGURE:
               --with-dbmliborder=gdbm:ndbm \
               --with-system-libmpdec \
               --enable-loadable-sqlite-extensions \
-              --without-ensurepip \
+              --with-ensurepip \
               --with-tzpath=/usr/share/zoneinfo
 
 

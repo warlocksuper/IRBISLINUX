@@ -48,4 +48,4 @@ clean:
 	
 	
 dpkg:
-	./configure --prefix=/usr --sysconfdir=/etc --runstatedir=/run --enable-shared --enable-optimizations --with-system-ffi	--enable-ipv6 ./configure --prefix=/usr --sysconfdir=/etc --runstatedir=/run --enable-shared --enable-optimizations --with-system-ffi	--enable-ipv6	--with-system-expat --with-ensurepip=upgrade	
+	./configure --prefix=/usr --sysconfdir=/etc --runstatedir=/run --enable-shared --enable-optimizations --with-system-ffi	--enable-ipv6 --with-ensurepip=upgrade	
