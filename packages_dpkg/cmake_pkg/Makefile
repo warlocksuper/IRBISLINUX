@@ -5,7 +5,7 @@ PKG_NAME = cmake
 PKG_URL =https://github.com/Kitware/CMake/releases/download/v3.27.0-rc4/cmake-3.27.0-rc4.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:   curl, libarchive, json-c  "
+PKG_DEBIAN_DEPANDS = "Depends:   curl, libarchive, json-c, cppdap  "
 #PKG_BUILD_REPLACES = "  "
 
 PKG_DEBIAN_SECTION = "Section: devel"

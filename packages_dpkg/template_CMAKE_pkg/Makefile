@@ -1,6 +1,3 @@
-OS_CONFIG = ${ROOT_DIR}/.config
-include ${OS_CONFIG}
-
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 

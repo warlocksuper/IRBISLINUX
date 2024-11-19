@@ -1,6 +1,8 @@
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 class PKG
 {
@@ -19,19 +21,41 @@ class PKG
         if(path_work_dir.length() > 0)
         {
           this.work_dir = path_work_dir;
-        } 
+        }
+        if(find_pkg())
+        {
+        	return ;
+        }
         
-        find_pkg();
+        
+        check_depends();
         
     }
-    private int find_pkg()
+    
+    private boolean find_pkg()
     {
-    	System.out.println("finding pkg "+pkgname );
-    	Path path = Paths.get(work_dir + dir_source);
-
-	if (Files.exists(path)) {
-    		System.out.println("work dir exist");
+    	
+    	String strpath = work_dir + dir_source+"/"+pkgname+"_pkg";
+	Path path__dir_pkg = Paths.get(strpath);
+	if (!Files.exists(path__dir_pkg)) {
+    		System.out.println("Pkg not fount "+strpath);
+    		return true;
 	}
-    	return 0;
+	System.out.println("found pkg "+pkgname );
+    	return false;
+    }
+    
+    private List<String> check_depends() 
+    {
+    
+        List<String> deps_list = new ArrayList<>();
+    	// Find dep from fiile
+    	find_line_from_file();
+ 	return deps_list;
+    }
+    private String find_line_from_file()
+    {
+  
+  	return "";  
     }
 };

@@ -1,9 +1,0 @@
-Package: cmake
-Architecture: amd64
-Version: 3.27.0-rc4
-Provides: cmake
-Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
-Section: devel
-Depends: curl, libarchive
-Installed-Size: 87112
-Description: cmake
