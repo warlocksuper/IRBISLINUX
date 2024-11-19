@@ -66,7 +66,7 @@ export
 
 PKG_LIST =  nettle gmp libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop gperf libseccomp bison ncurses flex bash-completion  asciidoc coreutils pcre2 icu   
 PKG_LIST += valgrind libxml2 libxslt libunistring libtasn1 p11-kit zstd zlib gnutls gettext sed  
-PKG_LIST += wget libcap-ng perl openssl libffi kmod  libxcrypt  curl json-c nlohmann-json cppdap jsoncpp libuv cmake  xz mpdecimal Python gobject-introspection glib wget  bzip2 usbutils   pyenv  bash systemd
+PKG_LIST += wget libcap-ng perl openssl libffi kmod gzip kbd libxcrypt  curl json-c nlohmann-json cppdap jsoncpp libuv cmake  xz mpdecimal Python gobject-introspection glib wget  bzip2 usbutils   pyenv  bash systemd
 PKG_LIST += perl-xml-parser itstool intltool gi-docgen dbus-broker at-spi2-core mesa yay attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
 PKG_LIST +=  glibc gcc glibc32 util-linux  fakeroot
 
