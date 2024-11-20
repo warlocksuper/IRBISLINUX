@@ -15,4 +15,5 @@ libcap-ng: python swig
 cppdap: nlohmann-json
 Python: mpdecimal
 kbd: gzip
-
+python-packaging: Python
+python-build: python-flaky python-virtualenv

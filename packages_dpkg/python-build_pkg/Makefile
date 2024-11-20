@@ -10,7 +10,7 @@ PKG_URL = https://downloads.sourceforge.net/project/omxil/omxil/Bellagio%200.9.3
 
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_AUTORECONF = ${PGK_SOURCE_DIR}/configure
-PKG_DEBIAN_DEPANDS = "Depends: glibc(>=2.37.1), python(>=3.12.4), yaml(>=0.2.5) "
+PKG_DEBIAN_DEPANDS = "Depends: glibc(>=2.37.1), python(>=3.12.4), yaml(>=0.2.5), python-flaky, python-virtualenv "
 
 
 PKG_DEBIAN_SECTION = "Section: python"
@@ -54,7 +54,7 @@ COPYSOURCE:
 	cp PKGSRC ${PKG_BUILD_DIR}/
 
 ${PKG_BUILD_DIR_DEBIAN}:
-	@cd ${PKG_BUILD_DIR} && ${ROOT_DIR}/scripts/makepkg  --dpkg ${ROOT_DPKG_ARCH} -i --skipchecksums --skipinteg --skippgpcheck
+	@cd ${PKG_BUILD_DIR} && ${ROOT_DIR}/scripts/makepkg  --dpkg ${ROOT_DPKG_ARCH} -i -d --skipchecksums --skipinteg --skippgpcheck
 
 include ${ROOT_DIR}/scripts/compile.mk
 
