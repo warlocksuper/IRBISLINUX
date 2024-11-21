@@ -1,3 +1,6 @@
+package su.irbis.irbpkg;
+
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -6,56 +9,51 @@ import java.util.List;
 
 class PKG
 {
-	private String pkgname;
-	private String work_dir = "/etc/irbpkg";
-	private String dir_source = "/packages_dpkg";
-	
-    public PKG(String pkg_name, String path_work_dir)
+	private final String pkgname;
+
+    public PKG(String pkg_name)
     {
-        if( pkg_name.length() < 0) 
-        {
-        	System.out.println("error not name pkg");
-        	return ;
-        }
         this.pkgname = pkg_name;
-        if(path_work_dir.length() > 0)
-        {
-          this.work_dir = path_work_dir;
-        }
-        if(find_pkg())
-        {
-        	return ;
-        }
-        
-        
-        check_depends();
-        
     }
     
-    private boolean find_pkg()
+    public boolean find_pkg(String path)
     {
-    	
-    	String strpath = work_dir + dir_source+"/"+pkgname+"_pkg";
-	Path path__dir_pkg = Paths.get(strpath);
-	if (!Files.exists(path__dir_pkg)) {
-    		System.out.println("Pkg not fount "+strpath);
-    		return true;
-	}
-	System.out.println("found pkg "+pkgname );
-    	return false;
+	    Path path__dir_pkg = Paths.get(path);
+        return !Files.exists(path__dir_pkg);
     }
     
-    private List<String> check_depends() 
+    public List<String> check_depends()
     {
-    
         List<String> deps_list = new ArrayList<>();
-    	// Find dep from fiile
-    	find_line_from_file();
- 	return deps_list;
+        String depP = find_line_from_file().substring(pkgname.length()+1);
+        String[] dep = depP.split("\\s+");
+        for (String s : dep) {
+            if (!s.isEmpty()) {
+                deps_list.add(s);
+            }
+        }
+ 	    return deps_list;
     }
+
     private String find_line_from_file()
     {
-  
-  	return "";  
+        try {
+            List<String> content = readTextFile(irbpkg.work_dir+"/depands_package");
+            for(int i=0;i<content.size();i++)
+            {
+
+               if(content.get(i).startsWith(pkgname))
+               {
+                   return content.get(i);
+               }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
-};
+
+    private List<String> readTextFile(String pathx) throws IOException {
+        return Files.readAllLines(Paths.get(pathx));
+    }
+}
