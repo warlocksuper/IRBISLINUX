@@ -1,5 +1,8 @@
 package su.irbis.irbpkg;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class irbpkg {
@@ -17,14 +20,25 @@ public class irbpkg {
         String namepkg = args[0];
         System.out.println("IRBIS PKG Manager ");
         PKG pkg = new PKG(namepkg);
-        if (pkg.find_pkg(pkg_dir))
+        if (find_pkg(pkg_dir))
         {
             System.out.println("Pkg file not fount "+namepkg);
         }
-        List<String> depends =  pkg.check_depends();
-        irbpkg.Debug("depends " + depends + " count "+ depends.size());
+        //Получение списка зависимостей
+        List<PKG> depends =  pkg.check_depends();
+        //irbpkg.Debug("depends " + depends + " count "+ depends.size());
+        //Проверка установленных зависимостей
+        boolean depFail = false;
+        for (PKG dep : depends)
+        {
+            if (!dep.exist)
+            {
+                Debug("pakage not installed " + dep.getPkgname() );
+                depFail = true;
+            }
+        }
 
-
+        if(depFail) { return; }
     }
 
     private static void usage()
@@ -33,9 +47,14 @@ public class irbpkg {
         System.out.println("ipkg options pkg_name ");
     }
 
+    private static boolean find_pkg(String path)
+    {
+        Path path__dir_pkg = Paths.get(path);
+        return !Files.exists(path__dir_pkg);
+    }
+
     public static void Debug(String text)
     {
         System.out.println(text);
     }
 }
-

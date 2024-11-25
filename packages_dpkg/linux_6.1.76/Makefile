@@ -5,9 +5,9 @@ include ${OS_CONFIG}
 
 COPY_ROOTFS = ${ROOT_FS}/etc
 
-PKG_VERSION = 6.1.92
+PKG_VERSION = 6.1.119
 PKG_NAME = linux
-PKG_URL =  https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.92.tar.xz
+PKG_URL =  https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.119.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.2)  "
