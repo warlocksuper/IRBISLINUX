@@ -53,7 +53,7 @@ ${PGK_SOURCE_DIR}:
 
 PKG_CONFIGURE:
 	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i ${PKG_PRG_DIR}/${PKG_NAME}_pkg/bash-5.2.21-upstream_fixes-1.patch
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE) --without-bash-malloc --with-installed-readline --docdir=/usr/share/doc/bash-5.2.21   
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE) --without-bash-malloc --with-installed-readline --docdir=/usr/share/doc/bash-5.2.21  --enable-static-link
 
 include ${ROOT_DIR}/scripts/compile.mk
 
