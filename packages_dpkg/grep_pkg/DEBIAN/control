@@ -1,0 +1,9 @@
+Package: grep
+Architecture: amd64
+Version: 3.8
+Provides: grep
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Depends: pcre2(>=10.40), glibc(>=2.37) 
+Installed-Size: 
+Description: grep fgrep egrep
