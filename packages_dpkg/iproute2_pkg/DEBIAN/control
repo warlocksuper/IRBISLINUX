@@ -1,0 +1,9 @@
+Package: iproute2
+Architecture: amd64
+Version: 6.4.0
+Provides: iproute2
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: network
+Depends: elfutils(>=0.188), libcap(>=2.69), db(>=5.3.28), libz(>=1.2.13)
+Installed-Size: 
+Description: arpd bridge ctstat genl ifstat ip instat nstat routel rtacct rtmon rtstat ss tc  

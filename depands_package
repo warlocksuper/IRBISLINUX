@@ -19,4 +19,6 @@ python-packaging: Python
 python-build: python-flaky python-virtualenv
 readline: ncurses
 bash: ncurses readline
-grep: pcre2 glibc 
+grep: pcre2 glibc
+eudev: gperf
+inetutils: ncurses

@@ -40,7 +40,7 @@ PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg g
 PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  unifdef_dpkg  yasm_dpkg libaom_dpkg libavif_dpkg
 PKG_LIST_DIR +=  ConsoleKit_dpkg   libpipeline_dpkg  xfce4-settings_dpkg 
 PKG_LIST_DIR += gnome-session_dpkg colord_dpkg cracklib_dpkg  libpwquality_dpkg libmbim_dpkg  libqmi_dpkg ModemManager_dpkg  
-PKG_LIST_DIR += libgtop_dpkg  libatasmart_dpkg keyutils_dpkg libaio_dpkg  LVM2_dpkg libbytesize_dpkg e2fsprogs_dpkg
+PKG_LIST_DIR += libgtop_dpkg  libatasmart_dpkg keyutils_dpkg libaio_dpkg  LVM2_dpkg libbytesize_dpkg 
 PKG_LIST_DIR +=   libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg 
 PKG_LIST_DIR +=  libdaemon_dpkg libcdio_dpkg  libcdio-paranoia_dpkg    
 PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg xbitmaps_dpkg 
@@ -64,9 +64,9 @@ export
 
 ## basefile
 
-PKG_LIST = coreutils json-c util-linux gperf eudev grep nettle gmp libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop libseccomp bison ncurses flex bash-completion  asciidoc  pcre2 icu   
+PKG_LIST = coreutils json-c util-linux gperf eudev grep gzip kbd procps-ng e2fsprogs ncurses inetutils iproute2 nettle gmp libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop libseccomp bison  flex bash-completion  asciidoc  pcre2 icu   
 PKG_LIST += valgrind libxml2 libxslt libunistring libtasn1 p11-kit zstd zlib gnutls gettext sed  
-PKG_LIST += wget libcap-ng perl openssl libffi kmod gzip kbd libxcrypt  curl  nlohmann-json cppdap jsoncpp libuv cmake  xz mpdecimal readline bash Python python-flit-core python-packaging python-build cython python-yaml gobject-introspection glib wget  bzip2 usbutils   pyenv   systemd
+PKG_LIST += wget libcap-ng perl openssl libffi kmod libxcrypt  curl  nlohmann-json cppdap jsoncpp libuv cmake  xz mpdecimal readline bash Python python-flit-core python-packaging python-build cython python-yaml gobject-introspection glib wget  bzip2 usbutils   pyenv   systemd
 PKG_LIST += perl-xml-parser itstool intltool gi-docgen dbus-broker at-spi2-core mesa yay attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
 PKG_LIST +=  glibc gcc glibc32   fakeroot
 
@@ -331,9 +331,6 @@ krb5_dpkg:
 
 json-c_dpkg:
 	${MAKE} -C json-c
-
-e2fsprogs_dpkg:
-	${MAKE} -C e2fsprogs
 
 libbytesize_dpkg:
 	${MAKE} -C libbytesize
