@@ -22,3 +22,5 @@ bash: ncurses readline
 grep: pcre2 glibc
 eudev: gperf
 inetutils: ncurses
+iproute2: elfutils libcap db libz
+elfutils: zlib
