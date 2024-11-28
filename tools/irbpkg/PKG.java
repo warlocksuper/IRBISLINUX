@@ -18,12 +18,6 @@ class PKG
         this.exist = check_installed_pkg();
     }
     
-    public boolean find_pkg(String path)
-    {
-	    Path path__dir_pkg = Paths.get(path);
-        return !Files.exists(path__dir_pkg);
-    }
-    
     public List<PKG> check_depends()
     {
         List<PKG> deps_list = new ArrayList<>();
@@ -46,7 +40,7 @@ class PKG
     private String find_line_from_file()
     {
         try {
-            List<String> content = readTextFile(irbpkg.work_dir+"/depands_package");
+            List<String> content =  Files.readAllLines(Paths.get(irbpkg.work_dir+"/depands_package"));
             for(int i=0;i<content.size();i++)
             {
 
@@ -59,10 +53,6 @@ class PKG
             e.printStackTrace();
         }
         return "";
-    }
-
-    private List<String> readTextFile(String pathx) throws IOException {
-        return Files.readAllLines(Paths.get(pathx));
     }
 
     //  /var/lib/dpkg/info/curl.list  папка содержит файлы пакетов если файл существует пакет установленн

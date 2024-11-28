@@ -38,7 +38,11 @@ public class irbpkg {
             }
         }
 
-        if(depFail) { return; }
+        if(!depFail)
+        {
+            Debug("Starting create pakage " + namepkg );
+            IRBMaker maker = new IRBMaker(namepkg);
+        }
     }
 
     private static void usage()
@@ -58,3 +62,4 @@ public class irbpkg {
         System.out.println(text);
     }
 }
+
