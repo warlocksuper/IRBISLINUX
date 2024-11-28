@@ -1,4 +1,4 @@
-package su.irbis.irbpkg;
+package su.irbis;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,8 +7,8 @@ import java.util.List;
 
 public class irbpkg {
 
-    public static final String work_dir = "E:\\Project";
-    public static final String pkg_dir = work_dir + "\\packages_dpkg";
+    public static final String work_dir = "/home/warlock/IRBISLINUX";
+    public static final String pkg_dir = work_dir + "/packages_dpkg";
 
     public static void main(String []args)
     {

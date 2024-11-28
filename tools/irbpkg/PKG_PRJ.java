@@ -1,4 +1,4 @@
-package su.irbis.irbpkg;
+package su.irbis;
 
 //Класс для файла проекта
 // должен парсить проект

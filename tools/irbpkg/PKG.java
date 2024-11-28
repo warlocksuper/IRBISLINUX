@@ -1,4 +1,4 @@
-package su.irbis.irbpkg;
+package su.irbis;
 
 import java.io.IOException;
 import java.nio.file.Files;
