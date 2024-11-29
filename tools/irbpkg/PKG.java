@@ -21,8 +21,13 @@ class PKG
     public List<PKG> check_depends()
     {
         List<PKG> deps_list = new ArrayList<>();
-        String depP = find_line_from_file().substring(pkgname.length()+1);
-        String[] dep = depP.split("\\s+");
+        String depP = find_line_from_file();
+        if (depP.isEmpty())
+        {
+            return deps_list;
+        }
+        String depPs = depP.substring(pkgname.length()+1);
+        String[] dep = depPs.split("\\s+");
         for (String s : dep) {
             if (!s.isEmpty()) {
                 PKG x = new PKG(s);
