@@ -1,34 +1,26 @@
-OS_CONFIG = ${ROOT_DIR}/.config
-include ${OS_CONFIG}
-
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 4.14.0
-PKG_NAME = java-openjdk
 
 
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends:  cairomm-1.16(>=1.18.0) "
 
 
-PKG_DEBIAN_SECTION = "Section: system"
+_majorver=22
+_minorver=0
+_securityver=2
+_updatever=9
+pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 
-PKG_DEBIAN_DEST = "Description: C++ bindings for GTK 4."
+PKG_VERSION = ${pkgver}
+PKG_NAME =java-openjdk
+pkgrel = 1
 
-PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-amd64.deb 
+PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-${pkgrel}-amd64.deb 
 
-PKG_BUILD_DIR_ALL = ${ROOT_DIR}/build_dpkg
-PKG_BUILD_DIR = ${PKG_BUILD_DIR_ALL}/${PKG_NAME}
+PKG_BUILD_DIR = ${ROOT_DIR}/build_dpkg/${PKG_NAME}
 PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
-PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
+
 
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
-
-
-PKG_COMPILE_MAKE = ""
-#PKG_COMPILE_NINJA = ""
-PKG_COMPILE_DIR = ${PGK_SOURCE_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
-PKG_CONFIGURE = ${PKG_COMPILE_DIR}/Makefile
 
 
 .PHONY:  all, BUILD_DIR, COPYSOURCE, PKG_BUILD_DIR_DEBIAN
@@ -45,13 +37,10 @@ BUILD_DIR:
 	@mkdir -p ${PKG_BUILD_DIR}
 
 COPYSOURCE:
-	cp PKGSRC ${PKG_BUILD_DIR}/
-	cp freedesktop-java.desktop ${PKG_BUILD_DIR}/
-	cp freedesktop-jconsole.desktop ${PKG_BUILD_DIR}/
-	cp freedesktop-jshell.desktop ${PKG_BUILD_DIR}/
+	cp src/* ${PKG_BUILD_DIR}/
 
 PKG_BUILD_DIR_DEBIAN:
-	cd ${PKG_BUILD_DIR} && ${ROOT_DIR}/scripts/makepkg -I ${ROOT_DPKG_ARCH} -i -d
+	cd ${PKG_BUILD_DIR} && ${ROOT_DIR}/scripts/makepkg -I ${ROOT_DPKG_ARCH} -i -d --skipchecksums --skipinteg --skippgpcheck
 
 
 include ${ROOT_DIR}/scripts/compile.mk

@@ -14,8 +14,6 @@ checkdepends=('wget')
 _shunitver=2.1.7
 source=(profile_jre.csh
         profile_jre.sh
-        bin_archlinux-java
-        test_archlinux-java
         https://github.com/kward/shunit2/archive/v${_shunitver}/shunit2-${_shunitver}.tar.gz)
 sha256sums=('9d25638cafc2fabd1ba6f2f26aa01233eccf3d31db003d956b571f0ab655dd23'
             'f11ac56c635e545e73db994b905b646c15ccba6781411d79878c4edd7c77ccd9'
@@ -25,7 +23,6 @@ sha256sums=('9d25638cafc2fabd1ba6f2f26aa01233eccf3d31db003d956b571f0ab655dd23'
 
 check() {
   ln -s shunit2-${_shunitver} shunit2
-  ./test_archlinux-java
 }
 
 package_java-runtime-common() {
@@ -41,7 +38,6 @@ package_java-runtime-common() {
 
   install -D -m 644 profile_jre.sh  "${pkgdir}/etc/profile.d/jre.sh"
   install -D -m 644 profile_jre.csh "${pkgdir}/etc/profile.d/jre.csh"
-  install -D -m 755 bin_archlinux-java "${pkgdir}/usr/bin/archlinux-java"
 
   install -d -m 755 "${pkgdir}/usr/bin/"
   # Official list of binaries that Java headless runtime packages MUST provide

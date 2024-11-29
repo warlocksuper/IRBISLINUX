@@ -4,7 +4,7 @@ include ${OS_CONFIG}
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
 
-PKG_VERSION = 24.1.2
+PKG_VERSION = 24.2.7
 PKG_NAME = mesa
 PKG_URL = https://mesa.freedesktop.org/archive/mesa-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
@@ -65,21 +65,19 @@ ${PGK_SOURCE_DIR}:
 PKG_CONFIGURE:
 	@cd ${PKG_BUILD_DIR} &&  $(MESON)  -D android-libbacktrace=disabled \
     -Db_ndebug=true \
-    -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink \
-    -Dgallium-extra-hud=true \
-    -Dgallium-nine=true \
-    -Dgallium-omx=disabled \
-    -Dgallium-opencl=icd \
-    -Dgallium-rusticl=true \
+    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,llvmpipe,softpipe,iris,crocus,i915,zink,d3d12 \
+    -D gallium-extra-hud=true \
+    -D gallium-nine=true \
+    -D gallium-omx=bellagio \
+    -D gallium-opencl=icd \
+    -D gallium-rusticl=false \
     -Dgles1=disabled \
     -Dglx=dri \
     -Dintel-clc=enabled \
-    -Dintel-rt=disabled \
-    -Dlibunwind=disabled \
+    -Dintel-rt=enabled \
     -Dmicrosoft-clc=disabled \
     -Dosmesa=true \
     -Dplatforms=x11,wayland \
-    -Dvalgrind=disabled \
     -Dvideo-codecs=all \
     -Dvulkan-drivers=amd,intel,intel_hasvk,swrast,virtio,nouveau \
     -Dvulkan-layers=device-select,intel-nullhw,overlay \

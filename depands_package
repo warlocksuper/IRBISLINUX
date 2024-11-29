@@ -24,3 +24,4 @@ eudev: gperf
 inetutils: ncurses
 iproute2: elfutils libcap db libz
 elfutils: zlib
+zip: bzip2
