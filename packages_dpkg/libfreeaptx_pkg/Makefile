@@ -1,8 +1,8 @@
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
 
-PKG_VERSION = 3.0.11
-PKG_NAME = cython
+PKG_VERSION = 0.1.1
+PKG_NAME = libfreeaptx
 pkgrel = 2
 
 PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-${pkgrel}-amd64.deb 

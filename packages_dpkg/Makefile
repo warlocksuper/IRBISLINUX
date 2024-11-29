@@ -65,12 +65,14 @@ export
 ## basefile
 
 PKG_LIST = coreutils json-c util-linux gperf eudev grep gzip kbd procps-ng e2fsprogs ncurses inetutils zlib 
-PKG_LIST += zip java-openjdk 
+PKG_LIST += zip
 PKG_LIST += elfutils swig libcap-ng iproute2 findutils openrc nettle gmp libarchive parallel bats bats-support bats-assert mkinitcpio-busybox lz4 lzo lzop libseccomp bison  flex bash-completion  asciidoc  pcre2 icu   
 PKG_LIST += valgrind libxml2 libxslt libunistring libtasn1 p11-kit zstd  gnutls gettext sed  
-PKG_LIST += wget perl openssl libffi kmod libxcrypt  curl  nlohmann-json cppdap jsoncpp libuv cmake  xz mpdecimal readline bash Python python-flit-core python-packaging python-build cython python-yaml gobject-introspection glib wget  bzip2 usbutils   pyenv   systemd
-PKG_LIST += perl-xml-parser itstool intltool gi-docgen dbus-broker at-spi2-core mesa yay attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
-PKG_LIST +=  glibc gcc glibc32   fakeroot
+PKG_LIST += wget perl openssl libffi kmod libxcrypt  curl  nlohmann-json cppdap jsoncpp libuv cmake  xz mpdecimal readline bash 
+PKG_LIST += Python python-flit-core python-packaging cython python-yaml   #python-build
+PKG_LIST += gobject-introspection glib wget  bzip2 usbutils   pyenv   systemd
+PKG_LIST += perl-xml-parser itstool intltool gi-docgen dbus-broker at-spi2-core mesa attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
+PKG_LIST +=  gcc glibc32   fakeroot
 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
@@ -91,7 +93,7 @@ PKG_LIST += make-ca rest gnome-online-accounts breezy gnome-common unicode-chara
 #  gtk-layer-shell   gtk-doc ostree flatpak  qtwebkit qtwebengine   #   qtwebengine         ostree  flatpak  mobile-broadband-provider-info NetworkManager gpgme qca # qtwebkit    webkit2gtk   libnatpmp     rustc
 
 
-#perl-xml-parser     libaccounts-glib   lld -4.1
+#perl-xml-parser     libaccounts-glib   lld -4.1 yay      glibc
 
 #    нужные пакеты imagemagick  unifont libspiro  fontforge
 

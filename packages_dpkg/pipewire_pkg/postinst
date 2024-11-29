@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+systemctl --global enable pipewire-pulse.socket
+
+systemctl --user enable pipewire
+
+systemctl --user enable  pipewire-pulse
+
+systemctl --user enable wireplumber
+
+

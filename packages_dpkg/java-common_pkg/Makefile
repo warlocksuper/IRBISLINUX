@@ -5,7 +5,7 @@ PKG_VERSION = 3
 PKG_NAME = java-common
 pkgrel = 5
 
-PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-${pkgrel}-amd64.deb 
+PKG_DPKG_FILE = java-environment-common-${PKG_VERSION}-${pkgrel}-amd64.deb 
 
 PKG_BUILD_DIR = ${ROOT_DIR}/build_dpkg/${PKG_NAME}
 PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG

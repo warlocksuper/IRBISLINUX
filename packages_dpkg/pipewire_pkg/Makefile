@@ -1,16 +1,20 @@
-PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
+PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
-PKG_VERSION = 4.3.0
-PKG_NAME = swig
-PKG_URL = https://github.com/swig/swig/archive/refs/tags/v${PKG_VERSION}.tar.gz
-PKG_TAR_FILE = v${PKG_VERSION}.tar.gz
+
+PKG_VERSION = 0.3.77
+PKG_NAME = pipewire
+PKG_URL = https://github.com/PipeWire/pipewire/archive/0.3.77/pipewire-0.3.77.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: pcre2, zlib"
-#PKG_BUILD_REPLACES = "  "
+PKG_DEBIAN_DEPANDS = "Depends:  pulseaudio(>=16.1), ffmpeg(>=6.0), sbc(>=2.0), libfreeaptx(>=0.1.1), fdk-aac  "
 
-PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: Generate scripting interfaces to C/C++ code."
+PKG_DEBIAN_SECTION = "Section: xorg"
+
+PKG_DEBIAN_DEST = "Description: The pipewire package contains a server and userspace API to handle multimedia pipelines. This includes a universal API to connect to multimedia devices, as well as sharing multimedia files between applications."
+
+PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
+
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -21,15 +25,13 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-
-
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
-PKG_COMPILE_MAKE = ""
-#PKG_COMPILE_NINJA = ""
+#PKG_COMPILE_MAKE = ""
+PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
-PKG_AUTORECONFIG = ${PGK_SOURCE_DIR}/configure
+
 
 
 
@@ -39,7 +41,8 @@ PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяе
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
 all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
-	@cd ${ROOT_DPKG_ARCH} && fakeroot -- dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
+	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
+	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 	
 	
@@ -55,11 +58,8 @@ ${PKG_TAR}:
 ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
-${PKG_AUTORECONFIG}:
-	@cd ${PGK_SOURCE_DIR} && autoreconf -i
-
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(MESON) -Dudevrulesdir=/usr/lib/udev/rules.d  -Dffmpeg=enabled -Dbluez5=enabled -Dbluez5-codec-aptx=enabled -Dbluez5-codec-aac=enabled  -Dsession-managers="[]" ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk

@@ -35,4 +35,6 @@ python -m pip install --upgrade head
 python -m pip install --upgrade help2man
 python -m pip install --upgrade ply
 python -m pip install --upgrade pywayland
+python -m pip install --upgrade flaky
 python -m pywayland.scanner --with-protocols
+python -m pip install testpath

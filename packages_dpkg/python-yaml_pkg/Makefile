@@ -17,7 +17,7 @@ PKG_DEBIAN_SECTION = "Section: python"
 
 PKG_DEBIAN_DEST = "Description: Python bindings for YAML, using fast libYAML library."
 
-PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-amd64.deb 
+PKG_DPKG_FILE = ${PKG_NAME}-${PKG_VERSION}-1-amd64.deb 
 
 PKG_TAR = ${ROOT_SOURCE}/${PKG_TAR_FILE}
 PKG_BUILD_DIR_ALL = ${ROOT_DIR}/build_dpkg
@@ -54,7 +54,7 @@ COPYSOURCE:
 	cp PKGSRC ${PKG_BUILD_DIR}/
 
 ${PKG_BUILD_DIR_DEBIAN}:
-	@cd ${PKG_BUILD_DIR} && ${ROOT_DIR}/scripts/makepkg  --dpkg ${ROOT_DPKG_ARCH} -i
+	@cd ${PKG_BUILD_DIR} && ${ROOT_DIR}/scripts/makepkg   -I ${ROOT_DPKG_ARCH} -i -d --skipchecksums --skipinteg --skippgpcheck
 
 include ${ROOT_DIR}/scripts/compile.mk
 

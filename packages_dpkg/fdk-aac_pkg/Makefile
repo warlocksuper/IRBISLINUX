@@ -1,16 +1,20 @@
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
-PKG_VERSION = 4.3.0
-PKG_NAME = swig
-PKG_URL = https://github.com/swig/swig/archive/refs/tags/v${PKG_VERSION}.tar.gz
-PKG_TAR_FILE = v${PKG_VERSION}.tar.gz
+
+PKG_VERSION = 2.0.2
+PKG_NAME = fdk-aac
+PKG_URL = https://downloads.sourceforge.net/opencore-amr/fdk-aac-2.0.2.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: pcre2, zlib"
-#PKG_BUILD_REPLACES = "  "
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
-PKG_DEBIAN_SECTION = "Section: system"
 
-PKG_DEBIAN_DEST = "Description: Generate scripting interfaces to C/C++ code."
+PKG_DEBIAN_SECTION = "Section: libraries"
+
+PKG_DEBIAN_DEST = "Description: fdk-aac package provides the Fraunhofer FDK AAC library, which is purported to be a high quality Advanced Audio Coding implementation."
+
+PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
+
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -20,8 +24,6 @@ PKG_BUILD_DIR = ${PKG_BUILD_DIR_ALL}/${PKG_NAME}
 PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
-
-
 
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -38,8 +40,9 @@ PKG_AUTORECONFIG = ${PGK_SOURCE_DIR}/configure
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
-	@cd ${ROOT_DPKG_ARCH} && fakeroot -- dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} ${PKG_AUTORECONFIG}  PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
+	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
+	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 	
 	
@@ -59,7 +62,7 @@ ${PKG_AUTORECONFIG}:
 	@cd ${PGK_SOURCE_DIR} && autoreconf -i
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -DBUILD_TESTING=OFF  -Wno-dev  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  --localstatedir=/var --disable-static
 
 
 include ${ROOT_DIR}/scripts/compile.mk

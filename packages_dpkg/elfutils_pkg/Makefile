@@ -31,7 +31,7 @@ PKG_COMPILE_MAKE = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 PKG_AUTORECONFIG = ${PGK_SOURCE_DIR}/configure
 
-PKG_COMPILE_MAKE_INSTALL_ADD_OPT = ""
+#PKG_COMPILE_MAKE_INSTALL_ADD_OPT = ""
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE
 

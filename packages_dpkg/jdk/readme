@@ -1,0 +1,33 @@
+https://download.oracle.com/java/23/latest/jdk-23_linux-x64_bin.tar.gz
+
+
+sudo  update-alternatives --install /usr/jar jar /opt/jdk-23.0.1/jar 23
+sudo  update-alternatives --install /usr/java java /opt/jdk-23.0.1/java 23
+sudo  update-alternatives --install /usr/javadoc javadoc /opt/jdk-23.0.1/javadoc 23
+sudo  update-alternatives --install /usr/jcmd jcmd /opt/jdk-23.0.1/jcmd 23
+sudo  update-alternatives --install /usr/jdb jdb /opt/jdk-23.0.1/jdb 23
+sudo  update-alternatives --install /usr/jdeps jdeps /opt/jdk-23.0.1/jdeps 23
+sudo  update-alternatives --install /usr/jhsdb jhsdb /opt/jdk-23.0.1/jhsdb 23
+sudo  update-alternatives --install /usr/jinfo jinfo /opt/jdk-23.0.1/jinfo 23
+sudo  update-alternatives --install /usr/jmap jmap /opt/jdk-23.0.1/jmap 23
+sudo  update-alternatives --install /usr/jpackage jpackage /opt/jdk-23.0.1/jpackage 23
+sudo  update-alternatives --install /usr/jrunscript jrunscript /opt/jdk-23.0.1/jrunscript 23
+sudo  update-alternatives --install /usr/jstack jstack /opt/jdk-23.0.1/jstack 23
+sudo  update-alternatives --install /usr/jstatd jstatd /opt/jdk-23.0.1/jstatd 23
+sudo  update-alternatives --install /usr/keytool keytool /opt/jdk-23.0.1/keytool 23
+sudo  update-alternatives --install /usr/serialver serialver /opt/jdk-23.0.1/serialver 23
+sudo  update-alternatives --install /usr/jarsigner jarsigner /opt/jdk-23.0.1/jarsigner 23
+sudo  update-alternatives --install /usr/javac javac /opt/jdk-23.0.1/javac 23
+sudo  update-alternatives --install /usr/javap javap /opt/jdk-23.0.1/javap 23
+sudo  update-alternatives --install /usr/jconsole jconsole /opt/jdk-23.0.1/jconsole 23
+sudo  update-alternatives --install /usr/jdeprscan jdeprscan /opt/jdk-23.0.1/jdeprscan 23
+sudo  update-alternatives --install /usr/jfr jfr /opt/jdk-23.0.1/jfr 23
+sudo  update-alternatives --install /usr/jimage jimage /opt/jdk-23.0.1/jimage 23
+sudo  update-alternatives --install /usr/jlink jlink /opt/jdk-23.0.1/jlink 23
+sudo  update-alternatives --install /usr/jmod jmod /opt/jdk-23.0.1/jmod 23
+sudo  update-alternatives --install /usr/jps jps /opt/jdk-23.0.1/jps 23
+sudo  update-alternatives --install /usr/jshell jshell /opt/jdk-23.0.1/jshell 23
+sudo  update-alternatives --install /usr/jstat jstat /opt/jdk-23.0.1/jstat 23
+sudo  update-alternatives --install /usr/jwebserver jwebserver /opt/jdk-23.0.1/jwebserver 23
+sudo  update-alternatives --install /usr/rmiregistry rmiregistry /opt/jdk-23.0.1/rmiregistry 23
+
