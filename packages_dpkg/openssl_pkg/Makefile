@@ -1,9 +1,9 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-PKG_VERSION = 3.2.1
+PKG_VERSION = 3.4.0
 PKG_NAME = openssl
-PKG_URL =  https://www.openssl.org/source/openssl-3.2.1.tar.gz
+PKG_URL =  https://www.openssl.org/source/openssl-3.4.0.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: perl "

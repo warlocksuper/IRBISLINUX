@@ -1,8 +1,8 @@
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
-PKG_VERSION = 3.8.1
+PKG_VERSION = 3.10
 PKG_NAME = nettle
-PKG_URL = https://ftp.gnu.org/gnu/nettle/nettle-3.8.1.tar.gz
+PKG_URL = https://ftp.gnu.org/gnu/nettle/nettle-3.10.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends:  "
