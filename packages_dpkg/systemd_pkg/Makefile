@@ -69,7 +69,7 @@ PKG_CONFIGURE:
       -Ddev-kvm-mode=0660     \
       -Dnobody-group=nogroup  \
       -Dsysupdate=disabled    \
-          -Dbootloader=enabled \
+          -Dbootloader=disabled \
       -Dsbat-distro='irbis' \
      -Dsbat-distro-summary='IRBIS Linux' \
      -Dsbat-distro-pkgname="${PKG_NAME}" \

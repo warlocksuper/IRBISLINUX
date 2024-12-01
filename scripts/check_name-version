@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+if [[ ! -z "$@" ]]; then
+depe=`dpkg-query -f '${Package}-${Version}' -W $@`
+
+echo  $depe 
+fi

@@ -4,6 +4,8 @@ include ${OS_CONFIG}
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 
+
+
 PKG_VERSION = 18.1.8
 PKG_NAME = llvm
 PKG_BASE_URL = https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VERSION}
@@ -72,14 +74,18 @@ ${PGK_SOURCE_DIR}:
 	@cd ${PGK_SOURCE_DIR} && tar -xf ../${PKG_TAR_FILE2}
 	@cd ${PGK_SOURCE_DIR} && tar -xf ../${PKG_TAR_FILE3}
 	@cd ${PGK_SOURCE_DIR} && tar -xf ../${PKG_TAR_FILE4}
-	@cd ${PGK_SOURCE_DIR} && cp  cmake-${PKG_VERSION}.src/Modules/* cmake/modules/
 	@cd ${PGK_SOURCE_DIR} && mv  clang-${PKG_VERSION}.src tools/clang
+	@cd ${PGK_SOURCE_DIR} && mv  third-party-${PKG_VERSION}.src ../third-party
+	echo ${CMAKE_DIR}
+	@cd ${ROOT_SOURCE} && cp -rf `../scripts/check_name-version cmake` cmake
+	@cd ${PGK_SOURCE_DIR} && cp  cmake-${PKG_VERSION}.src/Modules/* ../cmake/Modules/
 
 PKG_CONFIGURE: 
 	@cd ${PKG_BUILD_DIR} && $(CMAKE)  -G Ninja  -DLLVM_INCLUDE_BENCHMARKS=OFF  \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_DOCDIR=share/doc \
-    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_SKIP_RPATH=ON \
     -DLLVM_BINUTILS_INCDIR=/usr/include \
     -DLLVM_BUILD_DOCS=OFF \

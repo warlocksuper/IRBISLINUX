@@ -1,4 +1,4 @@
-util-linux: tinfo ncurses flex json-c
+util-linux: tinfo ncurses flex json-c bison
 libxml2: icu valgrind
 libxslt: libxml2
 glib: libxslt pcre2
@@ -15,6 +15,7 @@ cmake: curl libarchive cppdap jsoncpp libuv
 libcap-ng: python python-capng swig
 cppdap: nlohmann-json
 Python: mpdecimal
+python-flit-core: python-testpath
 kbd: gzip
 python-packaging: Python
 python-build: python-flaky python-virtualenv
@@ -26,3 +27,9 @@ inetutils: ncurses
 iproute2: elfutils libcap db libz
 elfutils: zlib
 zip: bzip2
+postgresql; llvm
+libsasl: postgresql
+openldap: libsasl
+audit: openldap 
+dbus-broker: audit 
+

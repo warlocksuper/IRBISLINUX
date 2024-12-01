@@ -37,4 +37,4 @@ python -m pip install --upgrade ply
 python -m pip install --upgrade pywayland
 python -m pip install --upgrade flaky
 python -m pywayland.scanner --with-protocols
-python -m pip install testpath
+python -m pip install --upgrade testpath

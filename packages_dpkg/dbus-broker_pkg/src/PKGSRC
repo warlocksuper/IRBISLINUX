@@ -53,7 +53,7 @@ build() {
     -D system-console-users=gdm,sddm,lightdm,lxdm
   )
 
-  arch-meson $pkgbase-$pkgver build "${meson_options[@]}"
+  meson --prefix=/usr --sysconfdir=/etc --buildtype=release --localstatedir=/var $pkgbase-$pkgver build "${meson_options[@]}"
   meson compile -C build
 }
 
