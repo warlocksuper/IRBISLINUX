@@ -34,3 +34,4 @@ audit: openldap
 dbus-broker: audit 
 rtkit: vim
 pulseaudio: tdb
+pipewire: ffmpeg bluez sbc libfreeaptx fdk-aac

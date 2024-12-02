@@ -46,7 +46,7 @@ PKG_LIST_DIR +=  libdaemon_dpkg libcdio_dpkg  libcdio-paranoia_dpkg
 PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg xbitmaps_dpkg 
 
 ### XFCE4
-PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg check_dpkg  xfce4-pulseaudio-plugin_dpkg  boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg   
+PKG_LIST_DIR +=   fontconfig_dpkg graphite2_dpkg garcon_dpkg  expat_dpkg libXrender_dpkg xfce4-panel_dpkg check_dpkg    boost_dpkg  mm-common_dpkg libsigc++_dpkg glibmm_dpkg   
 PKG_LIST_DIR +=   xfce4-taskmanager_dpkg
 
 
@@ -71,7 +71,7 @@ PKG_LIST += valgrind libxml2 libxslt libunistring libtasn1 p11-kit zstd  gnutls 
 PKG_LIST += wget perl openssl libffi kmod libxcrypt  curl  nlohmann-json cppdap jsoncpp libuv cmake  xz mpdecimal readline bash 
 PKG_LIST += Python python-packaging python-flit-core cython     #python-build python-yaml
 PKG_LIST += gobject-introspection glib wget  bzip2 usbutils   pyenv   
-PKG_LIST += perl-xml-parser itstool intltool gi-docgen llvm vim rtkit pulseaudio  pipewire wireplumber libsasl postgresql  openldap audit dbus-broker at-spi2-core mesa attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
+PKG_LIST += perl-xml-parser itstool intltool gi-docgen llvm vim rtkit pulseaudio  pipewire wireplumber xfce4-pulseaudio-plugin libsasl postgresql  openldap audit dbus-broker at-spi2-core mesa attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
 PKG_LIST += pango pangomm-2.48   gparted gcc glibc32   fakeroot util-linux systemd nettle libarchive
 
 
@@ -253,9 +253,6 @@ libsigc++_dpkg:
 
 boost_dpkg:
 	${MAKE} -C boost
-
-xfce4-pulseaudio-plugin_dpkg:
-	${MAKE} -C xfce4-pulseaudio-plugin
 
 libXrender_dpkg:
 	${MAKE} -C libXrender

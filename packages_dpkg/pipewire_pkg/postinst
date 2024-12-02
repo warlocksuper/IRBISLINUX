@@ -3,10 +3,13 @@
 
 systemctl --global enable pipewire-pulse.socket
 
-systemctl --user enable pipewire
+systemctl --global enable pipewire.socket
 
-systemctl --user enable  pipewire-pulse
 
-systemctl --user enable wireplumber
+systemctl --global enable pipewire
+
+systemctl --global enable pipewire-pulse
+
+systemctl --global enable wireplumber
 
 
