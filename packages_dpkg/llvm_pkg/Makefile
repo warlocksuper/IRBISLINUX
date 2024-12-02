@@ -44,6 +44,10 @@ PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
+LD_LIBRARY_PATH = $(shell printenv LD_LIBRARY_PACH):/home/warlock/IRBISLINUX/build_dpkg/llvm/lib
+
+
+export LD_LIBRARY_PATH
 
 
 .PHONY:  all, COMPILE, BUILD_DIR, PKG_CONFIGURE

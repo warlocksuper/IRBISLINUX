@@ -71,14 +71,14 @@ PKG_LIST += valgrind libxml2 libxslt libunistring libtasn1 p11-kit zstd  gnutls 
 PKG_LIST += wget perl openssl libffi kmod libxcrypt  curl  nlohmann-json cppdap jsoncpp libuv cmake  xz mpdecimal readline bash 
 PKG_LIST += Python python-packaging python-flit-core cython     #python-build python-yaml
 PKG_LIST += gobject-introspection glib wget  bzip2 usbutils   pyenv   
-PKG_LIST += perl-xml-parser itstool intltool gi-docgen llvm postgresql libsasl openldap audit dbus-broker at-spi2-core mesa attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
-PKG_LIST += pango pangomm-2.48 vim rtkit  pipewire wireplumber gparted gcc glibc32   fakeroot util-linux systemd nettle libarchive
+PKG_LIST += perl-xml-parser itstool intltool gi-docgen llvm vim rtkit pulseaudio  pipewire wireplumber libsasl postgresql  openldap audit dbus-broker at-spi2-core mesa attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
+PKG_LIST += pango pangomm-2.48   gparted gcc glibc32   fakeroot util-linux systemd nettle libarchive
 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
 
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth  libqalculate  libxmlb parted atkmm gtkmm3 cryptsetup glibmm sbc
-PKG_LIST +=  pulseaudio polkit 
+PKG_LIST +=   polkit 
 PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu mtdev libwacom libinput xcb-util-keysyms libtommath babl gegl libgexiv2 libmypaint mypaint-brushes1 glib-networking appstream-glib poppler-data gtk-doc lynx 
 PKG_LIST +=  pavucontrol gimp avahi xcb-proto libxcb  xcb-util-wm libicns qt5-base qt5-imageformats qt5-styleplugins qt5-svg qt5-declarative qt5-virtualkeyboard qt5-wayland qt5-websockets qt5-webglplugin qt5-x11extras sddm xfce4-notifyd # libtomcrypt libfbclient 
 PKG_LIST +=  cairo gtk3 colord libsm  dbus libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver  xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp c-ares node  
