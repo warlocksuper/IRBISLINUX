@@ -32,4 +32,4 @@ libsasl: postgresql
 openldap: libsasl
 audit: openldap 
 dbus-broker: audit 
-
+rtkit: vim
