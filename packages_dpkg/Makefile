@@ -72,7 +72,7 @@ PKG_LIST += wget perl openssl libffi kmod libxcrypt  curl  nlohmann-json cppdap 
 PKG_LIST += Python python-packaging python-flit-core cython     #python-build python-yaml
 PKG_LIST += gobject-introspection glib wget  bzip2 usbutils   pyenv   
 PKG_LIST += perl-xml-parser itstool intltool gi-docgen llvm postgresql libsasl openldap audit dbus-broker at-spi2-core mesa attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
-PKG_LIST += pango pangomm-2.48 vim rtkit gparted gcc glibc32   fakeroot util-linux systemd nettle libarchive
+PKG_LIST += pango pangomm-2.48 vim rtkit  pipewire wireplumber gparted gcc glibc32   fakeroot util-linux systemd nettle libarchive
 
 
 PKG_LIST += alsa-ucm-conf alsa-lib 
@@ -207,10 +207,6 @@ libass_dpkg:
 
 ffmpeg_dpkg:
 	${MAKE} -C ffmpeg
-
-pipewire_dpkg:
-	${MAKE} -C pipewire
-
 
 check_dpkg:
 	${MAKE} -C check

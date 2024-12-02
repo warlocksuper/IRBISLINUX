@@ -1,10 +1,10 @@
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
 
-PKG_VERSION = 0.3.77
+PKG_VERSION = 1.2.7
 PKG_NAME = pipewire
-PKG_URL = https://github.com/PipeWire/pipewire/archive/0.3.77/pipewire-0.3.77.tar.gz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
+PKG_URL = https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.2.7/pipewire-1.2.7.tar.bz2
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.bz2
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends:  pulseaudio(>=16.1), ffmpeg(>=6.0), sbc(>=2.0), libfreeaptx(>=0.1.1), fdk-aac  "
 
@@ -59,7 +59,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Dudevrulesdir=/usr/lib/udev/rules.d  -Dffmpeg=enabled -Dbluez5=enabled -Dbluez5-codec-aptx=enabled -Dbluez5-codec-aac=enabled  -Dsession-managers="[]" ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(MESON) -Dudevrulesdir=/usr/lib/udev/rules.d  -Dffmpeg=enabled -Dbluez5=enabled -Dbluez5-codec-aptx=enabled -Dbluez5-codec-aac=enabled  ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk

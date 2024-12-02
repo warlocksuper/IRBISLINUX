@@ -1,0 +1,4 @@
+#!/bin/bash
+
+systemctl --global enable wireplumber.service
+
