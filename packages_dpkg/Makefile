@@ -71,21 +71,21 @@ PKG_LIST += valgrind libxml2 libxslt libunistring libtasn1 p11-kit zstd  gnutls 
 PKG_LIST += wget perl openssl libffi kmod libxcrypt  curl  nlohmann-json cppdap jsoncpp libuv cmake  xz mpdecimal readline bash 
 PKG_LIST += Python python-packaging python-flit-core cython     #python-build python-yaml
 PKG_LIST += gobject-introspection glib wget  bzip2 usbutils   pyenv   
-PKG_LIST += perl-xml-parser itstool intltool gi-docgen llvm vim rtkit pulseaudio  pipewire wireplumber xfce4-pulseaudio-plugin libsasl postgresql  openldap audit dbus-broker at-spi2-core mesa attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
-PKG_LIST += pango pangomm-2.48   gparted gcc glibc32   fakeroot util-linux systemd nettle libarchive
+PKG_LIST += perl-xml-parser itstool intltool gi-docgen llvm vim rtkit pulseaudio  pipewire wireplumber libfprint fprintd xfce4-pulseaudio-plugin libsasl postgresql  openldap audit dbus-broker at-spi2-core mesa attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
+PKG_LIST += pango pangomm-2.48 cairo cairomm-1.16 gcc glibc32   fakeroot util-linux systemd nettle libarchive
 
 
-PKG_LIST += alsa-ucm-conf alsa-lib 
+PKG_LIST += alsa-ucm-conf alsa-lib gparted
 
 PKG_LIST += doxygen signond pygobject   libaccounts-qt  libpcap libevdev perl-xml-xpath docbook-xsl  plymouth  libqalculate  libxmlb parted atkmm gtkmm3 cryptsetup glibmm sbc
 PKG_LIST +=   polkit 
 PKG_LIST +=  AppStream pycairo blueman docbook-xml qemu mtdev libwacom libinput xcb-util-keysyms libtommath babl gegl libgexiv2 libmypaint mypaint-brushes1 glib-networking appstream-glib poppler-data gtk-doc lynx 
 PKG_LIST +=  pavucontrol gimp avahi xcb-proto libxcb  xcb-util-wm libicns qt5-base qt5-imageformats qt5-styleplugins qt5-svg qt5-declarative qt5-virtualkeyboard qt5-wayland qt5-websockets qt5-webglplugin qt5-x11extras sddm xfce4-notifyd # libtomcrypt libfbclient 
-PKG_LIST +=  cairo gtk3 colord libsm  dbus libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver  xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp c-ares node  
+PKG_LIST +=   gtk3 colord libsm  dbus libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver  xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp c-ares node  
 PKG_LIST += vulkan-headers libva lua imlib2 conky-all 
 PKG_LIST += krb5 
 PKG_LIST +=  mariadb perl-ipc-run  libsodium grfoff     orc cdparanoia opus libxv v4l-utils aalib opencore-amr flac libcaca libdv mpg123 libraw1394 libavc1394 libiec61883 wayland xorgproto  wayland-protocols libdecor xorg-xwayland libei sysprof mutter46 gtk4  gnome-shell gnome-desktop gnome-session polkit-gnome file-roller  thunar-archive-plugin libplist libimobiledevice-glue libusbmuxd libimobiledevice gvfs libshout speexdsp speex utf8cpp taglib twolame libvpx wavpack java-common opencv  gstreamer  dconf gsettings-desktop-schemas libsoup libsoup3 geocode-glib libgweather4 geoclue gnome-settings-daemon
-PKG_LIST += make-ca rest gnome-online-accounts breezy gnome-common unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs gjs tdb talloc tevent perl-parse-yapp samba  gnome-control-center gnome-shell gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ cairomm-1.16 libdatrie libthai  libunwind liburing  apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel  libdex  gtkmm-4.0 libb64 double-conversion dejagnu tcl expect   ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors synaptic
+PKG_LIST += make-ca rest gnome-online-accounts breezy gnome-common unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs gjs tdb talloc tevent perl-parse-yapp samba  gnome-control-center gnome-shell gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ libdatrie libthai  libunwind liburing  apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel  libdex  gtkmm-4.0 libb64 double-conversion dejagnu tcl expect   ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors synaptic
 
 
 
