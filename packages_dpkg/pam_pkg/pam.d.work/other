@@ -1,0 +1,5 @@
+auth     required       pam_succeed_if.so uid >= 0 quiet
+account  required       pam_succeed_if.so uid >= 0 quiet
+password required       pam_succeed_if.so uid >= 0 quiet
+session  required       pam_succeed_if.so uid >= 0 quiet
+  
