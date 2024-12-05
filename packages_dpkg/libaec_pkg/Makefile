@@ -1,25 +1,17 @@
-OS_CONFIG = ${ROOT_DIR}/.config
-include ${OS_CONFIG}
-
-PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
+PATH = $(shell printenv PATH):${ROOT_DIR}/scripts
 export  PATH
 
-COPY_ROOTFS = ${ROOT_FS}/etc
-
-PKG_VERSION = 3.24.9
-PKG_NAME = gtkmm3
-PKG_URL = https://download.gnome.org/sources/gtkmm/3.24/gtkmm-${PKG_VERSION}.tar.xz
-PKG_TAR_FILE = gtkmm-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/gtkmm-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: gtk3(>=3.24.36), graphviz(>=7.1.0), mm-common(>=1.0.6) "
+PKG_VERSION = 1.1.3
+PKG_NAME = libaec
+PKG_URL = https://gitlab.dkrz.de/k202009/libaec/-/archive/v${PKG_VERSION}/${PKG_NAME}-v${PKG_VERSION}.tar.bz2
+PKG_TAR_FILE = ${PKG_NAME}-v${PKG_VERSION}.tar.bz2
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-v${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends:  "
 
 
-PKG_DEBIAN_SECTION = "Section: libraries"
+PKG_DEBIAN_SECTION = "Section: librares"
 
-PKG_DEBIAN_DEST = "Description: The Gtkmm package provides a C++ interface to GTK+ 3.."
-
-PKG_COMPILE = ${PGK_BUILD_DIR}/icccm/.libs/libxcb-icccm.so
-
+PKG_DEBIAN_DEST = "Description: Adaptive Entropy Coding library."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -30,12 +22,13 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
+PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 
-#PKG_COMPILE_MAKE = ""
-PKG_COMPILE_NINJA = ""
+
+PKG_COMPILE_MAKE = ""
+#PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
 
 
@@ -46,7 +39,8 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN} 
+	@echo ${PKG_DPKG_FILE_PATH}
 	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
 	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
@@ -65,10 +59,14 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON)  -Dmaintainer-mode=true -Dbuild-documentation=false ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(CMAKE)  ${PGK_SOURCE_DIR}
 
 
 include ${ROOT_DIR}/scripts/compile.mk
+
+PKG_MAKE_POST_INTALL:
+#	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
+
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk
 	
