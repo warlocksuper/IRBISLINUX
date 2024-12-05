@@ -37,3 +37,6 @@ pulseaudio: tdb
 pipewire: ffmpeg bluez sbc libfreeaptx fdk-aac
 hdf5: libaec zlib
 opencv: lapack hdf5
+xkbcommon: libxcb libxml2
+gtk3Ж xkbcommon at-spi2-core
+xfce4-pulseaudio-plugin: gtk3

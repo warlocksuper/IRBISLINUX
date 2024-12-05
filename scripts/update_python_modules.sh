@@ -37,5 +37,6 @@ python -m pip install --upgrade ply
 python -m pip install --upgrade pywayland
 python -m pip install --upgrade flaky
 python -m pip install --upgrade dbus-python
+python -m pip install --upgrade virtualenv
 python -m pywayland.scanner --with-protocols
 python -m pip install --upgrade testpath

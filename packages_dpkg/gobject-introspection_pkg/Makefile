@@ -74,7 +74,7 @@ ${PGK_SOURCE_DIR}:
 
 PKG_CONFIGURE:
 	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Dgi_cross_use_prebuilt_gi=true ${PGK_SOURCE_DIR} #introspection 
+	@cd ${PKG_BUILD_DIR} && $(MESON)  -Dgtk_doc=false ${PGK_SOURCE_DIR} #introspection  -Dgi_cross_use_prebuilt_gi=true
 
 
 include ${ROOT_DIR}/scripts/compile.mk
