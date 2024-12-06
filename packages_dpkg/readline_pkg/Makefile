@@ -32,7 +32,7 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 PKG_AUTORECONFIG = ${PGK_SOURCE_DIR}/configure
 
 
-SHLIB_LIBS = "-lncursesw"
+SHLIB_LIBS = "-lncursesw -ltinfo"
 
 export SHLIB_LIBS
 
@@ -66,8 +66,8 @@ PKG_CONFIGURE:
 #	@sed -i '/MV.*old/d' ${PGK_SOURCE_DIR}/Makefile.in
 #	@sed -i '/{OLDSUFF}/c:' ${PGK_SOURCE_DIR}/support/shlib-install
 #	@cd ${PGK_SOURCE_DIR} && patch -Np1 -i ${ROOT_DIR}/packages_dpkg/readline_pkg/readline-8.2-upstream_fix-1.patch
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE) --localstatedir=/var --disable-static \
-            --with-curses    \
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE) --localstatedir=/var --disable-static --enable-shared \
+            --with-curses  --with-termlib  \
             --docdir=/usr/share/doc/readline-8.2
 
 ${PKG_COMPILE}:

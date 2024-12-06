@@ -58,7 +58,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Dinstalled_tests=false ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(MESON) -Dinstalled_tests=false -Dreadline=disabled ${PGK_SOURCE_DIR}
 #	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 
