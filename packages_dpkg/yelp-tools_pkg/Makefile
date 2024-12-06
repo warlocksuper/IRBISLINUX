@@ -2,17 +2,17 @@ PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
 
 
-PKG_VERSION = 1.5.0
-PKG_NAME = xkbcommon
-PKG_URL = http://xkbcommon.org/download/libxkbcommon-1.5.0.tar.xz
-PKG_TAR_FILE = lib${PKG_NAME}-${PKG_VERSION}.tar.xz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/lib${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: libxcb(>=1.17.0-1), libxml2(>=2.10.3) "
-PKG_BUILD_REPLACES = " libxkbcommon  "
+PKG_VERSION = 42.1
+PKG_NAME = yelp-tools
+PKG_URL = https://gitlab.gnome.org/GNOME/yelp-tools/-/archive/42.1/yelp-tools-42.1.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+PKG_DEBIAN_DEPANDS = "Depends:  yelp-xsl "
+#PKG_BUILD_REPLACES = "  "
 
-PKG_DEBIAN_SECTION = "Section: xorg"
+PKG_DEBIAN_SECTION = "Section: gnome"
 
-PKG_DEBIAN_DEST = "Description: XKB API common. xkbcommon. xkbcommon-x11. xkbregistry  "
+PKG_DEBIAN_DEST = "Description: Collection of tools for building and converting documentation."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -57,7 +57,7 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && $(MESON) -Denable-docs=false ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(MESON)  ${PGK_SOURCE_DIR}
 #	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 

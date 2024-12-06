@@ -1,0 +1,8 @@
+Package: autoconf
+Architecture: amd64
+Version: 2.71.1
+Provides: pkg-config
+Maintainer: Dmitry Lebedev <D.Lebedev@irbis.su>
+Section: devel
+Installed-Size:
+Description: autoconf

@@ -40,3 +40,7 @@ opencv: lapack hdf5
 xkbcommon: libxcb libxml2
 gtk3Ж xkbcommon at-spi2-core
 xfce4-pulseaudio-plugin: gtk3
+yelp-tools: yelp-xsl
+gnome-panel: autoconf-archive gnome-menus yelp-tools
+
+
