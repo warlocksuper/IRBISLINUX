@@ -42,5 +42,6 @@ gtk3Ж xkbcommon at-spi2-core
 xfce4-pulseaudio-plugin: gtk3
 yelp-tools: yelp-xsl
 gnome-panel: autoconf-archive gnome-menus yelp-tools
-
-
+xf86-video-intel: libxinerama libxrandr libxdamage libxcursor libxfixes libxtst libxi libxrender libxext pixman libxcb sm libx11 libxau util-macros
+libnma: mobile-broadband-provider-info
+gnome-shell: libnma
