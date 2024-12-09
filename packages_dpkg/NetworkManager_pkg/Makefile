@@ -6,7 +6,7 @@ PKG_NAME = NetworkManager
 PKG_URL =  https://download.gnome.org/sources/NetworkManager/1.51/NetworkManager-1.51.3.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: gnutls(>=3.8.0.1), libz(>=1.2.13), p11-kit(>=0.24.1), zstd(>=1.5.4), libunistring(>=1.1), nettle(>=3.8.1.1), eudev(>=3.2.11), gobject-introspection(>=1.74.0), glib(>=2.74.5), readline(>=8.2), ncurses(>=6.4), libffi(>=3.4.4), libcap(>=2.69), pcre2(>=10.40), mobile-broadband-provider-info(>=20230416),nss(>=3.88.1) "
+PKG_DEBIAN_DEPANDS = "Depends: gnutls(>=3.8.0), libz(>=1.2.13), p11-kit(>=0.24.1), zstd(>=1.5.4), libunistring(>=1.1), nettle(>=3.8.1), eudev(>=3.2.11), gobject-introspection(>=1.74.0), glib(>=2.74.5), readline(>=8.2), ncurses(>=6.4), libffi(>=3.4.4), libcap(>=2.69), pcre2(>=10.40), mobile-broadband-provider-info(>=20230416),nss(>=3.88.1) "
 PKG_DEBIAN_SECTION = "Section: net"
 PKG_DEBIAN_DEST = "Description: NetworkManager is a set of co-operative tools that make networking simple and straightforward. Whether you use WiFi, wired, 3G, or Bluetooth, NetworkManager allows you to quickly move from one network to another: Once a network has been configured and joined once, it can be detected and re-joined automatically the next time it's available"
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb
