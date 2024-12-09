@@ -45,3 +45,11 @@ gnome-panel: autoconf-archive gnome-menus yelp-tools
 xf86-video-intel: libxinerama libxrandr libxdamage libxcursor libxfixes libxtst libxi libxrender libxext pixman libxcb sm libx11 libxau util-macros
 libnma: mobile-broadband-provider-info
 gnome-shell: libnma
+lld: libunwind 
+libwebp: sdl
+libjxl: highway brotli
+webkit2gtk-4.1: lld rubi unifdef libwebp libmanette libjxl
+gnome-online-accounts: webkit2gtk-4.1
+gnome-control-center: gnome-online-accounts
+WeChatLinux: fonts-noto-cjk google-noto-cjk-fonts
+

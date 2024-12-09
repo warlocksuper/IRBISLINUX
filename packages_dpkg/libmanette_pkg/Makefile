@@ -1,26 +1,18 @@
-OS_CONFIG = ${ROOT_DIR}/.config
-include ${OS_CONFIG}
-
-###libpwquality-1.4.5 Без 'online-accounts' и printers
-
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
 
 
-PKG_VERSION = 44.3
-PKG_NAME = gnome-control-center
-PKG_URL = https://download.gnome.org/sources/gnome-control-center/44/gnome-control-center-44.3.tar.xz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
+PKG_VERSION = 0.2.6
+PKG_NAME = libmanette
+PKG_URL = https://gitlab.gnome.org/GNOME/libmanette/-/archive/0.2.6/libmanette-0.2.6.tar.gz
+PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.1), libtasn1(>=4.19.0.1),  libpwquality(>=1.4.5), gnome-bluetooth(>=42.6) , colord-gtk(>=0.3.0), libgtop(>=2.40.0), udisks(>=2.10.0),  gnome-settings-daemon(>=47.1-1)  "
-
+PKG_DEBIAN_DEPANDS = "Depends:  "
+#PKG_BUILD_REPLACES = "  "
 
 PKG_DEBIAN_SECTION = "Section: gnome"
 
-PKG_DEBIAN_DEST = "Description: The GNOME Control Center package contains the GNOME settings manager."
-
-PKG_COMPILE = ${PGK_BUILD_DIR}/brotli
-
+PKG_DEBIAN_DEST = "Description: Simple GObject game controller library."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -31,7 +23,8 @@ PKG_BUILD_DIR_DPKG = ${PKG_BUILD_DIR}/DPKG
 PKG_MAKE_INTALL = ${PKG_BUILD_DIR_DPKG}/usr
 PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 
-PPKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
+PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
+PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
 #PKG_COMPILE_MAKE = ""
 PKG_COMPILE_NINJA = ""
@@ -64,7 +57,8 @@ ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && meson --prefix=/usr --buildtype=release -Ddistributor_logo=/etc/irbis_logo.png -Ddark_mode_distributor_logo=/etc/irbis_logo.png  ${PGK_SOURCE_DIR}
+	@cd ${PKG_BUILD_DIR} && $(MESON) ${PGK_SOURCE_DIR}
+#	@cd ${PGK_SOURCE_DIR} && qmake PREFIX=${PKG_BUILD_DIR_DPKG}/usr LIBDIR=${PKG_BUILD_DIR_DPKG}/usr/lib CMAKE_CONFIG_PATH=${PKG_BUILD_DIR_DPKG}/usr 
 
 
 include ${ROOT_DIR}/scripts/compile.mk
