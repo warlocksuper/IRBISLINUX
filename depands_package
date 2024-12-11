@@ -48,7 +48,7 @@ gnome-shell: libnma
 lld: libunwind 
 libwebp: sdl
 libjxl: highway brotli
-webkit2gtk-4.1: lld rubi unifdef libwebp libmanette libjxl
+webkit2gtk-4.1: lld rubi unifdef libwebp libmanette libjxl hyphen woff2  libavif bubblewrap xdg-dbus-proxy
 gnome-online-accounts: webkit2gtk-4.1
 gnome-control-center: gnome-online-accounts
 WeChatLinux: fonts-noto-cjk google-noto-cjk-fonts
