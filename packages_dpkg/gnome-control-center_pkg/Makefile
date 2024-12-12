@@ -7,12 +7,12 @@ PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build/
 export  PATH
 
 
-PKG_VERSION = 44.3
+PKG_VERSION = 47.2
 PKG_NAME = gnome-control-center
-PKG_URL = https://download.gnome.org/sources/gnome-control-center/44/gnome-control-center-44.3.tar.xz
+PKG_URL = https://download.gnome.org/sources/gnome-control-center/47/gnome-control-center-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.1), libtasn1(>=4.19.0.1),  libpwquality(>=1.4.5), gnome-bluetooth(>=42.6) , colord-gtk(>=0.3.0), libgtop(>=2.40.0), udisks(>=2.10.0),  gnome-settings-daemon(>=47.1-1)  "
+PKG_DEBIAN_DEPANDS = "Depends: basefile(>=0.1), libtasn1(>=4.19.0),  libpwquality(>=1.4.5), gnome-bluetooth(>=42.6) , colord-gtk(>=0.3.0), libgtop(>=2.40.0), udisks(>=2.10.0),  gnome-settings-daemon(>=47.1-1)  "
 
 
 PKG_DEBIAN_SECTION = "Section: gnome"

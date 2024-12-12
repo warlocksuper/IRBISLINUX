@@ -9,7 +9,7 @@ PKG_URL = https://download.gnome.org/sources/gtk/4.15/gtk-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = gtk-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/gtk-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends: cairo(>=1.18.2), dconf(>=0.40.0), desktop-file-utils(>=0.26), fontconfig(>=2.14.2), fribidi(>=1.0.12), gdk-pixbuf(>=2.42.12), gst-plugins-bad(>=1.22.0), harfbuzz(>=7.0.0), iso-codes(>=4.15.0), libcloudproviders(>=0.3.6), colord(>=1.4.7), cups(>=2.4.2), mesa(>=22.3.5), libepoxy(>=1.5.10), tracker(>=3.4.2), libxdamage(>=1.1.6)  "  #adwaita-icon-theme cantarell-fonts
-PKG_BUILD_REPLACES = " cairo, wayland-protocols "
+PKG_BUILD_REPLACES = " cairo, wayland-protocols, mesa "
 
 PKG_DEBIAN_SECTION = "Section: system"
 
@@ -61,9 +61,9 @@ ${PGK_SOURCE_DIR}:
 PKG_CONFIGURE:
 	@cd ${PKG_BUILD_DIR} && $(MESON)  -Dbroadway-backend=true -Dintrospection="enabled" \
     -Dcloudproviders=enabled \
-    -Dcolord=enabled \
+    -Dcolord=enabled -Dx11-backend=true \
     -Dman-pages=false \
-    -Dtracker=enabled -Dvulkan=disabled ${PGK_SOURCE_DIR}  ##     -Ddocumentation=false \
+    -Dtracker=enabled  -Dsysprof=enabled -Dvulkan=disabled ${PGK_SOURCE_DIR}  ##     -Ddocumentation=false \
 
 
 
