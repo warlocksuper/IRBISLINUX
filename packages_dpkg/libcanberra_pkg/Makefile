@@ -1,26 +1,16 @@
-#depend xmlto
-
-COPY_ROOTFS = ${ROOT_FS}/etc
-
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
-
-PKG_VERSION = 1.82.0
-PKG_NAME = gobject-introspection
-PKG_URL = https://download.gnome.org/sources/gobject-introspection/1.82/gobject-introspection-${PKG_VERSION}.tar.xz
+PKG_VERSION = 0.30
+PKG_NAME = libcanberra
+PKG_URL = https://0pointer.de/lennart/projects/libcanberra/libcanberra-${PKG_VERSION}.tar.xz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.xz
 PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
-PKG_DEBIAN_DEPANDS = "Depends: "
-PKG_BUILD_REPLACES = " glib "
+PKG_DEBIAN_DEPANDS = "Depends:  libx11(>=1.8.4), libvorbis(>=1.3.5)  "
+#PKG_BUILD_REPLACES = "  "
 
+PKG_DEBIAN_SECTION = "Section: system"
 
-export XML_CATALOG_FILES=/etc/xml/catalog
-
-PKG_DEBIAN_SECTION = "Section: libraries"
-
-PKG_DEBIAN_DEST = "Description: The GObject Introspection is used to describe the program APIs and collect them in a uniform, machine readable format."
-
-
+PKG_DEBIAN_DEST = "Description: Event Sound API. libcanberra-gtk  libcanberra-gtk3  libcanberra."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -36,11 +26,10 @@ PKG_BUILD_DIR_DEBIAN = ${PKG_BUILD_DIR_DPKG}/DEBIAN/control
 PKG_CONFIGURE = ${PGK_BUILD_DIR}/Makefile
 PKG_DPKG_FILE_PATH = ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 
-
-#PKG_COMPILE_MAKE = ""
-PKG_COMPILE_NINJA = ""
+PKG_COMPILE_MAKE = ""
+#PKG_COMPILE_NINJA = ""
 PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} для компиляции в папке исходников или ${PKG_BUILD_DIR}  для компиляции в отдельном каталоги
-
+PKG_AUTORECONFIG = ${PGK_SOURCE_DIR}/configure
 
 
 
@@ -49,10 +38,8 @@ PKG_COMPILE_DIR = ${PKG_BUILD_DIR}  # может быть ${PGK_SOURCE_DIR} дл
 PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяет естьли собранный файл пакета если нет собираем
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
-all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} PKG_CONFIGURE ${PKG_MAKE_INTALL} PKG_MAKE_POST_INTALL ${PKG_BUILD_DIR_DEBIAN} 
-	@echo ${PKG_DPKG_FILE_PATH}
-	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
-	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
+all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} ${PKG_AUTORECONFIG}  PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
+	@cd ${ROOT_DPKG_ARCH} && fakeroot -- dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 	
 	
@@ -62,22 +49,20 @@ BUILD_DIR:
 
 
 ${PKG_TAR}:
-	wget ${PKG_URL} -P ${ROOT_SOURCE}/ --no-check-certificate
+	wget ${PKG_URL} -P ${ROOT_SOURCE}/
 
 
 ${PGK_SOURCE_DIR}:
 	@cd ${ROOT_SOURCE} && tar -xf ${PKG_TAR_FILE}
 
+${PKG_AUTORECONFIG}:
+	@cd ${PGK_SOURCE_DIR} && autoreconf -i
+
 PKG_CONFIGURE:
-	@mkdir -p ${PKG_BUILD_DIR}
-	@cd ${PKG_BUILD_DIR} && $(MESON)  -Dgtk_doc=false ${PGK_SOURCE_DIR} #introspection  -Dgi_cross_use_prebuilt_gi=true
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  
 
 
 include ${ROOT_DIR}/scripts/compile.mk
-
-PKG_MAKE_POST_INTALL:
-##	@rm -rf ${PKG_BUILD_DIR_DPKG}/usr/include/atk-1.0/atk/atk-autocleanups.h
-
 
 include ${ROOT_DIR}/scripts/build_dpkg.mk
 	

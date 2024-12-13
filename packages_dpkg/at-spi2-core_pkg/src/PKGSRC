@@ -52,7 +52,7 @@ build() {
     -D docs=true
   )
 
-  arch-meson at-spi2-core build "${meson_options[@]}"
+  meson --prefix=/usr --sysconfdir=/etc --buildtype=release --localstatedir=/var at-spi2-core build "${meson_options[@]}"
   meson compile -C build
 }
 
