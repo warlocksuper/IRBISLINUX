@@ -36,12 +36,12 @@ PKG_LIST_DIR +=  sqlite_dpkg phonon_dpkg phonon-backend-gstreamer_dpkg a52dec_dp
 PKG_LIST_DIR += acpid_dpkg yaml_dpkg harfbuzz_dpkg libwpe_dpkg wpebackend-fdo_dpkg enchant_dpkg openjpeg_dpkg 
 PKG_LIST_DIR += libhandy_dpkg rsync_dpkg xterm_dpkg  links_dpkg lightdm-gtk-greeter_dpkg amtk_dpkg gtksourceview4_dpkg tepl_dpkg libpeas_dpkg gspell_dpkg gedit_dpkg 
 PKG_LIST_DIR += upower_dpkg gcr3_dpkg  gcr_dpkg gnome-keyring_dpkg gnome-shell_dpkg glu_dpkg pinentry_dpkg cogl_dpkg clutter_dpkg xscreensaver_dpkg
-PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg gnome-icon-theme_dpkg gdk-pixbuf-xlib_dpkg gnome-icon-theme-extras_dpkg 
+PKG_LIST_DIR += XML-Simple_dpkg hicolor-icon-theme_dpkg icon-naming-utils_dpkg gnome-icon-theme_dpkg gnome-icon-theme-extras_dpkg 
 PKG_LIST_DIR += gnome-icon-theme-symbolic_dpkg gnome-themes-extra_dpkg  yasm_dpkg libaom_dpkg 
 PKG_LIST_DIR +=  ConsoleKit_dpkg   libpipeline_dpkg  xfce4-settings_dpkg 
 PKG_LIST_DIR += gnome-session_dpkg colord_dpkg cracklib_dpkg  libpwquality_dpkg libmbim_dpkg  libqmi_dpkg ModemManager_dpkg  
 PKG_LIST_DIR += libgtop_dpkg  libatasmart_dpkg keyutils_dpkg libaio_dpkg  LVM2_dpkg libbytesize_dpkg 
-PKG_LIST_DIR +=   libnvme_dpkg  libblockdev_dpkg  udisks_dpkg  gnome-control-center_dpkg 
+PKG_LIST_DIR +=   libnvme_dpkg  libblockdev_dpkg   gnome-control-center_dpkg 
 PKG_LIST_DIR +=  libdaemon_dpkg libcdio_dpkg  libcdio-paranoia_dpkg    
 PKG_LIST_DIR +=  librsvg_dpkg  libglade_dpkg   xmlto_dpkg xbitmaps_dpkg 
 
@@ -71,7 +71,7 @@ PKG_LIST += valgrind libxml2 libxslt libunistring libtasn1 p11-kit zstd  gnutls 
 PKG_LIST += wget perl openssl libffi kmod libxcrypt  curl  nlohmann-json cppdap jsoncpp libuv cmake  xz mpdecimal readline bash 
 PKG_LIST += Python python-packaging python-flit-core cython   #python-build python-yaml
 PKG_LIST += gobject-introspection glib wget  bzip2 usbutils   pyenv   
-PKG_LIST += perl-xml-parser itstool intltool gi-docgen llvm vim rtkit pulseaudio  pipewire wireplumber xkbcommon at-spi2-core gtk3 xfce4-pulseaudio-plugin libsasl postgresql  openldap audit dbus-broker mesa attr LMDB libxcvt fuse squashfuse gdk-pixbuf pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
+PKG_LIST += perl-xml-parser itstool intltool gi-docgen llvm vim rtkit pulseaudio  pipewire wireplumber xkbcommon at-spi2-core gtk3 xfce4-pulseaudio-plugin libsasl postgresql  openldap audit dbus-broker mesa attr LMDB libxcvt fuse squashfuse gdk-pixbuf gdk-pixbuf-xlib pam qrencode giflib jasper LibRaw poppler kColorPicker kImageAnnotator fonts-liberation   qcoro fmt spdlog 
 PKG_LIST += pango pangomm-2.48 gtkmm-4.0 gtkmm3 gparted cairo cairomm-1.16 pycairo fakeroot util-linux systemd 
 PKG_LIST += fonts-noto-cjk
 #PKG_LIST += libfprint fprintd
@@ -84,10 +84,11 @@ PKG_LIST +=   polkit
 PKG_LIST +=  AppStream  blueman docbook-xml qemu mtdev libwacom libinput xcb-util-keysyms libtommath babl gegl libgexiv2 libmypaint mypaint-brushes1 glib-networking appstream-glib poppler-data gtk-doc lynx 
 PKG_LIST +=  pavucontrol gimp avahi xcb-proto libxcb  xcb-util-wm libicns qt5-base qt5-imageformats qt5-styleplugins qt5-svg qt5-declarative qt5-virtualkeyboard qt5-wayland qt5-websockets qt5-webglplugin qt5-x11extras sddm xfce4-notifyd # libtomcrypt libfbclient 
 PKG_LIST +=    colord libsm  dbus libxfce4ui xfce4-session xfce4-power-manager xfce4-whiskermenu-plugin  xfce4-screenshooter xfce4-screensaver  xfce4-xkb-plugin dosfstools jansson binutils libwnck yaml-cpp c-ares node  
-PKG_LIST += vulkan-headers libva lua imlib2 conky-all 
+PKG_LIST += vulkan-headers libva lua imlib2 conky-all gnome-common gnome-settings-daemon adwaita-icon-theme gnome-shell-extensions gnome-backgrounds gnome-themes-standard udisks nettle libarchive grfoff gnome-autoar 
 PKG_LIST += krb5 
-PKG_LIST +=  mariadb perl-ipc-run  libsodium   orc cdparanoia opus libxv v4l-utils aalib opencore-amr flac libcaca libdv mpg123 libraw1394 libavc1394 libiec61883 wayland xorgproto  wayland-protocols libdecor xorg-xwayland libei sysprof mutter46 gtk4 mobile-broadband-provider-info NetworkManager libnma gnome-shell-extensions  gnome-shell gnome-desktop gnome-session polkit-gnome  libunwind  ruby unifdef sdl libwebp libmanette highway  brotli libjxl hyphen woff2 libavif bubblewrap xdg-dbus-proxy webkit2gtk-4.1 gnome-online-accounts xorg-setxkbmap gnome-control-center file-roller  thunar-archive-plugin libplist libimobiledevice-glue libusbmuxd libimobiledevice gvfs libshout speexdsp speex utf8cpp taglib twolame libvpx wavpack java-common lapack libaec autoconf autoconf-archive gnome-menus yelp-xsl  yelp-tools gnome-panel gjs util-macros xf86-video-intel hdf5 opencv  gstreamer  dconf gsettings-desktop-schemas libsoup libsoup3 geocode-glib libgweather4 geoclue gnome-settings-daemon
-PKG_LIST += make-ca rest gnome-online-accounts breezy gnome-common unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs  tdb talloc tevent perl-parse-yapp samba   gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ libdatrie libthai  liburing  apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel  libdex  libb64 double-conversion dejagnu tcl expect   ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors synaptic nettle libarchive grfoff
+PKG_LIST +=  mariadb perl-ipc-run  libsodium   orc cdparanoia opus libxv v4l-utils aalib opencore-amr flac libcaca libdv mpg123 libraw1394 libavc1394 libiec61883 wayland xorgproto  wayland-protocols libdecor xorg-xwayland libei sysprof mutter46 gtk4 mobile-broadband-provider-info NetworkManager libnma  gnome-shell gnome-desktop gnome-session polkit-gnome  libunwind  ruby unifdef sdl libwebp libmanette highway  brotli libjxl hyphen woff2 libavif bubblewrap xdg-dbus-proxy webkit2gtk-4.1 gnome-online-accounts xorg-setxkbmap gnome-control-center file-roller  thunar-archive-plugin libplist libimobiledevice-glue libusbmuxd libimobiledevice gvfs libshout speexdsp speex utf8cpp taglib twolame libvpx wavpack java-common lapack libaec autoconf autoconf-archive gnome-menus yelp-xsl  yelp-tools gnome-panel gjs util-macros xf86-video-intel 
+PKG_LIST +=  hdf5 opencv  gstreamer  dconf gsettings-desktop-schemas libsoup libsoup3 geocode-glib libgweather4 geoclue 
+PKG_LIST += make-ca rest breezy  unicode-character-database unicode-emoji unicode-cldr libdbusmenu  ibus gsound gnome-bluetooth colord-gtk evolution-data-server libmozjs  tdb talloc tevent perl-parse-yapp samba   gdm ark  spirv-headers spirv-tools spirv-llvm-translator libclc libdrm cbindgen bindgen libglvnd directx-headers libvdpau libomxil-bellagio libdeflate libevent cpio libsigc++ libdatrie libthai  liburing  apr apr-util apache oniguruma libzip php libsass sassc  libadwaita libpanel  libdex  libb64 double-conversion dejagnu tcl expect   ttf-wps-fonts lib32-zlib lib32-freetype2 wine wine32  libisl qt6-base qtcreator transmission glibc32  imagemagick libproxy  extra-cmake-modules kpmcore calamares  glslang   wine-mono graphene zenity winetricks libappimage libcloudproviders  signon-plugin-oauth2 lm-sensors synaptic 
 
 
 
@@ -358,9 +359,6 @@ libblockdev_dpkg:
 libatasmart_dpkg:
 	${MAKE} -C libblockdev
 
-udisks_dpkg:
-	${MAKE} -C udisks
-
 libgtop_dpkg:
 	${MAKE} -C libgtop
 
@@ -443,9 +441,6 @@ ModemManager_dpkg:
 
 libaom_dpkg:
 		${MAKE} -C libaom
-
-gdk-pixbuf-xlib_dpkg:
-		${MAKE} -C gdk-pixbuf-xlib
 
 gnome-icon-theme-extras_dpkg:
 		${MAKE} -C gnome-icon-theme-extras

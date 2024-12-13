@@ -1,16 +1,16 @@
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
-PKG_VERSION = 3.10
-PKG_NAME = nettle
-PKG_URL = https://ftp.gnu.org/gnu/nettle/nettle-${PKG_VERSION}.tar.gz
-PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/${PKG_NAME}-${PKG_VERSION}
+PKG_VERSION = 3.28
+PKG_NAME = gnome-themes-standard
+PKG_URL = https://gitlab.gnome.org/Archive/gnome-themes-extra/-/archive/3.28/gnome-themes-extra-3.28.tar.gz
+PKG_TAR_FILE = gnome-themes-extra-${PKG_VERSION}.tar.gz
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/gnome-themes-extra-${PKG_VERSION}
 PKG_DEBIAN_DEPANDS = "Depends:  "
-#PKG_BUILD_REPLACES = "  "
+PKG_BUILD_REPLACES = " gnome-themes-extra  "
 
-PKG_DEBIAN_SECTION = "Section: devel"
+PKG_DEBIAN_SECTION = "Section: gnome"
 
-PKG_DEBIAN_DEST = "Description: Nettle low-level cryptographic library (symmetric algorithms)."
+PKG_DEBIAN_DEST = "Description: Standard Themes for GNOME Applications."
 
 PKG_DPKG_FILE = ${PKG_NAME}.${PKG_VERSION}.deb 
 
@@ -39,8 +39,7 @@ PKG_COMPLITE =  $(shell pkg-exist ${PKG_DPKG_FILE_PATH})   ## определяе
 
 ifeq ($(strip "$(PKG_COMPLITE)"),$(strip "0  "))
 all: BUILD_DIR  ${PKG_TAR} ${PGK_SOURCE_DIR} ${PKG_AUTORECONFIG}  PKG_CONFIGURE COMPILE ${PKG_MAKE_INTALL} ${PKG_BUILD_DIR_DEBIAN} 
-	sudo chown root:root -R ${PKG_BUILD_DIR_DPKG}
-	@cd ${ROOT_DPKG_ARCH} && sudo dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
+	@cd ${ROOT_DPKG_ARCH} && fakeroot -- dpkg-deb --build ${PKG_BUILD_DIR_DPKG} ${PKG_DPKG_FILE}
 	sudo dpkg -i ${ROOT_DPKG_ARCH}/${PKG_DPKG_FILE}
 	
 	
@@ -60,7 +59,7 @@ ${PKG_AUTORECONFIG}:
 	@cd ${PGK_SOURCE_DIR} && autoreconf -i
 
 PKG_CONFIGURE:
-	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE) --disable-static
+	@cd ${PKG_BUILD_DIR} && ${PGK_SOURCE_DIR}/$(CONFIGURE)  
 
 
 include ${ROOT_DIR}/scripts/compile.mk
