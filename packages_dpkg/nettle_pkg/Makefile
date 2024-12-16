@@ -1,6 +1,6 @@
 PATH = $(shell printenv PATH):${ROOT_DIR}/scripts:${ROOT_DIR}/tools/pkg-build
 export  PATH
-PKG_VERSION = 3.10
+PKG_VERSION = 3.9
 PKG_NAME = nettle
 PKG_URL = https://ftp.gnu.org/gnu/nettle/nettle-${PKG_VERSION}.tar.gz
 PKG_TAR_FILE = ${PKG_NAME}-${PKG_VERSION}.tar.gz
