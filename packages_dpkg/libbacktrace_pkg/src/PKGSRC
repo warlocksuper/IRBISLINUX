@@ -1,0 +1,43 @@
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
+pkgname=libbacktrace
+pkgver=1.0.git1
+_gitcommit=1db85642e3fca189cf4e076f840a45d6934b2456
+pkgrel=1
+pkgdesc="A C library that may be linked into a C/C++ program to produce symbolic backtraces"
+arch=('x86_64')
+url="https://github.com/ianlancetaylor/libbacktrace"
+license=('BSD-3-Clause')
+depends=('gcc-libs' 'zlib')
+makedepends=('git' 'libunwind')
+provides=('libbacktrace.so')
+source=("git+https://github.com/ianlancetaylor/libbacktrace.git"
+        "libbacktrace-92.patch::https://patch-diff.githubusercontent.com/raw/ianlancetaylor/libbacktrace/pull/92.patch"
+        )
+sha256sums=('SKIP'
+            '680dbbf1db9953d4aeef2205274d2c3672d150a106f782c368d628623173dd1f')
+
+prepare() {
+  cd "libbacktrace"
+
+  patch -Np1 -i "$srcdir"/libbacktrace-92.patch
+}
+
+build() {
+  cd "libbacktrace"
+
+  autoreconf -fi
+  ./configure \
+    --prefix="/usr" \
+    --enable-shared \
+    --with-system-libunwind
+  make
+}
+
+package() {
+  cd "libbacktrace"
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libbacktrace"
+}
+
