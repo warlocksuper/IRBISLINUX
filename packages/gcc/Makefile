@@ -1,11 +1,10 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-GCC_NAME = gcc
-GCC_VERSION = 14.2.0
-GCC_TAR = ${GCC_NAME}-${GCC_VERSION}.tar.gz
+
+GCC_TAR = gcc-14.2.0.tar.gz
 GCC_TAR_DIR = ${ROOT_SOURCE}/${GCC_TAR}
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/gcc-${GCC_VERSION}
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/gcc-14.2.0
 
 
 GCC_STAGE1_CONFIGURE = ${ROOT_BUILD}/gcc/Makefile
@@ -17,7 +16,7 @@ GCC_STAGE2_CONFIGURE = ${GCC_STAGE2_BUILD_DIR}/Makefile
 GCC_STAGE2_COMPILE = ${GCC_STAGE2_BUILD_DIR}/gcc/cc1
 GCC_STAGE2_INSTALL = ${ROOT_FS}/usr/bin/gcc
 
-GCC_STAGE1_POST_CONFIG = ${ROOT_TOOLS}/lib/gcc/${CONFIG_OS_ARCH_TARGET}/12.3.0/install-tools/include/limits.h
+GCC_STAGE1_POST_CONFIG = ${ROOT_FS}/lib/gcc/${OS_ARCH_TARGET}/14.2.0/install-tools/include/limits.h
 
 CXXFLAGS=-fpermissive
 
@@ -30,7 +29,9 @@ stage1_tools: ${GCC_TAR_DIR}  ${PGK_SOURCE_DIR}  ${GCC_STAGE1_CONFIGURE} ${GCC_S
 ${GCC_TAR_DIR}:
 	@mkdir -p ${ROOT_FS}
 	@mkdir -p ${ROOT_SOURCE}
-	wget https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.gz -P ${ROOT_SOURCE}
+	wget https://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.gz -P ${ROOT_SOURCE}
+##	wget http://mirror.linux-ia64.org/gnu/gcc/releases/gcc-12.3.0/gcc-12.3.0.tar.gz	-P ${ROOT_SOURCE}
+##	wget https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz -P ${ROOT_SOURCE}
 	wget https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.0.tar.xz -P ${ROOT_SOURCE}
 	wget https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz -P ${ROOT_SOURCE}
 	wget https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz -P${ROOT_SOURCE}		
@@ -48,7 +49,7 @@ ${PGK_SOURCE_DIR}:
 
 ${GCC_STAGE1_CONFIGURE}:
 	@mkdir -p ${ROOT_DIR}/build/gcc
-	@cd ${ROOT_BUILD}/gcc && ${PGK_SOURCE_DIR}/configure --target=${CONFIG_OS_ARCH_TARGET} --prefix=${ROOT_TOOLS} --with-glibc-version=2.37 --with-sysroot=${ROOT_FS} --with-newlib --without-headers --disable-nls --disable-shared --disable-multilib --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx --enable-languages=c,c++
+	@cd ${ROOT_BUILD}/gcc && ${PGK_SOURCE_DIR}/configure --target=${OS_ARCH_TARGET} --prefix=${ROOT_FS} --with-glibc-version=2.37 --with-sysroot=${ROOT_FS} --with-newlib --without-headers --disable-nls --enable-multilib --disable-shared --disable-threads --disable-libatomic --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx --enable-languages=c,c++
 
 ${GCC_STAGE1_COMPILE}:
 	${MAKE} -C ${ROOT_BUILD}/gcc ##all-gcc all-target-libgcc
