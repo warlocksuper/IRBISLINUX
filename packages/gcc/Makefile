@@ -1,10 +1,11 @@
 OS_CONFIG = ${ROOT_DIR}/.config
 include ${OS_CONFIG}
 
-
-GCC_TAR = gcc-12.3.0.tar.gz
+GCC_NAME = gcc
+GCC_VERSION = 14.2.0
+GCC_TAR = ${GCC_NAME}-${GCC_VERSION}.tar.gz
 GCC_TAR_DIR = ${ROOT_SOURCE}/${GCC_TAR}
-PGK_SOURCE_DIR = ${ROOT_SOURCE}/gcc-12.3.0
+PGK_SOURCE_DIR = ${ROOT_SOURCE}/gcc-${GCC_VERSION}
 
 
 GCC_STAGE1_CONFIGURE = ${ROOT_BUILD}/gcc/Makefile
@@ -29,9 +30,7 @@ stage1_tools: ${GCC_TAR_DIR}  ${PGK_SOURCE_DIR}  ${GCC_STAGE1_CONFIGURE} ${GCC_S
 ${GCC_TAR_DIR}:
 	@mkdir -p ${ROOT_FS}
 	@mkdir -p ${ROOT_SOURCE}
-	wget https://ftp.gnu.org/gnu/gcc/gcc-12.3.0/gcc-12.3.0.tar.gz -P ${ROOT_SOURCE}
-##	wget http://mirror.linux-ia64.org/gnu/gcc/releases/gcc-12.3.0/gcc-12.3.0.tar.gz	-P ${ROOT_SOURCE}
-##	wget https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz -P ${ROOT_SOURCE}
+	wget https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.gz -P ${ROOT_SOURCE}
 	wget https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.0.tar.xz -P ${ROOT_SOURCE}
 	wget https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz -P ${ROOT_SOURCE}
 	wget https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz -P${ROOT_SOURCE}		
@@ -53,7 +52,7 @@ ${GCC_STAGE1_CONFIGURE}:
 
 ${GCC_STAGE1_COMPILE}:
 	${MAKE} -C ${ROOT_BUILD}/gcc ##all-gcc all-target-libgcc
-	${MAKE} -C ${ROOT_BUILD}/gcc install ##install-gcc install-target-libgcc	
+	sudo ${MAKE} -C ${ROOT_BUILD}/gcc install ##install-gcc install-target-libgcc	
 
 ${GCC_STAGE1_POST_CONFIG}:
 	@cd ${PGK_SOURCE_DIR} && cat gcc/limitx.h gcc/glimits.h gcc/limity.h > ${GCC_STAGE1_POST_CONFIG}
